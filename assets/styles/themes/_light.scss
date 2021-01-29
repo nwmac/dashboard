@@ -91,15 +91,20 @@ $selected: rgba($primary, .5);
   --overlay-bg                 : #{rgba($lighter, 0.75)};
   --shadow                     : #{rgba($medium, 0.85)};
 
+  --checkbox-tick              : #{$lightest};
+  --checkbox-border            : #{$medium};
+  --checkbox-tick-disabled     : #{darken($disabled, 20%)};
+  --checkbox-disabled-bg       : #{$disabled};
+  --checkbox-ticked-bg         : #{$link};
 
   --dropdown-bg                : #{$lightest};
   --dropdown-border            : #{$medium};
   --dropdown-divider           : #{$medium};
   --dropdown-text              : #{$link};
   --dropdown-active-text       : #{darken($link, 1%)};
-  --dropdown-active-bg         : #{$selected};
+  --dropdown-active-bg         : #{rgba($primary, 0.2)};
   --dropdown-hover-text        : #{lighten($link, 1%)};
-  --dropdown-hover-bg          : #{rgba($primary, 0.2)};
+  --dropdown-hover-bg          : #{$light};
   --dropdown-disabled-text     : var(--muted);
   --dropdown-disabled-bg       : #{$disabled};
 
