@@ -47,7 +47,8 @@ locale:
 nav:
   title: Dashboard
   backToRancher: Cluster Manager
-  shell: Shell
+  shell: Kubectl Shell
+  import: Import YAML
   group:
     cluster: Cluster
     inUse: More Resources
@@ -68,6 +69,8 @@ nav:
   apps: Apps
 
 product:
+  clusterGroup: Cluster Applications
+  globalGroup: Global Applications
   apps: Apps & Marketplace
   auth: Users & Authentication
   backup: Rancher Backups
@@ -360,6 +363,10 @@ asyncButton:
     successIcon: 'checkmark'
     error: ''
     errorIcon:   'error'
+  import:
+    action: 'Import'
+    waiting: 'Importing&hellip;'
+    success:  'Imported'
 
 backupRestoreOperator:
   backupFilename: Backup Filename
@@ -862,6 +869,16 @@ glance:
   provider: Provider
   version: Kubernetes Version
 
+import:
+  title: Import YAML
+  defaultNamespace:
+    label: Default Namespace
+  success: |-
+    Applied {count, plural,
+    =1 {1 Resource}
+    other {# Resources}
+    }
+
 ingress:
   certificates:
     addCertificate: Add Certificate
@@ -980,6 +997,7 @@ logging:
   install:
     k3sContainerEngine: K3S Container Engine
     enableAdditionalLoggingSources: Enable enhanced cloud provider logging
+    fluentbitMountPath: Fluentbit Mount Path
   elasticsearch:
     host: Host
     scheme: Scheme
@@ -1303,7 +1321,7 @@ monitoring:
     alerting: Alerting
     general: General
     grafana: Grafana
-    prometheus: Promethues
+    prometheus: Prometheus
   v1Warning: 'Monitoring is currently deployed from Cluster Manager. If you are migrating from an older version of Rancher with monitoring enabled, please disable monitoring in Cluster Manager before attempting to install the new Rancher Monitoring chart in Cluster Explorer.'
   volume:
     modes:
@@ -2154,11 +2172,14 @@ workload:
     noResourceLimits: There are no resource requirements configured.
     noPorts: There are no ports configured.
     ports:
+      createService: Service Type
+      noCreateService: Do not create a service
       containerPort: Private Container Port
       hostIP: Host IP
       hostPort: Public Host Port
       name: Name
       protocol: Protocol
+      listeningPort: Listening Port
     security:
       addCapabilities: Add Capabilities
       addGroupIDs: Add Group IDs

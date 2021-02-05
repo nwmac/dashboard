@@ -1,6 +1,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { NORMAN } from '@/config/types';
+import Import from '@/components/Import';
 import ProductSwitcher from './ProductSwitcher';
 import ClusterSwitcher from './ClusterSwitcher';
 import NamespaceFilter from './NamespaceFilter';
@@ -13,11 +14,12 @@ export default {
     ClusterSwitcher,
     NamespaceFilter,
     WorkspaceSwitcher,
+    Import,
   },
 
   computed: {
     ...mapGetters(['clusterReady', 'isMultiCluster', 'currentCluster',
-      'currentProduct', 'isExplorer', 'backToRancherLink', 'backToRancherGlobalLink']),
+      'currentProduct', 'backToRancherLink', 'backToRancherGlobalLink']),
 
     authEnabled() {
       return this.$store.getters['auth/enabled'];
@@ -30,6 +32,10 @@ export default {
     showShell() {
       return !!this.currentCluster?.links?.shell;
     },
+
+    showImport() {
+      return !!this.currentCluster?.actions?.apply;
+    },
   },
 
   methods: {
@@ -39,25 +45,26 @@ export default {
       } else {
         this.$refs.popover.hide();
       }
+    },
+
+    openImport() {
+      this.$modal.show('importModal');
+    },
+
+    closeImport() {
+      this.$modal.hide('importModal');
     }
   }
 };
 </script>
 
 <template>
-  <header :class="{explorer: isExplorer}">
+  <header>
     <div class="product">
       <ProductSwitcher v-if="currentCluster" />
       <div alt="Logo" class="logo">
         <img src="~/assets/images/pl/half-logo.svg" />
       </div>
-    </div>
-
-    <div class="apps">
-      <nuxt-link v-if="currentCluster" :to="{name: 'c-cluster-apps', params: { cluster: currentCluster.id }}" class="btn role-tertiary">
-        <i class="icon icon-lg icon-marketplace pr-5" />
-        {{ t('nav.apps') }}
-      </nuxt-link>
     </div>
 
     <div class="top">
@@ -66,14 +73,29 @@ export default {
     </div>
 
     <div class="back">
-      <a v-if="currentProduct" class="btn role-tertiary" :href="(currentProduct.inStore === 'management' ? backToRancherGlobalLink : backToRancherLink)">
+      <a v-if="currentProduct && isMultiCluster" class="btn role-tertiary" :href="(currentProduct.inStore === 'management' ? backToRancherGlobalLink : backToRancherLink)">
         {{ t('nav.backToRancher') }}
       </a>
     </div>
 
+    <div class="import">
+      <button v-if="currentProduct && currentProduct.showClusterSwitcher" :disabled="!showImport" type="button" class="btn role-tertiary" @click="openImport()">
+        <i v-tooltip="t('nav.import')" class="icon icon-upload icon-lg" />
+      </button>
+      <modal
+        class="import-modal"
+        name="importModal"
+        width="75%"
+        height="auto"
+        styles="max-height: 90vh;"
+      >
+        <Import :cluster="currentCluster" @close="closeImport" />
+      </modal>
+    </div>
+
     <div class="kubectl">
       <button v-if="currentProduct && currentProduct.showClusterSwitcher" :disabled="!showShell" type="button" class="btn role-tertiary" @click="currentCluster.openShell()">
-        <i class="icon icon-terminal icon-lg" /> {{ t('nav.shell') }}
+        <i v-tooltip="t('nav.shell')" class="icon icon-terminal icon-lg" />
       </button>
     </div>
 
@@ -128,30 +150,27 @@ export default {
     display: grid;
     height: 100vh;
 
+    > * {
+      display: flex;
+      align-items: center;
+      padding: 0 5px;
+    }
+
     ::v-deep .btn {
       border: 1px solid var(--header-btn-bg);
       background: rgba(0,0,0,.05);
-      margin-left: 10px;
       color: var(--header-btn-text);
     }
 
-    grid-template-areas:  "product apps top back kubectl cluster user";
-    grid-template-columns: var(--nav-width) 0 auto min-content min-content min-content var(--header-height);
+    grid-template-areas:  "product top back import kubectl cluster user";
+    grid-template-columns: var(--nav-width) auto min-content min-content min-content min-content var(--header-height);
     grid-template-rows:    var(--header-height);
-
-    &.explorer {
-      grid-template-columns: var(--nav-width) min-content auto min-content min-content min-content var(--header-height);
-    }
-
-    > .apps {
-      grid-area: apps;
-      background-color: var(--header-bg);
-    }
 
     > .product {
       grid-area: product;
       background-color: var(--header-btn-bg);
       position: relative;
+      display: block;
 
       .logo {
         height: 30px;
@@ -171,38 +190,35 @@ export default {
       background-color: var(--header-bg);
     }
 
+    > .import {
+      grid-area: import;
+      background-color: var(--header-bg);
+    }
+
     > .kubectl {
       grid-area: kubectl;
       background-color: var(--header-bg);
     }
 
-    > .apps,
     > .back,
+    > .import,
     > .kubectl {
       text-align: right;
-      padding: 0 5px 0 0;
 
       .btn {
-        margin: 8px 0 0 0;
         text-align: center;
       }
-    }
-
-    > .apps {
-      padding: 0 3px 0 5px;
     }
 
     > .cluster {
       grid-area: cluster;
       background-color: var(--header-bg);
       position: relative;
-      padding-top: 6px;
     }
 
     > .top {
       grid-area: top;
       background-color: var(--header-bg);
-      padding-top: 6px;
 
       INPUT[type='search']::placeholder,
       .vs__open-indicator,
@@ -223,10 +239,6 @@ export default {
         fill: var(--header-btn-bg);
       }
 
-      .filter {
-        padding-left: 2px;
-      }
-
       .filter .vs__dropdown-toggle {
         background: var(--header-btn-bg);
         border-radius: var(--border-radius);
@@ -240,7 +252,12 @@ export default {
 
       &:focus {
         .v-popover {
+          line-height: 0;
+
           ::v-deep .trigger {
+            .user-image {
+              max-height: 40px;
+            }
             .user-image > * {
               @include form-focus
             }
@@ -250,7 +267,6 @@ export default {
 
       grid-area: user;
       background-color: var(--header-bg);
-      padding: 5px;
 
       IMG {
         border: 1px solid var(--header-btn-bg);
