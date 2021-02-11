@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+
 import { STANDARD } from './config/private-label';
 import { directiveSsr as t } from './plugins/i18n';
 import { trimWhitespaceSsr as trimWhitespace } from './plugins/trim-whitespace';
@@ -300,7 +301,10 @@ module.exports = {
     '/v3-public': proxyOpts(api), // Rancher Unauthed API
     '/api-ui':    proxyOpts(api), // Browser API UI
     '/meta':      proxyOpts(api), // Browser API UI
-    '/v1-saml':    proxyOpts(api)
+    '/v1-saml':    proxyOpts(api),
+    '/embed/cluster-manager': proxyOpts('https://127.0.0.1:8000/g/clusters'),
+    '/assets': proxyOpts('https://127.0.0.1:8000'),
+    '/translations': proxyOpts('https://127.0.0.1:8000'),
   },
 
   // Nuxt server
@@ -328,8 +332,15 @@ function proxyOpts(target) {
     secure: !dev,
     onProxyReq,
     onProxyReqWs,
-    onError
+    onError,
+    onProxyRes,
   };
+}
+
+function onProxyRes(proxyRes, req, res) {
+  if (dev) {
+    proxyRes.headers['X-Frame-Options'] = 'ALLOWALL';
+  }
 }
 
 function proxyWsOpts(target) {
