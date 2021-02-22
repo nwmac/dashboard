@@ -105,7 +105,7 @@ export default {
       v-if="selectLabel"
       v-model="selected"
       :label="selectLabel"
-      :class="{ 'in-input': !isView }"
+      class="in-input"
       :options="options"
       :searchable="false"
       :clearable="false"
@@ -126,7 +126,7 @@ export default {
       :searchable="searchable"
       :disabled="disabled || isView"
       :clearable="false"
-      :class="{ 'in-input': !isView }"
+      class="in-input"
       :taggable="taggable"
       :create-option="(name) => ({ label: name, value: name })"
       :multiple="false"
@@ -213,6 +213,14 @@ export default {
   & .in-input {
     margin-right: 0;
     border-radius: var(--border-radius) 0 0 var(--border-radius);
+
+    &.disabled.unlabeled-select, &.disabled.labeled-select {
+      background-color: var(--input-disabled-bg);
+      border: solid var(--border-width) var(--input-disabled-border);
+      ::v-deep * {
+        cursor: not-allowed;
+      }
+    }
 
     &.labeled-select.focused ::v-deep,
     &.unlabeled-select.focused ::v-deep {

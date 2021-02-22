@@ -164,7 +164,7 @@ export default {
     ref="select"
     class="unlabeled-select"
     :class="{
-      disabled: disabled && !isView,
+      disabled: disabled || isView,
       focused,
       [mode]: true,
       [status]: status,
@@ -174,7 +174,6 @@ export default {
     @focus="focusSearch"
   >
     <v-select
-      v-if="!isView"
       ref="select-input"
       v-bind="$attrs"
       class="inline"
@@ -223,5 +222,14 @@ export default {
     }
 
     @include input-status-color;
+
+    &.view {
+      background-color: var(--input-disabled-bg);
+      border: solid var(--border-width) var(--input-disabled-border);
+
+      ::v-deep * {
+        cursor: not-allowed;
+      }
+    }
   }
 </style>
