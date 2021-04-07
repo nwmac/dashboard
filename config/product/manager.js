@@ -15,12 +15,12 @@ export function init(store) {
   } = DSL(store, NAME);
 
   product({
-    ifHaveType:          CAPI.CAPI_CLUSTER,
+    //ifHaveType:          CAPI.CAPI_CLUSTER,
     inStore:             'management',
     icon:                'globe',
     weight:              -1,
     removable:           false,
-    public:              false, // Hide from regular view during development
+    public:              true, // Hide from regular view during development
     showClusterSwitcher: false,
   });
 
