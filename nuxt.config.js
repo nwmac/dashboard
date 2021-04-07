@@ -293,17 +293,17 @@ module.exports = {
 
   // Proxy: https://github.com/nuxt-community/proxy-module#options
   proxy: {
-    '/k8s':       proxyWsOpts(api), // Straight to a remote cluster (/k8s/clusters/<id>/)
-    '/api':       proxyWsOpts(api), // Management k8s API
-    '/apis':      proxyWsOpts(api), // Management k8s API
-    '/v1':        proxyWsOpts(api), // Management Steve API
-    '/v3':        proxyWsOpts(api), // Rancher API
-    '/v3-public': proxyOpts(api), // Rancher Unauthed API
-    '/api-ui':    proxyOpts(api), // Browser API UI
-    '/meta':      proxyOpts(api), // Browser API UI
-    '/v1-saml':    proxyOpts(api),
-    '/embed/cluster-manager': proxyOpts('https://127.0.0.1:8000/g/clusters'),
-    '/assets': proxyOpts('https://127.0.0.1:8000'),
+    '/k8s':                   proxyWsOpts(api), // Straight to a remote cluster (/k8s/clusters/<id>/)
+    '/api':                   proxyWsOpts(api), // Management k8s API
+    '/apis':                  proxyWsOpts(api), // Management k8s API
+    '/v1':                    proxyWsOpts(api), // Management Steve API
+    '/v3':                    proxyWsOpts(api), // Rancher API
+    '/v3-public':             proxyOpts(api), // Rancher Unauthed API
+    '/api-ui':                proxyOpts(api), // Browser API UI
+    '/meta':                  proxyOpts(api), // Browser API UI
+    '/v1-saml':               proxyOpts(api),
+    '/g':            proxyEmberOpts('https://127.0.0.1:8000'),
+    '/assets':       proxyOpts('https://127.0.0.1:8000'),
     '/translations': proxyOpts('https://127.0.0.1:8000'),
   },
 
@@ -326,6 +326,22 @@ module.exports = {
   eslint: { cache: './node_modules/.cache/eslint' },
 };
 
+function proxyEmberOpts(target) {
+  return {
+    target,
+    secure:      !dev,
+    onProxyReq:  onProxyEmberReq,
+    onProxyReqWs,
+    onError,
+    onProxyRes,
+    // pathRewrite(path, req) {
+    //   console.log(`rewriting path: ${ path }`);
+
+    //   return path.replace('/ember/', '/');
+    // }
+  };
+}
+
 function proxyOpts(target) {
   return {
     target,
@@ -335,6 +351,19 @@ function proxyOpts(target) {
     onError,
     onProxyRes,
   };
+}
+
+function onProxyEmberReq(proxyReq, req) {
+  console.log('ember request');
+  console.log(proxyReq.path);
+  console.log(proxyReq);
+
+  // if (proxyReq.path.startsWith('/ember')) {
+  //   proxyReq.path = proxyReq.path.substring(6);
+  // }
+  // console.log(proxyReq.path);
+  proxyReq.setHeader('x-api-host', req.headers['host']);
+  proxyReq.setHeader('x-forwarded-proto', 'https');
 }
 
 function onProxyRes(proxyRes, req, res) {

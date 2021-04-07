@@ -85,6 +85,7 @@ product:
   istio: Istio
   logging: Logging
   rio: Rio
+  clusterManagement: Cluster Management
 
 
 suffix:

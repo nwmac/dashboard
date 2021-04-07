@@ -1,15 +1,12 @@
 import { DSL } from '@/store/type-map';
 
-export const NAME = 'cluster-mgmt';
+export const NAME = 'clusterManagement';
 
 export function init(store) {
   const {
     product,
     basicType,
-    configureType,
     virtualType,
-    headers,
-    hideBulkActions,
   } = DSL(store, NAME);
 
   product({
@@ -23,16 +20,27 @@ export function init(store) {
   virtualType({
     label:          'Clusters',
     name:           'cluster-mgmt',
+    group:          'Root',
     namespaced:     false,
     weight:         99,
     icon:           'folder',
-    route:          {
-      name:   'cluster-mgmt',
-    }
+    route:          { name: 'clusterMgmt-clusters' },
+    exact:          true
+  });
+
+  virtualType({
+    label:          'RKE Templates',
+    name:           'rke-templates',
+    group:          'Root',
+    namespaced:     false,
+    weight:         99,
+    icon:           'folder',
+    route:          { name: 'clusterMgmt-rkeTemplates' },
+    exact:          true
   });
 
   basicType([
     'cluster-mgmt',
+    'rke-templates',
   ]);
-
 }
