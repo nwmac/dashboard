@@ -4,9 +4,12 @@ import Loading from '@/components/Loading';
 import CruResource from '@/components/CruResource';
 import SelectIconGrid from '@/components/SelectIconGrid';
 import Checkbox from '@/components/form/Checkbox';
+import EmberPage from '@/components/EmberPage';
+import ToggleSwitch from '@/components/form/ToggleSwitch';
 import { REGISTER, SUB_TYPE, _FLAGGED } from '@/config/query-params';
 import { DEFAULT_WORKSPACE } from '@/models/provisioning.cattle.io.cluster';
 import { sortBy } from '@/utils/sort';
+import { RKE_SWITCH } from '@/store/prefs';
 import Rke2 from './rke2';
 
 const SORT_GROUPS = {
@@ -28,6 +31,8 @@ export default {
     SelectIconGrid,
     Rke2,
     Checkbox,
+    EmberPage,
+    ToggleSwitch,
   },
 
   mixins: [CreateEditView],
@@ -74,6 +79,8 @@ export default {
       isRegister,
       providerCluster: null,
       showRKE: false, // Show RKE, not RKE2 options
+      emberLink: null,
+      rkePref: RKE_SWITCH,
     };
   },
 
@@ -126,7 +133,7 @@ export default {
         } else {
           // RKE
           rkeMachineTypes.forEach((id) => {
-            addType(id, 'machine1', false, `add/launch/${id}`);
+            addType(id, 'machine1', false, `/g/clusters/add/launch/${id}`);
           });
         }
       }
@@ -192,8 +199,7 @@ export default {
       const id = obj.id;
 
       if (obj.link) {
-        console.log(obj);
-        return;
+        this.emberLink = obj.link;
       }
 
       this.$router.applyQuery({ [SUB_TYPE]: id });
@@ -228,7 +234,7 @@ export default {
   >
     <template #subtypes>
       <div>
-        <Checkbox class="rke-switch" v-model="showRKE" label="Legacy RKE" />
+        <ToggleSwitch class="rke-switch" :pref="rkePref" v-model="showRKE" :labels="['RKE2', 'RKE']" />
       </div>
       <div v-for="obj in groupedSubTypes" :key="obj.id" class="mb-20" style="width: 100%;">
         <h4>
@@ -246,11 +252,15 @@ export default {
 
     <!-- @TODO load appropriate component for provider -->
     <Rke2
-      v-if="subType"
+      v-if="!showRKE && subType"
       v-model="value"
       :mode="mode"
       :provider="subType"
     />
+
+    <div v-if="showRKE && subType" class="embed">
+      <EmberPage :src="emberLink" />
+    </div>
 
     <template v-if="subType" #form-footer>
       <div><!-- Hide the outer footer --></div>
@@ -259,8 +269,16 @@ export default {
 </template>
 <style lang='scss'>
   .rke-switch {
-    // TODO
+    margin-top: -10px;
     position: absolute;
     right: 20px;
+  } 
+
+  .embed {
+    position: absolute;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    left: var(--nav-width);
+    width: calc(100vw - var(--nav-width));
   }
 </style>
