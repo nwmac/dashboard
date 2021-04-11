@@ -62,6 +62,7 @@ export default {
     :exact="type.exact"
   >
     <a
+      @click="$emit('selected')"
       @mouseenter="setNear(true)"
       @mouseleave="setNear(false)"
     >

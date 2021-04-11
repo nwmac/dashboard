@@ -1,11 +1,13 @@
 <script>
 import { mapGetters } from 'vuex';
 import { NORMAN } from '@/config/types';
+import { NAME as EXPLORER } from '@/config/product/explorer';
 import Import from '@/components/Import';
 import ProductSwitcher from './ProductSwitcher';
 import ClusterSwitcher from './ClusterSwitcher';
 import NamespaceFilter from './NamespaceFilter';
 import WorkspaceSwitcher from './WorkspaceSwitcher';
+import Jump from './Jump';
 
 export default {
 
@@ -15,6 +17,7 @@ export default {
     NamespaceFilter,
     WorkspaceSwitcher,
     Import,
+    Jump,
   },
 
   computed: {
@@ -36,6 +39,11 @@ export default {
     showImport() {
       return !!this.currentCluster?.actions?.apply;
     },
+
+    showSearch() {
+      return this.currentProduct?.name === EXPLORER;
+    },
+
   },
 
   methods: {
@@ -55,6 +63,14 @@ export default {
 
     closeImport() {
       this.$modal.hide('importModal');
+    },
+
+    openSearch() {
+      this.$modal.show('searchModal');
+    },
+
+    hideSearch() {
+      this.$modal.hide('searchModal');
     }
   }
 };
@@ -74,13 +90,7 @@ export default {
       <WorkspaceSwitcher v-else-if="clusterReady && currentProduct && currentProduct.showWorkspaceSwitcher" />
     </div>
 
-    <div class="back">
-      <a v-if="currentProduct && isRancher" class="btn role-tertiary" :href="(currentProduct.inStore === 'management' ? backToRancherGlobalLink : backToRancherLink)">
-        {{ t('nav.backToRancher') }}
-      </a>
-    </div>
-
-    <div class="import">
+    <div class="header-buttons">
       <button v-if="currentProduct && currentProduct.showClusterSwitcher && showImport" type="button" class="btn role-tertiary" @click="openImport()">
         <i v-tooltip="t('nav.import')" class="icon icon-upload icon-lg" />
       </button>
@@ -93,12 +103,31 @@ export default {
       >
         <Import :cluster="currentCluster" @close="closeImport" />
       </modal>
-    </div>
 
-    <div class="kubectl">
       <button v-if="currentProduct && currentProduct.showClusterSwitcher && showShell" type="button" class="btn role-tertiary" @click="currentCluster.openShell()">
         <i v-tooltip="t('nav.shell')" class="icon icon-terminal icon-lg" />
       </button>
+
+      <button
+        v-if="showSearch"
+        ref="searchButton"
+        v-shortkey="{windows: ['ctrl', 'k'], mac: ['meta', 'k']}"
+        type="button"
+        class="btn role-tertiary"
+        @shortkey="openSearch()"
+        @click="openSearch()"
+      >
+        <i v-tooltip="t('nav.search')" class="icon icon-search icon-lg" />
+      </button>
+      <modal
+        v-if="showSearch"
+        class="search-modal"
+        name="searchModal"
+        width="50%"
+        height="auto"
+      >
+        <Jump @closeSearch="hideSearch()" />
+      </modal>
     </div>
 
     <div class="cluster">
@@ -160,7 +189,7 @@ export default {
       padding: 0 5px;
     }
 
-    .back, .import, .kubectl, .cluster, .user-menu {
+    .cluster, .user-menu {
       padding-top: 6px;
 
       > *:first-child {
@@ -180,8 +209,8 @@ export default {
       }
     }
 
-    grid-template-areas:  "product top back import kubectl cluster user";
-    grid-template-columns: var(--nav-width) auto min-content min-content min-content min-content var(--header-height);
+    grid-template-areas:  "product top back buttons cluster user";
+    grid-template-columns: var(--nav-width) auto min-content min-content min-content var(--header-height);
     grid-template-rows:    var(--header-height);
 
     > .product {
@@ -203,36 +232,20 @@ export default {
       }
     }
 
-    > .back {
-      grid-area: back;
-      background-color: var(--header-bg);
-    }
-
-    > .import {
-      grid-area: import;
+    > .header-buttons {
+      align-items: center;
+      display: flex;
+      grid-area: buttons;
       background-color: var(--header-bg);
 
       .btn {
+        line-height: 36px;
+        min-height: 36px;
         padding: 0 $input-padding-sm;
       }
-    }
 
-    > .kubectl {
-      grid-area: kubectl;
-      background-color: var(--header-bg);
-
-      .btn {
-        padding: 0 $input-padding-sm;
-      }
-    }
-
-    > .back,
-    > .import,
-    > .kubectl {
-      text-align: right;
-
-      .btn {
-        text-align: center;
+      .btn:not(:last-of-type) {
+        margin-right: 10px;
       }
     }
 

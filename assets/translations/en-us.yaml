@@ -52,6 +52,7 @@ nav:
   backToRancher: Cluster Manager
   shell: Kubectl Shell
   import: Import YAML
+  search: Resource Search
   group:
     cluster: Cluster
     inUse: More Resources
