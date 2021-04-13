@@ -27,10 +27,8 @@ export default {
 
   data() {
     return {
-      mode:    'edit',
-      tooltip: '',
-      providers: PROVIDERS.map(p => require(`~/assets/images/providers/provider-${p}.svg`)),
-      providersMono: PROVIDERS.map(p => require(`~/assets/images/providers/provider-${p}-black.svg`)),
+      providers:     PROVIDERS.map(p => require(`~/assets/images/providers/provider-${ p }.svg`)),
+      providersMono: PROVIDERS.map(p => require(`~/assets/images/providers/provider-${ p }-black.svg`)),
     };
   },
 
@@ -53,7 +51,7 @@ export default {
     <!--these images are 100px X 100px svgs setting the image to fit the frame-->
     <h2>Full Color Logos</h2>
     <div class="row">
-      <div class="col" v-for="p in providers" :key="p">
+      <div v-for="p in providers" :key="p" class="col">
         <img class="" :src="p" />
       </div>
     </div>
@@ -61,7 +59,7 @@ export default {
     <!--black logos-->
     <h2>Single Color Logos</h2>
     <div class="row">
-      <div class="col" v-for="p in providersMono" :key="p">
+      <div v-for="p in providersMono" :key="p" class="col">
         <img class="" :src="p" />
       </div>
     </div>
@@ -70,7 +68,7 @@ export default {
       <h2>Inverted with CSS - Single Color Logos</h2>
 
       <div class="row">
-        <div class="col" v-for="p in providersMono" :key="p">
+        <div v-for="p in providersMono" :key="p" class="col">
           <img class="" :src="p" />
         </div>
       </div>
