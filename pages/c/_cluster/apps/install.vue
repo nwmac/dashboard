@@ -3,6 +3,7 @@ import isEqual from 'lodash/isEqual';
 import jsyaml from 'js-yaml';
 import merge from 'lodash/merge';
 import { mapGetters } from 'vuex';
+
 import AsyncButton from '@/components/AsyncButton';
 import Banner from '@/components/Banner';
 import Checkbox from '@/components/form/Checkbox';
@@ -20,17 +21,16 @@ import YamlEditor, { EDITOR_MODES } from '@/components/YamlEditor';
 
 import { CATALOG, MANAGEMENT } from '@/config/types';
 import {
-  REPO_TYPE, REPO, CHART, VERSION, NAMESPACE, NAME, DESCRIPTION as DESCRIPTION_QUERY, _CREATE, _EDIT, _FLAGGED, FORCE,
+  REPO_TYPE, REPO, CHART, VERSION, NAMESPACE, NAME, DESCRIPTION as DESCRIPTION_QUERY, _CREATE, _EDIT, _FLAGGED, FORCE, DEPRECATED, HIDDEN, FROM_TOOLS,
 } from '@/config/query-params';
 import { CATALOG as CATALOG_ANNOTATIONS, DESCRIPTION as DESCRIPTION_ANNOTATION, PROJECT } from '@/config/labels-annotations';
 import { exceptionToErrorsArray, stringify } from '@/utils/error';
 import { clone, diff, get, set } from '@/utils/object';
 import { findBy, insertAt } from '@/utils/array';
 import ChildHook, { BEFORE_SAVE_HOOKS, AFTER_SAVE_HOOKS } from '@/mixins/child-hook';
+import sortBy from 'lodash/sortBy';
 import { formatSi, parseSi } from '@/utils/units';
-import { SHOW_PRE_RELEASE, mapPref } from '@/store/prefs';
-import { compare } from '@/utils/version';
-const semver = require('semver');
+import { NAME as EXPLORER } from '@/config/product/explorer';
 
 export default {
   name: 'Install',
@@ -61,8 +61,8 @@ export default {
 
     const query = this.$route.query;
 
-    this.showDeprecated = query['deprecated'] === _FLAGGED;
-    this.showHidden = query['hidden'] === _FLAGGED;
+    this.showDeprecated = query[DEPRECATED] === _FLAGGED;
+    this.showHidden = query[HIDDEN] === _FLAGGED;
 
     await this.$store.dispatch('catalog/load');
 
@@ -360,8 +360,6 @@ export default {
   computed: {
     ...mapGetters(['currentCluster', 'isRancher']),
 
-    showPreRelease: mapPref(SHOW_PRE_RELEASE),
-
     namespaceIsNew() {
       const all = this.$store.getters['cluster/all'](NAMESPACE);
       const want = this.value?.metadata?.namespace;
@@ -516,18 +514,8 @@ export default {
             nue.disabled = true;
           }
         }
-        if (!semver.valid(version.version)) {
-          version.version = semver.clean(version.version, { loose: true });
-        }
-        if (!this.showPreRelease) {
-          const isPre = !!semver.prerelease(version.version);
 
-          if (!isPre) {
-            out.push(nue);
-          }
-        } else {
-          out.push(nue);
-        }
+        out.push(nue);
       });
 
       const selectedMatch = out.find(v => v.id === selectedVersion);
@@ -536,12 +524,7 @@ export default {
         out.push({ value: selectedVersion, label: this.t('catalog.install.versions.current', { ver: selectedVersion }) });
       }
 
-      out.sort((a, b) => {
-        // Swapping a and b to get descending order
-        return compare(b.id, a.id);
-      });
-
-      return out;
+      return sortBy(out, 'id');
     },
   },
 
@@ -671,14 +654,25 @@ export default {
     },
 
     done() {
-      this.$router.replace({
-        name:   `c-cluster-product-resource`,
-        params: {
-          product:   this.$store.getters['productId'],
-          cluster:   this.$store.getters['clusterId'],
-          resource:  CATALOG.APP,
-        }
-      });
+      if ( this.$route.query[FROM_TOOLS] === _FLAGGED ) {
+        this.$router.replace({
+          name:   `c-cluster-explorer-tools`,
+          params: {
+            product:   EXPLORER,
+            cluster:   this.$store.getters['clusterId'],
+            resource:  CATALOG.APP,
+          }
+        });
+      } else {
+        this.$router.replace({
+          name:   `c-cluster-product-resource`,
+          params: {
+            product:   this.$store.getters['productId'],
+            cluster:   this.$store.getters['clusterId'],
+            resource:  CATALOG.APP,
+          }
+        });
+      }
     },
 
     async finish(btnCb) {
@@ -999,7 +993,7 @@ export default {
                 <hr />
               </template>
               <template v-else-if="opt.kind === 'label'">
-                <b style="position: relative; left: -2.5px;">{{ opt.label }}</b>
+                <b style="position: relative; left: -10px;">{{ opt.label }}</b>
               </template>
             </template>
           </LabeledSelect>

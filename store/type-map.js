@@ -436,7 +436,7 @@ export const getters = {
   },
 
   getTree(state, getters, rootState, rootGetters) {
-    return (product, mode, allTypes, clusterId, namespaceMode, namespaces, currentType, search) => {
+    return (productId, mode, allTypes, clusterId, namespaceMode, namespaces, currentType, search) => {
       // modes: basic, used, all, favorite
       // namespaceMode: 'namespaced', 'cluster', or 'both'
       // namespaces: null means all, otherwise it will be an array of specific namespaces to include
@@ -470,7 +470,7 @@ export const getters = {
         }
 
         const count = _matchingCounts(typeObj, namespaces);
-        const groupForBasicType = getters.groupForBasicType(product, typeObj.name);
+        const groupForBasicType = getters.groupForBasicType(productId, typeObj.name);
 
         if ( typeObj.id === currentType ) {
           // If this is the type currently being shown, always show it
@@ -521,7 +521,7 @@ export const getters = {
           route = {
             name:   'c-cluster-product-resource',
             params: {
-              product,
+              product:  productId,
               cluster:  clusterId,
               resource: typeObj.name,
             }
@@ -534,7 +534,7 @@ export const getters = {
         if ( route && typeof route === 'object' ) {
           route.params = route.params || {};
           route.params.cluster = clusterId;
-          route.params.product = product;
+          route.params.product = productId;
         }
 
         group.children.push({

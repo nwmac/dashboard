@@ -10,9 +10,10 @@ import Group from '@/components/nav/Group';
 import Header from '@/components/nav/Header';
 import { COUNT, SCHEMA, MANAGEMENT } from '@/config/types';
 import { BASIC, FAVORITE, USED } from '@/store/type-map';
-import { addObjects, replaceWith, clear } from '@/utils/array';
+import { addObjects, replaceWith, clear, addObject } from '@/utils/array';
 import { NAME as EXPLORER } from '@/config/product/explorer';
 import isEqual from 'lodash/isEqual';
+import { ucFirst } from '@/utils/string';
 
 export default {
 
@@ -33,7 +34,7 @@ export default {
 
   computed: {
     ...mapState(['managementReady', 'clusterReady']),
-    ...mapGetters(['productId', 'namespaceMode']),
+    ...mapGetters(['productId', 'namespaceMode', 'isExplorer']),
     ...mapGetters({ locale: 'i18n/selectedLocaleLabel' }),
     ...mapGetters('type-map', ['activeProducts']),
 
@@ -74,10 +75,6 @@ export default {
       }
 
       return {};
-    },
-
-    showJump() {
-      return this.productId === EXPLORER;
     },
   },
 
@@ -151,7 +148,7 @@ export default {
       }
 
       const clusterId = this.$store.getters['clusterId'];
-      const productId = this.$store.getters['productId'];
+      const currentProduct = this.$store.getters['productId'];
       const currentType = this.$route.params.resource || '';
       let namespaces = null;
 
@@ -161,18 +158,46 @@ export default {
 
       const namespaceMode = this.$store.getters['namespaceMode'];
       const out = [];
-      const modes = [BASIC];
+      const loadProducts = this.isExplorer ? [EXPLORER] : [];
 
-      if ( productId === EXPLORER ) {
-        modes.push(FAVORITE);
-        modes.push(USED);
+      if ( this.isExplorer ) {
+        for ( const product of this.activeProducts ) {
+          if ( product.inStore === 'cluster' ) {
+            addObject(loadProducts, product.name);
+          }
+        }
       }
 
-      for ( const mode of modes ) {
-        const types = this.$store.getters['type-map/allTypes'](productId, mode) || {};
-        const more = this.$store.getters['type-map/getTree'](productId, mode, types, clusterId, namespaceMode, namespaces, currentType);
+      // This should already have come into the list from above, but in case it hasn't...
+      addObject(loadProducts, currentProduct);
 
-        addObjects(out, more);
+      for ( const productId of loadProducts ) {
+        const modes = [BASIC];
+
+        if ( productId === EXPLORER ) {
+          modes.push(FAVORITE);
+          modes.push(USED);
+        }
+
+        for ( const mode of modes ) {
+          const types = this.$store.getters['type-map/allTypes'](productId, mode) || {};
+          const more = this.$store.getters['type-map/getTree'](productId, mode, types, clusterId, namespaceMode, namespaces, currentType);
+
+          if ( productId === EXPLORER || !this.isExplorer ) {
+            addObjects(out, more);
+          } else {
+            const root = more.find(x => x.name === 'root');
+            const other = more.filter(x => x.name !== 'root');
+
+            const group = {
+              name:     productId,
+              label:    this.$store.getters['i18n/withFallback'](`product.${ productId }`, null, ucFirst(productId)),
+              children: [...(root ? root.children : []), ...other],
+            };
+
+            addObject(out, group);
+          }
+        }
       }
 
       replaceWith(this.groups, ...out);
@@ -244,24 +269,29 @@ export default {
   <div v-if="managementReady" class="dashboard-root">
     <Header />
 
-    <nav v-if="clusterReady">
-      <template v-for="(g, idx) in groups">
-        <Group
-          ref="groups"
-          :key="idx"
-          id-prefix=""
-          class="package"
-          :expanded="expanded"
-          :group="g"
-          :can-collapse="!g.isRoot"
-          :show-header="!g.isRoot"
-          @on-toggle="toggle"
-        >
-          <template #header>
-            <h6>{{ g.label }}</h6>
-          </template>
-        </Group>
-      </template>
+    <nav v-if="clusterReady" class="side-nav">
+      <div class="nav">
+        <template v-for="(g, idx) in groups">
+          <Group
+            ref="groups"
+            :key="idx"
+            id-prefix=""
+            class="package"
+            :expanded="expanded"
+            :group="g"
+            :can-collapse="!g.isRoot"
+            :show-header="!g.isRoot"
+            @on-toggle="toggle"
+          >
+            <template #header>
+              <h6>{{ g.label }}</h6>
+            </template>
+          </Group>
+        </template>
+      </div>
+      <n-link tag="div" class="tools" :to="{name: 'c-cluster-explorer-tools'}">
+        <a>{{ t('nav.clusterTools') }}</a>
+      </n-link>
     </nav>
 
     <main v-if="clusterReady">
@@ -281,7 +311,16 @@ export default {
     </div>
   </div>
 </template>
-
+<style lang="scss" scoped>
+  .side-nav {
+    display: flex;
+    flex-direction: column;
+    .nav {
+      flex: 1;
+      overflow-y: auto;
+    }
+  }
+</style>
 <style lang="scss">
   .dashboard-root {
     display: grid;
@@ -315,6 +354,26 @@ export default {
         margin: 0;
 
         A { padding-left: 0; }
+      }
+    }
+
+    NAV .tools {
+      display: flex;
+      margin-bottom: 10px;
+      A {
+        color: var(--body-text);
+        outline: 0;
+        flex: 1;
+        padding: 10px;
+
+        &:hover {
+          background: var(--nav-hover);
+          text-decoration: none;
+        }
+      }
+
+      &.nuxt-link-active {
+        background-color: var(--nav-active);
       }
     }
   }
