@@ -104,6 +104,8 @@ export default {
       if ( !isEqual(a, b) ) {
         // Immediately update because you'll see it come in later
         this.getGroups();
+
+        this.$store.dispatch('prefs/setLastVisited', this.$route);
       }
     },
 
