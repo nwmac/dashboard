@@ -3,7 +3,6 @@ import CreateEditView from '@/mixins/create-edit-view';
 import Loading from '@/components/Loading';
 import CruResource from '@/components/CruResource';
 import SelectIconGrid from '@/components/SelectIconGrid';
-import Checkbox from '@/components/form/Checkbox';
 import EmberPage from '@/components/EmberPage';
 import ToggleSwitch from '@/components/form/ToggleSwitch';
 import { REGISTER, SUB_TYPE, _FLAGGED } from '@/config/query-params';
@@ -30,7 +29,6 @@ export default {
     CruResource,
     SelectIconGrid,
     Rke2,
-    Checkbox,
     EmberPage,
     ToggleSwitch,
   },
@@ -66,6 +64,7 @@ export default {
 
     // Get the legacy node drivers
     const drivers = await this.$store.dispatch('management/findAll', { type: 'management.cattle.io.nodedriver' });
+
     this.nodeDrivers = drivers;
   },
 
@@ -77,9 +76,9 @@ export default {
       subType,
       isRegister,
       providerCluster: null,
-      showRKE: false, // Show RKE, not RKE2 options
-      emberLink: null,
-      rkePref: RKE_SWITCH,
+      showRKE:         false, // Show RKE, not RKE2 options
+      emberLink:       null,
+      rkePref:         RKE_SWITCH,
     };
   },
 
@@ -97,15 +96,15 @@ export default {
       const customTypes = ['custom'];
       const customRegisterTypes = ['import'];
       const rkeMachineTypes = [];
-      //'amazonec2', 'azure', 'digitalocean', 'linode', 'vsphere'];
-      
+      // 'amazonec2', 'azure', 'digitalocean', 'linode', 'vsphere'];
+
       // TODO: Sort
       // TODO: Can list refresh when the node drivers are activated/deactivated in another session?
-      this.nodeDrivers.forEach(nd => {
+      this.nodeDrivers.forEach((nd) => {
         if (nd.spec.active) {
           rkeMachineTypes.push(nd.id);
         }
-      })
+      });
 
       kontainerTypes.forEach((id) => {
         addType(id, 'kontainer', true);
@@ -132,7 +131,7 @@ export default {
         } else {
           // RKE
           rkeMachineTypes.forEach((id) => {
-            addType(id, 'machine1', false, `/g/clusters/add/launch/${id}`);
+            addType(id, 'machine1', false, `/g/clusters/add/launch/${ id }`);
           });
         }
       }
@@ -233,7 +232,7 @@ export default {
   >
     <template #subtypes>
       <div>
-        <ToggleSwitch class="rke-switch" :pref="rkePref" v-model="showRKE" :labels="['RKE2', 'RKE']" />
+        <ToggleSwitch v-model="showRKE" class="rke-switch" :pref="rkePref" :labels="['RKE2', 'RKE']" />
       </div>
       <div v-for="obj in groupedSubTypes" :key="obj.id" class="mb-20" style="width: 100%;">
         <h4>
@@ -271,7 +270,7 @@ export default {
     margin-top: -10px;
     position: absolute;
     right: 20px;
-  } 
+  }
 
   .embed {
     position: absolute;
