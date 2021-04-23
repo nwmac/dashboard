@@ -14,6 +14,10 @@ import { MANAGEMENT } from '@/config/types';
 import { STATE } from '@/config/table-headers';
 import { createMemoryFormat, formatSi, parseSi } from '@/utils/units';
 import { compare } from '@/utils/version';
+import PageHeaderActions from '@/mixins/page-header';
+
+const SET_LOGIN_ACTION = 'set-as-login';
+const RESET_CARDS_ACTION = 'reset-homepage-cards';
 
 export default {
   name:       'Home',
@@ -28,6 +32,13 @@ export default {
     BadgeState,
     CommunityLinks,
     SimpleBox
+  },
+
+  mixins: [PageHeaderActions],
+
+  created() {
+    // Update last visited on load
+    this.$store.dispatch('prefs/setLastVisited', {name: 'home'});
   },
 
   async fetch() {
@@ -47,8 +58,23 @@ export default {
   },
 
   data() {
+    // Page header actions don't change on the Home Page
+    const pageHeaderActions = [
+      {
+        labelKey: 'nav.header.setLoginPage',
+        action:   SET_LOGIN_ACTION
+      },
+      {
+        seperator: true
+      },
+      {
+        labelKey: 'nav.header.restoreCards',
+        action:   RESET_CARDS_ACTION
+      },
+    ];
+
     return {
-      HIDE_HOME_PAGE_CARDS, clusters: [], seenWhatsNewAlready: false
+      HIDE_HOME_PAGE_CARDS, clusters: [], seenWhatsNewAlready: false, pageHeaderActions
     };
   },
 
@@ -155,6 +181,14 @@ export default {
   },
 
   methods: {
+    handlePageHeaderAction(action) {
+      if (action.action === RESET_CARDS_ACTION) {
+        this.resetCards();
+      } else if (action.action === SET_LOGIN_ACTION) {
+        this.afterLoginRoute = 'home';
+      }
+    },
+ 
     updateLoginRoute(neu) {
       if (neu) {
         this.afterLoginRoute = neu;
@@ -189,13 +223,18 @@ export default {
     showWhatsNew() {
       this.$router.push({ name: 'release-notes' });
     },
+
+    resetCards() {
+      console.log('reset cards');
+      this.$store.dispatch('prefs/set', { key: HIDE_HOME_PAGE_CARDS, value: {} });
+    }
   }
 };
 
 </script>
 <template>
   <div class="home-page">
-    <BannerGraphic :small="true" :title="t('landing.welcomeToRancher')" :pref="HIDE_HOME_PAGE_CARDS" pref-key="welcomeBanner" />
+    <BannerGraphic :small="true" :title="t('landing.welcomeToRancher')" :pref="HIDE_HOME_PAGE_CARDS" pref-key="welcomeBanner"/>
     <IndentedPanel class="mt-20">
       <div v-if="!seenWhatsNewAlready" class="row">
         <div class="col span-12">

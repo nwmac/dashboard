@@ -105,7 +105,10 @@ nav:
   resourceSearch:
     label: Resource Search
     placeholder: Type to search for a resource...
-
+  header:
+    setLoginPage: Set as login page
+    restoreCards: Restore hidden cards
+ 
 product:
   clusterGroup: Cluster Applications
   globalGroup: Global Applications
