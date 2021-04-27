@@ -1,5 +1,7 @@
 import { sortableNumericSuffix } from '@/utils/sort';
 import semver from 'semver';
+import { MANAGEMENT } from '@/config/types';
+import { SEEN_WHATS_NEW } from '@/store/prefs';
 
 export function parse(str) {
   str = `${ str }`;
@@ -77,4 +79,16 @@ export function isDevBuild(version) {
   }
 
   return false;
+}
+
+// Has the user seen the release notes for this version?
+export function seenWhatsNewAlready(store) {
+  console.log('>>> TEST');
+
+  const lastSeenNew = store.getters['prefs/get'](SEEN_WHATS_NEW) ;
+  const setting = store.getters['management/byId'](MANAGEMENT.SETTING, 'server-version');
+  const fullVersion = setting?.value || 'unknown';
+  const seenWhatsNewAlready = compare(lastSeenNew, fullVersion) >= 0 && !!lastSeenNew;
+
+  return seenWhatsNewAlready;
 }

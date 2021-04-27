@@ -1,13 +1,16 @@
 <script>
-import { SEEN_WHATS_NEW } from '@/store/prefs';
+// import { seenWhatsNewAlready } from '@/utils/version';
 
 export default {
   middleware({ redirect, store } ) {
-    const seenWhatsNew = store.getters['prefs/get'](SEEN_WHATS_NEW);
 
-    if (!seenWhatsNew || !seenWhatsNew.length) {
-      return redirect({ name: 'home' });
-    }
+    // TODO - do we want to do this?
+    // const hasSeenWhatsNew = seenWhatsNewAlready(store);
+
+    // // Take the user back to the home page if they have not seen the release notes
+    // if (!hasSeenWhatsNew) {
+    //   return redirect({ name: 'home' });
+    // }
 
     const afterLoginRouteObject = store.getters['prefs/afterLoginRoute'];
 

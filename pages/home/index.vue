@@ -13,8 +13,8 @@ import { mapGetters } from 'vuex';
 import { MANAGEMENT } from '@/config/types';
 import { STATE } from '@/config/table-headers';
 import { createMemoryFormat, formatSi, parseSi } from '@/utils/units';
-import { compare } from '@/utils/version';
 import PageHeaderActions from '@/mixins/page-header';
+import { seenWhatsNewAlready } from '@/utils/version';
 
 const SET_LOGIN_ACTION = 'set-as-login';
 const RESET_CARDS_ACTION = 'reset-homepage-cards';
@@ -47,14 +47,9 @@ export default {
       opt:  { url: MANAGEMENT.CLUSTER }
     });
 
-    const lastSeenNew = this.$store.getters['prefs/get'](SEEN_WHATS_NEW) ;
     const setting = this.$store.getters['management/byId'](MANAGEMENT.SETTING, 'server-version');
-    const fullVersion = setting?.value || 'unknown';
 
-    this.seenWhatsNewAlready = compare(lastSeenNew, fullVersion) >= 0 && !!lastSeenNew;
-
-    // Hide the release notes message - maybe use a close box instead?
-    await this.$store.dispatch('prefs/set', { key: SEEN_WHATS_NEW, value: fullVersion });
+    this.fullVersion = setting?.value || 'unknown';
   },
 
   data() {
@@ -74,13 +69,17 @@ export default {
     ];
 
     return {
-      HIDE_HOME_PAGE_CARDS, clusters: [], seenWhatsNewAlready: false, pageHeaderActions
+      HIDE_HOME_PAGE_CARDS, clusters: [], pageHeaderActions
     };
   },
 
   computed: {
     afterLoginRoute: mapPref(AFTER_LOGIN_ROUTE),
     homePageCards:   mapPref(HIDE_HOME_PAGE_CARDS),
+
+    seenWhatsNew() {
+      return seenWhatsNewAlready(this.$store);
+    },
 
     showSidePanel() {
       return !(this.homePageCards.commercialSupportTip && this.homePageCards.communitySupportTip);
@@ -147,19 +146,20 @@ export default {
         {
           label: 'Provider',
           value: 'status.provider',
-          name:  'Provider'
+          name:  'Provider',
+          sort:  ['provider'],
         },
         {
           label: 'Kubernetes Version',
           value: 'kubernetesVersion',
-          name:  'Kubernetes Version'
+          name:  'Kubernetes Version',
+          sort:  ['kubernetesVersion'],
         },
         {
           label: 'CPU',
           value: '',
           name:  'cpu',
           sort:  ['status.allocatable.cpu', 'status.available.cpu']
-
         },
         {
           label: 'Memory',
@@ -224,9 +224,9 @@ export default {
       this.$router.push({ name: 'release-notes' });
     },
 
-    resetCards() {
-      console.log('reset cards');
-      this.$store.dispatch('prefs/set', { key: HIDE_HOME_PAGE_CARDS, value: {} });
+    async resetCards() {
+      await this.$store.dispatch('prefs/set', { key: HIDE_HOME_PAGE_CARDS, value: {} });
+      await this.$store.dispatch('prefs/set', { key: SEEN_WHATS_NEW, value: '' });
     }
   }
 };
@@ -236,7 +236,7 @@ export default {
   <div class="home-page">
     <BannerGraphic :small="true" :title="t('landing.welcomeToRancher')" :pref="HIDE_HOME_PAGE_CARDS" pref-key="welcomeBanner"/>
     <IndentedPanel class="mt-20">
-      <div v-if="!seenWhatsNewAlready" class="row">
+      <div v-if="!seenWhatsNew" class="row">
         <div class="col span-12">
           <Banner color="info whats-new">
             <div>{{ t('landing.seeWhatsNew') }}</div>
