@@ -19,6 +19,12 @@ export default {
       default: false
     }
   },
+
+  data() {
+    const theme = this.$store.getters['prefs/theme'] || 'light';
+
+    return { src: require(`~/assets/images/pl/banner-${ theme }.svg`) };
+  },
 };
 </script>
 
@@ -28,7 +34,7 @@ export default {
       <i class="icon icon-close" />
     </div>
     <div class="graphic">
-      <img class="banner" src="~/assets/images/pl/banner.svg" />
+      <img class="banner" :src="src" />
     </div>
     <div v-if="titleKey" class="title">
       <t :k="titleKey" />
