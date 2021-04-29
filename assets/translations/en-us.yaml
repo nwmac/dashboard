@@ -1306,13 +1306,11 @@ landing:
     body: Learn about commercial support <a href="https://rancher.com/support-maintenance-terms/" target='_blank' rel='noopener nofollow noreferrer'>here</a>.
   landingPrefs:
     title: What do you want to see when you log in?
+    body: "You can change where you land when you login:"
     options:
-      thisScreen: Take me back to this screen
-      lastVisited: Take me back to the last place I visited
-      custom: Make my home screen...
-      defaultOverview: Overview for the default cluster ({cluster})
-      appsAndMarketplace: Apps and Marketplace
-      fleet: Fleet
+      thisScreen: Take me to this home page
+      lastVisited: Take me to the area I last visited
+      custom: "Take me to cluster:"
   welcomeToRancher: Welcome to Rancher
 
 logging:

@@ -9,6 +9,7 @@ import SortableTable from '@/components/SortableTable';
 import BadgeState from '@/components/BadgeState';
 import CommunityLinks from '@/components/CommunityLinks';
 import SimpleBox from '@/components/SimpleBox';
+import Select from '@/components/form/Select';
 import { mapGetters } from 'vuex';
 import { MANAGEMENT } from '@/config/types';
 import { STATE } from '@/config/table-headers';
@@ -31,7 +32,8 @@ export default {
     SortableTable,
     BadgeState,
     CommunityLinks,
-    SimpleBox
+    SimpleBox,
+    Select,
   },
 
   mixins: [PageHeaderActions],
@@ -46,6 +48,7 @@ export default {
   data() {
     const setting = this.$store.getters['management/byId'](MANAGEMENT.SETTING, 'server-version');
     const fullVersion = setting?.value || 'unknown';
+    const customRoute = this.$store.getters['prefs/get'](AFTER_LOGIN_ROUTE);
 
     // Page actions don't change on the Home Page
     const pageActions = [
@@ -61,7 +64,7 @@ export default {
     ];
 
     return {
-      HIDE_HOME_PAGE_CARDS, clusters: [], fullVersion, pageActions
+      HIDE_HOME_PAGE_CARDS, clusters: [], fullVersion, pageActions, customRoute
     };
   },
 
@@ -83,16 +86,14 @@ export default {
 
     routeFromDropdown: {
       get() {
-        if (this.afterLoginRoute !== 'home' && this.afterLoginRoute !== 'last-visited') {
-          const out = (this.routeDropdownOptions.filter(opt => opt.value === this.afterLoginRoute) || [])[0];
+        const route = this.customRoute || {};
+        const out = this.routeDropdownOptions.find(opt => opt.value.name === route.name && opt.value.params?.cluster === route.params?.cluster);
 
-          return out;
-        }
-
-        return this.routeDropdownOptions[0];
+        return out || this.routeDropdownOptions[0];
       },
       set(neu) {
-        this.afterLoginRoute = neu.value;
+        this.customRoute = neu;
+        this.afterLoginRoute = neu;
       }
     },
 
@@ -114,18 +115,20 @@ export default {
     },
 
     routeDropdownOptions() {
-      const out = [
-        {
-          label: this.t('landing.landingPrefs.options.appsAndMarketplace'),
-          value: 'apps'
-        },
-        {
-          label: this.t('landing.landingPrefs.options.defaultOverview', { cluster: this.defaultClusterId }),
-          value: `${ this.defaultClusterId }-dashboard`
-        }
-      ];
+      // Drop-down shows list of clusters that can ber set as login landing page
+      const out = [];
 
-      out.push( );
+      this.clusters.forEach((c) => {
+        out.push({
+          label: c.nameDisplay,
+          value: {
+            name:   'c-cluster',
+            params: { cluster: c.id }
+          }
+        });
+      });
+
+      out.sort((a, b) => (a.label > b.label) ? 1 : ((b.label > a.label) ? -1 : 0));
 
       return out;
     },
@@ -164,7 +167,7 @@ export default {
 
         },
         {
-          label:  this.t('tableHeaders.pods'),
+          label: this.t('tableHeaders.pods'),
           name:  'pods',
           value: '',
           sort:  ['status.allocatable.pods', 'status.available.pods']
@@ -256,16 +259,22 @@ export default {
       </div>
       <div class="row">
         <div :class="{'span-9': showSidePanel, 'span-12': !showSidePanel }" class="col">
-          <SimpleBox v-if="false" :title="t('landing.landingPrefs.title')" :pref="HIDE_HOME_PAGE_CARDS" pref-key="setLoginPage" class="panel">
+          <SimpleBox :title="t('landing.landingPrefs.title')" :pref="HIDE_HOME_PAGE_CARDS" pref-key="setLoginPage" class="panel">
+            <p class="set-landing-leadin">
+              {{ t('landing.landingPrefs.body') }}
+            </p>
             <RadioGroup id="login-route" :value="afterLoginRoute" name="login-route" :options="routeRadioOptions" @input="updateLoginRoute">
               <template #2="{option, listeners}">
-                <div class="row">
-                  <div class="col">
-                    <RadioButton :label="option.label" :val="false" :value="afterLoginRoute=== 'home' || afterLoginRoute === 'last-visited'" v-on="listeners" />
-                  </div>
-                  <div class="col span-6">
-                    <v-select v-model="routeFromDropdown" :clearable="false" :options="routeDropdownOptions" />
-                  </div>
+                <div class="custom-page">
+                  <RadioButton :label="option.label" :val="false" :value="afterLoginRoute=== 'home' || afterLoginRoute === 'last-visited'" v-on="listeners" />
+                  <Select
+                    v-model="routeFromDropdown"
+                    :searchable="true"
+                    :disabled="afterLoginRoute === 'home' || afterLoginRoute === 'last-visited'"
+                    :clearable="false"
+                    :options="routeDropdownOptions"
+                    class="custom-page-options"
+                  />
                 </div>
               </template>
             </RadioGroup>
@@ -385,6 +394,19 @@ export default {
   .getting-started-btn {
     display: contents;
     white-space: nowrap;
+  }
+  .custom-page {
+    display: flex;
+    flex-direction: column;
+
+    .custom-page-options {
+      margin: 5px 0 0 20px;
+      min-width: 320px;
+      width: fit-content;
+    }
+  }
+  .set-landing-leadin {
+    padding-bottom: 10px;
   }
 </style>
 <style lang="scss">

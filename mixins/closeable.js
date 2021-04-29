@@ -29,7 +29,7 @@ export default {
   },
 
   methods: {
-    hide() {
+    async hide() {
       if (this.pref) {
         let value = this.shown;
 
@@ -41,7 +41,7 @@ export default {
           }
           value[this.prefKey] = true;
         }
-        this.$store.dispatch('prefs/set', { key: this.pref, value });
+        await this.$store.dispatch('prefs/set', { key: this.pref, value });
       }
     }
   },
