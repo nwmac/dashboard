@@ -87,6 +87,10 @@ export default {
         content: this.currentCluster.nameDisplay,
         delay:   400,
       };
+    },
+
+    showHamburger() {
+      return false;
     }
   },
 
@@ -156,8 +160,8 @@ export default {
 
 <template>
   <header :class="{'simple': simple}">
-    <div class="menu-spacer"></div>
-    <div v-if="!simple" class="product">
+    <div class="menu-spacer" :class="{'no-menu': !showHamburger}"></div>
+    <div v-if="!simple" class="product" :class="{'no-menu': !showHamburger}">
       <div v-if="currentProduct && currentProduct.showClusterSwitcher" v-tooltip="nameTooltip" class="cluster cluster-clipped">
         <RancherProviderIcon v-if="currentCluster.isLocal" class="mr-10 cluster-local-logo" width="25" />
         <img v-else-if="currentCluster" class="cluster-os-logo" :src="currentCluster.providerLogo" />
@@ -183,7 +187,7 @@ export default {
       </div>
     </div>
 
-    <TopLevelMenu></TopLevelMenu>
+    <TopLevelMenu v-if="showHamburger"></TopLevelMenu>
 
     <div v-if="!simple" class="top">
       <NamespaceFilter v-if="clusterReady && currentProduct && (currentProduct.showNamespaceFilter || isExplorer)" />
@@ -222,6 +226,7 @@ export default {
         </button>
 
         <button
+          v-if="isRancher"
           v-tooltip="t('nav.kubeconfig')"
           :disabled="!kubeConfigEnabled"
           type="button"
@@ -254,14 +259,11 @@ export default {
       </modal>
     </div>
 
-    <div v-if="pageActions && pageActions.length" class="actions">
+    <div v-if="isRancher && pageActions && pageActions.length" class="actions">
       <i class="icon icon-actions" @blur="showPageActionsMenu(false)" @click="showPageActionsMenu(true)" @focus.capture="showPageActionsMenu(true)" />
       <v-popover
         ref="pageActions"
-        placement="bottom-end"
-        offset="0"
-        trigger="manual"
-        :delay="{show: 0, hide: 0}"
+        is-rancher
         :popper-options="{modifiers: { flip: { enabled: false } } }"
         :container="false"
       >
@@ -278,9 +280,17 @@ export default {
       </v-popover>
     </div>
 
-    <div class="header-spacer"></div>
+    <div class="header-spacer" :class="{'no-menu': !showHamburger}"></div>
 
-    <div class="user user-menu" tabindex="0" @blur="showMenu(false)" @click="showMenu(true)" @focus.capture="showMenu(true)">
+    <div
+      v-if="authEnabled"
+      |
+      class="user user-menu"
+      tabindex="0"
+      @blur="showMenu(false)"
+      @click="showMenu(true)"
+      @focus.capture="showMenu(true)"
+    >
       <v-popover
         ref="popover"
         placement="bottom-end"
@@ -316,6 +326,11 @@ export default {
           </ul>
         </template>
       </v-popover>
+    </div>
+    <div v-else class="header-prefs">
+      <nuxt-link v-tooltip="t('nav.userMenu.preferences')" tag="li" :to="{name: 'prefs'}" class="btn header-btn role-tertiary">
+        <i class="icon icon-lg icon-gear" />
+      </nuxt-link>
     </div>
   </header>
 </template>
@@ -418,16 +433,20 @@ export default {
     }
 
     grid-template-areas:  "menu product top buttons header-actions cluster user";
-    grid-template-columns: var(--header-height) calc(var(--nav-width) - var(--header-height)) auto min-content min-content min-content var(--header-height);
+    grid-template-columns: min-content min-content auto min-content min-content min-content min-content;
     grid-template-rows:    var(--header-height);
 
     &.simple {
-      grid-template-columns: var(--header-height) min-content auto min-content min-content min-content var(--header-height);
+      grid-template-columns: min-content min-content auto min-content min-content min-content min-content;
     }
 
     > .menu-spacer {
-      width: 65px;
+      width: var(--header-height);
       grid-area: menu;
+
+      &.no-menu {
+        width: 10px;
+      }
     }
 
     .cluster {
@@ -458,6 +477,11 @@ export default {
       align-items: center;
       position: relative;
       display: flex;
+      width: calc(var(--nav-width) - var(--header-height));
+
+      &.no-menu {
+        width: calc(var(--nav-width) - 10px);
+      }
 
       .logo {
         height: 30px;
@@ -470,6 +494,14 @@ export default {
           height: 30px;
         }
       }
+    }
+
+    .header-prefs {
+      align-items: center;
+      display: flex;
+      grid-area: user;
+      margin-top: 1px;
+      margin-right: 10px;
     }
 
     .header-buttons {
@@ -525,6 +557,10 @@ export default {
       grid-area: cluster;
       background-color: var(--header-bg);
       position: relative;
+
+      &.no-menu {
+        padding: 0;
+      }
     }
 
     > .top {
@@ -535,22 +571,6 @@ export default {
       .vs__open-indicator,
       .vs__selected {
         color: var(--header-btn-bg) !important;
-        background: var(--header-btn-bg);
-        border-radius: var(--border-radius);
-        border: none;
-        margin: 0 35px 0 25px!important;
-      }
-
-      .vs__selected {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.25);
-      }
-
-      .vs__deselect {
-        fill: var(--header-btn-bg);
-      }
-
-      .filter .vs__dropdown-toggle {
         background: var(--header-btn-bg);
         border-radius: var(--border-radius);
         border: none;
@@ -627,6 +647,7 @@ export default {
   }
 
   .user-menu {
+    width: var(--header-height);
     // Remove the default padding on the popup so that the hover on menu items goes full width of the menu
     ::v-deep .popover-inner {
       padding: 10px 0;

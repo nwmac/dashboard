@@ -151,7 +151,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['currentCluster']),
+    ...mapGetters(['currentCluster', 'isRancher']),
     ...monitoringStatus(),
 
     hideClusterToolsTip: mapPref(CLUSTER_TOOLS_TIP),
@@ -238,7 +238,7 @@ export default {
     },
 
     hasMonitoring() {
-      return !!this.clusterCounts?.[0]?.counts?.[CATALOG.APP]?.namespaces?.['cattle-monitoring-system'];
+      return !!this.clusterCisRanchererMetrics || this.showK8sMetrics || this.showEtcdMetrics;
     },
 
     canAccessNodes() {
@@ -303,7 +303,7 @@ export default {
       </div>
     </header>
     <Banner
-      v-if="!hideClusterToolsTip"
+      v-if="!hideClusterToolsTip && isRancher"
       :closable="true"
       class="cluster-tools-tip"
       color="info"
@@ -328,7 +328,7 @@ export default {
         <span><LiveDate :value="currentCluster.metadata.creationTimestamp" :add-suffix="true" :show-tooltip="true" /></span>
       </div>
       <div :style="{'flex':1}" />
-      <div v-if="!monitoringStatus.v2 && !monitoringStatus.v1">
+      <div v-if="!monitoringStatus.v2 && !monitoringStatus.v1 && isRancher">
         <n-link :to="{name: 'c-cluster-explorer-tools'}" class="monitoring-install">
           <i class="icon icon-gear" />
           <span>{{ t('glance.installMonitoring') }}</span>

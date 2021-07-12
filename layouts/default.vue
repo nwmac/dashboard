@@ -47,15 +47,18 @@ export default {
 
   data() {
     const { displayVersion } = getVersionInfo(this.$store);
+    const unknown = this.$store.getters['i18n/t']('generic.unknown');
 
-    return { groups: [], displayVersion };
+    return {
+      groups: [], displayVersion, unknownVersion: displayVersion === unknown
+    };
   },
 
   middleware: ['authenticated'],
 
   computed: {
     ...mapState(['managementReady', 'clusterReady']),
-    ...mapGetters(['productId', 'clusterId', 'namespaceMode', 'isExplorer', 'currentProduct']),
+    ...mapGetters(['productId', 'clusterId', 'namespaceMode', 'isExplorer', 'currentProduct', 'isRancher']),
     ...mapGetters({ locale: 'i18n/selectedLocaleLabel' }),
     ...mapGetters('type-map', ['activeProducts']),
 
@@ -497,13 +500,13 @@ export default {
             </Group>
           </template>
         </div>
-        <n-link v-if="isExplorer" tag="div" class="tools" :to="{name: 'c-cluster-explorer-tools', params: {cluster: clusterId}}">
+        <n-link v-if="isExplorer && isRancher" tag="div" class="tools" :to="{name: 'c-cluster-explorer-tools', params: {cluster: clusterId}}">
           <a class="tools-button" @click="collapseAll()">
             <i class="icon icon-gear" />
             <span>{{ t('nav.clusterTools') }}</span>
           </a>
         </n-link>
-        <div class="version text-muted">
+        <div v-if="!(!isRancher && unknownVersion)" class="version text-muted">
           {{ displayVersion }}
         </div>
       </nav>
