@@ -16,8 +16,12 @@ console.debug = () => {}; // eslint-disable-line no-console
 const logged = {};
 
 function logRequest(config) {
-  const url = config.url;
-  const rel = url.replace(/^[a-z]{4,5}\:\/{2}[a-z0-9\.]{1,}\:[0-9]{1,4}(.*)/, '$1');
+  let rel = config.url;
+
+  if (window?.location?.origin && rel.startsWith(window.location.origin)) {
+    rel = rel.substring(window.location.origin.length);
+  }
+
   const method = config.method.padEnd(6, ' ').toUpperCase();
   const msg = `${ method } ${ rel }`;
 
