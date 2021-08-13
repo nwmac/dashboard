@@ -3,6 +3,29 @@ import { CSRF } from '@/config/cookies';
 import { parse as setCookieParser } from 'set-cookie-parser';
 import pkg from '../package.json';
 
+// ====================================================================================================
+// Debug logging for requests
+const consoleLog = console.log; // eslint-disable-line no-console
+
+console.log = () => {}; // eslint-disable-line no-console
+console.error = () => {}; // eslint-disable-line no-console
+console.warn = () => {}; // eslint-disable-line no-console
+
+const logged = {};
+
+function logRequest(config) {
+  const url = config.url;
+  const rel = url.replace(/^[a-z]{4,5}\:\/{2}[a-z0-9\.]{1,}\:[0-9]{1,4}(.*)/, '$1');
+  const method = config.method.padEnd(6, ' ').toUpperCase();
+  const msg = `${ method } ${ rel }`;
+
+  if (!logged[msg]) {
+    consoleLog(msg);
+    logged[msg] = true;
+  }
+}
+// ====================================================================================================
+
 export default function({
   $axios, $cookies, isDev, req
 }) {
@@ -28,6 +51,8 @@ export default function({
         config.baseURL = `${ req.protocol || 'https' }://${ req.headers.host }`;
       }
     }
+    // Debug logging for requests
+    logRequest(config, req);
   });
 
   if ( process.server ) {
