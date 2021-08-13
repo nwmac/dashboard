@@ -10,6 +10,8 @@ const consoleLog = console.log; // eslint-disable-line no-console
 console.log = () => {}; // eslint-disable-line no-console
 console.error = () => {}; // eslint-disable-line no-console
 console.warn = () => {}; // eslint-disable-line no-console
+console.info = () => {}; // eslint-disable-line no-console
+console.debug = () => {}; // eslint-disable-line no-console
 
 const logged = {};
 
