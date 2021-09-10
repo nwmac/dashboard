@@ -48,6 +48,14 @@ export default {
       'currentProduct', 'backToRancherLink', 'backToRancherGlobalLink', 'pageActions']),
     ...mapGetters('type-map', ['activeProducts']),
 
+    icon() {
+      if (this.currentProduct?.icon) {
+        return `icon-${ this.currentProduct.icon }`;
+      }
+
+      return '';
+    },
+
     appName() {
       return getProduct();
     },
@@ -170,7 +178,8 @@ export default {
       </div>
       <div v-if="currentProduct && !currentProduct.showClusterSwitcher" class="cluster">
         <div class="product-name">
-          {{ prod }}
+          <i v-if="icon" class="icon" :class="icon" />
+          <span>{{ prod }}</span>
         </div>
       </div>
     </div>
@@ -486,7 +495,18 @@ export default {
     }
 
     .product-name {
-      font-size: 16px;
+      align-items: center;
+      display: flex;
+
+      > I {
+        font-size: 24px;
+        line-height: 24px;
+        margin-right: 8px;
+      }
+
+      > span {
+        font-size: 16px;
+      }
     }
 
     .side-menu-logo {
