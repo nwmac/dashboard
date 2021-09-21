@@ -4,7 +4,7 @@ import Loading from '@/components/Loading';
 import Masthead from '@/components/ResourceList/Masthead';
 import { NORMAN, MANAGEMENT } from '@/config/types';
 import AsyncButton from '@/components/AsyncButton';
-import { applyProducts } from '@/store/type-map';
+import { applyProducts } from '@store/type-map';
 import { NAME } from '@/config/product/auth';
 import { MODE, _EDIT } from '@/config/query-params';
 import { mapState } from 'vuex';

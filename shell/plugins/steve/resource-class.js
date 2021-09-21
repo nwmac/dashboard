@@ -12,7 +12,7 @@ import CustomValidators from '@/utils/custom-validators';
 import { downloadFile, generateZip } from '@/utils/download';
 import { eachLimit } from '@/utils/promise';
 import { get } from '@/utils/object';
-import { DEV } from '@/store/prefs';
+import { DEV } from '@store/prefs';
 import { sortableNumericSuffix } from '@/utils/sort';
 import {
   coerceStringTypeToScalarType,

@@ -12,7 +12,7 @@ import { sortBy } from '@/utils/sort';
 import { InterfaceOption } from '@/config/harvester-map';
 import { _CREATE } from '@/config/query-params';
 import { formatSi, parseSi } from '@/utils/units';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
 
 export default {

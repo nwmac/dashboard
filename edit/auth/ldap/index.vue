@@ -1,12 +1,12 @@
 <script>
 import Loading from '@/components/Loading';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import CruResource from '@/components/CruResource';
 import LabeledInput from '@/components/form/LabeledInput';
 import Banner from '@/components/Banner';
 import AllowedPrincipals from '@/components/auth/AllowedPrincipals';
 import config from '@/edit/auth/ldap/config';
-import AuthConfig from '@/mixins/auth-config';
+import AuthConfig from '@shell/mixins/auth-config';
 import AuthBanner from '@/components/auth/AuthBanner';
 
 const AUTH_TYPE = 'ldap';

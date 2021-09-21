@@ -5,7 +5,7 @@ import isArray from 'lodash/isArray';
 import merge from 'lodash/merge';
 import { mapGetters } from 'vuex';
 
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 
 import { CAPI, MANAGEMENT, NORMAN } from '@/config/types';
 import { _CREATE, _EDIT, _VIEW } from '@/config/query-params';
@@ -39,7 +39,7 @@ import Questions from '@/components/Questions';
 import { normalizeName } from '@/components/form/NameNsDescription.vue';
 import ClusterMembershipEditor from '@/components/form/Members/ClusterMembershipEditor';
 import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret';
-import { LEGACY } from '@/store/features';
+import { LEGACY } from '@store/features';
 import semver from 'semver';
 import { canViewClusterMembershipEditor } from '@/components/form/Members/ClusterMembershipEditor.vue';
 import { SETTING } from '@/config/settings';

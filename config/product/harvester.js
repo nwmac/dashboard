@@ -7,7 +7,7 @@ import {
 
 import { IMAGE_DOWNLOAD_SIZE, FINGERPRINT, IMAGE_PROGRESS } from '@/config/harvester-table-headers';
 
-import { DSL, IF_HAVE } from '@/store/type-map';
+import { DSL, IF_HAVE } from '@store/type-map';
 
 export const NAME = 'harvester';
 

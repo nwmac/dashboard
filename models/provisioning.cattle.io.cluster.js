@@ -1,5 +1,5 @@
 import { CAPI, MANAGEMENT, NORMAN } from '@/config/types';
-import { proxyFor } from '@/plugins/steve/resource-proxy';
+import { proxyFor } from '@plugins/steve/resource-proxy';
 import { findBy, insertAt } from '@/utils/array';
 import { set } from '@/utils/object';
 import { sortBy } from '@/utils/sort';

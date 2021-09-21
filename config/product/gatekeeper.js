@@ -1,4 +1,4 @@
-import { DSL } from '@/store/type-map';
+import { DSL } from '@store/type-map';
 import { GATEKEEPER, OBJECT_META } from '@/config/types';
 import { AGE, NAME as NAME_COL, STATE } from '@/config/table-headers';
 import { findAllConstraints } from '@/utils/gatekeeper/util';

@@ -4,9 +4,9 @@ import Tab from '@/components/Tabbed/Tab';
 import Loading from '@/components/Loading';
 import CruResource from '@/components/CruResource';
 import Checkbox from '@/components/form/Checkbox';
-import VM_MIXIN from '@/mixins/harvester-vm';
+import VM_MIXIN from '@shell/mixins/harvester-vm';
 import { allHash } from '@/utils/promise';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import { HCI } from '@/config/types';
 
 import OverviewKeypairs from '@/detail/kubevirt.io.virtualmachine/VirtualMachineTabs/VirtualMachineKeypairs';

@@ -7,7 +7,7 @@ import { NORMAN } from '@/config/types';
 import { sortBy } from '@/utils/sort';
 import day from 'dayjs';
 import { escapeHtml } from '@/utils/string';
-import { DATE_FORMAT, TIME_FORMAT } from '@/store/prefs';
+import { DATE_FORMAT, TIME_FORMAT } from '@store/prefs';
 
 export default {
   components: {

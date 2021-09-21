@@ -1,8 +1,8 @@
 <script>
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import KeyValue from '@/components/form/KeyValue';
 import Banner from '@/components/Banner';
-import { simplify, iffyFields, likelyFields } from '@/store/plugins';
+import { simplify, iffyFields, likelyFields } from '@store/plugins';
 
 export default {
   components: { KeyValue, Banner },

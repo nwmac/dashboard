@@ -10,7 +10,7 @@ import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import ArrayListGrouped from '@/components/form/ArrayListGrouped';
 import ButtonDropdown from '@/components/ButtonDropdown';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import { HCI as HCI_LABELS_ANNOTATIONS } from '@/config/labels-annotations';
 import { HCI, LONGHORN } from '@/config/types';
 import { allHash } from '@/utils/promise';

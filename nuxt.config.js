@@ -2,8 +2,8 @@ import fs from 'fs';
 import path from 'path';
 
 import { STANDARD } from './config/private-label';
-import { directiveSsr as t } from './plugins/i18n';
-import { trimWhitespaceSsr as trimWhitespace } from './plugins/trim-whitespace';
+import { directiveSsr as t } from './shell/plugins/i18n';
+import { trimWhitespaceSsr as trimWhitespace } from './shell/plugins/trim-whitespace';
 
 require('events').EventEmitter.defaultMaxListeners = 20;
 require('dotenv').config();
@@ -89,7 +89,7 @@ module.exports = {
     ],
   },
 
-  loadingIndicator: '~/static/loading-indicator.html',
+  loadingIndicator: '~/shell/static/loading-indicator.html',
 
   // mode:    'spa', --- Use --spa CLI flag, or ?spa query param.
 
@@ -108,6 +108,13 @@ module.exports = {
   router: {
     base:       routerBasePath,
     middleware: ['i18n'],
+  },
+
+  dir: {
+    layouts:    path.relative(__dirname, './shell/layouts'),
+    store:      path.relative(__dirname, './shell/store'),
+    static:     path.relative(__dirname, './shell/static'),
+    middleware: path.relative(__dirname, './shell/middleware'),
   },
 
   build: {
@@ -165,6 +172,11 @@ module.exports = {
           config.module.rules.splice(i, 1);
         }
       }
+
+      config.resolve.alias['@shell'] = path.resolve(__dirname, 'shell');
+      config.resolve.alias['@store'] = path.resolve(__dirname, 'shell', 'store');
+      config.resolve.alias['@plugins'] = path.resolve(__dirname, 'shell', 'plugins');
+      // config.resolve.alias['@components'] = path.resolve(__dirname, 'shell', 'components');
 
       // And substitue our own
       config.module.rules.unshift({
@@ -283,34 +295,34 @@ module.exports = {
     '@nuxtjs/webpack-profile',
     'cookie-universal-nuxt',
     'portal-vue/nuxt',
-    '~/plugins/steve/rehydrate-all',
+    '~/shell/plugins/steve/rehydrate-all',
     '@nuxt/content',
   ],
 
   // Vue plugins
   plugins: [
     // Third-party
-    '~/plugins/axios',
-    '~/plugins/tooltip',
-    '~/plugins/vue-clipboard2',
-    '~/plugins/v-select',
-    '~/plugins/directives',
-    '~/plugins/transitions',
-    { src: '~plugins/vue-js-modal' },
-    { src: '~/plugins/js-yaml', ssr: false },
-    { src: '~/plugins/resize', ssr: false },
-    { src: '~/plugins/shortkey', ssr: false },
+    '~/shell/plugins/axios',
+    '~/shell/plugins/tooltip',
+    '~/shell/plugins/vue-clipboard2',
+    '~/shell/plugins/v-select',
+    '~/shell/plugins/directives',
+    '~/shell/plugins/transitions',
+    { src: '~/shell/plugins/vue-js-modal' },
+    { src: '~/shell/plugins/js-yaml', ssr: false },
+    { src: '~/shell/plugins/resize', ssr: false },
+    { src: '~/shell/plugins/shortkey', ssr: false },
 
     // First-party
-    '~/plugins/i18n',
-    '~/plugins/global-formatters',
-    '~/plugins/trim-whitespace',
-    { src: '~/plugins/extend-router' },
-    { src: '~/plugins/lookup', ssr: false },
-    { src: '~/plugins/int-number', ssr: false },
-    { src: '~/plugins/nuxt-client-init', ssr: false },
-    '~/plugins/replaceall',
-    '~/plugins/back-button',
+    '~/shell/plugins/i18n',
+    '~/shell/plugins/global-formatters',
+    '~/shell/plugins/trim-whitespace',
+    { src: '~/shell/plugins/extend-router' },
+    { src: '~/shell/plugins/lookup', ssr: false },
+    { src: '~/shell/plugins/int-number', ssr: false },
+    { src: '~/shell/plugins/nuxt-client-init', ssr: false },
+    '~/shell/plugins/replaceall',
+    '~/shell/plugins/back-button',
   ],
 
   // Proxy: https://github.com/nuxt-community/proxy-module#options

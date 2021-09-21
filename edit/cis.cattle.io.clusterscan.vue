@@ -7,7 +7,7 @@ import Banner from '@/components/Banner';
 import Loading from '@/components/Loading';
 import { CIS, CONFIG_MAP } from '@/config/types';
 import { mapGetters } from 'vuex';
-import createEditView from '@/mixins/create-edit-view';
+import createEditView from '@shell/mixins/create-edit-view';
 import { allHash } from '@/utils/promise';
 import Checkbox from '@/components/form/Checkbox';
 import RadioGroup from '@/components/form/RadioGroup';

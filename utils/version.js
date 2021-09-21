@@ -1,7 +1,7 @@
 import { sortableNumericSuffix } from '@/utils/sort';
 import semver from 'semver';
 import { MANAGEMENT } from '@/config/types';
-import { READ_WHATS_NEW, SEEN_WHATS_NEW } from '@/store/prefs';
+import { READ_WHATS_NEW, SEEN_WHATS_NEW } from '@store/prefs';
 
 export function parse(str) {
   str = `${ str }`;

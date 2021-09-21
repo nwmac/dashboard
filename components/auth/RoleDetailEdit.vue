@@ -1,7 +1,7 @@
 <script>
 import { MANAGEMENT } from '@/config/types';
 import CruResource from '@/components/CruResource';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import RadioGroup from '@/components/form/RadioGroup';
 import Select from '@/components/form/Select';
 import LabeledInput from '@/components/form/LabeledInput';

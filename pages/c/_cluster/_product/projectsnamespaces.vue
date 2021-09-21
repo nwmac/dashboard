@@ -6,7 +6,7 @@ import { MANAGEMENT, NAMESPACE, VIRTUAL_TYPES } from '@/config/types';
 import Loading from '@/components/Loading';
 import { PROJECT_ID } from '@/config/query-params';
 import Masthead from '@/components/ResourceList/Masthead';
-import { mapPref, GROUP_RESOURCES, DEV } from '@/store/prefs';
+import { mapPref, GROUP_RESOURCES, DEV } from '@store/prefs';
 import MoveModal from '@/components/MoveModal';
 
 export default {

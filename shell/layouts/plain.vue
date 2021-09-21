@@ -4,7 +4,7 @@ import Header from '@/components/nav/Header';
 import PromptRemove from '@/components/PromptRemove';
 import AssignTo from '@/components/AssignTo';
 import IndentedPanel from '@/components/IndentedPanel';
-import Brand from '@/mixins/brand';
+import Brand from '@shell/mixins/brand';
 import FixedBanner from '@/components/FixedBanner';
 
 export default {

@@ -1,5 +1,5 @@
 import { CAPI } from '@/config/labels-annotations';
-import { fullFields, prefixFields, simplify, suffixFields } from '@/store/plugins';
+import { fullFields, prefixFields, simplify, suffixFields } from '@store/plugins';
 import { isEmpty, set } from '@/utils/object';
 import { SECRET } from '@/config/types';
 import { escapeHtml } from '@/utils/string';

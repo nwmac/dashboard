@@ -5,7 +5,7 @@ import {
   REPO_TYPE, REPO, CHART, VERSION, NAMESPACE, NAME, DESCRIPTION as DESCRIPTION_QUERY, DEPRECATED, HIDDEN, _FLAGGED, _CREATE, _EDIT
 } from '@/config/query-params';
 import { CATALOG as CATALOG_ANNOTATIONS } from '@/config/labels-annotations';
-import { SHOW_PRE_RELEASE, mapPref } from '@/store/prefs';
+import { SHOW_PRE_RELEASE, mapPref } from '@store/prefs';
 import { NAME as EXPLORER } from '@/config/product/explorer';
 import { NAME as MANAGER } from '@/config/product/manager';
 

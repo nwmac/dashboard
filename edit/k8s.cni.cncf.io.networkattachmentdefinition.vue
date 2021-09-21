@@ -6,7 +6,7 @@ import LabeledInput from '@/components/form/LabeledInput';
 import NameNsDescription from '@/components/form/NameNsDescription';
 
 import { HCI } from '@/config/labels-annotations';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 
 export default {
   components: {

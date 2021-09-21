@@ -1,5 +1,5 @@
 <script>
-import { KEYMAP } from '@/store/prefs';
+import { KEYMAP } from '@store/prefs';
 
 export default {
   name:  'CodeMirror',
@@ -47,7 +47,7 @@ export default {
 
   created() {
     if ( process.client ) {
-      import(/* webpackChunkName: "codemirror" */ '@/plugins/codemirror').then(() => {
+      import(/* webpackChunkName: "codemirror" */ '@plugins/codemirror').then(() => {
         this.loaded = true;
       });
     }

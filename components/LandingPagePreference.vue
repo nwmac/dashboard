@@ -1,6 +1,6 @@
 <script>
-import { mapPref, AFTER_LOGIN_ROUTE } from '@/store/prefs';
-import { mapFeature, MULTI_CLUSTER } from '@/store/features';
+import { mapPref, AFTER_LOGIN_ROUTE } from '@store/prefs';
+import { mapFeature, MULTI_CLUSTER } from '@store/features';
 import RadioGroup from '@/components/form/RadioGroup';
 import RadioButton from '@/components/form/RadioButton';
 import Select from '@/components/form/Select';

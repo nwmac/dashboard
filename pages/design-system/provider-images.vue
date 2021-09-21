@@ -1,5 +1,5 @@
 <script>
-import { mapPref, THEME } from '@/store/prefs';
+import { mapPref, THEME } from '@store/prefs';
 import { ucFirst } from '@/utils/string';
 
 export default {

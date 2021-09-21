@@ -27,13 +27,13 @@ import {
   CATALOG,
 } from '@/config/types';
 import { findBy } from '@/utils/array';
-import { mapPref, CLUSTER_TOOLS_TIP } from '@/store/prefs';
+import { mapPref, CLUSTER_TOOLS_TIP } from '@store/prefs';
 import { haveV1Monitoring, monitoringStatus } from '@/utils/monitoring';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
 import { allDashboardsExist } from '@/utils/grafana';
 import EtcdInfoBanner from '@/components/EtcdInfoBanner';
-import metricPoller from '@/mixins/metric-poller';
+import metricPoller from '@shell/mixins/metric-poller';
 import EmberPage from '@/components/EmberPage';
 import ResourceSummary, { resourceCounts } from '@/components/ResourceSummary';
 import HardwareResourceGauge from '@/components/HardwareResourceGauge';

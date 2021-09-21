@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { escapeHtml } from '../utils/string';
+import { escapeHtml } from '../../utils/string';
 
 function stringFor(store, key, args, raw = false) {
   const translation = store.getters['i18n/t'](key, args);

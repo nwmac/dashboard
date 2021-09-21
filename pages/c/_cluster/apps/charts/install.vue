@@ -2,7 +2,7 @@
 import jsyaml from 'js-yaml';
 import merge from 'lodash/merge';
 import isEqual from 'lodash/isEqual';
-import { mapPref, DIFF } from '@/store/prefs';
+import { mapPref, DIFF } from '@store/prefs';
 
 import Banner from '@/components/Banner';
 import ButtonGroup from '@/components/ButtonGroup';
@@ -19,8 +19,8 @@ import Tabbed from '@/components/Tabbed';
 import UnitInput from '@/components/form/UnitInput';
 import YamlEditor, { EDITOR_MODES } from '@/components/YamlEditor';
 import Wizard from '@/components/Wizard';
-import ChartMixin from '@/mixins/chart';
-import ChildHook, { BEFORE_SAVE_HOOKS, AFTER_SAVE_HOOKS } from '@/mixins/child-hook';
+import ChartMixin from '@shell/mixins/chart';
+import ChildHook, { BEFORE_SAVE_HOOKS, AFTER_SAVE_HOOKS } from '@shell/mixins/child-hook';
 import { CATALOG, MANAGEMENT } from '@/config/types';
 import {
   CHART, FROM_CLUSTER, FROM_TOOLS, HIDE_SIDE_NAV, NAMESPACE, REPO, REPO_TYPE, VERSION, _FLAGGED

@@ -1,5 +1,5 @@
-import { LEGACY } from '@/store/features';
-import { DSL } from '@/store/type-map';
+import { LEGACY } from '@store/features';
+import { DSL } from '@store/type-map';
 
 export const NAME = 'mcapps';
 

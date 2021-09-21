@@ -3,7 +3,7 @@ import { mapGetters } from 'vuex';
 import Banner from '@/components/Banner';
 import Loading from '@/components/Loading';
 
-import { DEV } from '@/store/prefs';
+import { DEV } from '@store/prefs';
 import { HCI, MANAGEMENT } from '@/config/types';
 import { allHash } from '@/utils/promise';
 import { HCI_ALLOWED_SETTINGS, ALLOWED_SETTINGS, SETTING } from '@/config/settings';

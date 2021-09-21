@@ -14,7 +14,7 @@ import CustomValidators from '@/utils/custom-validators';
 import { downloadFile, generateZip } from '@/utils/download';
 import { eachLimit } from '@/utils/promise';
 import { get } from '@/utils/object';
-import { DEV } from '@/store/prefs';
+import { DEV } from '@store/prefs';
 import { sortableNumericSuffix } from '@/utils/sort';
 import {
   coerceStringTypeToScalarType,
@@ -35,7 +35,7 @@ import {
   AS, _YAML, MODE, _CLONE, _EDIT, _VIEW, _UNFLAG, _CONFIG
 } from '@/config/query-params';
 
-import { SELF } from '@/plugins/steve/resource-proxy';
+import { SELF } from '@plugins/steve/resource-proxy';
 import { cleanForNew, normalizeType } from './normalize';
 
 const STRING_LIKE_TYPES = [

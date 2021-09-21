@@ -1,4 +1,4 @@
-import { DSL } from '@/store/type-map';
+import { DSL } from '@store/type-map';
 import { MANAGEMENT } from '@/config/types';
 import {
   STATE,

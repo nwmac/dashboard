@@ -1,5 +1,5 @@
 <script>
-import { WORKSPACE } from '@/store/prefs';
+import { WORKSPACE } from '@store/prefs';
 import { mapState } from 'vuex';
 import Select from '@/components/form/Select';
 

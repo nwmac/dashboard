@@ -1,6 +1,6 @@
 <script>
 import { get } from '@/utils/object';
-import { mapPref, GROUP_RESOURCES } from '@/store/prefs';
+import { mapPref, GROUP_RESOURCES } from '@store/prefs';
 import ButtonGroup from '@/components/ButtonGroup';
 import SortableTable from '@/components/SortableTable';
 import { NAMESPACE } from '@/config/table-headers';

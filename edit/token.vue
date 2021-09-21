@@ -10,7 +10,7 @@ import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import RadioGroup from '@/components/form/RadioGroup';
 import Select from '@/components/form/Select';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import { diffFrom } from '@/utils/time';
 import { filterOnlyKubernetesClusters } from '@/utils/cluster';
 

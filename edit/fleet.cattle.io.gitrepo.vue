@@ -5,7 +5,7 @@ import { FLEET } from '@/config/types';
 import { set } from '@/utils/object';
 import ArrayList from '@/components/form/ArrayList';
 import Banner from '@/components/Banner';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import CruResource from '@/components/CruResource';
 import InputWithSelect from '@/components/form/InputWithSelect';
 import jsyaml from 'js-yaml';

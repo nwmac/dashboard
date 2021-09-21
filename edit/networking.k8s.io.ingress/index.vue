@@ -2,7 +2,7 @@
 import { allHash } from '@/utils/promise';
 import { SECRET, SERVICE } from '@/config/types';
 import NameNsDescription from '@/components/form/NameNsDescription';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import Tab from '@/components/Tabbed/Tab';
 import CruResource from '@/components/CruResource';
 import Labels from '@/components/form/Labels';

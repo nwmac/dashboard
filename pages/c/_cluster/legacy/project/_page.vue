@@ -1,6 +1,6 @@
 <script>
 import EmberPage from '@/components/EmberPage';
-import { project } from '@/store/type-map';
+import { project } from '@store/type-map';
 
 const PAGES = {
   istio:          'istio/project-istio/metrics',

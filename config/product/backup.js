@@ -1,4 +1,4 @@
-import { DSL } from '@/store/type-map';
+import { DSL } from '@store/type-map';
 import { BACKUP_RESTORE } from '@/config/types';
 import { STATE, NAME as NAME_HEADER, AGE } from '@/config/table-headers';
 

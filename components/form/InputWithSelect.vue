@@ -1,5 +1,5 @@
 <script>
-import labeledFormElement from '@/mixins/labeled-form-element';
+import labeledFormElement from '@shell/mixins/labeled-form-element';
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import Select from '@/components/form/Select';

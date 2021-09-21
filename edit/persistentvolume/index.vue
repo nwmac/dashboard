@@ -1,5 +1,5 @@
 <script>
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import CruResource from '@/components/CruResource';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import ArrayList from '@/components/form/ArrayList';
@@ -19,7 +19,7 @@ import { _CREATE, _VIEW } from '@/config/query-params';
 import { clone } from '@/utils/object';
 import { parseSi } from '@/utils/units';
 import InfoBox from '@/components/InfoBox';
-import { mapFeature, UNSUPPORTED_STORAGE_DRIVERS } from '@/store/features';
+import { mapFeature, UNSUPPORTED_STORAGE_DRIVERS } from '@store/features';
 
 export default {
   name: 'PersistentVolume',

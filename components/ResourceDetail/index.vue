@@ -1,5 +1,5 @@
 <script>
-import CreateEditView from '@/mixins/create-edit-view/impl';
+import CreateEditView from '@shell/mixins/create-edit-view/impl';
 import Loading from '@/components/Loading';
 import ResourceYaml from '@/components/ResourceYaml';
 import {

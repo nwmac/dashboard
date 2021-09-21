@@ -4,7 +4,7 @@ import PromptChangePassword from '@/components/PromptChangePassword';
 import { NORMAN } from '@/config/types';
 import Loading from '@/components/Loading';
 import Principal from '@/components/auth/Principal';
-import BackRoute from '@/mixins/back-link';
+import BackRoute from '@shell/mixins/back-link';
 import { mapGetters } from 'vuex';
 
 import Banner from '@/components/Banner';

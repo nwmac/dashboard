@@ -1,6 +1,6 @@
 <script>
 import CruResource from '@/components/CruResource';
-import createEditView from '@/mixins/create-edit-view';
+import createEditView from '@shell/mixins/create-edit-view';
 import LabeledInput from '@/components/form/LabeledInput';
 import UnitInput from '@/components/form/UnitInput';
 import LabeledSelect from '@/components/form/LabeledSelect';

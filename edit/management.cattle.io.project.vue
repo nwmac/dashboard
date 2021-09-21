@@ -1,7 +1,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import ContainerResourceLimit from '@/components/ContainerResourceLimit';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import CruResource from '@/components/CruResource';
 import Labels from '@/components/form/Labels';
 import LabeledSelect from '@/components/form/LabeledSelect';

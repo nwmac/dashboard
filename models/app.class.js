@@ -1,5 +1,5 @@
 import { MODE, _EDIT } from '@/config/query-params';
-import { Resource } from '@/plugins/steve/resource-class';
+import { Resource } from '@plugins/steve/resource-class';
 
 export default class App extends Resource {
   get appEditUrl() {

@@ -1,7 +1,7 @@
 import { _EDIT } from '@/config/query-params';
 import { NORMAN, MANAGEMENT } from '@/config/types';
-import { AFTER_SAVE_HOOKS, BEFORE_SAVE_HOOKS } from '@/mixins/child-hook';
-import { BASE_SCOPES } from '@/store/auth';
+import { AFTER_SAVE_HOOKS, BEFORE_SAVE_HOOKS } from '@shell/mixins/child-hook';
+import { BASE_SCOPES } from '@store/auth';
 import { addObject, findBy } from '@/utils/array';
 import { set } from '@/utils/object';
 import { exceptionToErrorsArray } from '@/utils/error';

@@ -1,5 +1,5 @@
 <script>
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import CruResource from '@/components/CruResource';
 import { MANAGEMENT } from '@/config/types';
 import { PROJECT_ID } from '@/config/query-params';

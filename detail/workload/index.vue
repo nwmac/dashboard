@@ -1,5 +1,5 @@
 <script>
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import { STATE, NAME, NODE, POD_IMAGES } from '@/config/table-headers';
 import { POD, WORKLOAD_TYPES } from '@/config/types';
 import SortableTable from '@/components/SortableTable';
@@ -10,7 +10,7 @@ import CountGauge from '@/components/CountGauge';
 import { allHash } from '@/utils/promise';
 import { get } from '@/utils/object';
 import DashboardMetrics from '@/components/DashboardMetrics';
-import V1WorkloadMetrics from '@/mixins/v1-workload-metrics';
+import V1WorkloadMetrics from '@shell/mixins/v1-workload-metrics';
 import { mapGetters } from 'vuex';
 import { allDashboardsExist } from '@/utils/grafana';
 

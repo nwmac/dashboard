@@ -5,7 +5,7 @@ import { allHash } from '@/utils/promise';
 import { CAPI, MANAGEMENT } from '@/config/types';
 import { MODE, _IMPORT } from '@/config/query-params';
 import { filterOnlyKubernetesClusters } from '@/utils/cluster';
-import { mapFeature, HARVESTER as HARVESTER_FEATURE } from '@/store/features';
+import { mapFeature, HARVESTER as HARVESTER_FEATURE } from '@store/features';
 
 export default {
   components: { ResourceTable, Masthead },

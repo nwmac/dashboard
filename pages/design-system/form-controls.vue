@@ -7,7 +7,7 @@ import SecretSelector from '@/components/form/SecretSelector';
 import InputWithSelect from '@/components/form/InputWithSelect';
 import Checkbox from '@/components/form/Checkbox';
 import ButtonGroup from '@/components/ButtonGroup';
-import { mapPref, THEME } from '@/store/prefs';
+import { mapPref, THEME } from '@store/prefs';
 import { ucFirst } from '@/utils/string';
 import ToggleSwitch from '@/components/form/ToggleSwitch';
 

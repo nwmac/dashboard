@@ -6,7 +6,7 @@ import { CATALOG as CATALOG_ANNOTATIONS, FLEET } from '@/config/labels-annotatio
 import { compare, isPrerelease, sortable } from '@/utils/version';
 import { filterBy } from '@/utils/array';
 import { CATALOG } from '@/config/types';
-import { SHOW_PRE_RELEASE } from '@/store/prefs';
+import { SHOW_PRE_RELEASE } from '@store/prefs';
 
 export default {
   showMasthead() {

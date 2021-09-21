@@ -1,4 +1,4 @@
-import { DSL, IF_HAVE } from '@/store/type-map';
+import { DSL, IF_HAVE } from '@store/type-map';
 import { MONITORING } from '@/config/types';
 import {
   STATE, NAME as NAME_COL, AGE, RECEIVER_PROVIDERS, CONFIGURED_RECEIVER

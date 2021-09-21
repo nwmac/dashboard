@@ -5,12 +5,12 @@ import {
 } from '@/config/query-params';
 import { SETTING } from '@/config/settings';
 import { MANAGEMENT, NORMAN } from '@/config/types';
-import { _ALL_IF_AUTHED } from '@/plugins/steve/actions';
-import { applyProducts } from '@/store/type-map';
+import { _ALL_IF_AUTHED } from '@plugins/steve/actions';
+import { applyProducts } from '@store/type-map';
 import { findBy } from '@/utils/array';
 import { ClusterNotFoundError } from '@/utils/error';
 import { get } from '@/utils/object';
-import { AFTER_LOGIN_ROUTE } from '@/store/prefs';
+import { AFTER_LOGIN_ROUTE } from '@store/prefs';
 import { NAME as VIRTUAL } from '@/config/product/harvester';
 
 let beforeEachSetup = false;

@@ -1,7 +1,7 @@
 <script>
 import debounce from 'lodash/debounce';
 import { mapState, mapGetters } from 'vuex';
-import { mapPref, DEV, FAVORITE_TYPES, AFTER_LOGIN_ROUTE } from '@/store/prefs';
+import { mapPref, DEV, FAVORITE_TYPES, AFTER_LOGIN_ROUTE } from '@store/prefs';
 import ActionMenu from '@/components/ActionMenu';
 import GrowlManager from '@/components/GrowlManager';
 import WindowManager from '@/components/nav/WindowManager';
@@ -11,12 +11,12 @@ import PromptModal from '@/components/PromptModal';
 import AssignTo from '@/components/AssignTo';
 import Group from '@/components/nav/Group';
 import Header from '@/components/nav/Header';
-import Brand from '@/mixins/brand';
+import Brand from '@shell/mixins/brand';
 import FixedBanner from '@/components/FixedBanner';
 import {
   COUNT, SCHEMA, MANAGEMENT, UI, CATALOG, HCI
 } from '@/config/types';
-import { BASIC, FAVORITE, USED } from '@/store/type-map';
+import { BASIC, FAVORITE, USED } from '@store/type-map';
 import { addObjects, replaceWith, clear, addObject } from '@/utils/array';
 import { NAME as EXPLORER } from '@/config/product/explorer';
 import { NAME as NAVLINKS } from '@/config/product/navlinks';
@@ -25,7 +25,7 @@ import isEqual from 'lodash/isEqual';
 import { ucFirst } from '@/utils/string';
 import { getVersionInfo, markSeenReleaseNotes } from '@/utils/version';
 import { sortBy } from '@/utils/sort';
-import PageHeaderActions from '@/mixins/page-actions';
+import PageHeaderActions from '@shell/mixins/page-actions';
 
 const SET_LOGIN_ACTION = 'set-as-login';
 

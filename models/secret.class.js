@@ -5,7 +5,7 @@ import { removeObjects } from '@/utils/array';
 import { SERVICE_ACCOUNT } from '@/config/types';
 import { set } from '@/utils/object';
 import { NAME as MANAGER } from '@/config/product/manager';
-import SteveModel from '@/plugins/steve/steve-class';
+import SteveModel from '@plugins/steve/steve-class';
 
 export const TYPES = {
   OPAQUE:           'Opaque',

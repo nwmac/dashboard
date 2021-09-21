@@ -1,7 +1,7 @@
 <script>
 import LabeledInput from '@/components/form/LabeledInput';
 import AsyncButton from '@/components/AsyncButton';
-import Login from '@/mixins/login';
+import Login from '@shell/mixins/login';
 
 export default {
   components: { LabeledInput, AsyncButton },

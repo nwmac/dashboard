@@ -1,4 +1,4 @@
-import { Resource } from '@/plugins/steve/resource-class';
+import { Resource } from '@plugins/steve/resource-class';
 
 export default class ConfigMap extends Resource {
   get keysDisplay() {

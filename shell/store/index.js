@@ -1,13 +1,13 @@
-import Steve from '@/plugins/steve';
+import Steve from '@plugins/steve';
 import {
   COUNT, NAMESPACE, NORMAN, MANAGEMENT, FLEET, UI, VIRTUAL_HARVESTER_PROVIDER, HCI
 } from '@/config/types';
-import { CLUSTER as CLUSTER_PREF, NAMESPACE_FILTERS, LAST_NAMESPACE, WORKSPACE } from '@/store/prefs';
+import { CLUSTER as CLUSTER_PREF, NAMESPACE_FILTERS, LAST_NAMESPACE, WORKSPACE } from '@store/prefs';
 import { allHash, allHashSettled } from '@/utils/promise';
 import { ClusterNotFoundError, ApiError } from '@/utils/error';
 import { sortBy } from '@/utils/sort';
 import { filterBy, findBy } from '@/utils/array';
-import { BOTH, CLUSTER_LEVEL, NAMESPACED } from '@/store/type-map';
+import { BOTH, CLUSTER_LEVEL, NAMESPACED } from '@store/type-map';
 import { NAME as EXPLORER } from '@/config/product/explorer';
 import { TIMED_OUT, LOGGED_OUT, _FLAGGED, UPGRADED } from '@/config/query-params';
 import { setBrand, setVendor } from '@/config/private-label';
@@ -15,7 +15,7 @@ import { DEFAULT_WORKSPACE } from '@/models/provisioning.cattle.io.cluster';
 import { addParam } from '@/utils/url';
 import { SETTING } from '@/config/settings';
 import semver from 'semver';
-import { BY_TYPE, NORMAN as NORMAN_CLASS } from '@/plugins/steve/resource-proxy';
+import { BY_TYPE, NORMAN as NORMAN_CLASS } from '@plugins/steve/resource-proxy';
 import { NAME as VIRTUAL } from '@/config/product/harvester';
 
 // Disables strict mode for all store instances to prevent warning about changing state outside of mutations

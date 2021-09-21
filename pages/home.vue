@@ -1,5 +1,5 @@
 <script>
-import { mapPref, AFTER_LOGIN_ROUTE, READ_WHATS_NEW, HIDE_HOME_PAGE_CARDS } from '@/store/prefs';
+import { mapPref, AFTER_LOGIN_ROUTE, READ_WHATS_NEW, HIDE_HOME_PAGE_CARDS } from '@store/prefs';
 import Banner from '@/components/Banner';
 import BannerGraphic from '@/components/BannerGraphic';
 import IndentedPanel from '@/components/IndentedPanel';
@@ -16,11 +16,11 @@ import { STATE } from '@/config/table-headers';
 import { MODE, _IMPORT } from '@/config/query-params';
 import { createMemoryFormat, formatSi, parseSi } from '@/utils/units';
 import { getVersionInfo, readReleaseNotes, markReadReleaseNotes, markSeenReleaseNotes } from '@/utils/version';
-import PageHeaderActions from '@/mixins/page-actions';
+import PageHeaderActions from '@shell/mixins/page-actions';
 import { getVendor } from '@/config/private-label';
-import { mapFeature, MULTI_CLUSTER } from '@/store/features';
+import { mapFeature, MULTI_CLUSTER } from '@store/features';
 import { SETTING } from '@/config/settings';
-import { BLANK_CLUSTER } from '@/store';
+import { BLANK_CLUSTER } from '@store';
 import { filterOnlyKubernetesClusters } from '@/utils/cluster';
 
 const SET_LOGIN_ACTION = 'set-as-login';

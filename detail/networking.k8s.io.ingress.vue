@@ -1,7 +1,7 @@
 <script>
 import { allHash } from '@/utils/promise';
 import { SECRET, SERVICE } from '@/config/types';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import Rules from '@/edit/networking.k8s.io.ingress/Rules';
 import ResourceTabs from '@/components/form/ResourceTabs';
 import Tab from '@/components/Tabbed/Tab';

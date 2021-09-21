@@ -1,7 +1,7 @@
 <script>
 import Tab from '@/components/Tabbed/Tab';
 import ResourceTabs from '@/components/form/ResourceTabs';
-import createEditView from '@/mixins/create-edit-view';
+import createEditView from '@shell/mixins/create-edit-view';
 import Labels from '@/components/form/Labels';
 import Taints from '@/components/form/Taints';
 import CruResource from '@/components/CruResource';

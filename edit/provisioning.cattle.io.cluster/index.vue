@@ -1,5 +1,5 @@
 <script>
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import Loading from '@/components/Loading';
 import CruResource from '@/components/CruResource';
 import SelectIconGrid from '@/components/SelectIconGrid';
@@ -10,13 +10,13 @@ import { DEFAULT_WORKSPACE } from '@/models/provisioning.cattle.io.cluster';
 import { mapGetters } from 'vuex';
 import { sortBy } from '@/utils/sort';
 import { set } from '@/utils/object';
-import { mapPref, PROVISIONER, _RKE1, _RKE2 } from '@/store/prefs';
-import { filterAndArrangeCharts } from '@/store/catalog';
+import { mapPref, PROVISIONER, _RKE1, _RKE2 } from '@store/prefs';
+import { filterAndArrangeCharts } from '@store/catalog';
 import { CATALOG } from '@/config/labels-annotations';
 import { CAPI, MANAGEMENT } from '@/config/types';
-import { mapFeature, RKE2 as RKE2_FEATURE } from '@/store/features';
+import { mapFeature, RKE2 as RKE2_FEATURE } from '@store/features';
 import { allHash } from '@/utils/promise';
-import { BLANK_CLUSTER } from '@/store';
+import { BLANK_CLUSTER } from '@store';
 import Rke2Config from './rke2';
 import Import from './import';
 

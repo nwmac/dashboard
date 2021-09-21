@@ -1,7 +1,7 @@
 <script>
 import Loading from '@/components/Loading';
 import BackLink from '@/components/BackLink';
-import BackRoute from '@/mixins/back-link';
+import BackRoute from '@shell/mixins/back-link';
 import { MANAGEMENT } from '@/config/types';
 import { SETTING } from '@/config/settings';
 import { getVendor } from '@/config/private-label';

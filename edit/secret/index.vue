@@ -1,7 +1,7 @@
 <script>
 import { TYPES } from '@/models/secret.class';
 import { MANAGEMENT, NAMESPACE } from '@/config/types';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import CruResource from '@/components/CruResource';
 import {
@@ -11,7 +11,7 @@ import Loading from '@/components/Loading';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
 import Labels from '@/components/form/Labels';
-import { HIDE_SENSITIVE } from '@/store/prefs';
+import { HIDE_SENSITIVE } from '@store/prefs';
 import { CAPI } from '@/config/labels-annotations';
 import { clear, uniq } from '@/utils/array';
 import { importCloudCredential } from '@/utils/dynamic-importer';

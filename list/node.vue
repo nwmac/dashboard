@@ -6,7 +6,7 @@ import Banner from '@/components/Banner';
 import {
   STATE, NAME, ROLES, VERSION, INTERNAL_EXTERNAL_IP, CPU, RAM, PODS, AGE
 } from '@/config/table-headers';
-import metricPoller from '@/mixins/metric-poller';
+import metricPoller from '@shell/mixins/metric-poller';
 
 import {
   CAPI,
@@ -14,7 +14,7 @@ import {
 } from '@/config/types';
 import { allHash } from '@/utils/promise';
 import { get } from '@/utils/object';
-import { GROUP_RESOURCES, mapPref } from '@/store/prefs';
+import { GROUP_RESOURCES, mapPref } from '@store/prefs';
 import { COLUMN_BREAKPOINTS } from '@/components/SortableTable/index.vue';
 
 export default {

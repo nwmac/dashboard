@@ -13,10 +13,10 @@ import { sortBy } from '@/utils/sort';
 import { configType } from '@/models/management.cattle.io.authconfig';
 import { mapGetters } from 'vuex';
 import { importLogin } from '@/utils/dynamic-importer';
-import { _ALL_IF_AUTHED, _MULTI } from '@/plugins/steve/actions';
+import { _ALL_IF_AUTHED, _MULTI } from '@plugins/steve/actions';
 import { MANAGEMENT, NORMAN } from '@/config/types';
 import { SETTING } from '@/config/settings';
-import { LOGIN_ERRORS } from '@/store/auth';
+import { LOGIN_ERRORS } from '@store/auth';
 import {
   getBrand,
   getVendor,

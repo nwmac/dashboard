@@ -1,5 +1,5 @@
 <script>
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import CruResource from '@/components/CruResource';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import ArrayList from '@/components/form/ArrayList';
@@ -9,7 +9,7 @@ import RadioGroup from '@/components/form/RadioGroup';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import { _CREATE, _VIEW } from '@/config/query-params';
 import { PROVISIONER_OPTIONS } from '@/models/storage.k8s.io.storageclass';
-import { mapFeature, UNSUPPORTED_STORAGE_DRIVERS } from '@/store/features';
+import { mapFeature, UNSUPPORTED_STORAGE_DRIVERS } from '@store/features';
 
 export default {
   name: 'StorageClass',

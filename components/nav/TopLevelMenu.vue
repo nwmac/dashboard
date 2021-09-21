@@ -4,12 +4,12 @@ import RancherProviderIcon from '@/components/RancherProviderIcon';
 import { mapGetters } from 'vuex';
 import $ from 'jquery';
 import { MANAGEMENT } from '@/config/types';
-import { mapPref, DEV, MENU_MAX_CLUSTERS } from '@/store/prefs';
+import { mapPref, DEV, MENU_MAX_CLUSTERS } from '@store/prefs';
 import { sortBy } from '@/utils/sort';
 import { ucFirst } from '@/utils/string';
 import { KEY } from '@/utils/platform';
 import { getVersionInfo } from '@/utils/version';
-import { LEGACY } from '@/store/features';
+import { LEGACY } from '@store/features';
 import { SETTING } from '@/config/settings';
 import { filterOnlyKubernetesClusters } from '@/utils/cluster';
 

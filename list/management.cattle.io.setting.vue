@@ -4,7 +4,7 @@ import { MANAGEMENT } from '@/config/types';
 import { ALLOWED_SETTINGS } from '@/config/settings';
 import Banner from '@/components/Banner';
 import Loading from '@/components/Loading';
-import { DEV } from '@/store/prefs';
+import { DEV } from '@store/prefs';
 
 export default {
   components: { Banner, Loading },

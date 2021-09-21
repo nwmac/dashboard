@@ -1,6 +1,6 @@
 <script>
 import { mapGetters } from 'vuex';
-import { NAMESPACE_FILTERS } from '@/store/prefs';
+import { NAMESPACE_FILTERS } from '@store/prefs';
 import { NAMESPACE, MANAGEMENT } from '@/config/types';
 import { sortBy } from '@/utils/sort';
 import { isArray, addObjects, findBy, filterBy } from '@/utils/array';

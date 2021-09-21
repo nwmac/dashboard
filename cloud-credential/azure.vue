@@ -1,5 +1,5 @@
 <script>
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import LabeledInput from '@/components/form/LabeledInput';
 import { azureEnvironments } from '@/machine-config/azure';
 import LabeledSelect from '@/components/form/LabeledSelect';

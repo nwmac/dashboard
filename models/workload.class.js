@@ -3,7 +3,7 @@ import { TARGET_WORKLOADS, TIMESTAMP, UI_MANAGED } from '@/config/labels-annotat
 import { WORKLOAD_TYPES, SERVICE } from '@/config/types';
 import { clone, get, set } from '@/utils/object';
 import day from 'dayjs';
-import { Resource } from '@/plugins/steve/resource-class';
+import { Resource } from '@plugins/steve/resource-class';
 
 export default class Workload extends Resource {
   // remove clone as yaml/edit as yaml until API supported

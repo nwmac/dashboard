@@ -5,7 +5,7 @@ import Banner from '@/components/Banner';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import Loading from '@/components/Loading';
 import day from 'dayjs';
-import { DATE_FORMAT, TIME_FORMAT } from '@/store/prefs';
+import { DATE_FORMAT, TIME_FORMAT } from '@store/prefs';
 import { escapeHtml, randomStr } from '@/utils/string';
 import { CIS } from '@/config/types';
 import { STATE } from '@/config/table-headers';
