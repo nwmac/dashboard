@@ -48,6 +48,8 @@ move ./layouts
 move ./plugins
 move ./utils
 move ./config
+move ./static
+move ./middleware
 
 # Update plugins references to use @~plugins
 grep -rl ${GREP_EXCLUDES} . -e '~/plugins' | xargs sed -i.bak -e "s/'~\/plugins/'~shell\/plugins/g"
@@ -67,7 +69,6 @@ exit 0
 
 # Asssets
 move ./assets
-move ./static
 move ./middleware
 move ./mixins
 move ./components

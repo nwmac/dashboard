@@ -108,7 +108,7 @@ export default function(dir, excludes) {
       ],
     },
 
-    loadingIndicator: '~/static/loading-indicator.html',
+    loadingIndicator: path.join(SHELL_ABS, 'static/loading-indicator.html'),
 
     // mode:    'spa', --- Use --spa CLI flag, or ?spa query param.
 
@@ -145,7 +145,10 @@ export default function(dir, excludes) {
       SHELL_ABS
     ],
 
-    dir: { layouts: path.join(SHELL, 'layouts') },
+    dir: {
+      layouts: path.join(SHELL, 'layouts'),
+      static:  path.join(SHELL, 'static'),
+    },
 
     build: {
       publicPath: resourceBase,
