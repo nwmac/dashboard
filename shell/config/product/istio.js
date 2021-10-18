@@ -1,6 +1,6 @@
 import { AGE, NAME as NAME_HEADER, STATE } from '@shell/config/table-headers';
 import { ISTIO } from '@shell/config/types';
-import { DSL, IF_HAVE } from '@/store/type-map';
+import { DSL, IF_HAVE } from '@shell/store/type-map';
 
 export const NAME = 'istio';
 export const CHART_NAME = 'rancher-istio';

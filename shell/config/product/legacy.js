@@ -1,5 +1,5 @@
-import { LEGACY } from '@/store/features';
-import { DSL, IF_HAVE } from '@/store/type-map';
+import { LEGACY } from '@shell/store/features';
+import { DSL, IF_HAVE } from '@shell/store/type-map';
 
 export const NAME = 'legacy';
 

@@ -1,6 +1,6 @@
 <script>
 import IconMessage from '@/components/IconMessage';
-import { project } from '@/store/type-map';
+import { project } from '@shell/store/type-map';
 
 export default {
   components: { IconMessage },

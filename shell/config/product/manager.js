@@ -6,8 +6,8 @@ import {
   NORMAN,
   HCI
 } from '@shell/config/types';
-import { MULTI_CLUSTER } from '@/store/features';
-import { DSL } from '@/store/type-map';
+import { MULTI_CLUSTER } from '@shell/store/features';
+import { DSL } from '@shell/store/type-map';
 
 export const NAME = 'manager';
 

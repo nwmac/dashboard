@@ -1,6 +1,6 @@
 import { HCI, MANAGEMENT, CAPI } from '@shell/config/types';
-import { HARVESTER, MULTI_CLUSTER } from '@/store/features';
-import { DSL } from '@/store/type-map';
+import { HARVESTER, MULTI_CLUSTER } from '@shell/store/features';
+import { DSL } from '@shell/store/type-map';
 import { STATE, NAME as NAME_COL, AGE, VERSION } from '@shell/config/table-headers';
 import { allHash } from '@shell/utils/promise';
 

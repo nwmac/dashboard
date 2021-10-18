@@ -14,7 +14,7 @@ import {
 } from '@shell/config/types';
 import { allHash } from '@shell/utils/promise';
 import { get } from '@shell/utils/object';
-import { GROUP_RESOURCES, mapPref } from '@/store/prefs';
+import { GROUP_RESOURCES, mapPref } from '@shell/store/prefs';
 import { COLUMN_BREAKPOINTS } from '@/components/SortableTable/index.vue';
 
 export default {

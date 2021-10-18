@@ -2,13 +2,13 @@
 import { mapGetters } from 'vuex';
 import Loading from '@/components/Loading';
 import { _FLAGGED, DEPRECATED, HIDDEN, FROM_TOOLS } from '@shell/config/query-params';
-import { filterAndArrangeCharts } from '@/store/catalog';
+import { filterAndArrangeCharts } from '@shell/store/catalog';
 import { CATALOG, MANAGEMENT, NORMAN } from '@shell/config/types';
 import { CATALOG as CATALOG_ANNOTATIONS } from '@shell/config/labels-annotations';
 import LazyImage from '@/components/LazyImage';
 import AppSummaryGraph from '@/components/formatter/AppSummaryGraph';
 import { sortBy } from '@shell/utils/sort';
-import { LEGACY } from '@/store/features';
+import { LEGACY } from '@shell/store/features';
 import { isAlternate } from '@shell/utils/platform';
 
 export default {

@@ -27,7 +27,7 @@ import {
   CATALOG,
 } from '@shell/config/types';
 import { findBy } from '@shell/utils/array';
-import { mapPref, CLUSTER_TOOLS_TIP } from '@/store/prefs';
+import { mapPref, CLUSTER_TOOLS_TIP } from '@shell/store/prefs';
 import { haveV1Monitoring, monitoringStatus } from '@shell/utils/monitoring';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';

@@ -1,4 +1,4 @@
-import { ROWS_PER_PAGE } from '@/store/prefs';
+import { ROWS_PER_PAGE } from '@shell/store/prefs';
 import { PAGE } from '@shell/config/query-params';
 
 export default {

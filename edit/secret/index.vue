@@ -11,7 +11,7 @@ import Loading from '@/components/Loading';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
 import Labels from '@/components/form/Labels';
-import { HIDE_SENSITIVE } from '@/store/prefs';
+import { HIDE_SENSITIVE } from '@shell/store/prefs';
 import { CAPI } from '@shell/config/labels-annotations';
 import { clear, uniq } from '@shell/utils/array';
 import { importCloudCredential } from '@shell/utils/dynamic-importer';

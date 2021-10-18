@@ -113,7 +113,7 @@
 // )
 import { AGE, NAME, NAMESPACE, STATE } from '@shell/config/table-headers';
 import { COUNT, SCHEMA, MANAGEMENT } from '@shell/config/types';
-import { DEV, EXPANDED_GROUPS, FAVORITE_TYPES } from '@/store/prefs';
+import { DEV, EXPANDED_GROUPS, FAVORITE_TYPES } from '@shell/store/prefs';
 import {
   addObject, findBy, insertAt, isArray, removeObject, filterBy
 } from '@shell/utils/array';

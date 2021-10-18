@@ -19,7 +19,7 @@ import { _CREATE, _VIEW } from '@shell/config/query-params';
 import { clone } from '@shell/utils/object';
 import { parseSi } from '@shell/utils/units';
 import InfoBox from '@/components/InfoBox';
-import { mapFeature, UNSUPPORTED_STORAGE_DRIVERS } from '@/store/features';
+import { mapFeature, UNSUPPORTED_STORAGE_DRIVERS } from '@shell/store/features';
 
 export default {
   name: 'PersistentVolume',

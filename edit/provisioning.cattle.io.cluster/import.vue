@@ -11,11 +11,11 @@ import ClusterMembershipEditor from '@/components/form/Members/ClusterMembership
 import Banner from '@/components/Banner';
 import { canViewClusterMembershipEditor } from '@/components/form/Members/ClusterMembershipEditor.vue';
 import { NAME as HARVESTER_MANAGER } from '@shell/config/product/harvester-manager';
-import { HARVESTER as HARVESTER_FEATURE, mapFeature } from '@/store/features';
+import { HARVESTER as HARVESTER_FEATURE, mapFeature } from '@shell/store/features';
 import Labels from './Labels';
 import AgentEnv from './AgentEnv';
 import { addObject } from '~shell/utils/array';
-import { HIDE_DESC, mapPref } from '~/store/prefs';
+import { HIDE_DESC, mapPref } from '~shell/store/prefs';
 
 const HARVESTER_HIDE_KEY = 'cm-harvester-import';
 

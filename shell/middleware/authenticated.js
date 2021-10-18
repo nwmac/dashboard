@@ -6,11 +6,11 @@ import {
 import { SETTING } from '@shell/config/settings';
 import { MANAGEMENT, NORMAN } from '@shell/config/types';
 import { _ALL_IF_AUTHED } from '@shell/plugins/steve/actions';
-import { applyProducts } from '@/store/type-map';
+import { applyProducts } from '@shell/store/type-map';
 import { findBy } from '@shell/utils/array';
 import { ClusterNotFoundError } from '@shell/utils/error';
 import { get } from '@shell/utils/object';
-import { AFTER_LOGIN_ROUTE } from '@/store/prefs';
+import { AFTER_LOGIN_ROUTE } from '@shell/store/prefs';
 import { NAME as VIRTUAL } from '@shell/config/product/harvester';
 
 let beforeEachSetup = false;

@@ -1,7 +1,7 @@
 <script>
 import debounce from 'lodash/debounce';
 import { mapState, mapGetters } from 'vuex';
-import { mapPref, DEV, FAVORITE_TYPES, AFTER_LOGIN_ROUTE } from '@/store/prefs';
+import { mapPref, DEV, FAVORITE_TYPES, AFTER_LOGIN_ROUTE } from '@shell/store/prefs';
 import ActionMenu from '@/components/ActionMenu';
 import GrowlManager from '@/components/GrowlManager';
 import WindowManager from '@/components/nav/WindowManager';
@@ -16,7 +16,7 @@ import FixedBanner from '@/components/FixedBanner';
 import {
   COUNT, SCHEMA, MANAGEMENT, UI, CATALOG, HCI
 } from '@shell/config/types';
-import { BASIC, FAVORITE, USED } from '@/store/type-map';
+import { BASIC, FAVORITE, USED } from '@shell/store/type-map';
 import { addObjects, replaceWith, clear, addObject } from '@shell/utils/array';
 import { NAME as EXPLORER } from '@shell/config/product/explorer';
 import { NAME as NAVLINKS } from '@shell/config/product/navlinks';

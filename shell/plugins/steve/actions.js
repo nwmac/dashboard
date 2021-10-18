@@ -3,7 +3,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
 import { SCHEMA } from '@shell/config/types';
 import { createYaml } from '@shell/utils/create-yaml';
-import { SPOOFED_API_PREFIX, SPOOFED_PREFIX } from '@/store/type-map';
+import { SPOOFED_API_PREFIX, SPOOFED_PREFIX } from '@shell/store/type-map';
 import { addParam } from '@shell/utils/url';
 import { isArray } from '@shell/utils/array';
 import { normalizeType } from './normalize';

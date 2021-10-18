@@ -1,5 +1,5 @@
 <script>
-import { SEEN_WHATS_NEW } from '@/store/prefs';
+import { SEEN_WHATS_NEW } from '@shell/store/prefs';
 import { getVersionInfo } from '@shell/utils/version';
 
 export default {

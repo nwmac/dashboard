@@ -7,7 +7,7 @@ import CruResource from '@/components/CruResource';
 import { _CREATE } from '@shell/config/query-params';
 import Loading from '@/components/Loading';
 import Labels from '@/components/form/Labels';
-import { HIDE_SENSITIVE } from '@/store/prefs';
+import { HIDE_SENSITIVE } from '@shell/store/prefs';
 import { CAPI } from '@shell/config/labels-annotations';
 import { clear, uniq } from '@shell/utils/array';
 import { importCloudCredential } from '@shell/utils/dynamic-importer';
@@ -16,8 +16,8 @@ import { DEFAULT_WORKSPACE } from '@/models/provisioning.cattle.io.cluster';
 import { sortBy } from '@shell/utils/sort';
 import { ucFirst } from '@shell/utils/string';
 import { set } from '@shell/utils/object';
-import { mapFeature, RKE2 as RKE2_FEATURE } from '@/store/features';
-import { rke1Supports } from '@/store/plugins';
+import { mapFeature, RKE2 as RKE2_FEATURE } from '@shell/store/features';
+import { rke1Supports } from '@shell/store/plugins';
 
 export default {
   name: 'CruCloudCredential',

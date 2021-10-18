@@ -3,7 +3,7 @@ import { mapGetters } from 'vuex';
 import ResourceTable from '@/components/ResourceTable';
 import Masthead from '@/components/ResourceList/Masthead';
 import Banner from '@/components/Banner';
-import { HIDE_DESC, mapPref } from '@/store/prefs';
+import { HIDE_DESC, mapPref } from '@shell/store/prefs';
 
 export default {
   name:       'ListClusterReposApps',

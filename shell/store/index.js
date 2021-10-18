@@ -2,12 +2,12 @@ import Steve from '@shell/plugins/steve';
 import {
   COUNT, NAMESPACE, NORMAN, MANAGEMENT, FLEET, UI, VIRTUAL_HARVESTER_PROVIDER, HCI
 } from '@shell/config/types';
-import { CLUSTER as CLUSTER_PREF, NAMESPACE_FILTERS, LAST_NAMESPACE, WORKSPACE } from '@/store/prefs';
+import { CLUSTER as CLUSTER_PREF, NAMESPACE_FILTERS, LAST_NAMESPACE, WORKSPACE } from '@shell/store/prefs';
 import { allHash, allHashSettled } from '@shell/utils/promise';
 import { ClusterNotFoundError, ApiError } from '@shell/utils/error';
 import { sortBy } from '@shell/utils/sort';
 import { filterBy, findBy } from '@shell/utils/array';
-import { BOTH, CLUSTER_LEVEL, NAMESPACED } from '@/store/type-map';
+import { BOTH, CLUSTER_LEVEL, NAMESPACED } from '@shell/store/type-map';
 import { NAME as EXPLORER } from '@shell/config/product/explorer';
 import { TIMED_OUT, LOGGED_OUT, _FLAGGED, UPGRADED } from '@shell/config/query-params';
 import { setBrand, setVendor } from '@shell/config/private-label';

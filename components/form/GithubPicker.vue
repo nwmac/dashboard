@@ -2,7 +2,7 @@
 import { mapState } from 'vuex';
 import debounce from 'lodash/debounce';
 import { findBy } from '@shell/utils/array';
-import { EXTENDED_SCOPES } from '@/store/github';
+import { EXTENDED_SCOPES } from '@shell/store/github';
 import LabeledSelect from '@/components/form/LabeledSelect';
 
 export const FILE_PATTERNS = {

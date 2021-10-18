@@ -2,7 +2,7 @@
 import EmberPage from '@/components/EmberPage';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
-import { project } from '@/store/type-map';
+import { project } from '@shell/store/type-map';
 
 const PAGES = {
   pipelines:     'pipeline/pipelines',

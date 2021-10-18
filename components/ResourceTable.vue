@@ -1,7 +1,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { get } from '@shell/utils/object';
-import { mapPref, GROUP_RESOURCES } from '@/store/prefs';
+import { mapPref, GROUP_RESOURCES } from '@shell/store/prefs';
 import ButtonGroup from '@/components/ButtonGroup';
 import SortableTable from '@/components/SortableTable';
 import { NAMESPACE } from '@shell/config/table-headers';

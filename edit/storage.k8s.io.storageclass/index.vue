@@ -9,7 +9,7 @@ import RadioGroup from '@/components/form/RadioGroup';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import { _CREATE, _VIEW } from '@shell/config/query-params';
 import { PROVISIONER_OPTIONS } from '@/models/storage.k8s.io.storageclass';
-import { mapFeature, UNSUPPORTED_STORAGE_DRIVERS } from '@/store/features';
+import { mapFeature, UNSUPPORTED_STORAGE_DRIVERS } from '@shell/store/features';
 
 export default {
   name: 'StorageClass',

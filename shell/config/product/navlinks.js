@@ -1,4 +1,4 @@
-import { DSL } from '@/store/type-map';
+import { DSL } from '@shell/store/type-map';
 import { UI } from '@shell/config/types';
 import { NAME as NAME_COL, STATE, AGE } from '@shell/config/table-headers';
 

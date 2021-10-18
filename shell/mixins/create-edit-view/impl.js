@@ -1,5 +1,5 @@
 import { _CREATE, _EDIT, _VIEW } from '@shell/config/query-params';
-import { LAST_NAMESPACE } from '@/store/prefs';
+import { LAST_NAMESPACE } from '@shell/store/prefs';
 import { exceptionToErrorsArray } from '@shell/utils/error';
 import ChildHook, { BEFORE_SAVE_HOOKS, AFTER_SAVE_HOOKS } from '@shell/mixins/child-hook';
 import { clear } from '@shell/utils/array';

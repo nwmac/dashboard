@@ -1,5 +1,5 @@
 import { LOGGING } from '@shell/config/types';
-import { DSL } from '@/store/type-map';
+import { DSL } from '@shell/store/type-map';
 import {
   LOGGING_OUTPUT_PROVIDERS, STATE, NAME as NAME_COL, NAMESPACE as NAMESPACE_COL, AGE, OUTPUT, CLUSTER_OUTPUT, CONFIGURED_PROVIDERS
 } from '@shell/config/table-headers';

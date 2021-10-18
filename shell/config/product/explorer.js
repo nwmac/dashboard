@@ -19,7 +19,7 @@ import {
   ACCESS_KEY, DESCRIPTION, EXPIRES, EXPIRY_STATE, SUB_TYPE, AGE_NORMAN, SCOPE_NORMAN, PERSISTENT_VOLUME_CLAIM, RECLAIM_POLICY, PV_REASON
 } from '@shell/config/table-headers';
 
-import { DSL } from '@/store/type-map';
+import { DSL } from '@shell/store/type-map';
 
 export const NAME = 'explorer';
 

@@ -10,13 +10,13 @@ import { DEFAULT_WORKSPACE } from '@/models/provisioning.cattle.io.cluster';
 import { mapGetters } from 'vuex';
 import { sortBy } from '@shell/utils/sort';
 import { set } from '@shell/utils/object';
-import { mapPref, PROVISIONER, _RKE1, _RKE2 } from '@/store/prefs';
-import { filterAndArrangeCharts } from '@/store/catalog';
+import { mapPref, PROVISIONER, _RKE1, _RKE2 } from '@shell/store/prefs';
+import { filterAndArrangeCharts } from '@shell/store/catalog';
 import { CATALOG } from '@shell/config/labels-annotations';
 import { CAPI, MANAGEMENT } from '@shell/config/types';
-import { mapFeature, RKE2 as RKE2_FEATURE } from '@/store/features';
+import { mapFeature, RKE2 as RKE2_FEATURE } from '@shell/store/features';
 import { allHash } from '@shell/utils/promise';
-import { BLANK_CLUSTER } from '@/store';
+import { BLANK_CLUSTER } from '@shell/store';
 import Rke2Config from './rke2';
 import Import from './import';
 

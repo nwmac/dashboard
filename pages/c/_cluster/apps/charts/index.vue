@@ -11,9 +11,9 @@ import { sortBy } from '@shell/utils/sort';
 import { mapGetters } from 'vuex';
 import Checkbox from '@/components/form/Checkbox';
 import Select from '@/components/form/Select';
-import { mapPref, HIDE_REPOS, SHOW_PRE_RELEASE } from '@/store/prefs';
+import { mapPref, HIDE_REPOS, SHOW_PRE_RELEASE } from '@shell/store/prefs';
 import { removeObject, addObject, findBy } from '@shell/utils/array';
-import { compatibleVersionsFor, filterAndArrangeCharts } from '@/store/catalog';
+import { compatibleVersionsFor, filterAndArrangeCharts } from '@shell/store/catalog';
 import { CATALOG } from '@shell/config/labels-annotations';
 
 export default {

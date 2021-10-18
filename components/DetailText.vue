@@ -1,7 +1,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { asciiLike, nlToBr } from '@shell/utils/string';
-import { HIDE_SENSITIVE } from '@/store/prefs';
+import { HIDE_SENSITIVE } from '@shell/store/prefs';
 import CopyToClipboard from '@/components/CopyToClipboard';
 import CodeMirror from '@/components/CodeMirror';
 

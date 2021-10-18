@@ -41,7 +41,7 @@ import Questions from '@/components/Questions';
 import { normalizeName } from '@/components/form/NameNsDescription.vue';
 import ClusterMembershipEditor from '@/components/form/Members/ClusterMembershipEditor';
 import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret';
-import { LEGACY } from '@/store/features';
+import { LEGACY } from '@shell/store/features';
 import semver from 'semver';
 import { canViewClusterMembershipEditor } from '@/components/form/Members/ClusterMembershipEditor.vue';
 import { SETTING } from '@shell/config/settings';

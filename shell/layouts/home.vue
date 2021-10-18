@@ -3,7 +3,7 @@ import Header from '@/components/nav/Header';
 import Brand from '@shell/mixins/brand';
 import FixedBanner from '@/components/FixedBanner';
 import GrowlManager from '@/components/GrowlManager';
-import { mapPref, DEV } from '@/store/prefs';
+import { mapPref, DEV } from '@shell/store/prefs';
 
 export default {
 

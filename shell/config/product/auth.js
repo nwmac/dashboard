@@ -1,11 +1,11 @@
-import { DSL } from '@/store/type-map';
+import { DSL } from '@shell/store/type-map';
 import { MANAGEMENT, NORMAN } from '@shell/config/types';
 import { uniq } from '@shell/utils/array';
 import {
   GROUP_NAME, GROUP_ROLE_NAME,
   RBAC_BUILTIN, RBAC_DEFAULT, STATE, NAME as HEADER_NAME, AGE, SIMPLE_NAME
 } from '@shell/config/table-headers';
-import { MULTI_CLUSTER } from '@/store/features';
+import { MULTI_CLUSTER } from '@shell/store/features';
 
 export const NAME = 'auth';
 

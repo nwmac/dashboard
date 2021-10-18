@@ -2,7 +2,7 @@
 import debounce from 'lodash/debounce';
 import Group from '@/components/nav/Group';
 import { isMac } from '@shell/utils/platform';
-import { BOTH, ALL } from '@/store/type-map';
+import { BOTH, ALL } from '@shell/store/type-map';
 
 export default {
   components: { Group },

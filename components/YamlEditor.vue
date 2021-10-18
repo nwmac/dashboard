@@ -1,6 +1,6 @@
 <script>
 import jsyaml from 'js-yaml';
-import { mapPref, DIFF } from '@/store/prefs';
+import { mapPref, DIFF } from '@shell/store/prefs';
 import isEmpty from 'lodash/isEmpty';
 import { saferDump } from '@shell/utils/create-yaml';
 import CodeMirror from './CodeMirror';

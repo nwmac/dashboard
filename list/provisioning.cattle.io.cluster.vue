@@ -6,7 +6,7 @@ import { allHash } from '@shell/utils/promise';
 import { CAPI, MANAGEMENT } from '@shell/config/types';
 import { MODE, _IMPORT } from '@shell/config/query-params';
 import { filterOnlyKubernetesClusters } from '@shell/utils/cluster';
-import { mapFeature, HARVESTER as HARVESTER_FEATURE } from '@/store/features';
+import { mapFeature, HARVESTER as HARVESTER_FEATURE } from '@shell/store/features';
 import { NAME as EXPLORER } from '@shell/config/product/explorer';
 
 export default {

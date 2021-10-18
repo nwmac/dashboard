@@ -2,7 +2,7 @@
 import jsyaml from 'js-yaml';
 import merge from 'lodash/merge';
 import isEqual from 'lodash/isEqual';
-import { mapPref, DIFF } from '@/store/prefs';
+import { mapPref, DIFF } from '@shell/store/prefs';
 import { mapGetters } from 'vuex';
 
 import Banner from '@/components/Banner';

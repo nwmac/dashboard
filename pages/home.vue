@@ -1,5 +1,5 @@
 <script>
-import { mapPref, AFTER_LOGIN_ROUTE, READ_WHATS_NEW, HIDE_HOME_PAGE_CARDS } from '@/store/prefs';
+import { mapPref, AFTER_LOGIN_ROUTE, READ_WHATS_NEW, HIDE_HOME_PAGE_CARDS } from '@shell/store/prefs';
 import Banner from '@/components/Banner';
 import BannerGraphic from '@/components/BannerGraphic';
 import IndentedPanel from '@/components/IndentedPanel';
@@ -18,9 +18,9 @@ import { createMemoryFormat, formatSi, parseSi } from '@shell/utils/units';
 import { getVersionInfo, readReleaseNotes, markReadReleaseNotes, markSeenReleaseNotes } from '@shell/utils/version';
 import PageHeaderActions from '@shell/mixins/page-actions';
 import { getVendor } from '@shell/config/private-label';
-import { mapFeature, MULTI_CLUSTER } from '@/store/features';
+import { mapFeature, MULTI_CLUSTER } from '@shell/store/features';
 import { SETTING } from '@shell/config/settings';
-import { BLANK_CLUSTER } from '@/store';
+import { BLANK_CLUSTER } from '@shell/store';
 import { filterOnlyKubernetesClusters } from '@shell/utils/cluster';
 
 const SET_LOGIN_ACTION = 'set-as-login';
