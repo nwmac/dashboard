@@ -6,7 +6,7 @@ import Banner from '@/components/Banner';
 import {
   STATE, NAME, ROLES, VERSION, INTERNAL_EXTERNAL_IP, CPU, RAM, PODS, AGE, KUBE_NODE_OS
 } from '@shell/config/table-headers';
-import metricPoller from '@/mixins/metric-poller';
+import metricPoller from '@shell/mixins/metric-poller';
 
 import {
   CAPI,

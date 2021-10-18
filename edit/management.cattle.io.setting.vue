@@ -2,7 +2,7 @@
 import CruResource from '@/components/CruResource';
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import TextAreaAutoGrow from '@/components/form/TextAreaAutoGrow';
 
 import { ALLOWED_SETTINGS, SETTING } from '@shell/config/settings';

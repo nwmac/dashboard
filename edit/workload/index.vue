@@ -5,7 +5,7 @@ import {
   CONFIG_MAP, SECRET, WORKLOAD_TYPES, NODE, SERVICE, PVC
 } from '@shell/config/types';
 import Tab from '@/components/Tabbed/Tab';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import { allHash } from '@shell/utils/promise';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import LabeledSelect from '@/components/form/LabeledSelect';
@@ -34,7 +34,7 @@ import Labels from '@/components/form/Labels';
 import RadioGroup from '@/components/form/RadioGroup';
 import { UI_MANAGED } from '@shell/config/labels-annotations';
 import { removeObject } from '@shell/utils/array';
-import { BEFORE_SAVE_HOOKS } from '~/mixins/child-hook';
+import { BEFORE_SAVE_HOOKS } from '~shell/mixins/child-hook';
 
 export default {
   name:       'CruWorkload',

@@ -12,7 +12,7 @@ import CruResourceFooter from '@/components/CruResourceFooter';
 import {
   _EDIT, _VIEW, AS, _YAML, _UNFLAG, SUB_TYPE
 } from '@shell/config/query-params';
-import { BEFORE_SAVE_HOOKS } from '@/mixins/child-hook';
+import { BEFORE_SAVE_HOOKS } from '@shell/mixins/child-hook';
 
 export default {
   components: {

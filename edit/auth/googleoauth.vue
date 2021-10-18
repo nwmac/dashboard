@@ -1,7 +1,7 @@
 <script>
 import Loading from '@/components/Loading';
-import CreateEditView from '@/mixins/create-edit-view';
-import AuthConfig from '@/mixins/auth-config';
+import CreateEditView from '@shell/mixins/create-edit-view';
+import AuthConfig from '@shell/mixins/auth-config';
 
 import CruResource from '@/components/CruResource';
 import InfoBox from '@/components/InfoBox';

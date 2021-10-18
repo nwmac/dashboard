@@ -14,7 +14,7 @@ import {
   _UNFLAG,
   _EDIT,
 } from '@shell/config/query-params';
-import { BEFORE_SAVE_HOOKS, AFTER_SAVE_HOOKS } from '@/mixins/child-hook';
+import { BEFORE_SAVE_HOOKS, AFTER_SAVE_HOOKS } from '@shell/mixins/child-hook';
 import { exceptionToErrorsArray } from '@shell/utils/error';
 
 export default {

@@ -1,5 +1,5 @@
 <script>
-import Closeable from '@/mixins/closeable';
+import Closeable from '@shell/mixins/closeable';
 
 export default {
   mixins: [Closeable],

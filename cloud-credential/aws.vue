@@ -1,6 +1,6 @@
 <script>
 import Loading from '@/components/Loading';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 

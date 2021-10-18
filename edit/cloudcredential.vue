@@ -1,7 +1,7 @@
 <script>
 import { TYPES } from '@/models/secret.class';
 import { MANAGEMENT, NORMAN, SCHEMA } from '@shell/config/types';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import CruResource from '@/components/CruResource';
 import { _CREATE } from '@shell/config/query-params';

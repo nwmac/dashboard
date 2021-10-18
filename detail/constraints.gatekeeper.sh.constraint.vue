@@ -1,5 +1,5 @@
 <script>
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import SortableTable from '@/components/SortableTable';
 import { CONSTRAINT_VIOLATION_RESOURCE_LINK, CONSTRAINT_VIOLATION_MESSAGE, CONSTRAINT_VIOLATION_TYPE } from '@shell/config/table-headers';
 

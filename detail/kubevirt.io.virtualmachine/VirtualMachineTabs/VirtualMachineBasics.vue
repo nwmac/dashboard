@@ -4,7 +4,7 @@ import VMConsoleBar from '@/components/VMConsoleBar';
 import LabelValue from '@/components/LabelValue';
 import InputOrDisplay from '@/components/InputOrDisplay';
 import { HCI } from '@shell/config/types';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 
 const UNDEFINED = 'n/a';
 

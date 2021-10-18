@@ -3,7 +3,7 @@ import findKey from 'lodash/findKey';
 import has from 'lodash/has';
 import reduce from 'lodash/reduce';
 
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import FleetSummary from '@/components/FleetSummary';
 import ResourceTabs from '@/components/form/ResourceTabs';
 

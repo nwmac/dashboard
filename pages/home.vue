@@ -16,7 +16,7 @@ import { STATE } from '@shell/config/table-headers';
 import { MODE, _IMPORT } from '@shell/config/query-params';
 import { createMemoryFormat, formatSi, parseSi } from '@shell/utils/units';
 import { getVersionInfo, readReleaseNotes, markReadReleaseNotes, markSeenReleaseNotes } from '@shell/utils/version';
-import PageHeaderActions from '@/mixins/page-actions';
+import PageHeaderActions from '@shell/mixins/page-actions';
 import { getVendor } from '@shell/config/private-label';
 import { mapFeature, MULTI_CLUSTER } from '@/store/features';
 import { SETTING } from '@shell/config/settings';

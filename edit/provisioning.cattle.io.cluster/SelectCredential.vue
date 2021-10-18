@@ -2,7 +2,7 @@
 import Loading from '@/components/Loading';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import { NORMAN } from '@shell/config/types';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import CruResource from '@/components/CruResource';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import Banner from '@/components/Banner';

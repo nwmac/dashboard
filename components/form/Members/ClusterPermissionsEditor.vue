@@ -1,6 +1,6 @@
 
 <script>
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import SelectPrincipal from '@/components/auth/SelectPrincipal';
 import { MANAGEMENT, NORMAN } from '@shell/config/types';
 import RadioGroup from '@/components/form/RadioGroup';

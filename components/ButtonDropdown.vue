@@ -2,7 +2,7 @@
 import { createPopper } from '@popperjs/core';
 import { get } from '@shell/utils/object';
 import isString from 'lodash/isString';
-import VueSelectOverrides from '@/mixins/vue-select-overrides';
+import VueSelectOverrides from '@shell/mixins/vue-select-overrides';
 import $ from 'jquery';
 
 export default {

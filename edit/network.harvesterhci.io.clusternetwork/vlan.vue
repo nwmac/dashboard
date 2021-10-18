@@ -3,7 +3,7 @@ import Vue from 'vue';
 import LabeledInput from '@/components/form/LabeledInput';
 import RadioGroup from '@/components/form/RadioGroup';
 import Tip from '@/components/Tip';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 
 export default {
   name:       'EditHarvesterVlan',

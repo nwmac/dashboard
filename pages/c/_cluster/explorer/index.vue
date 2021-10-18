@@ -33,7 +33,7 @@ import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
 import { allDashboardsExist } from '@shell/utils/grafana';
 import EtcdInfoBanner from '@/components/EtcdInfoBanner';
-import metricPoller from '@/mixins/metric-poller';
+import metricPoller from '@shell/mixins/metric-poller';
 import EmberPage from '@/components/EmberPage';
 import ResourceSummary, { resourceCounts } from '@/components/ResourceSummary';
 import HardwareResourceGauge from '@/components/HardwareResourceGauge';

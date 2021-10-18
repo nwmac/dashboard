@@ -2,7 +2,7 @@
 import has from 'lodash/has';
 import isEmpty from 'lodash/isEmpty';
 
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import ResourceTable from '@/components/ResourceTable';
 import ResourceTabs from '@/components/form/ResourceTabs';
 import SortableTable from '@/components/SortableTable';

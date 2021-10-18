@@ -1,5 +1,5 @@
 <script>
-import Brand from '@/mixins/brand';
+import Brand from '@shell/mixins/brand';
 
 export default {
   name:   'NuxtError',

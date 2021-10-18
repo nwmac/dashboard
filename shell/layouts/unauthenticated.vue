@@ -1,5 +1,5 @@
 <script>
-import Brand from '@/mixins/brand';
+import Brand from '@shell/mixins/brand';
 import FixedBanner from '@/components/FixedBanner';
 
 export default {

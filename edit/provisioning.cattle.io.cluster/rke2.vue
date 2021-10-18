@@ -5,7 +5,7 @@ import isArray from 'lodash/isArray';
 import merge from 'lodash/merge';
 import { mapGetters } from 'vuex';
 
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 
 import { CAPI, MANAGEMENT, NORMAN } from '@shell/config/types';
 import { _CREATE, _EDIT, _VIEW } from '@shell/config/query-params';

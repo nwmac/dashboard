@@ -1,5 +1,5 @@
 <script>
-import Login from '@/mixins/login';
+import Login from '@shell/mixins/login';
 export default {
   mixins: [Login],
 

@@ -16,7 +16,7 @@ import HardwareResourceGauge from '@/components/HardwareResourceGauge';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
 import DashboardMetrics from '@/components/DashboardMetrics';
-import metricPoller from '@/mixins/metric-poller';
+import metricPoller from '@shell/mixins/metric-poller';
 import { allDashboardsExist } from '@shell/utils/grafana';
 import HarvesterUpgrade from './HarvesterUpgrade';
 

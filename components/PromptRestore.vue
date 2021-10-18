@@ -9,7 +9,7 @@ import { exceptionToErrorsArray } from '@shell/utils/error';
 import { CAPI } from '@shell/config/types';
 import { set } from '@shell/utils/object';
 import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret';
-import ChildHook, { BEFORE_SAVE_HOOKS } from '@/mixins/child-hook';
+import ChildHook, { BEFORE_SAVE_HOOKS } from '@shell/mixins/child-hook';
 
 export default {
   components: {

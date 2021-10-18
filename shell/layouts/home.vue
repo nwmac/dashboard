@@ -1,6 +1,6 @@
 <script>
 import Header from '@/components/nav/Header';
-import Brand from '@/mixins/brand';
+import Brand from '@shell/mixins/brand';
 import FixedBanner from '@/components/FixedBanner';
 import GrowlManager from '@/components/GrowlManager';
 import { mapPref, DEV } from '@/store/prefs';

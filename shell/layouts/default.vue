@@ -11,7 +11,7 @@ import PromptModal from '@/components/PromptModal';
 import AssignTo from '@/components/AssignTo';
 import Group from '@/components/nav/Group';
 import Header from '@/components/nav/Header';
-import Brand from '@/mixins/brand';
+import Brand from '@shell/mixins/brand';
 import FixedBanner from '@/components/FixedBanner';
 import {
   COUNT, SCHEMA, MANAGEMENT, UI, CATALOG, HCI
@@ -25,7 +25,7 @@ import isEqual from 'lodash/isEqual';
 import { ucFirst } from '@shell/utils/string';
 import { getVersionInfo, markSeenReleaseNotes } from '@shell/utils/version';
 import { sortBy } from '@shell/utils/sort';
-import PageHeaderActions from '@/mixins/page-actions';
+import PageHeaderActions from '@shell/mixins/page-actions';
 
 const SET_LOGIN_ACTION = 'set-as-login';
 

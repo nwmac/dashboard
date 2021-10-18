@@ -1,6 +1,6 @@
 <script>
 import Loading from '@/components/Loading';
-import ChartMixin from '@/mixins/chart';
+import ChartMixin from '@shell/mixins/chart';
 import Banner from '@/components/Banner';
 import ChartReadme from '@/components/ChartReadme';
 import LazyImage from '@/components/LazyImage';

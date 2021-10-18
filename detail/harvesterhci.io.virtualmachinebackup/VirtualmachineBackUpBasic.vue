@@ -1,6 +1,6 @@
 <script>
 import { HCI } from '@shell/config/types';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import CpuMemory from '@/edit/kubevirt.io.virtualmachine/VirtualMachineCpuMemory';
 import LabelValue from '@/components/LabelValue';
 

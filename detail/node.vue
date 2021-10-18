@@ -13,13 +13,13 @@ import {
 import ResourceTabs from '@/components/form/ResourceTabs';
 import EmberPage from '@/components/EmberPage';
 import { METRIC, POD } from '@shell/config/types';
-import createEditView from '@/mixins/create-edit-view';
+import createEditView from '@shell/mixins/create-edit-view';
 import { formatSi, exponentNeeded, UNITS } from '@shell/utils/units';
 import DashboardMetrics from '@/components/DashboardMetrics';
 import { mapGetters } from 'vuex';
 import { allDashboardsExist } from '@shell/utils/grafana';
 import Loading from '@/components/Loading';
-import metricPoller from '@/mixins/metric-poller';
+import metricPoller from '@shell/mixins/metric-poller';
 import { haveV1Monitoring } from '@shell/utils/monitoring';
 
 const NODE_METRICS_DETAIL_URL = '/api/v1/namespaces/cattle-monitoring-system/services/http:rancher-monitoring-grafana:80/proxy/d/rancher-node-detail-1/rancher-node-detail?orgId=1';

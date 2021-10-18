@@ -1,7 +1,7 @@
 <script>
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
-import metricPoller from '@/mixins/metric-poller';
+import metricPoller from '@shell/mixins/metric-poller';
 import { METRIC, NODE, HCI, LONGHORN } from '@shell/config/types';
 import { allHash } from '@shell/utils/promise';
 import { formatSi } from '@shell/utils/units';

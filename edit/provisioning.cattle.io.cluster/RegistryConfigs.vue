@@ -4,7 +4,7 @@ import { set } from '@shell/utils/object';
 import LabeledInput from '@/components/form/LabeledInput';
 import Checkbox from '@/components/form/Checkbox';
 import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import SecretSelector from '@/components/form/SecretSelector';
 import { TYPES } from '@/models/secret.class';
 

@@ -1,8 +1,8 @@
 <script>
 import { createPopper } from '@popperjs/core';
 import { get } from '@shell/utils/object';
-import LabeledFormElement from '@/mixins/labeled-form-element';
-import VueSelectOverrides from '@/mixins/vue-select-overrides';
+import LabeledFormElement from '@shell/mixins/labeled-form-element';
+import VueSelectOverrides from '@shell/mixins/vue-select-overrides';
 import LabeledTooltip from '@/components/form/LabeledTooltip';
 import $ from 'jquery';
 import { onClickOption } from '@shell/utils/select';

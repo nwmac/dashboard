@@ -1,5 +1,5 @@
 <script>
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import Tab from '@/components/Tabbed/Tab';
 import ResourceTabs from '@/components/form/ResourceTabs';
 import SortableTable from '@/components/SortableTable';
@@ -7,7 +7,7 @@ import { STATE, SIMPLE_NAME, IMAGE } from '@shell/config/table-headers';
 import { sortableNumericSuffix } from '@shell/utils/sort';
 import { findBy } from '@shell/utils/array';
 import DashboardMetrics from '@/components/DashboardMetrics';
-import V1WorkloadMetrics from '@/mixins/v1-workload-metrics';
+import V1WorkloadMetrics from '@shell/mixins/v1-workload-metrics';
 import { mapGetters } from 'vuex';
 import { allDashboardsExist } from '@shell/utils/grafana';
 import Loading from '@/components/Loading';

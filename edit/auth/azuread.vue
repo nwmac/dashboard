@@ -1,6 +1,6 @@
 <script>
 import Loading from '@/components/Loading';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import CruResource from '@/components/CruResource';
 import InfoBox from '@/components/InfoBox';
 import RadioGroup from '@/components/form/RadioGroup';
@@ -9,7 +9,7 @@ import Banner from '@/components/Banner';
 import AuthBanner from '@/components/auth/AuthBanner';
 import CopyToClipboardText from '@/components/CopyToClipboardText.vue';
 import AllowedPrincipals from '@/components/auth/AllowedPrincipals';
-import AuthConfig from '@/mixins/auth-config';
+import AuthConfig from '@shell/mixins/auth-config';
 
 const TENANT_ID_TOKEN = '__[[TENANT_ID]]__';
 

@@ -1,5 +1,5 @@
 <script>
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import Loading from '@/components/Loading';
 import CruResource from '@/components/CruResource';
 import SelectIconGrid from '@/components/SelectIconGrid';

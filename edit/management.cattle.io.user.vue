@@ -1,6 +1,6 @@
 <script>
 import { MANAGEMENT, NORMAN } from '@shell/config/types';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import GlobalRoleBindings from '@/components/GlobalRoleBindings.vue';
 import ChangePassword from '@/components/form/ChangePassword';
 import LabeledInput from '@/components/form/LabeledInput';

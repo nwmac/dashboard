@@ -5,7 +5,7 @@ import { ucFirst } from '@shell/utils/string';
 import { isSimpleKeyValue } from '@shell/utils/object';
 import { _CREATE, _VIEW } from '@shell/config/query-params';
 import { SCHEMA, NAMESPACE } from '@shell/config/types';
-import CreateEditView from '@/mixins/create-edit-view';
+import CreateEditView from '@shell/mixins/create-edit-view';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import RadioGroup from '@/components/form/RadioGroup';
 import RuleSelector from '@/components/form/RuleSelector';
