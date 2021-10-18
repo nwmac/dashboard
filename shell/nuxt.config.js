@@ -147,6 +147,7 @@ export default function(dir, excludes) {
 
     dir: {
       layouts: path.join(SHELL, 'layouts'),
+      pages:   path.join(SHELL, 'pages'),
       static:  path.join(SHELL, 'static'),
       store:   path.join(SHELL, 'store'),
     },

@@ -4,7 +4,7 @@ import ResourceSummary, { resourceCounts } from '@/components/ResourceSummary';
 import {
   NAMESPACE, MANAGEMENT, NODE, COUNT, CATALOG
 } from '@shell/config/types';
-import { RESOURCES } from '@/pages/c/_cluster/explorer/index';
+import { RESOURCES } from '@shell/pages/c/_cluster/explorer/index';
 
 export default {
   components: {
