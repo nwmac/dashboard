@@ -1,17 +1,17 @@
 <script>
-import Checkbox from '@/components/form/Checkbox';
+import Checkbox from '@shell/components/form/Checkbox';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import Tab from '@/components/Tabbed/Tab';
-import RadioGroup from '@/components/form/RadioGroup';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import UnitInput from '@/components/form/UnitInput';
+import CruResource from '@shell/components/CruResource';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import Tab from '@shell/components/Tabbed/Tab';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import UnitInput from '@shell/components/form/UnitInput';
 import uniq from 'lodash/uniq';
 import { _CREATE } from '@shell/config/query-params';
 import { STORAGE_CLASS, PV } from '@shell/config/types';
-import StatusTable from '@/components/StatusTable';
-import ResourceTabs from '@/components/form/ResourceTabs';
+import StatusTable from '@shell/components/StatusTable';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
 
 const DEFAULT_STORAGE = '10Gi';
 

@@ -1,14 +1,14 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import Labels from '@/components/form/Labels';
-import Loading from '@/components/Loading';
-import NameNsDescription from '@/components/form/NameNsDescription';
+import CruResource from '@shell/components/CruResource';
+import Labels from '@shell/components/form/Labels';
+import Loading from '@shell/components/Loading';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
 import { FLEET, MANAGEMENT } from '@shell/config/types';
-// import RoleBindings from '@/components/RoleBindings';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import { SCOPE_NAMESPACE, SCOPE_CLUSTER } from '@/components/RoleBindings.vue';
+// import RoleBindings from '@shell/components/RoleBindings';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import { SCOPE_NAMESPACE, SCOPE_CLUSTER } from '@shell/components/RoleBindings.vue';
 import { NAME as FLEET_NAME } from '@shell/config/product/fleet';
 
 export default {

@@ -1,6 +1,6 @@
 <script>
-import LabeledInput from '@/components/form/LabeledInput';
-import Banner from '@/components/Banner';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import Banner from '@shell/components/Banner';
 
 export default {
   components: { Banner, LabeledInput },

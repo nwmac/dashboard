@@ -3,19 +3,19 @@ import dayjs from 'dayjs';
 import minMax from 'dayjs/plugin/minMax';
 import utc from 'dayjs/plugin/utc';
 import { mapGetters } from 'vuex';
-import Loading from '@/components/Loading';
-import SortableTable from '@/components/SortableTable';
+import Loading from '@shell/components/Loading';
+import SortableTable from '@shell/components/SortableTable';
 import { allHash } from '@shell/utils/promise';
 import { parseSi, formatSi, exponentNeeded, UNITS } from '@shell/utils/units';
 import { REASON } from '@shell/config/table-headers';
 import {
   EVENT, METRIC, NODE, HCI, SERVICE, PVC, LONGHORN
 } from '@shell/config/types';
-import ResourceSummary, { resourceCounts } from '@/components/ResourceSummary';
-import HardwareResourceGauge from '@/components/HardwareResourceGauge';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import DashboardMetrics from '@/components/DashboardMetrics';
+import ResourceSummary, { resourceCounts } from '@shell/components/ResourceSummary';
+import HardwareResourceGauge from '@shell/components/HardwareResourceGauge';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import DashboardMetrics from '@shell/components/DashboardMetrics';
 import metricPoller from '@shell/mixins/metric-poller';
 import { allDashboardsExist } from '@shell/utils/grafana';
 import HarvesterUpgrade from './HarvesterUpgrade';

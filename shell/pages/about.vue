@@ -1,6 +1,6 @@
 <script>
-import Loading from '@/components/Loading';
-import BackLink from '@/components/BackLink';
+import Loading from '@shell/components/Loading';
+import BackLink from '@shell/components/BackLink';
 import BackRoute from '@shell/mixins/back-link';
 import { MANAGEMENT } from '@shell/config/types';
 import { SETTING } from '@shell/config/settings';

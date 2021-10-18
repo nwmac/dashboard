@@ -1,14 +1,14 @@
 <script>
 import { mapPref, AFTER_LOGIN_ROUTE, READ_WHATS_NEW, HIDE_HOME_PAGE_CARDS } from '@shell/store/prefs';
-import Banner from '@/components/Banner';
-import BannerGraphic from '@/components/BannerGraphic';
-import IndentedPanel from '@/components/IndentedPanel';
-import SortableTable from '@/components/SortableTable';
-import BadgeState from '@/components/BadgeState';
-import CommunityLinks from '@/components/CommunityLinks';
-import SimpleBox from '@/components/SimpleBox';
-import LandingPagePreference from '@/components/LandingPagePreference';
-import SingleClusterInfo from '@/components/SingleClusterInfo';
+import Banner from '@shell/components/Banner';
+import BannerGraphic from '@shell/components/BannerGraphic';
+import IndentedPanel from '@shell/components/IndentedPanel';
+import SortableTable from '@shell/components/SortableTable';
+import BadgeState from '@shell/components/BadgeState';
+import CommunityLinks from '@shell/components/CommunityLinks';
+import SimpleBox from '@shell/components/SimpleBox';
+import LandingPagePreference from '@shell/components/LandingPagePreference';
+import SingleClusterInfo from '@shell/components/SingleClusterInfo';
 import { mapGetters, mapState } from 'vuex';
 import { MANAGEMENT, CAPI } from '@shell/config/types';
 import { NAME as MANAGER } from '@shell/config/product/manager';

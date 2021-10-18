@@ -1,7 +1,7 @@
 <script>
 import { UI } from '@shell/config/types';
 import { filterBy } from '@shell/utils/array';
-import SelectIconGrid from '@/components/SelectIconGrid';
+import SelectIconGrid from '@shell/components/SelectIconGrid';
 
 export default {
   components: { SelectIconGrid },

@@ -1,9 +1,9 @@
 <script>
-import Banner from '@/components/Banner';
-import UnitInput from '@/components/form/UnitInput';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import InputOrDisplay from '@/components/InputOrDisplay';
+import Banner from '@shell/components/Banner';
+import UnitInput from '@shell/components/form/UnitInput';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import InputOrDisplay from '@shell/components/InputOrDisplay';
 import { HCI, PVC } from '@shell/config/types';
 
 export default {

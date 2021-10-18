@@ -1,15 +1,15 @@
 <script>
 import day from 'dayjs';
 import { mapGetters } from 'vuex';
-import BackLink from '@/components/BackLink';
+import BackLink from '@shell/components/BackLink';
 import BackRoute from '@shell/mixins/back-link';
-import ButtonGroup from '@/components/ButtonGroup';
-import Checkbox from '@/components/form/Checkbox';
-import LandingPagePreference from '@/components/LandingPagePreference';
+import ButtonGroup from '@shell/components/ButtonGroup';
+import Checkbox from '@shell/components/form/Checkbox';
+import LandingPagePreference from '@shell/components/LandingPagePreference';
 import {
   mapPref, THEME, KEYMAP, DEV, DATE_FORMAT, TIME_FORMAT, ROWS_PER_PAGE, HIDE_DESC, SHOW_PRE_RELEASE, MENU_MAX_CLUSTERS
 } from '@shell/store/prefs';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 import { addObject } from '@shell/utils/array';
 
 export default {

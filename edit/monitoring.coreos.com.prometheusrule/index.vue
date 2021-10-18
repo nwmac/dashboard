@@ -3,13 +3,13 @@ import CreateEditView from '@shell/mixins/create-edit-view';
 
 import { removeAt } from '@shell/utils/array';
 
-import Banner from '@/components/Banner';
-import CruResource from '@/components/CruResource';
-import LabeledInput from '@/components/form/LabeledInput';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import Tab from '@/components/Tabbed/Tab';
-import Tabbed from '@/components/Tabbed';
-import UnitInput from '@/components/form/UnitInput';
+import Banner from '@shell/components/Banner';
+import CruResource from '@shell/components/CruResource';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import Tab from '@shell/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
+import UnitInput from '@shell/components/form/UnitInput';
 import { _CREATE } from '@shell/config/query-params';
 import isString from 'lodash/isString';
 import isEmpty from 'lodash/isEmpty';

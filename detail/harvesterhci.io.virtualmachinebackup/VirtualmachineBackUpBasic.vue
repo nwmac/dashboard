@@ -2,7 +2,7 @@
 import { HCI } from '@shell/config/types';
 import CreateEditView from '@shell/mixins/create-edit-view';
 import CpuMemory from '@/edit/kubevirt.io.virtualmachine/VirtualMachineCpuMemory';
-import LabelValue from '@/components/LabelValue';
+import LabelValue from '@shell/components/LabelValue';
 
 const UNDEFINED = 'n/a';
 

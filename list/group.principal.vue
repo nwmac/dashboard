@@ -1,9 +1,9 @@
 <script>
-import ResourceTable from '@/components/ResourceTable';
-import Loading from '@/components/Loading';
-import Masthead from '@/components/ResourceList/Masthead';
+import ResourceTable from '@shell/components/ResourceTable';
+import Loading from '@shell/components/Loading';
+import Masthead from '@shell/components/ResourceList/Masthead';
 import { NORMAN, MANAGEMENT } from '@shell/config/types';
-import AsyncButton from '@/components/AsyncButton';
+import AsyncButton from '@shell/components/AsyncButton';
 import { applyProducts } from '@shell/store/type-map';
 import { NAME } from '@shell/config/product/auth';
 import { MODE, _EDIT } from '@shell/config/query-params';

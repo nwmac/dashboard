@@ -1,7 +1,7 @@
 <script>
-import ConsumptionGauge from '@/components/ConsumptionGauge';
-import LabelValue from '@/components/LabelValue';
-import Banner from '@/components/Banner';
+import ConsumptionGauge from '@shell/components/ConsumptionGauge';
+import LabelValue from '@shell/components/LabelValue';
+import Banner from '@shell/components/Banner';
 import { formatSi, exponentNeeded, UNITS } from '@shell/utils/units';
 import { HCI } from '@shell/config/labels-annotations';
 import { LONGHORN } from '@shell/config/types';

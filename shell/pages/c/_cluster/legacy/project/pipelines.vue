@@ -1,7 +1,7 @@
 <script>
-import EmberPage from '@/components/EmberPage';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
+import EmberPage from '@shell/components/EmberPage';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
 import { project } from '@shell/store/type-map';
 
 const PAGES = {

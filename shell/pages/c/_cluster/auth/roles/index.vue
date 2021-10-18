@@ -1,9 +1,9 @@
 <script>
-import Tab from '@/components/Tabbed/Tab';
-import Tabbed from '@/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
 import { MANAGEMENT } from '@shell/config/types';
-import ResourceTable from '@/components/ResourceTable';
-import Loading from '@/components/Loading';
+import ResourceTable from '@shell/components/ResourceTable';
+import Loading from '@shell/components/Loading';
 import { SUBTYPE_MAPPING } from '@/models/management.cattle.io.roletemplate';
 import { NAME } from '@shell/config/product/auth';
 import { BLANK_CLUSTER } from '@shell/store';

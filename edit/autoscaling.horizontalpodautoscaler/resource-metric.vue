@@ -1,5 +1,5 @@
 <script>
-import LabeledSelect from '@/components/form/LabeledSelect';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 import MetricTarget from '@/edit/autoscaling.horizontalpodautoscaler/metric-target';
 
 export const DEFAULT_RESOURCE_METRIC = {

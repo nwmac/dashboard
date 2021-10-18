@@ -1,17 +1,17 @@
 <script>
-import Loading from '@/components/Loading';
+import Loading from '@shell/components/Loading';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import LabeledSelect from '@/components/form/LabeledSelect';
-// import Checkbox from '@/components/form/Checkbox';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+// import Checkbox from '@shell/components/form/Checkbox';
 import { exceptionToErrorsArray, stringify } from '@shell/utils/error';
-import Banner from '@/components/Banner';
-import UnitInput from '@/components/form/UnitInput';
-import Card from '@/components/Card';
-import RadioGroup from '@/components/form/RadioGroup';
-import KeyValue from '@/components/form/KeyValue';
-import LabeledInput from '@/components/form/LabeledInput';
-import ArrayListSelect from '@/components/form/ArrayListSelect';
-import YamlEditor from '@/components/YamlEditor';
+import Banner from '@shell/components/Banner';
+import UnitInput from '@shell/components/form/UnitInput';
+import Card from '@shell/components/Card';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import KeyValue from '@shell/components/form/KeyValue';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import ArrayListSelect from '@shell/components/form/ArrayListSelect';
+import YamlEditor from '@shell/components/YamlEditor';
 import { get, set } from '@shell/utils/object';
 import { integerString, keyValueStrings } from '@shell/utils/computed';
 import { _CREATE } from '@shell/config/query-params';

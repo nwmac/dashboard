@@ -1,16 +1,16 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
 
-import CruResource from '@/components/CruResource';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import Labels from '@/components/form/Labels';
-import Loading from '@/components/Loading';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import Tab from '@/components/Tabbed/Tab';
-import Tabbed from '@/components/Tabbed';
+import CruResource from '@shell/components/CruResource';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import Labels from '@shell/components/form/Labels';
+import Loading from '@shell/components/Loading';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import Tab from '@shell/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
 import MetricsRow from '@/edit/autoscaling.horizontalpodautoscaler/metrics-row';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
 import { DEFAULT_RESOURCE_METRIC } from '@/edit/autoscaling.horizontalpodautoscaler/resource-metric';
 
 import { API_SERVICE, SCALABLE_WORKLOAD_TYPES } from '@shell/config/types';

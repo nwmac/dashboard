@@ -1,7 +1,7 @@
 <script>
-import RadioGroup from '@/components/form/RadioGroup';
-import LabeledInput from '@/components/form/LabeledInput';
-import FileSelector, { createOnSelected } from '@/components/form/FileSelector';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import FileSelector, { createOnSelected } from '@shell/components/form/FileSelector';
 import { set } from '@shell/utils/object';
 import isEmpty from 'lodash/isEmpty';
 

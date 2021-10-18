@@ -1,19 +1,19 @@
 <script>
 import { mapGetters } from 'vuex';
-import ContainerResourceLimit from '@/components/ContainerResourceLimit';
+import ContainerResourceLimit from '@shell/components/ContainerResourceLimit';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import Labels from '@/components/form/Labels';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import ResourceQuota from '@/components/form/ResourceQuota';
-import Tab from '@/components/Tabbed/Tab';
-import Tabbed from '@/components/Tabbed';
-import NameNsDescription from '@/components/form/NameNsDescription';
+import CruResource from '@shell/components/CruResource';
+import Labels from '@shell/components/form/Labels';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import ResourceQuota from '@shell/components/form/ResourceQuota';
+import Tab from '@shell/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
 import { MANAGEMENT } from '@shell/config/types';
 import { NAME } from '@shell/config/product/explorer';
 import { PROJECT_ID } from '@shell/config/query-params';
-import ProjectMembershipEditor from '@/components/form/Members/ProjectMembershipEditor';
-import { canViewProjectMembershipEditor } from '@/components/form/Members/ProjectMembershipEditor.vue';
+import ProjectMembershipEditor from '@shell/components/form/Members/ProjectMembershipEditor';
+import { canViewProjectMembershipEditor } from '@shell/components/form/Members/ProjectMembershipEditor.vue';
 
 export default {
   components: {

@@ -1,9 +1,9 @@
 <script>
 import isEmpty from 'lodash/isEmpty';
 
-import Checkbox from '@/components/form/Checkbox';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import RadioGroup from '@/components/form/RadioGroup';
+import Checkbox from '@shell/components/form/Checkbox';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import RadioGroup from '@shell/components/form/RadioGroup';
 
 const DEFAULT_MONITORING_NAMESPACE = 'cattle-monitoring-system';
 

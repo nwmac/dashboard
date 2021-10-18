@@ -1,9 +1,9 @@
 <script>
-import CopyToClipboardText from '@/components/CopyToClipboardText';
-import LabelValue from '@/components/LabelValue';
+import CopyToClipboardText from '@shell/components/CopyToClipboardText';
+import LabelValue from '@shell/components/LabelValue';
 import { DESCRIPTION, HCI } from '@shell/config/labels-annotations';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
 import { findBy } from '@shell/utils/array';
 import { get } from '@shell/utils/object';
 

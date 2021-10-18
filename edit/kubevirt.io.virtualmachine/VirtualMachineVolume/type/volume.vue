@@ -1,10 +1,10 @@
 <script>
-import Banner from '@/components/Banner';
-import Loading from '@/components/Loading';
-import UnitInput from '@/components/form/UnitInput';
-import InputOrDisplay from '@/components/InputOrDisplay';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import Banner from '@shell/components/Banner';
+import Loading from '@shell/components/Loading';
+import UnitInput from '@shell/components/form/UnitInput';
+import InputOrDisplay from '@shell/components/InputOrDisplay';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 
 import { PVC } from '@shell/config/types';
 

@@ -1,10 +1,10 @@
 <script>
 import { MANAGEMENT, NORMAN, VIRTUAL_TYPES } from '@shell/config/types';
-import ResourceTable from '@/components/ResourceTable';
-import Loading from '@/components/Loading';
-import Masthead from '@/components/ResourceList/Masthead';
+import ResourceTable from '@shell/components/ResourceTable';
+import Loading from '@shell/components/Loading';
+import Masthead from '@shell/components/ResourceList/Masthead';
 import { AGE, ROLE, STATE, PRINCIPAL } from '@shell/config/table-headers';
-import { canViewClusterPermissionsEditor } from '@/components/form/Members/ClusterPermissionsEditor.vue';
+import { canViewClusterPermissionsEditor } from '@shell/components/form/Members/ClusterPermissionsEditor.vue';
 
 export default {
   components: {

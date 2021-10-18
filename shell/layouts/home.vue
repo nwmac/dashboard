@@ -1,8 +1,8 @@
 <script>
-import Header from '@/components/nav/Header';
+import Header from '@shell/components/nav/Header';
 import Brand from '@shell/mixins/brand';
-import FixedBanner from '@/components/FixedBanner';
-import GrowlManager from '@/components/GrowlManager';
+import FixedBanner from '@shell/components/FixedBanner';
+import GrowlManager from '@shell/components/GrowlManager';
 import { mapPref, DEV } from '@shell/store/prefs';
 
 export default {

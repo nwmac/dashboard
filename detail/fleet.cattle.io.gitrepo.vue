@@ -1,8 +1,8 @@
 <script>
-import ResourceTabs from '@/components/form/ResourceTabs';
-import FleetSummary from '@/components/FleetSummary';
-import FleetResources from '@/components/FleetResources';
-import Tab from '@/components/Tabbed/Tab';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+import FleetSummary from '@shell/components/FleetSummary';
+import FleetResources from '@shell/components/FleetResources';
+import Tab from '@shell/components/Tabbed/Tab';
 import { FLEET } from '@shell/config/types';
 
 export default {

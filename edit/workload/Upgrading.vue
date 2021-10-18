@@ -1,11 +1,11 @@
 <script>
 import { get } from '@shell/utils/object';
-import RadioGroup from '@/components/form/RadioGroup';
-import UnitInput from '@/components/form/UnitInput';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import UnitInput from '@shell/components/form/UnitInput';
 import { WORKLOAD_TYPES } from '@shell/config/types';
 import { _CREATE } from '@shell/config/query-params';
 import { mapGetters } from 'vuex';
-import InputWithSelect from '@/components/form/InputWithSelect';
+import InputWithSelect from '@shell/components/form/InputWithSelect';
 
 export default {
   components: {

@@ -1,15 +1,15 @@
 <script>
 import pickBy from 'lodash/pickBy';
 import { mapGetters } from 'vuex';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import Footer from '@/components/form/Footer';
-import InfoBox from '@/components/InfoBox';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
-import ButtonDropdown from '@/components/ButtonDropdown';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import Footer from '@shell/components/form/Footer';
+import InfoBox from '@shell/components/InfoBox';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
+import ButtonDropdown from '@shell/components/ButtonDropdown';
 import CreateEditView from '@shell/mixins/create-edit-view';
 import { HCI as HCI_LABELS_ANNOTATIONS } from '@shell/config/labels-annotations';
 import { HCI, LONGHORN } from '@shell/config/types';
@@ -19,9 +19,9 @@ import { findBy, uniq } from '@shell/utils/array';
 import { matchesSomeRegex } from '@shell/utils/string';
 import { clone } from '@shell/utils/object';
 import { exceptionToErrorsArray } from '@shell/utils/error';
-import KeyValue from '@/components/form/KeyValue';
+import KeyValue from '@shell/components/form/KeyValue';
 import { sortBy } from '@shell/utils/sort';
-import Banner from '@/components/Banner';
+import Banner from '@shell/components/Banner';
 import HarvesterDisk from './HarvesterDisk';
 
 const LONGHORN_SYSTEM = 'longhorn-system';

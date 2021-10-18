@@ -1,5 +1,5 @@
 <script>
-import IndentedPanel from '@/components/IndentedPanel';
+import IndentedPanel from '@shell/components/IndentedPanel';
 
 // List and map of the available documents in the content/docs folder
 const docs = require.context('@/content/docs', true).keys();

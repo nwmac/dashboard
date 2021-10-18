@@ -1,8 +1,8 @@
 <script>
-import ConsumptionGauge from '@/components/ConsumptionGauge';
-import Alert from '@/components/Alert';
-import SortableTable from '@/components/SortableTable';
-import Tab from '@/components/Tabbed/Tab';
+import ConsumptionGauge from '@shell/components/ConsumptionGauge';
+import Alert from '@shell/components/Alert';
+import SortableTable from '@shell/components/SortableTable';
+import Tab from '@shell/components/Tabbed/Tab';
 import {
   EFFECT,
   IMAGE_SIZE,
@@ -10,15 +10,15 @@ import {
   SIMPLE_NAME,
   VALUE
 } from '@shell/config/table-headers';
-import ResourceTabs from '@/components/form/ResourceTabs';
-import EmberPage from '@/components/EmberPage';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+import EmberPage from '@shell/components/EmberPage';
 import { METRIC, POD } from '@shell/config/types';
 import createEditView from '@shell/mixins/create-edit-view';
 import { formatSi, exponentNeeded, UNITS } from '@shell/utils/units';
-import DashboardMetrics from '@/components/DashboardMetrics';
+import DashboardMetrics from '@shell/components/DashboardMetrics';
 import { mapGetters } from 'vuex';
 import { allDashboardsExist } from '@shell/utils/grafana';
-import Loading from '@/components/Loading';
+import Loading from '@shell/components/Loading';
 import metricPoller from '@shell/mixins/metric-poller';
 import { haveV1Monitoring } from '@shell/utils/monitoring';
 

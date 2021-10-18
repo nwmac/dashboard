@@ -1,5 +1,5 @@
 <script>
-import ResourceTable from '@/components/ResourceTable';
+import ResourceTable from '@shell/components/ResourceTable';
 import { mapGetters } from 'vuex';
 
 export default {

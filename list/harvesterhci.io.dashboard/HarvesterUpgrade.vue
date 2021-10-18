@@ -3,9 +3,9 @@ import dayjs from 'dayjs';
 import { mapGetters } from 'vuex';
 import { HCI } from '@shell/config/types';
 import { allHash } from '@shell/utils/promise';
-import ModalWithCard from '@/components/ModalWithCard';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import Banner from '@/components/Banner';
+import ModalWithCard from '@shell/components/ModalWithCard';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import Banner from '@shell/components/Banner';
 
 export default {
   name: 'HarvesterListUpgrade',

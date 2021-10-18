@@ -1,9 +1,9 @@
 <script>
-import RadioGroup from '@/components/form/RadioGroup';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import KeyValue from '@/components/form/KeyValue';
-import ArrayList from '@/components/form/ArrayList';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import KeyValue from '@shell/components/form/KeyValue';
+import ArrayList from '@shell/components/form/ArrayList';
 import StorageClassSelector from '@/chart/monitoring/StorageClassSelector';
 
 export default {

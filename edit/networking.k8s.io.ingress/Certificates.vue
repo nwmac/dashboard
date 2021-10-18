@@ -1,8 +1,8 @@
 <script>
-import SortableTable from '@/components/SortableTable';
+import SortableTable from '@shell/components/SortableTable';
 import { _EDIT, _VIEW } from '@shell/config/query-params';
 import { SECRET } from '@shell/config/types';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
 import Certificate from './Certificate';
 
 export default {

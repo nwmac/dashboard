@@ -1,17 +1,17 @@
 <script>
 import { MONITORING } from '@shell/config/types';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
-import Loading from '@/components/Loading';
-import Banner from '@/components/Banner';
-import CruResource from '@/components/CruResource';
-import LabeledInput from '@/components/form/LabeledInput';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import YamlEditor, { EDITOR_MODES } from '@/components/YamlEditor';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
+import Loading from '@shell/components/Loading';
+import Banner from '@shell/components/Banner';
+import CruResource from '@shell/components/CruResource';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import YamlEditor, { EDITOR_MODES } from '@shell/components/YamlEditor';
 import CreateEditView from '@shell/mixins/create-edit-view';
 import jsyaml from 'js-yaml';
 import { RECEIVERS_TYPES } from '@/models/monitoring.coreos.com.receiver';
-import ButtonDropdown from '@/components/ButtonDropdown';
+import ButtonDropdown from '@shell/components/ButtonDropdown';
 
 export default {
   components: {

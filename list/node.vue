@@ -1,8 +1,8 @@
 <script>
-import ResourceTable from '@/components/ResourceTable';
-import Loading from '@/components/Loading';
-import Tag from '@/components/Tag';
-import Banner from '@/components/Banner';
+import ResourceTable from '@shell/components/ResourceTable';
+import Loading from '@shell/components/Loading';
+import Tag from '@shell/components/Tag';
+import Banner from '@shell/components/Banner';
 import {
   STATE, NAME, ROLES, VERSION, INTERNAL_EXTERNAL_IP, CPU, RAM, PODS, AGE, KUBE_NODE_OS
 } from '@shell/config/table-headers';
@@ -15,7 +15,7 @@ import {
 import { allHash } from '@shell/utils/promise';
 import { get } from '@shell/utils/object';
 import { GROUP_RESOURCES, mapPref } from '@shell/store/prefs';
-import { COLUMN_BREAKPOINTS } from '@/components/SortableTable/index.vue';
+import { COLUMN_BREAKPOINTS } from '@shell/components/SortableTable/index.vue';
 
 export default {
   name:       'ListNode',

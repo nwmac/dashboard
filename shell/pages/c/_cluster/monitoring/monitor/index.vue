@@ -1,10 +1,10 @@
 <script>
-import Loading from '@/components/Loading';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import TypeDescription from '@/components/TypeDescription';
+import Loading from '@shell/components/Loading';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import TypeDescription from '@shell/components/TypeDescription';
 
-import ResourceTable from '@/components/ResourceTable';
+import ResourceTable from '@shell/components/ResourceTable';
 import { MONITORING } from '@shell/config/types';
 import { allHash } from '@shell/utils/promise';
 export default {

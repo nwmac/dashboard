@@ -1,8 +1,8 @@
 <script>
 import { WORKLOAD_TYPES } from '@shell/config/types';
-import UnitInput from '@/components/form/UnitInput';
-import LabeledInput from '@/components/form/LabeledInput';
-import RadioGroup from '@/components/form/RadioGroup';
+import UnitInput from '@shell/components/form/UnitInput';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import RadioGroup from '@shell/components/form/RadioGroup';
 import { mapGetters } from 'vuex';
 
 export default {

@@ -1,9 +1,9 @@
 <script>
 import debounce from 'lodash/debounce';
 
-import CodeMirror from '@/components/CodeMirror';
-import LabeledInput from '@/components/form/LabeledInput';
-import KeyValue from '@/components/form/KeyValue';
+import CodeMirror from '@shell/components/CodeMirror';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import KeyValue from '@shell/components/form/KeyValue';
 import { _VIEW } from '@shell/config/query-params';
 
 export default {

@@ -1,10 +1,10 @@
 <script>
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import CruResource from '@/components/CruResource';
-import UnitInput from '@/components/form/UnitInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import NameNsDescription from '@/components/form/NameNsDescription';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import CruResource from '@shell/components/CruResource';
+import UnitInput from '@shell/components/form/UnitInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
 
 import { get } from '@shell/utils/object';
 import { HCI } from '@shell/config/types';

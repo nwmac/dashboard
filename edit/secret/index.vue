@@ -2,21 +2,21 @@
 import { TYPES } from '@/models/secret.class';
 import { MANAGEMENT, NAMESPACE } from '@shell/config/types';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import CruResource from '@/components/CruResource';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import CruResource from '@shell/components/CruResource';
 import {
   CLOUD_CREDENTIAL, _CLONE, _CREATE, _EDIT, _FLAGGED
 } from '@shell/config/query-params';
-import Loading from '@/components/Loading';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import Labels from '@/components/form/Labels';
+import Loading from '@shell/components/Loading';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import Labels from '@shell/components/form/Labels';
 import { HIDE_SENSITIVE } from '@shell/store/prefs';
 import { CAPI } from '@shell/config/labels-annotations';
 import { clear, uniq } from '@shell/utils/array';
 import { importCloudCredential } from '@shell/utils/dynamic-importer';
 import { NAME as MANAGER } from '@shell/config/product/manager';
-import SelectIconGrid from '@/components/SelectIconGrid';
+import SelectIconGrid from '@shell/components/SelectIconGrid';
 import { DEFAULT_WORKSPACE } from '@/models/provisioning.cattle.io.cluster';
 import { sortBy } from '@shell/utils/sort';
 import { ucFirst } from '@shell/utils/string';

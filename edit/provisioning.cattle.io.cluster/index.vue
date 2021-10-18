@@ -1,10 +1,10 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import Loading from '@/components/Loading';
-import CruResource from '@/components/CruResource';
-import SelectIconGrid from '@/components/SelectIconGrid';
-import EmberPage from '@/components/EmberPage';
-import ToggleSwitch from '@/components/form/ToggleSwitch';
+import Loading from '@shell/components/Loading';
+import CruResource from '@shell/components/CruResource';
+import SelectIconGrid from '@shell/components/SelectIconGrid';
+import EmberPage from '@shell/components/EmberPage';
+import ToggleSwitch from '@shell/components/form/ToggleSwitch';
 import { CHART, FROM_CLUSTER, SUB_TYPE, _IMPORT } from '@shell/config/query-params';
 import { DEFAULT_WORKSPACE } from '@/models/provisioning.cattle.io.cluster';
 import { mapGetters } from 'vuex';

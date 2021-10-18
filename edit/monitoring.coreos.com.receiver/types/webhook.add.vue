@@ -1,5 +1,5 @@
 <script>
-import ButtonDropdown from '@/components/ButtonDropdown';
+import ButtonDropdown from '@shell/components/ButtonDropdown';
 import { RECEIVERS_TYPES } from '@/models/monitoring.coreos.com.receiver';
 import { _VIEW } from '@shell/config/query-params';
 

@@ -1,8 +1,8 @@
 <script>
-import Banner from '@/components/Banner';
-import Loading from '@/components/Loading';
-import MessageLink from '@/components/MessageLink';
-import ResourceTable from '@/components/ResourceTable';
+import Banner from '@shell/components/Banner';
+import Loading from '@shell/components/Loading';
+import MessageLink from '@shell/components/MessageLink';
+import ResourceTable from '@shell/components/ResourceTable';
 
 import { NAME, AGE, NAMESPACE } from '@shell/config/table-headers';
 import { HCI } from '@shell/config/types';

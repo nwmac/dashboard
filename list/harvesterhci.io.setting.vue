@@ -1,7 +1,7 @@
 <script>
 import { mapGetters } from 'vuex';
-import Banner from '@/components/Banner';
-import Loading from '@/components/Loading';
+import Banner from '@shell/components/Banner';
+import Loading from '@shell/components/Loading';
 
 import { DEV } from '@shell/store/prefs';
 import { HCI, MANAGEMENT } from '@shell/config/types';

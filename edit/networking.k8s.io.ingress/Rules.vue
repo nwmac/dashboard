@@ -1,9 +1,9 @@
 <script>
 import { WORKLOAD_TYPES } from '@shell/config/types';
-import Loading from '@/components/Loading';
-import SortableTable from '@/components/SortableTable';
+import Loading from '@shell/components/Loading';
+import SortableTable from '@shell/components/SortableTable';
 import { _VIEW } from '@shell/config/query-params';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
 import Rule from './Rule';
 
 export default {

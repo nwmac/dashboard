@@ -2,7 +2,7 @@
 import { sortBy } from '@shell/utils/sort';
 import { _EDIT } from '@shell/config/query-params';
 import { NAMESPACE } from '@shell/config/types';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 
 export const NAMESPACE_FILTERS_HELPER = {
   nonSystem(namespace) {

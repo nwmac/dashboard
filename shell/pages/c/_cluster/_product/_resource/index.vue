@@ -1,5 +1,5 @@
 <script>
-import ResourceList from '@/components/ResourceList';
+import ResourceList from '@shell/components/ResourceList';
 
 export default {
   name:       'ClusterResourcedList',

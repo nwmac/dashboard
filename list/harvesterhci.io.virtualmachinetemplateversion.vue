@@ -1,7 +1,7 @@
 <script>
-import Loading from '@/components/Loading';
-import LiveData from '@/components/formatter/LiveDate';
-import ResourceTable from '@/components/ResourceTable';
+import Loading from '@shell/components/Loading';
+import LiveData from '@shell/components/formatter/LiveDate';
+import ResourceTable from '@shell/components/ResourceTable';
 
 import { HCI } from '@shell/config/types';
 import { allHash } from '@shell/utils/promise';

@@ -1,10 +1,10 @@
 <script>
-import Loading from '@/components/Loading';
+import Loading from '@shell/components/Loading';
 import ChartMixin from '@shell/mixins/chart';
-import Banner from '@/components/Banner';
-import ChartReadme from '@/components/ChartReadme';
-import LazyImage from '@/components/LazyImage';
-import DateFormatter from '@/components/formatter/Date';
+import Banner from '@shell/components/Banner';
+import ChartReadme from '@shell/components/ChartReadme';
+import LazyImage from '@shell/components/LazyImage';
+import DateFormatter from '@shell/components/formatter/Date';
 import isEqual from 'lodash/isEqual';
 import { CHART, REPO, REPO_TYPE, VERSION } from '@shell/config/query-params';
 

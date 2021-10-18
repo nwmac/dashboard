@@ -1,16 +1,16 @@
 <script>
-import AsyncButton from '@/components/AsyncButton';
-import Loading from '@/components/Loading';
-import Banner from '@/components/Banner';
-import SelectIconGrid from '@/components/SelectIconGrid';
+import AsyncButton from '@shell/components/AsyncButton';
+import Loading from '@shell/components/Loading';
+import Banner from '@shell/components/Banner';
+import SelectIconGrid from '@shell/components/SelectIconGrid';
 import {
   REPO_TYPE, REPO, CHART, VERSION, SEARCH_QUERY, _FLAGGED, CATEGORY, DEPRECATED, HIDDEN
 } from '@shell/config/query-params';
 import { lcFirst } from '@shell/utils/string';
 import { sortBy } from '@shell/utils/sort';
 import { mapGetters } from 'vuex';
-import Checkbox from '@/components/form/Checkbox';
-import Select from '@/components/form/Select';
+import Checkbox from '@shell/components/form/Checkbox';
+import Select from '@shell/components/form/Select';
 import { mapPref, HIDE_REPOS, SHOW_PRE_RELEASE } from '@shell/store/prefs';
 import { removeObject, addObject, findBy } from '@shell/utils/array';
 import { compatibleVersionsFor, filterAndArrangeCharts } from '@shell/store/catalog';

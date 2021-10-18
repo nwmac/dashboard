@@ -1,5 +1,5 @@
 <script>
-import BrandImage from '@/components/BrandImage';
+import BrandImage from '@shell/components/BrandImage';
 import { mapState } from 'vuex';
 import { stringify } from '@shell/utils/error';
 import { getVendor } from '@shell/config/private-label';

@@ -1,5 +1,5 @@
 <script>
-import ResourceTable from '@/components/ResourceTable';
+import ResourceTable from '@shell/components/ResourceTable';
 import { get } from '@shell/utils/object';
 
 import {

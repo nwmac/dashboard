@@ -1,6 +1,6 @@
 <script>
-import Checkbox from '@/components/form/Checkbox';
-import Banner from '@/components/Banner';
+import Checkbox from '@shell/components/form/Checkbox';
+import Banner from '@shell/components/Banner';
 
 export default {
   components: { Banner, Checkbox },

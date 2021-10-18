@@ -1,5 +1,5 @@
 <script>
-import UnitInput from '@/components/form/UnitInput';
+import UnitInput from '@shell/components/form/UnitInput';
 
 export default {
   components: { UnitInput },

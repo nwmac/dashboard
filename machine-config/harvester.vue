@@ -1,12 +1,12 @@
 <script>
 import isEmpty from 'lodash/isEmpty';
-import Loading from '@/components/Loading';
+import Loading from '@shell/components/Loading';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import LabeledInput from '@/components/form/LabeledInput';
-import UnitInput from '@/components/form/UnitInput';
-import YamlEditor from '@/components/YamlEditor';
-import Banner from '@/components/Banner';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import UnitInput from '@shell/components/form/UnitInput';
+import YamlEditor from '@shell/components/YamlEditor';
+import Banner from '@shell/components/Banner';
 
 import { get } from '@shell/utils/object';
 import { mapGetters } from 'vuex';

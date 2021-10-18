@@ -1,12 +1,12 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import Tab from '@/components/Tabbed/Tab';
-import Tabbed from '@/components/Tabbed';
+import CruResource from '@shell/components/CruResource';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import Tab from '@shell/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
 import { HCI, SCHEMA, CAPI, VIRTUAL_HARVESTER_PROVIDER } from '@shell/config/types';
-import ClusterMembershipEditor from '@/components/form/Members/ClusterMembershipEditor';
-import Banner from '@/components/Banner';
+import ClusterMembershipEditor from '@shell/components/form/Members/ClusterMembershipEditor';
+import Banner from '@shell/components/Banner';
 import Labels from '@/edit/provisioning.cattle.io.cluster/Labels';
 import AgentEnv from '@/edit/provisioning.cattle.io.cluster/AgentEnv';
 import { set, get, clone } from '@shell/utils/object';

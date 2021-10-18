@@ -1,8 +1,8 @@
 <script>
-import BannerGraphic from '@/components/BannerGraphic';
-import IndentedPanel from '@/components/IndentedPanel';
-import SupportBundle from '@/components/dialog/SupportBundle';
-import CommunityLinks from '@/components/CommunityLinks';
+import BannerGraphic from '@shell/components/BannerGraphic';
+import IndentedPanel from '@shell/components/IndentedPanel';
+import SupportBundle from '@shell/components/dialog/SupportBundle';
+import CommunityLinks from '@shell/components/CommunityLinks';
 import { SCHEMA, HCI } from '@shell/config/types';
 
 export default {

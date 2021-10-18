@@ -1,9 +1,9 @@
 <script>
-import LabeledSelect from '@/components/form/LabeledSelect';
-import LabeledInput from '@/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import LabeledInput from '@shell/components/form/LabeledInput';
 import { findBy } from '@shell/utils/array';
 import filter from 'lodash/filter';
-import UnitInput from '@/components/form/UnitInput';
+import UnitInput from '@shell/components/form/UnitInput';
 import { parseSi } from '@shell/utils/units';
 
 export default {

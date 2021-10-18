@@ -1,17 +1,17 @@
 <script>
 import { mapGetters } from 'vuex';
-import NameNsDescription from '@/components/form/NameNsDescription';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 import { MANAGEMENT } from '@shell/config/types';
 import { CONTAINER_DEFAULT_RESOURCE_LIMIT, PROJECT } from '@shell/config/labels-annotations';
-import ContainerResourceLimit from '@/components/ContainerResourceLimit';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import CruResource from '@/components/CruResource';
-import Labels from '@/components/form/Labels';
+import ContainerResourceLimit from '@shell/components/ContainerResourceLimit';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import CruResource from '@shell/components/CruResource';
+import Labels from '@shell/components/form/Labels';
 import { PROJECT_ID } from '@shell/config/query-params';
-import MoveModal from '@/components/MoveModal';
+import MoveModal from '@shell/components/MoveModal';
 
 export default {
   components: {

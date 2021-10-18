@@ -1,9 +1,9 @@
 <script>
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import Loading from '@/components/Loading';
-import CruResource from '@/components/CruResource';
-import Checkbox from '@/components/form/Checkbox';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import Loading from '@shell/components/Loading';
+import CruResource from '@shell/components/CruResource';
+import Checkbox from '@shell/components/form/Checkbox';
 import VM_MIXIN from '@shell/mixins/harvester-vm';
 import { allHash } from '@shell/utils/promise';
 import CreateEditView from '@shell/mixins/create-edit-view';

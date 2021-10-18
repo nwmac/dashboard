@@ -1,10 +1,10 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import Tab from '@/components/Tabbed/Tab';
-import ResourceTabs from '@/components/form/ResourceTabs';
-import SortableTable from '@/components/SortableTable';
+import Tab from '@shell/components/Tabbed/Tab';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+import SortableTable from '@shell/components/SortableTable';
 import { MANAGEMENT, NORMAN } from '@shell/config/types';
-import Loading from '@/components/Loading';
+import Loading from '@shell/components/Loading';
 import { NAME } from '@shell/config/table-headers';
 
 export default {

@@ -1,11 +1,11 @@
 <script>
-import Loading from '@/components/Loading';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import Loading from '@shell/components/Loading';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 import { NORMAN } from '@shell/config/types';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import Banner from '@/components/Banner';
+import CruResource from '@shell/components/CruResource';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import Banner from '@shell/components/Banner';
 import { DEFAULT_WORKSPACE } from '@/models/provisioning.cattle.io.cluster';
 import { importCloudCredential } from '@shell/utils/dynamic-importer';
 import { CAPI } from '@shell/config/labels-annotations';

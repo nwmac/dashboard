@@ -1,9 +1,9 @@
 <script>
-import Loading from '@/components/Loading';
-import FleetSummary from '@/components/FleetSummary';
-import FleetRepos from '@/components/FleetRepos';
-import ResourceTabs from '@/components/form/ResourceTabs';
-import Tab from '@/components/Tabbed/Tab';
+import Loading from '@shell/components/Loading';
+import FleetSummary from '@shell/components/FleetSummary';
+import FleetRepos from '@shell/components/FleetRepos';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+import Tab from '@shell/components/Tabbed/Tab';
 import { MANAGEMENT, FLEET } from '@shell/config/types';
 import { FLEET as FLEET_LABELS } from '@shell/config/labels-annotations';
 

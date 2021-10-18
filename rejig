@@ -53,6 +53,7 @@ move ./middleware
 move ./mixins
 move ./store
 move ./pages
+move ./components
 
 # Update plugins references to use @~plugins
 grep -rl ${GREP_EXCLUDES} . -e '~/plugins' | xargs sed -i.bak -e "s/'~\/plugins/'~shell\/plugins/g"
@@ -76,6 +77,10 @@ grep -rl ${GREP_EXCLUDES} . -e '@/store' | xargs sed -i.bak -e "s/\'@\/store/\'@
 # Pages
 grep -rl ${GREP_EXCLUDES} . -e '@/pages' | xargs sed -i.bak -e "s/\'@\/pages/\'@shell\/pages/g"
 
+# Components
+grep -rl ${GREP_EXCLUDES} . -e '@/components' | xargs sed -i.bak -e "s/'@\/components/'@shell\/components/g"
+grep -rl ${GREP_EXCLUDES} . -e '@/components' | xargs sed -i.bak -e "s/\`@\/components/\`@shell\/components/g"
+
 echo "Removing any .bak files ..."
 find . -type f -name "*.bak" -delete
 
@@ -83,7 +88,6 @@ exit 0
 
 # Asssets
 move ./assets
-move ./components
 
 # Update all references to ~assets, ~/assets, @/assets
 grep -rl ${GREP_EXCLUDES} . -e '~assets' | xargs sed -i.bak -e "s/~assets/~shell\/assets/g"

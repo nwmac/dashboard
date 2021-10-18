@@ -1,8 +1,8 @@
 
 <script>
 import { haveV1Monitoring, haveV1MonitoringWorkloads } from '@shell/utils/monitoring';
-import AsyncButton from '@/components/AsyncButton';
-import IconMessage from '@/components/IconMessage';
+import AsyncButton from '@shell/components/AsyncButton';
+import IconMessage from '@shell/components/IconMessage';
 
 function delay(t, v) {
   return new Promise((resolve) => {

@@ -1,11 +1,11 @@
 <script>
-import Banner from '@/components/Banner';
-import InfoBox from '@/components/InfoBox';
-import Checkbox from '@/components/form/Checkbox';
-import CopyCode from '@/components/CopyCode';
-import LabeledInput from '@/components/form/LabeledInput';
-import KeyValue from '@/components/form/KeyValue';
-import Taints from '@/components/form/Taints';
+import Banner from '@shell/components/Banner';
+import InfoBox from '@shell/components/InfoBox';
+import Checkbox from '@shell/components/form/Checkbox';
+import CopyCode from '@shell/components/CopyCode';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import KeyValue from '@shell/components/form/KeyValue';
+import Taints from '@shell/components/form/Taints';
 
 export default {
   components: {

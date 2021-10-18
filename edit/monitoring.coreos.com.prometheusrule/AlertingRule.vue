@@ -4,12 +4,12 @@ import has from 'lodash/has';
 import isEmpty from 'lodash/isEmpty';
 import pickBy from 'lodash/pickBy';
 
-import Checkbox from '@/components/form/Checkbox';
-import CodeMirror from '@/components/CodeMirror';
-import KeyValue from '@/components/form/KeyValue';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import UnitInput from '@/components/form/UnitInput';
+import Checkbox from '@shell/components/form/Checkbox';
+import CodeMirror from '@shell/components/CodeMirror';
+import KeyValue from '@shell/components/form/KeyValue';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import UnitInput from '@shell/components/form/UnitInput';
 import { _VIEW } from '@shell/config/query-params';
 
 const INGORED_ANNOTATIONS = [

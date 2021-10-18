@@ -1,14 +1,14 @@
 <script>
-import Loading from '@/components/Loading';
+import Loading from '@shell/components/Loading';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import LabeledInput from '@/components/form/LabeledInput';
-import Banner from '@/components/Banner';
-import AllowedPrincipals from '@/components/auth/AllowedPrincipals';
+import CruResource from '@shell/components/CruResource';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import Banner from '@shell/components/Banner';
+import AllowedPrincipals from '@shell/components/auth/AllowedPrincipals';
 import config from '@/edit/auth/ldap/config';
 import AuthConfig from '@shell/mixins/auth-config';
-import AuthBanner from '@/components/auth/AuthBanner';
-import Password from '@/components/form/Password';
+import AuthBanner from '@shell/components/auth/AuthBanner';
+import Password from '@shell/components/form/Password';
 
 const AUTH_TYPE = 'ldap';
 

@@ -1,5 +1,5 @@
 <script>
-import ResourceDetail from '@/components/ResourceDetail';
+import ResourceDetail from '@shell/components/ResourceDetail';
 
 export default {
   name:        'RolesResourcedId',

@@ -1,7 +1,7 @@
 <script>
-import LabeledSelect from '@/components/form/LabeledSelect';
-import LabeledInput from '@/components/form/LabeledInput';
-import RadioGroup from '@/components/form/RadioGroup';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import RadioGroup from '@shell/components/form/RadioGroup';
 import { get } from '@shell/utils/object';
 
 export default {

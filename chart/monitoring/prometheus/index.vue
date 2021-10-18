@@ -2,13 +2,13 @@
 import isEmpty from 'lodash/isEmpty';
 import { mapGetters } from 'vuex';
 
-import Banner from '@/components/Banner';
-import Checkbox from '@/components/form/Checkbox';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import MatchExpressions from '@/components/form/MatchExpressions';
+import Banner from '@shell/components/Banner';
+import Checkbox from '@shell/components/form/Checkbox';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import MatchExpressions from '@shell/components/form/MatchExpressions';
 import StorageClassSelector from '@/chart/monitoring/StorageClassSelector';
-import RadioGroup from '@/components/form/RadioGroup';
+import RadioGroup from '@shell/components/form/RadioGroup';
 
 import { set } from '@shell/utils/object';
 import { simplify, convert } from '@shell/utils/selector';

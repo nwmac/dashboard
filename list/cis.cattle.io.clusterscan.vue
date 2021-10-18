@@ -1,6 +1,6 @@
 <script>
-import ResourceTable from '@/components/ResourceTable';
-import Loading from '@/components/Loading';
+import ResourceTable from '@shell/components/ResourceTable';
+import Loading from '@shell/components/Loading';
 import { get } from '@shell/utils/object';
 import { AGE } from '@shell/config/table-headers';
 

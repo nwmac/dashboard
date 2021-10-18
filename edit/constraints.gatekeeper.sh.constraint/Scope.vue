@@ -1,6 +1,6 @@
 <script>
 import { _VIEW } from '@shell/config/query-params';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 
 export const SCOPE_OPTIONS = [
   {

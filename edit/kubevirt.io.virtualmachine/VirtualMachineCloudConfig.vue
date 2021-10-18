@@ -1,8 +1,8 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import LabeledSelect from '@/components/form/LabeledSelect';
-import YamlEditor, { EDITOR_MODES } from '@/components/YamlEditor';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import YamlEditor, { EDITOR_MODES } from '@shell/components/YamlEditor';
 
 import { CONFIG_MAP } from '@shell/config/types';
 import { HCI } from '@shell/config/labels-annotations';

@@ -1,11 +1,11 @@
 <script>
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
 import { set } from '@shell/utils/object';
-import LabeledInput from '@/components/form/LabeledInput';
-import Checkbox from '@/components/form/Checkbox';
-import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import Checkbox from '@shell/components/form/Checkbox';
+import SelectOrCreateAuthSecret from '@shell/components/form/SelectOrCreateAuthSecret';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import SecretSelector from '@/components/form/SecretSelector';
+import SecretSelector from '@shell/components/form/SecretSelector';
 import { TYPES } from '@/models/secret.class';
 
 export default {

@@ -23,7 +23,7 @@ export function importLogin(name) {
     throw new Error('Name required');
   }
 
-  return () => import(/* webpackChunkName: "login" */ `@/components/auth/login/${name}`);
+  return () => import(/* webpackChunkName: "login" */ `@shell/components/auth/login/${name}`);
 }
 
 export function importChart(name) {
@@ -63,7 +63,7 @@ export function importDialog(name) {
     throw new Error('Name required');
   }
 
-  return () => import(/* webpackChunkName: "dialog" */ `@/components/dialog/${name}`);
+  return () => import(/* webpackChunkName: "dialog" */ `@shell/components/dialog/${name}`);
 }
 
 export function loadProduct(name) {

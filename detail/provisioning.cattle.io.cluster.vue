@@ -1,18 +1,18 @@
 <script>
-import Loading from '@/components/Loading';
-import Banner from '@/components/Banner';
-import ResourceTable from '@/components/ResourceTable';
-import ResourceTabs from '@/components/form/ResourceTabs';
-import SortableTable from '@/components/SortableTable';
-import CopyCode from '@/components/CopyCode';
-import Tab from '@/components/Tabbed/Tab';
+import Loading from '@shell/components/Loading';
+import Banner from '@shell/components/Banner';
+import ResourceTable from '@shell/components/ResourceTable';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+import SortableTable from '@shell/components/SortableTable';
+import CopyCode from '@shell/components/CopyCode';
+import Tab from '@shell/components/Tabbed/Tab';
 import { allHash } from '@shell/utils/promise';
 import { CAPI, MANAGEMENT, NORMAN } from '@shell/config/types';
 import {
   STATE, NAME as NAME_COL, AGE, AGE_NORMAN, STATE_NORMAN, ROLES, MACHINE_NODE_OS, MANAGEMENT_NODE_OS
 } from '@shell/config/table-headers';
 import CustomCommand from '@/edit/provisioning.cattle.io.cluster/CustomCommand';
-import AsyncButton from '@/components/AsyncButton.vue';
+import AsyncButton from '@shell/components/AsyncButton.vue';
 
 export default {
   components: {

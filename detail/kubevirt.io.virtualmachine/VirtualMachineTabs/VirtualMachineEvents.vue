@@ -1,6 +1,6 @@
 <script>
 import { REASON } from '@shell/config/table-headers';
-import SortableTable from '@/components/SortableTable';
+import SortableTable from '@shell/components/SortableTable';
 
 export default {
   name: 'Events',

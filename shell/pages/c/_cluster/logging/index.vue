@@ -2,12 +2,12 @@
 import { NAME, CHART_NAME } from '@shell/config/product/logging';
 import InstallRedirect from '@shell/utils/install-redirect';
 import { LOGGING } from '@shell/config/types';
-import SortableTable from '@/components/SortableTable';
+import SortableTable from '@shell/components/SortableTable';
 import { allHash } from '@shell/utils/promise';
 import {
   CONFIGURED_PROVIDERS, CLUSTER_OUTPUT, OUTPUT, NAMESPACE, NAME as NAME_COL
 } from '@shell/config/table-headers';
-import ChartHeading from '@/components/ChartHeading';
+import ChartHeading from '@shell/components/ChartHeading';
 
 export default {
   middleware: InstallRedirect(NAME, CHART_NAME),

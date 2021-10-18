@@ -1,7 +1,7 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import GlobalRoleBindings from '@/components/GlobalRoleBindings.vue';
-import CruResource from '@/components/CruResource';
+import GlobalRoleBindings from '@shell/components/GlobalRoleBindings.vue';
+import CruResource from '@shell/components/CruResource';
 import { exceptionToErrorsArray } from '@shell/utils/error';
 import { NORMAN } from '@shell/config/types';
 

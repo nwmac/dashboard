@@ -1,8 +1,8 @@
 <script>
 import { NAME, CHART_NAME } from '@shell/config/product/gatekeeper';
 import InstallRedirect from '@shell/utils/install-redirect';
-import ChartHeading from '@/components/ChartHeading';
-import SortableTable from '@/components/SortableTable';
+import ChartHeading from '@shell/components/ChartHeading';
+import SortableTable from '@shell/components/SortableTable';
 import { CONSTRAINT_VIOLATION_CONSTRAINT_LINK, CONSTRAINT_VIOLATION_COUNT, CONSTRAINT_VIOLATION_TEMPLATE_LINK } from '@shell/config/table-headers';
 import { GATEKEEPER } from '@shell/config/types';
 export default {

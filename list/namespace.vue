@@ -1,6 +1,6 @@
 <script>
 import { mapGetters } from 'vuex';
-import ResourceTable from '@/components/ResourceTable';
+import ResourceTable from '@shell/components/ResourceTable';
 
 export default {
   name:       'ListNamespace',

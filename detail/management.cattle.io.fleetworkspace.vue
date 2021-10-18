@@ -1,9 +1,9 @@
 <script>
-import CountBox from '@/components/CountBox';
-// import RoleBindings from '@/components/RoleBindings';
-import ResourceTabs from '@/components/form/ResourceTabs';
-// import Tab from '@/components/Tabbed/Tab';
-import { SCOPE_NAMESPACE, SCOPE_CLUSTER } from '@/components/RoleBindings.vue';
+import CountBox from '@shell/components/CountBox';
+// import RoleBindings from '@shell/components/RoleBindings';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+// import Tab from '@shell/components/Tabbed/Tab';
+import { SCOPE_NAMESPACE, SCOPE_CLUSTER } from '@shell/components/RoleBindings.vue';
 import { NAME as FLEET_NAME } from '@shell/config/product/fleet';
 import { FLEET } from '@shell/config/types';
 

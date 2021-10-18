@@ -1,6 +1,6 @@
 <script>
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 import { _CREATE } from '@shell/config/query-params';
 
 export default {

@@ -1,13 +1,13 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
 import { SECRET, LOGGING } from '@shell/config/types';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import CruResource from '@/components/CruResource';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import Labels from '@/components/form/Labels';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import Banner from '@/components/Banner';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import CruResource from '@shell/components/CruResource';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import Labels from '@shell/components/form/Labels';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import Banner from '@shell/components/Banner';
 import { PROVIDERS } from '@/models/logging.banzaicloud.io.output';
 import { _VIEW } from '@shell/config/query-params';
 import { clone } from '@shell/utils/object';

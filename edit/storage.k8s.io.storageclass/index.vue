@@ -1,12 +1,12 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import ArrayList from '@/components/form/ArrayList';
-import Tab from '@/components/Tabbed/Tab';
-import Tabbed from '@/components/Tabbed';
-import RadioGroup from '@/components/form/RadioGroup';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import CruResource from '@shell/components/CruResource';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import ArrayList from '@shell/components/form/ArrayList';
+import Tab from '@shell/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 import { _CREATE, _VIEW } from '@shell/config/query-params';
 import { PROVISIONER_OPTIONS } from '@/models/storage.k8s.io.storageclass';
 import { mapFeature, UNSUPPORTED_STORAGE_DRIVERS } from '@shell/store/features';

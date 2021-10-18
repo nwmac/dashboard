@@ -1,7 +1,7 @@
 <script>
 import { HCI } from '@shell/config/types';
-import NovncConsoleWrapper from '@/components/NovncConsoleWrapper';
-import Loading from '@/components/Loading';
+import NovncConsoleWrapper from '@shell/components/NovncConsoleWrapper';
+import Loading from '@shell/components/Loading';
 
 export default {
   layout: 'blank',

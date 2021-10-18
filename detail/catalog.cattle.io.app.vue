@@ -1,10 +1,10 @@
 <script>
-import YamlEditor from '@/components/YamlEditor';
-import Loading from '@/components/Loading';
-import Markdown from '@/components/Markdown';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import RelatedResources from '@/components/RelatedResources';
+import YamlEditor from '@shell/components/YamlEditor';
+import Loading from '@shell/components/Loading';
+import Markdown from '@shell/components/Markdown';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import RelatedResources from '@shell/components/RelatedResources';
 import jsyaml from 'js-yaml';
 import merge from 'lodash/merge';
 

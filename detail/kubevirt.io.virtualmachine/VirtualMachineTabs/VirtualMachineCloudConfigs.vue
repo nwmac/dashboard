@@ -1,5 +1,5 @@
 <script>
-import YamlEditor, { EDITOR_MODES } from '@/components/YamlEditor';
+import YamlEditor, { EDITOR_MODES } from '@shell/components/YamlEditor';
 
 export default {
   components: { YamlEditor },

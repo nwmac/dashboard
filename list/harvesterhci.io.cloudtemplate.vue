@@ -1,6 +1,6 @@
 <script>
-import ResourceTable from '@/components/ResourceTable';
-import Loading from '@/components/Loading';
+import ResourceTable from '@shell/components/ResourceTable';
+import Loading from '@shell/components/Loading';
 import { CONFIG_MAP, SCHEMA, HCI } from '@shell/config/types';
 import { NAME, AGE, NAMESPACE } from '@shell/config/table-headers';
 import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';

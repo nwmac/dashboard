@@ -1,9 +1,9 @@
 <script>
-import Date from '@/components/formatter/Date';
-import SortableTable from '@/components/SortableTable';
-import Banner from '@/components/Banner';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import Loading from '@/components/Loading';
+import Date from '@shell/components/formatter/Date';
+import SortableTable from '@shell/components/SortableTable';
+import Banner from '@shell/components/Banner';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import Loading from '@shell/components/Loading';
 import day from 'dayjs';
 import { DATE_FORMAT, TIME_FORMAT } from '@shell/store/prefs';
 import { escapeHtml, randomStr } from '@shell/utils/string';

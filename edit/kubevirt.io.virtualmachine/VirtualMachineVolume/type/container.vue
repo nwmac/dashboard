@@ -1,7 +1,7 @@
 <script>
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import InputOrDisplay from '@/components/InputOrDisplay';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import InputOrDisplay from '@shell/components/InputOrDisplay';
 
 export default {
   name:       'HarvesterEditContainer',

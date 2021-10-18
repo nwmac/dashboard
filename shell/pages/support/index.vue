@@ -1,10 +1,10 @@
 <script>
 import { options } from '@shell/config/footer';
-import BannerGraphic from '@/components/BannerGraphic';
-import AsyncButton from '@/components/AsyncButton';
-import IndentedPanel from '@/components/IndentedPanel';
-import Card from '@/components/Card';
-import CommunityLinks from '@/components/CommunityLinks';
+import BannerGraphic from '@shell/components/BannerGraphic';
+import AsyncButton from '@shell/components/AsyncButton';
+import IndentedPanel from '@shell/components/IndentedPanel';
+import Card from '@shell/components/Card';
+import CommunityLinks from '@shell/components/CommunityLinks';
 import { MANAGEMENT } from '@shell/config/types';
 import { getVendor, setBrand } from '@shell/config/private-label';
 import { SETTING } from '@shell/config/settings';

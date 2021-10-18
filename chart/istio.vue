@@ -1,12 +1,12 @@
 <script>
 import debounce from 'lodash/debounce';
 import jsyaml from 'js-yaml';
-import Checkbox from '@/components/form/Checkbox';
-import YamlEditor from '@/components/YamlEditor';
+import Checkbox from '@shell/components/form/Checkbox';
+import YamlEditor from '@shell/components/YamlEditor';
 import { mapGetters } from 'vuex';
-import FileSelector from '@/components/form/FileSelector';
-import Tab from '@/components/Tabbed/Tab';
-import Banner from '@/components/Banner';
+import FileSelector from '@shell/components/form/FileSelector';
+import Tab from '@shell/components/Tabbed/Tab';
+import Banner from '@shell/components/Banner';
 
 const defaultOverlayFile = `#apiVersion: install.istio.io/v1alpha1
 #kind: IstioOperator

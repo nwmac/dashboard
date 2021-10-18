@@ -1,8 +1,8 @@
 <script>
-import ResourceTable from '@/components/ResourceTable';
-import Loading from '@/components/Loading';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
+import ResourceTable from '@shell/components/ResourceTable';
+import Loading from '@shell/components/Loading';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
 import { MONITORING } from '@shell/config/types';
 import { areRoutesSupportedFormat, getSecret } from '@shell/utils/alertmanagerconfig';
 import { MODE, _EDIT } from '@shell/config/query-params';

@@ -1,4 +1,4 @@
-import EmberPage from '@/components/EmberPage';
+import EmberPage from '@shell/components/EmberPage';
 import { MANAGEMENT } from '@shell/config/types';
 import { haveV1Monitoring } from '@shell/utils/monitoring';
 

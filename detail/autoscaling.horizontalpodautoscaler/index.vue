@@ -1,8 +1,8 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import ResourceTabs from '@/components/form/ResourceTabs';
-import Tab from '@/components/Tabbed/Tab';
-import InfoBox from '@/components/InfoBox';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+import Tab from '@shell/components/Tabbed/Tab';
+import InfoBox from '@shell/components/InfoBox';
 import camelCase from 'lodash/camelCase';
 import keys from 'lodash/keys';
 import startCase from 'lodash/startCase';

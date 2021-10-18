@@ -1,14 +1,14 @@
 <script>
 import { removeObject } from '@shell/utils/array';
 import { USERNAME } from '@shell/config/cookies';
-import LabeledInput from '@/components/form/LabeledInput';
-import AsyncButton from '@/components/AsyncButton';
-import BrandImage from '@/components/BrandImage';
-import InfoBox from '@/components/InfoBox';
-import CopyCode from '@/components/CopyCode';
-import Banner from '@/components/Banner';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import AsyncButton from '@shell/components/AsyncButton';
+import BrandImage from '@shell/components/BrandImage';
+import InfoBox from '@shell/components/InfoBox';
+import CopyCode from '@shell/components/CopyCode';
+import Banner from '@shell/components/Banner';
 import { LOCAL, LOGGED_OUT, TIMED_OUT, _FLAGGED } from '@shell/config/query-params';
-import Checkbox from '@/components/form/Checkbox';
+import Checkbox from '@shell/components/form/Checkbox';
 import { sortBy } from '@shell/utils/sort';
 import { configType } from '@/models/management.cattle.io.authconfig';
 import { mapGetters } from 'vuex';

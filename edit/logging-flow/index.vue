@@ -1,22 +1,22 @@
 <script>
-import Banner from '@/components/Banner';
+import Banner from '@shell/components/Banner';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import Loading from '@/components/Loading';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
+import CruResource from '@shell/components/CruResource';
+import Loading from '@shell/components/Loading';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
 import { LOGGING, NODE, POD, SCHEMA } from '@shell/config/types';
 import jsyaml from 'js-yaml';
 import { createYaml } from '@shell/utils/create-yaml';
-import YamlEditor, { EDITOR_MODES } from '@/components/YamlEditor';
+import YamlEditor, { EDITOR_MODES } from '@shell/components/YamlEditor';
 import { allHash } from '@shell/utils/promise';
 import { isArray, uniq } from '@shell/utils/array';
 import { matchRuleIsPopulated } from '@/models/logging.banzaicloud.io.flow';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 import { clone, set } from '@shell/utils/object';
 import isEmpty from 'lodash/isEmpty';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
 import Match from './Match';
 
 function emptyMatch(include = true) {

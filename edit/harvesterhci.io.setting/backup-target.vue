@@ -1,9 +1,9 @@
 <script>
-import Tip from '@/components/Tip';
-import Password from '@/components/form/Password';
+import Tip from '@shell/components/Tip';
+import Password from '@shell/components/form/Password';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 
 export default {
   name: 'HarvesterEditBackupTarget',

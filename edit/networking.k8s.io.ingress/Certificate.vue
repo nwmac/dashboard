@@ -1,6 +1,6 @@
 <script>
-import LabeledSelect from '@/components/form/LabeledSelect';
-import ArrayList from '@/components/form/ArrayList';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import ArrayList from '@shell/components/form/ArrayList';
 
 const DEFAULT_CERT_VALUE = '__[[DEFAULT_CERT]]__';
 

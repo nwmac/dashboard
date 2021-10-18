@@ -4,7 +4,7 @@ import { mapGetters } from 'vuex';
 import PersistentVolumeClaim from '@/edit/workload/storage/persistentVolumeClaim/persistentvolumeclaim.vue';
 import { PVC } from '@shell/config/types';
 import { _VIEW } from '@shell/config/query-params';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
 
 export default {
   components: {

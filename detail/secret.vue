@@ -2,9 +2,9 @@
 import { TYPES } from '@/models/secret.class';
 import { base64Decode } from '@shell/utils/crypto';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import ResourceTabs from '@/components/form/ResourceTabs';
-import DetailText from '@/components/DetailText';
-import Tab from '@/components/Tabbed/Tab';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+import DetailText from '@shell/components/DetailText';
+import Tab from '@shell/components/Tabbed/Tab';
 
 const types = [
   TYPES.OPAQUE,

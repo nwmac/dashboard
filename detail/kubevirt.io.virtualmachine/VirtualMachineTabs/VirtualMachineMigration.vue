@@ -1,5 +1,5 @@
 <script>
-import LabelValue from '@/components/LabelValue';
+import LabelValue from '@shell/components/LabelValue';
 
 export default {
   name: 'VirtualMachineMigration',

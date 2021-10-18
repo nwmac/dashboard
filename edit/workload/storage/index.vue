@@ -1,12 +1,12 @@
 <script>
 import { PVC } from '@shell/config/types';
 import { removeObjects, addObjects } from '@shell/utils/array.js';
-import ButtonDropdown from '@/components/ButtonDropdown';
+import ButtonDropdown from '@shell/components/ButtonDropdown';
 import Mount from '@/edit/workload/storage/Mount';
 import { _VIEW } from '@shell/config/query-params';
-import CodeMirror from '@/components/CodeMirror';
+import CodeMirror from '@shell/components/CodeMirror';
 import jsyaml from 'js-yaml';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
 
 export default {
   components: {

@@ -1,10 +1,10 @@
 <script>
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import CruResource from '@/components/CruResource';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import YamlEditor from '@/components/YamlEditor';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import CruResource from '@shell/components/CruResource';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import YamlEditor from '@shell/components/YamlEditor';
 
 import CreateEditView from '@shell/mixins/create-edit-view';
 import { HCI } from '@shell/config/labels-annotations';

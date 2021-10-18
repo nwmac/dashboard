@@ -1,5 +1,5 @@
 <script>
-import KeyValue from '@/components/form/KeyValue';
+import KeyValue from '@shell/components/form/KeyValue';
 import { set } from '@shell/utils/object';
 
 export default {

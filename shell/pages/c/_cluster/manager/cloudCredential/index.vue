@@ -1,7 +1,7 @@
 <script>
-import Loading from '@/components/Loading';
-import ResourceTable from '@/components/ResourceTable';
-import Masthead from '@/components/ResourceList/Masthead';
+import Loading from '@shell/components/Loading';
+import ResourceTable from '@shell/components/ResourceTable';
+import Masthead from '@shell/components/ResourceList/Masthead';
 import { NORMAN, SECRET } from '@shell/config/types';
 import { AGE_NORMAN, DESCRIPTION, ID_UNLINKED, NAME_UNLINKED } from '@shell/config/table-headers';
 

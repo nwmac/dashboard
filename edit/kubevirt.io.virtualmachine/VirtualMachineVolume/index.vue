@@ -1,11 +1,11 @@
 <script>
 import draggable from 'vuedraggable';
-import InfoBox from '@/components/InfoBox';
-import Banner from '@/components/Banner';
-import UnitInput from '@/components/form/UnitInput';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import ModalWithCard from '@/components/ModalWithCard';
+import InfoBox from '@shell/components/InfoBox';
+import Banner from '@shell/components/Banner';
+import UnitInput from '@shell/components/form/UnitInput';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import ModalWithCard from '@shell/components/ModalWithCard';
 
 import { PVC } from '@shell/config/types';
 import { clone } from '@shell/utils/object';

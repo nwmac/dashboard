@@ -3,11 +3,11 @@ import values from 'lodash/values';
 import isEmpty from 'lodash/isEmpty';
 
 import ExternalMetric, { DEFAULT_EXTERNAL_METRIC } from '@/edit/autoscaling.horizontalpodautoscaler/external-metric';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 import ObjectMetric, { DEFAULT_OBJECT_METRIC } from '@/edit/autoscaling.horizontalpodautoscaler/object-metric';
 import PodMetric, { DEFAULT_POD_METRIC } from '@/edit/autoscaling.horizontalpodautoscaler/pod-metric';
 import ResourceMetric, { DEFAULT_RESOURCE_METRIC } from '@/edit/autoscaling.horizontalpodautoscaler/resource-metric';
-import Banner from '@/components/Banner';
+import Banner from '@shell/components/Banner';
 
 const METRIC_TYPES = {
   external: { label: 'External' },

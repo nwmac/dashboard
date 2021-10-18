@@ -1,7 +1,7 @@
 <script>
-import LabeledInput from '@/components/form/LabeledInput';
-import RadioGroup from '@/components/form/RadioGroup';
-import UnitInput from '@/components/form/UnitInput';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import UnitInput from '@shell/components/form/UnitInput';
 import { _CREATE } from '@shell/config/query-params';
 
 export default {

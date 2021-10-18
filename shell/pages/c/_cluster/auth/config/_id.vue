@@ -1,5 +1,5 @@
 <script>
-import ResourceDetail from '@/components/ResourceDetail';
+import ResourceDetail from '@shell/components/ResourceDetail';
 import { MANAGEMENT } from '@shell/config/types';
 import { authProvidersInfo } from '@shell/utils/auth';
 

@@ -1,16 +1,16 @@
 <script>
-import CruResource from '@/components/CruResource';
-import ArrayList from '@/components/form/ArrayList';
-import KeyValue from '@/components/form/KeyValue';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import CruResource from '@shell/components/CruResource';
+import ArrayList from '@shell/components/form/ArrayList';
+import KeyValue from '@shell/components/form/KeyValue';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
 import { MONITORING } from '@shell/config/types';
-import Banner from '@/components/Banner';
+import Banner from '@shell/components/Banner';
 import { createDefaultRouteName } from '@shell/utils/alertmanagerconfig';
-import Loading from '@/components/Loading';
+import Loading from '@shell/components/Loading';
 
 export default {
   components: {

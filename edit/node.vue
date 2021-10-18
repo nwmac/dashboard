@@ -1,11 +1,11 @@
 <script>
-import Tab from '@/components/Tabbed/Tab';
-import ResourceTabs from '@/components/form/ResourceTabs';
+import Tab from '@shell/components/Tabbed/Tab';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
 import createEditView from '@shell/mixins/create-edit-view';
-import Labels from '@/components/form/Labels';
-import Taints from '@/components/form/Taints';
-import CruResource from '@/components/CruResource';
-import NameNsDescription from '@/components/form/NameNsDescription';
+import Labels from '@shell/components/form/Labels';
+import Taints from '@shell/components/form/Taints';
+import CruResource from '@shell/components/CruResource';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
 
 export default {
   components: {

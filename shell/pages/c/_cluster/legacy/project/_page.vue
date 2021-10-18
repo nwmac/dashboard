@@ -1,5 +1,5 @@
 <script>
-import EmberPage from '@/components/EmberPage';
+import EmberPage from '@shell/components/EmberPage';
 import { project } from '@shell/store/type-map';
 
 const PAGES = {

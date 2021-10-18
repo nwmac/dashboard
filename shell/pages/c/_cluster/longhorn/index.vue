@@ -5,7 +5,7 @@ import InstallRedirect from '@shell/utils/install-redirect';
 
 import { NAME, CHART_NAME } from '@shell/config/product/longhorn';
 
-import LazyImage from '@/components/LazyImage';
+import LazyImage from '@shell/components/LazyImage';
 
 export default {
   components: { LazyImage },

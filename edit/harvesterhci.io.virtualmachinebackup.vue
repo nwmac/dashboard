@@ -1,8 +1,8 @@
 <script>
-import Footer from '@/components/form/Footer';
-import RadioGroup from '@/components/form/RadioGroup';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import Footer from '@shell/components/form/Footer';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 import CreateEditView from '@shell/mixins/create-edit-view';
 import { allHash } from '@shell/utils/promise';
 import { exceptionToErrorsArray } from '@shell/utils/error';

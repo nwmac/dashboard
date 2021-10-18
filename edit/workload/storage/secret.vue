@@ -1,8 +1,8 @@
 <script>
 import { mapGetters } from 'vuex';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import RadioGroup from '@/components/form/RadioGroup';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import RadioGroup from '@shell/components/form/RadioGroup';
 
 export default {
   components: {

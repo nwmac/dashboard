@@ -1,11 +1,11 @@
 <script>
-import ActionMenu from '@/components/ActionMenu';
-import Header from '@/components/nav/Header';
-import PromptRemove from '@/components/PromptRemove';
-import AssignTo from '@/components/AssignTo';
-import IndentedPanel from '@/components/IndentedPanel';
+import ActionMenu from '@shell/components/ActionMenu';
+import Header from '@shell/components/nav/Header';
+import PromptRemove from '@shell/components/PromptRemove';
+import AssignTo from '@shell/components/AssignTo';
+import IndentedPanel from '@shell/components/IndentedPanel';
 import Brand from '@shell/mixins/brand';
-import FixedBanner from '@/components/FixedBanner';
+import FixedBanner from '@shell/components/FixedBanner';
 
 export default {
 

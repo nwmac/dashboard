@@ -1,14 +1,14 @@
 <script>
-import Loading from '@/components/Loading';
+import Loading from '@shell/components/Loading';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import InfoBox from '@/components/InfoBox';
-import RadioGroup from '@/components/form/RadioGroup';
-import LabeledInput from '@/components/form/LabeledInput';
-import Banner from '@/components/Banner';
-import AuthBanner from '@/components/auth/AuthBanner';
-import CopyToClipboardText from '@/components/CopyToClipboardText.vue';
-import AllowedPrincipals from '@/components/auth/AllowedPrincipals';
+import CruResource from '@shell/components/CruResource';
+import InfoBox from '@shell/components/InfoBox';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import Banner from '@shell/components/Banner';
+import AuthBanner from '@shell/components/auth/AuthBanner';
+import CopyToClipboardText from '@shell/components/CopyToClipboardText.vue';
+import AllowedPrincipals from '@shell/components/auth/AllowedPrincipals';
 import AuthConfig from '@shell/mixins/auth-config';
 
 const TENANT_ID_TOKEN = '__[[TENANT_ID]]__';

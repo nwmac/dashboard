@@ -1,9 +1,9 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import Labels from '@/components/form/Labels';
-import Loading from '@/components/Loading';
-import NameNsDescription from '@/components/form/NameNsDescription';
+import CruResource from '@shell/components/CruResource';
+import Labels from '@shell/components/form/Labels';
+import Loading from '@shell/components/Loading';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
 import { _VIEW } from '@shell/config/query-params';
 import { NORMAN } from '@shell/config/types';
 import { FLEET } from '@shell/config/labels-annotations';

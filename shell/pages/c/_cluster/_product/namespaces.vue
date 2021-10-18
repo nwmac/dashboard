@@ -1,9 +1,9 @@
 <script>
-import ResourceTable from '@/components/ResourceTable';
+import ResourceTable from '@shell/components/ResourceTable';
 import { STATE, NAME, AGE } from '@shell/config/table-headers';
 import { NAMESPACE, VIRTUAL_TYPES } from '@shell/config/types';
-import Loading from '@/components/Loading';
-import Masthead from '@/components/ResourceList/Masthead';
+import Loading from '@shell/components/Loading';
+import Masthead from '@shell/components/ResourceList/Masthead';
 
 export default {
   name:       'ListNamespace',

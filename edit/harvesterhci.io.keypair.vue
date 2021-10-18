@@ -1,10 +1,10 @@
 <script>
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import CruResource from '@/components/CruResource';
-import LabeledInput from '@/components/form/LabeledInput';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import FileSelector, { createOnSelected } from '@/components/form/FileSelector';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import CruResource from '@shell/components/CruResource';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import FileSelector, { createOnSelected } from '@shell/components/form/FileSelector';
 
 import { randomStr } from '@shell/utils/string';
 import CreateEditView from '@shell/mixins/create-edit-view';

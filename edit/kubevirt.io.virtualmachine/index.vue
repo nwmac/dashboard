@@ -2,22 +2,22 @@
 import isEqual from 'lodash/isEqual';
 import { mapGetters } from 'vuex';
 
-import Banner from '@/components/Banner';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import Checkbox from '@/components/form/Checkbox';
-import CruResource from '@/components/CruResource';
-import RadioGroup from '@/components/form/RadioGroup';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import NameNsDescription from '@/components/form/NameNsDescription';
+import Banner from '@shell/components/Banner';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import Checkbox from '@shell/components/form/Checkbox';
+import CruResource from '@shell/components/CruResource';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
 
 import SSHKey from '@/edit/kubevirt.io.virtualmachine/VirtualMachineSSHKey';
 import Volume from '@/edit/kubevirt.io.virtualmachine/VirtualMachineVolume';
 import Network from '@/edit/kubevirt.io.virtualmachine/VirtualMachineNetwork';
 import CpuMemory from '@/edit/kubevirt.io.virtualmachine/VirtualMachineCpuMemory';
 import CloudConfig from '@/edit/kubevirt.io.virtualmachine/VirtualMachineCloudConfig';
-import NodeScheduling from '@/components/form/NodeScheduling';
+import NodeScheduling from '@shell/components/form/NodeScheduling';
 
 import { clone } from '@shell/utils/object';
 import { HCI } from '@shell/config/types';

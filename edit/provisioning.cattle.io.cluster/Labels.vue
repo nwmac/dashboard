@@ -1,6 +1,6 @@
 <script>
-import Labels from '@/components/form/Labels';
-import Tab from '@/components/Tabbed/Tab';
+import Labels from '@shell/components/form/Labels';
+import Tab from '@shell/components/Tabbed/Tab';
 
 export default {
   components: { Labels, Tab },

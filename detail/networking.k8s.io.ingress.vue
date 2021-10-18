@@ -3,8 +3,8 @@ import { allHash } from '@shell/utils/promise';
 import { SECRET, SERVICE } from '@shell/config/types';
 import CreateEditView from '@shell/mixins/create-edit-view';
 import Rules from '@/edit/networking.k8s.io.ingress/Rules';
-import ResourceTabs from '@/components/form/ResourceTabs';
-import Tab from '@/components/Tabbed/Tab';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+import Tab from '@shell/components/Tabbed/Tab';
 
 export default {
   name:       'CRUIngress',

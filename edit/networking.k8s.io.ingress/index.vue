@@ -1,12 +1,12 @@
 <script>
 import { allHash } from '@shell/utils/promise';
 import { SECRET, SERVICE } from '@shell/config/types';
-import NameNsDescription from '@/components/form/NameNsDescription';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import Tab from '@/components/Tabbed/Tab';
-import CruResource from '@/components/CruResource';
-import Labels from '@/components/form/Labels';
-import Tabbed from '@/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import CruResource from '@shell/components/CruResource';
+import Labels from '@shell/components/form/Labels';
+import Tabbed from '@shell/components/Tabbed';
 import { get, set } from '@shell/utils/object';
 import { TYPES } from '@/models/secret.class';
 import DefaultBackend from './DefaultBackend';

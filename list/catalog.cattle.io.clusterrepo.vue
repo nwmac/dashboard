@@ -1,8 +1,8 @@
 <script>
 import { mapGetters } from 'vuex';
-import ResourceTable from '@/components/ResourceTable';
-import Masthead from '@/components/ResourceList/Masthead';
-import Banner from '@/components/Banner';
+import ResourceTable from '@shell/components/ResourceTable';
+import Masthead from '@shell/components/ResourceList/Masthead';
+import Banner from '@shell/components/Banner';
 import { HIDE_DESC, mapPref } from '@shell/store/prefs';
 
 export default {

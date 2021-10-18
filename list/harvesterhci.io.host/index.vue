@@ -1,11 +1,11 @@
 <script>
-import ResourceTable from '@/components/ResourceTable';
-import Loading from '@/components/Loading';
+import ResourceTable from '@shell/components/ResourceTable';
+import Loading from '@shell/components/Loading';
 import { STATE, NAME, AGE } from '@shell/config/table-headers';
 import { METRIC, NODE, SCHEMA, HCI } from '@shell/config/types';
 import { allHash } from '@shell/utils/promise';
 import metricPoller from '@shell/mixins/metric-poller';
-import CopyToClipboard from '@/components/CopyToClipboard';
+import CopyToClipboard from '@shell/components/CopyToClipboard';
 
 const schema = {
   id:         HCI.HOST,

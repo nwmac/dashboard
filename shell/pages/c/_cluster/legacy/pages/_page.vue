@@ -1,5 +1,5 @@
 <script>
-import EmberPage from '@/components/EmberPage';
+import EmberPage from '@shell/components/EmberPage';
 
 const PAGES = {
   monitoring: 'monitoring/cluster-setting',

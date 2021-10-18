@@ -1,10 +1,10 @@
 <script>
-import LabeledInput from '@/components/form/LabeledInput';
-import LabelValue from '@/components/LabelValue';
-import BadgeState from '@/components/BadgeState';
-import Banner from '@/components/Banner';
-import RadioGroup from '@/components/form/RadioGroup';
-import RadioButton from '@/components/form/RadioButton';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabelValue from '@shell/components/LabelValue';
+import BadgeState from '@shell/components/BadgeState';
+import Banner from '@shell/components/Banner';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import RadioButton from '@shell/components/form/RadioButton';
 
 export default {
   components: {

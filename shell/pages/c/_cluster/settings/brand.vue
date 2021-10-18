@@ -1,14 +1,14 @@
 <script>
-import LabeledInput from '@/components/form/LabeledInput';
-import ColorInput from '@/components/form/ColorInput';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import ColorInput from '@shell/components/form/ColorInput';
 
-import Checkbox from '@/components/form/Checkbox';
-import RadioGroup from '@/components/form/RadioGroup';
-import FileSelector from '@/components/form/FileSelector';
-import SimpleBox from '@/components/SimpleBox';
-import Loading from '@/components/Loading';
-import AsyncButton from '@/components/AsyncButton';
-import Banner from '@/components/Banner';
+import Checkbox from '@shell/components/form/Checkbox';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import FileSelector from '@shell/components/form/FileSelector';
+import SimpleBox from '@shell/components/SimpleBox';
+import Loading from '@shell/components/Loading';
+import AsyncButton from '@shell/components/AsyncButton';
+import Banner from '@shell/components/Banner';
 import { allHash } from '@shell/utils/promise';
 import { MANAGEMENT } from '@shell/config/types';
 import { getVendor, setVendor } from '@shell/config/private-label';

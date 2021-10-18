@@ -1,6 +1,6 @@
 <script>
-import ResourceTable from '@/components/ResourceTable';
-import Loading from '@/components/Loading';
+import ResourceTable from '@shell/components/ResourceTable';
+import Loading from '@shell/components/Loading';
 import { MANAGEMENT } from '@shell/config/types';
 import { filterOnlyKubernetesClusters } from '@shell/utils/cluster';
 

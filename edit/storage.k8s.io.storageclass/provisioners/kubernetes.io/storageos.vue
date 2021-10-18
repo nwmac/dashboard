@@ -1,5 +1,5 @@
 <script>
-import LabeledInput from '@/components/form/LabeledInput';
+import LabeledInput from '@shell/components/form/LabeledInput';
 
 export default {
   components: { LabeledInput },

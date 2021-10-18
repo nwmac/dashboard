@@ -1,6 +1,6 @@
 <script>
-import KeyValue from '@/components/form/KeyValue';
-import Tab from '@/components/Tabbed/Tab';
+import KeyValue from '@shell/components/form/KeyValue';
+import Tab from '@shell/components/Tabbed/Tab';
 
 export default {
   components: { KeyValue, Tab },

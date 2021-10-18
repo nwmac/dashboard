@@ -1,11 +1,11 @@
 <script>
-import Loading from '@/components/Loading';
-import DashboardMetrics from '@/components/DashboardMetrics';
+import Loading from '@shell/components/Loading';
+import DashboardMetrics from '@shell/components/DashboardMetrics';
 import { mapGetters } from 'vuex';
-import SortableTable from '@/components/SortableTable';
+import SortableTable from '@shell/components/SortableTable';
 import { allHash } from '@shell/utils/promise';
-import AlertTable from '@/components/AlertTable';
-import Banner from '@/components/Banner';
+import AlertTable from '@shell/components/AlertTable';
+import Banner from '@shell/components/Banner';
 import { parseSi, createMemoryValues } from '@shell/utils/units';
 import {
   NAME,
@@ -29,14 +29,14 @@ import {
 import { findBy } from '@shell/utils/array';
 import { mapPref, CLUSTER_TOOLS_TIP } from '@shell/store/prefs';
 import { haveV1Monitoring, monitoringStatus } from '@shell/utils/monitoring';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
 import { allDashboardsExist } from '@shell/utils/grafana';
-import EtcdInfoBanner from '@/components/EtcdInfoBanner';
+import EtcdInfoBanner from '@shell/components/EtcdInfoBanner';
 import metricPoller from '@shell/mixins/metric-poller';
-import EmberPage from '@/components/EmberPage';
-import ResourceSummary, { resourceCounts } from '@/components/ResourceSummary';
-import HardwareResourceGauge from '@/components/HardwareResourceGauge';
+import EmberPage from '@shell/components/EmberPage';
+import ResourceSummary, { resourceCounts } from '@shell/components/ResourceSummary';
+import HardwareResourceGauge from '@shell/components/HardwareResourceGauge';
 import { isEmpty } from '@shell/utils/object';
 
 export const RESOURCES = [NAMESPACE, INGRESS, PV, WORKLOAD_TYPES.DEPLOYMENT, WORKLOAD_TYPES.STATEFUL_SET, WORKLOAD_TYPES.JOB, WORKLOAD_TYPES.DAEMON_SET, SERVICE];

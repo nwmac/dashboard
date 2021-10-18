@@ -1,5 +1,5 @@
 <script>
-import IconMessage from '@/components/IconMessage';
+import IconMessage from '@shell/components/IconMessage';
 import { project } from '@shell/store/type-map';
 
 export default {

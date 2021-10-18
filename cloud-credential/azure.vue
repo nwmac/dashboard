@@ -1,8 +1,8 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import LabeledInput from '@/components/form/LabeledInput';
+import LabeledInput from '@shell/components/form/LabeledInput';
 import { azureEnvironments } from '@/machine-config/azure';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 
 export default {
   components: { LabeledInput, LabeledSelect },

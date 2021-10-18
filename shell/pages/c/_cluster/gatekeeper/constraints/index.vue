@@ -1,9 +1,9 @@
 <script>
 import { AGE, NAME, STATE } from '@shell/config/table-headers';
-import SortableTable from '@/components/SortableTable';
+import SortableTable from '@shell/components/SortableTable';
 import { DESCRIPTION } from '@shell/config/labels-annotations';
 import { findAllConstraints } from '@shell/utils/gatekeeper/util';
-import Masthead from '@/components/ResourceList/Masthead';
+import Masthead from '@shell/components/ResourceList/Masthead';
 import { AS, _YAML } from '@shell/config/query-params';
 
 export default {

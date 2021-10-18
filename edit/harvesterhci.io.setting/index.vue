@@ -1,9 +1,9 @@
 <script>
-import CruResource from '@/components/CruResource';
-import RadioGroup from '@/components/form/RadioGroup';
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import TextAreaAutoGrow from '@/components/form/TextAreaAutoGrow';
+import CruResource from '@shell/components/CruResource';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import TextAreaAutoGrow from '@shell/components/form/TextAreaAutoGrow';
 
 import CreateEditView from '@shell/mixins/create-edit-view';
 

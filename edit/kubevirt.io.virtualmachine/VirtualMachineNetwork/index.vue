@@ -1,5 +1,5 @@
 <script>
-import InfoBox from '@/components/InfoBox';
+import InfoBox from '@shell/components/InfoBox';
 import Base from '@/edit/kubevirt.io.virtualmachine/VirtualMachineNetwork/base';
 
 import { HCI } from '@shell/config/types';

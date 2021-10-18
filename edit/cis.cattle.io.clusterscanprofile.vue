@@ -1,9 +1,9 @@
 <script>
-import NameNsDescription from '@/components/form/NameNsDescription';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import ArrayList from '@/components/form/ArrayList';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import ArrayList from '@shell/components/form/ArrayList';
 import createEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
+import CruResource from '@shell/components/CruResource';
 import { mapGetters } from 'vuex';
 import { CIS } from '@shell/config/types';
 const semver = require('semver');

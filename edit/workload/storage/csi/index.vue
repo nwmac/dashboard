@@ -1,5 +1,5 @@
 <script>
-import LabeledSelect from '@/components/form/LabeledSelect';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 import { mapGetters } from 'vuex';
 
 export default {

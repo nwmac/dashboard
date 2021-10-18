@@ -1,7 +1,7 @@
 <script>
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import SecretSelector from '@/components/form/SecretSelector';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import SecretSelector from '@shell/components/form/SecretSelector';
 import { updatePort, protocol } from './utils';
 
 export default {

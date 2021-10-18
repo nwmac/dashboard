@@ -1,8 +1,8 @@
 <script>
-import Loading from '@/components/Loading';
-import ResourceTabs from '@/components/form/ResourceTabs';
-import CopyCode from '@/components/CopyCode';
-import Tab from '@/components/Tabbed/Tab';
+import Loading from '@shell/components/Loading';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+import CopyCode from '@shell/components/CopyCode';
+import Tab from '@shell/components/Tabbed/Tab';
 import { allHash } from '@shell/utils/promise';
 import CustomCommand from '@/edit/provisioning.cattle.io.cluster/CustomCommand';
 

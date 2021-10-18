@@ -1,8 +1,8 @@
 <script>
-import HarvesterIpAddress from '@/components/formatter/HarvesterIpAddress';
-import VMConsoleBar from '@/components/VMConsoleBar';
-import LabelValue from '@/components/LabelValue';
-import InputOrDisplay from '@/components/InputOrDisplay';
+import HarvesterIpAddress from '@shell/components/formatter/HarvesterIpAddress';
+import VMConsoleBar from '@shell/components/VMConsoleBar';
+import LabelValue from '@shell/components/LabelValue';
+import InputOrDisplay from '@shell/components/InputOrDisplay';
 import { HCI } from '@shell/config/types';
 import CreateEditView from '@shell/mixins/create-edit-view';
 

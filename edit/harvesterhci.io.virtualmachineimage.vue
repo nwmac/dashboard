@@ -1,12 +1,12 @@
 <script>
-import CruResource from '@/components/CruResource';
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
-import LabeledInput from '@/components/form/LabeledInput';
-import KeyValue from '@/components/form/KeyValue';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import RadioGroup from '@/components/form/RadioGroup';
-import LabelValue from '@/components/LabelValue';
+import CruResource from '@shell/components/CruResource';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import KeyValue from '@shell/components/form/KeyValue';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import LabelValue from '@shell/components/LabelValue';
 import CreateEditView from '@shell/mixins/create-edit-view';
 import { VM_IMAGE_FILE_FORMAT } from '@/models/harvester/harvesterhci.io.virtualmachineimage';
 import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';

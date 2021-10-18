@@ -1,15 +1,15 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
 
-import CruResource from '@/components/CruResource';
-import Loading from '@/components/Loading';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import Tab from '@/components/Tabbed/Tab';
-import Tabbed from '@/components/Tabbed';
+import CruResource from '@shell/components/CruResource';
+import Loading from '@shell/components/Loading';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import Tab from '@shell/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
 import { CAPI, HCI } from '@shell/config/types';
-import ClusterMembershipEditor from '@/components/form/Members/ClusterMembershipEditor';
-import Banner from '@/components/Banner';
-import { canViewClusterMembershipEditor } from '@/components/form/Members/ClusterMembershipEditor.vue';
+import ClusterMembershipEditor from '@shell/components/form/Members/ClusterMembershipEditor';
+import Banner from '@shell/components/Banner';
+import { canViewClusterMembershipEditor } from '@shell/components/form/Members/ClusterMembershipEditor.vue';
 import { NAME as HARVESTER_MANAGER } from '@shell/config/product/harvester-manager';
 import { HARVESTER as HARVESTER_FEATURE, mapFeature } from '@shell/store/features';
 import Labels from './Labels';

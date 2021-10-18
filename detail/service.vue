@@ -3,10 +3,10 @@ import has from 'lodash/has';
 import isEmpty from 'lodash/isEmpty';
 
 import CreateEditView from '@shell/mixins/create-edit-view';
-import ResourceTable from '@/components/ResourceTable';
-import ResourceTabs from '@/components/form/ResourceTabs';
-import SortableTable from '@/components/SortableTable';
-import Tab from '@/components/Tabbed/Tab';
+import ResourceTable from '@shell/components/ResourceTable';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+import SortableTable from '@shell/components/SortableTable';
+import Tab from '@shell/components/Tabbed/Tab';
 
 import { CATTLE_PUBLIC_ENDPOINTS } from '@shell/config/labels-annotations';
 import { KEY, VALUE } from '@shell/config/table-headers';

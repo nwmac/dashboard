@@ -1,12 +1,12 @@
 <script>
-import NameNsDescription from '@/components/form/NameNsDescription';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import LabeledInput from '@/components/form/LabeledInput';
-import Tab from '@/components/Tabbed/Tab';
-import Tabbed from '@/components/Tabbed';
-import KeyValue from '@/components/form/KeyValue';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
+import CruResource from '@shell/components/CruResource';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import Tab from '@shell/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
+import KeyValue from '@shell/components/form/KeyValue';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
 import { get, set } from '@shell/utils/object';
 import LoadBalancer from './LoadBalancer';
 

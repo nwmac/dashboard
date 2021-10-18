@@ -1,17 +1,17 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import Tab from '@/components/Tabbed/Tab';
-import ResourceTabs from '@/components/form/ResourceTabs';
-import SortableTable from '@/components/SortableTable';
+import Tab from '@shell/components/Tabbed/Tab';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+import SortableTable from '@shell/components/SortableTable';
 import { STATE, SIMPLE_NAME, IMAGE } from '@shell/config/table-headers';
 import { sortableNumericSuffix } from '@shell/utils/sort';
 import { findBy } from '@shell/utils/array';
-import DashboardMetrics from '@/components/DashboardMetrics';
+import DashboardMetrics from '@shell/components/DashboardMetrics';
 import V1WorkloadMetrics from '@shell/mixins/v1-workload-metrics';
 import { mapGetters } from 'vuex';
 import { allDashboardsExist } from '@shell/utils/grafana';
-import Loading from '@/components/Loading';
-import LabeledSelect from '@/components/form/LabeledSelect';
+import Loading from '@shell/components/Loading';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
 
 const POD_METRICS_DETAIL_URL = '/api/v1/namespaces/cattle-monitoring-system/services/http:rancher-monitoring-grafana:80/proxy/d/rancher-pod-containers-1/rancher-pod-containers?orgId=1';
 const POD_METRICS_SUMMARY_URL = '/api/v1/namespaces/cattle-monitoring-system/services/http:rancher-monitoring-grafana:80/proxy/d/rancher-pod-1/rancher-pod?orgId=1';

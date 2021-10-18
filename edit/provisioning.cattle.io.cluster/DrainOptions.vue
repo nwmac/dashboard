@@ -1,7 +1,7 @@
 <script>
-import RadioGroup from '@/components/form/RadioGroup.vue';
-import Checkbox from '@/components/form/Checkbox.vue';
-import UnitInput from '@/components/form/UnitInput.vue';
+import RadioGroup from '@shell/components/form/RadioGroup.vue';
+import Checkbox from '@shell/components/form/Checkbox.vue';
+import UnitInput from '@shell/components/form/UnitInput.vue';
 
 const DEFAULTS = {
   deleteEmptyDirData:              false, // Show; Kill pods using emptyDir volumes and lose the data

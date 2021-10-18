@@ -1,7 +1,7 @@
 <script>
 import { _VIEW } from '@shell/config/query-params';
-import ArrayList from '@/components/form/ArrayList';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
+import ArrayList from '@shell/components/form/ArrayList';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
 
 export default {
   components: { ArrayList, ArrayListGrouped },

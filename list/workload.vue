@@ -1,7 +1,7 @@
 <script>
-import ResourceTable from '@/components/ResourceTable';
+import ResourceTable from '@shell/components/ResourceTable';
 import { WORKLOAD_TYPES, SCHEMA, NODE } from '@shell/config/types';
-import Loading from '@/components/Loading';
+import Loading from '@shell/components/Loading';
 
 const schema = {
   id:         'workload',

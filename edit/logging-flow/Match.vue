@@ -1,6 +1,6 @@
 <script>
-import KeyValue from '@/components/form/KeyValue';
-import Select from '@/components/form/Select';
+import KeyValue from '@shell/components/form/KeyValue';
+import Select from '@shell/components/form/Select';
 
 export default {
   components: { KeyValue, Select },

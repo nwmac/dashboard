@@ -1,7 +1,7 @@
 <script>
 import { HCI } from '@shell/config/types';
-import SerialConsole from '@/components/form/SerialConsole';
-import Loading from '@/components/Loading';
+import SerialConsole from '@shell/components/form/SerialConsole';
+import Loading from '@shell/components/Loading';
 
 export default {
   layout: 'blank',

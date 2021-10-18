@@ -1,11 +1,11 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import Footer from '@/components/form/Footer';
-import LabeledInput from '@/components/form/LabeledInput';
-import RadioGroup from '@/components/form/RadioGroup';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import Labels from '@/components/form/Labels';
-import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret';
+import Footer from '@shell/components/form/Footer';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import Labels from '@shell/components/form/Labels';
+import SelectOrCreateAuthSecret from '@shell/components/form/SelectOrCreateAuthSecret';
 import { NAMESPACE } from '@shell/config/types';
 
 export default {

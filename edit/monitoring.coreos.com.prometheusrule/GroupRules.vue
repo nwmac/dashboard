@@ -1,10 +1,10 @@
 <script>
 import has from 'lodash/has';
 
-import Banner from '@/components/Banner';
+import Banner from '@shell/components/Banner';
 import { removeAt } from '@shell/utils/array';
 import { _VIEW } from '@shell/config/query-params';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
 import AlertingRule from './AlertingRule';
 import RecordingRule from './RecordingRule';
 

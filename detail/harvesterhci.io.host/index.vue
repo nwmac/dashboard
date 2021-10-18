@@ -1,11 +1,11 @@
 <script>
-import Tabbed from '@/components/Tabbed';
-import Tab from '@/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
+import Tab from '@shell/components/Tabbed/Tab';
 import metricPoller from '@shell/mixins/metric-poller';
 import { METRIC, NODE, HCI, LONGHORN } from '@shell/config/types';
 import { allHash } from '@shell/utils/promise';
 import { formatSi } from '@shell/utils/units';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
 import { findBy } from '@shell/utils/array';
 import { clone } from '@shell/utils/object';
 import Basic from './HarvesterHostBasic';

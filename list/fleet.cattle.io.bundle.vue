@@ -1,8 +1,8 @@
 <script>
 import { FLEET } from '@shell/config/types';
-import Banner from '@/components/Banner';
-import Loading from '@/components/Loading';
-import ResourceTable from '@/components/ResourceTable';
+import Banner from '@shell/components/Banner';
+import Loading from '@shell/components/Loading';
+import ResourceTable from '@shell/components/ResourceTable';
 import {
   AGE,
   STATE,

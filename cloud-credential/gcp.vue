@@ -1,7 +1,7 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import LabeledInput from '@/components/form/LabeledInput';
-import FileSelector from '@/components/form/FileSelector';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import FileSelector from '@shell/components/form/FileSelector';
 
 export default {
   components: { LabeledInput, FileSelector },

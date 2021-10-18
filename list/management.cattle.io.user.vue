@@ -1,10 +1,10 @@
 <script>
-import AsyncButton from '@/components/AsyncButton';
+import AsyncButton from '@shell/components/AsyncButton';
 import { NORMAN } from '@shell/config/types';
 import { NAME } from '@shell/config/product/auth';
-import ResourceTable from '@/components/ResourceTable';
-import Loading from '@/components/Loading';
-import Masthead from '@/components/ResourceList/Masthead';
+import ResourceTable from '@shell/components/ResourceTable';
+import Loading from '@shell/components/Loading';
+import Masthead from '@shell/components/ResourceList/Masthead';
 
 export default {
   components: {

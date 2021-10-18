@@ -1,11 +1,11 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import KeyValue from '@/components/form/KeyValue';
-import Labels from '@/components/form/Labels';
-import Tab from '@/components/Tabbed/Tab';
-import Tabbed from '@/components/Tabbed';
+import CruResource from '@shell/components/CruResource';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import KeyValue from '@shell/components/form/KeyValue';
+import Labels from '@shell/components/form/Labels';
+import Tab from '@shell/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
 import { asciiLike } from '@shell/utils/string';
 import { base64Encode, base64Decode } from '@shell/utils/crypto';
 

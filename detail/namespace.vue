@@ -4,12 +4,12 @@ import has from 'lodash/has';
 import reduce from 'lodash/reduce';
 
 import CreateEditView from '@shell/mixins/create-edit-view';
-import FleetSummary from '@/components/FleetSummary';
-import ResourceTabs from '@/components/form/ResourceTabs';
+import FleetSummary from '@shell/components/FleetSummary';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
 
 import { COUNT } from '@shell/config/types';
 import { getStatesByType } from '@shell/plugins/steve/resource-instance';
-import MoveModal from '@/components/MoveModal';
+import MoveModal from '@shell/components/MoveModal';
 
 export default {
   components: {

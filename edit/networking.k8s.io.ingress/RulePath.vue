@@ -1,7 +1,7 @@
 <script>
-import InputWithSelect from '@/components/form/InputWithSelect';
-import LabeledInput from '@/components/form/LabeledInput';
-import Select from '@/components/form/Select';
+import InputWithSelect from '@shell/components/form/InputWithSelect';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import Select from '@shell/components/form/Select';
 import { get, set } from '@shell/utils/object';
 import debounce from 'lodash/debounce';
 

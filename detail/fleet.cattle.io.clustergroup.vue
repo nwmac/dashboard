@@ -1,9 +1,9 @@
 <script>
-import Loading from '@/components/Loading';
-import FleetSummary from '@/components/FleetSummary';
-import FleetClusters from '@/components/FleetClusters';
-import ResourceTabs from '@/components/form/ResourceTabs';
-import Tab from '@/components/Tabbed/Tab';
+import Loading from '@shell/components/Loading';
+import FleetSummary from '@shell/components/FleetSummary';
+import FleetClusters from '@shell/components/FleetClusters';
+import ResourceTabs from '@shell/components/form/ResourceTabs';
+import Tab from '@shell/components/Tabbed/Tab';
 import { FLEET } from '@shell/config/types';
 
 export default {

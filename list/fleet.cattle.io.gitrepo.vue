@@ -1,6 +1,6 @@
 <script>
-import FleetRepos from '@/components/FleetRepos';
-import Loading from '@/components/Loading';
+import FleetRepos from '@shell/components/FleetRepos';
+import Loading from '@shell/components/Loading';
 import { FLEET } from '@shell/config/types';
 
 export default {

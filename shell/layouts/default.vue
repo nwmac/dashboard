@@ -2,17 +2,17 @@
 import debounce from 'lodash/debounce';
 import { mapState, mapGetters } from 'vuex';
 import { mapPref, DEV, FAVORITE_TYPES, AFTER_LOGIN_ROUTE } from '@shell/store/prefs';
-import ActionMenu from '@/components/ActionMenu';
-import GrowlManager from '@/components/GrowlManager';
-import WindowManager from '@/components/nav/WindowManager';
-import PromptRemove from '@/components/PromptRemove';
-import PromptRestore from '@/components/PromptRestore';
-import PromptModal from '@/components/PromptModal';
-import AssignTo from '@/components/AssignTo';
-import Group from '@/components/nav/Group';
-import Header from '@/components/nav/Header';
+import ActionMenu from '@shell/components/ActionMenu';
+import GrowlManager from '@shell/components/GrowlManager';
+import WindowManager from '@shell/components/nav/WindowManager';
+import PromptRemove from '@shell/components/PromptRemove';
+import PromptRestore from '@shell/components/PromptRestore';
+import PromptModal from '@shell/components/PromptModal';
+import AssignTo from '@shell/components/AssignTo';
+import Group from '@shell/components/nav/Group';
+import Header from '@shell/components/nav/Header';
 import Brand from '@shell/mixins/brand';
-import FixedBanner from '@/components/FixedBanner';
+import FixedBanner from '@shell/components/FixedBanner';
 import {
   COUNT, SCHEMA, MANAGEMENT, UI, CATALOG, HCI
 } from '@shell/config/types';

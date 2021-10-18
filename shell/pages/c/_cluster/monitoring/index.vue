@@ -2,15 +2,15 @@
 import isEmpty from 'lodash/isEmpty';
 
 import InstallRedirect from '@shell/utils/install-redirect';
-import AlertTable from '@/components/AlertTable';
+import AlertTable from '@shell/components/AlertTable';
 import { NAME, CHART_NAME } from '@shell/config/product/monitoring';
 import { ENDPOINTS, MONITORING } from '@shell/config/types';
 import { allHash } from '@shell/utils/promise';
 import { findBy } from '@shell/utils/array';
 
-import Banner from '@/components/Banner';
-import LazyImage from '@/components/LazyImage';
-import SimpleBox from '@/components/SimpleBox';
+import Banner from '@shell/components/Banner';
+import LazyImage from '@shell/components/LazyImage';
+import SimpleBox from '@shell/components/SimpleBox';
 import { haveV1MonitoringWorkloads } from '@shell/utils/monitoring';
 
 const CATTLE_MONITORING_NAMESPACE = 'cattle-monitoring-system';

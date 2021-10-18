@@ -1,5 +1,5 @@
 <script>
-import EmbeddedPageView from '@/components/EmberPageView';
+import EmbeddedPageView from '@shell/components/EmberPageView';
 
 export default {
   components: { EmbeddedPageView },

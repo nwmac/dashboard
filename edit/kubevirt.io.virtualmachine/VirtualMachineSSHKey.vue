@@ -1,9 +1,9 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import LabeledInput from '@/components/form/LabeledInput';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import ModalWithCard from '@/components/ModalWithCard';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import ModalWithCard from '@shell/components/ModalWithCard';
 
 import { HCI } from '@shell/config/types';
 import { clone } from '@shell/utils/object';

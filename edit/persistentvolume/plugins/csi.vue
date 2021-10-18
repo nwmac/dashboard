@@ -1,7 +1,7 @@
 <script>
-import LabeledInput from '@/components/form/LabeledInput';
-import RadioGroup from '@/components/form/RadioGroup';
-import KeyValue from '@/components/form/KeyValue';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import KeyValue from '@shell/components/form/KeyValue';
 
 export default {
   components: {

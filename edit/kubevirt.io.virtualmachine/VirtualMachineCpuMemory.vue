@@ -1,7 +1,7 @@
 <script>
 import { formatSi, parseSi } from '@shell/utils/units';
-import UnitInput from '@/components/form/UnitInput';
-import InputOrDisplay from '@/components/InputOrDisplay';
+import UnitInput from '@shell/components/form/UnitInput';
+import InputOrDisplay from '@shell/components/InputOrDisplay';
 
 export default {
   name:       'HarvesterEditCpuMemory',

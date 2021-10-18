@@ -1,9 +1,9 @@
 <script>
 import createEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import LabeledInput from '@/components/form/LabeledInput';
-import NameNsDescription from '@/components/form/NameNsDescription';
+import CruResource from '@shell/components/CruResource';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
 import { mapGetters } from 'vuex';
 import { CONFIG_MAP } from '@shell/config/types';
 const providers = ['aks', 'docker', 'eks', 'gke', 'k3s', 'minikube', 'rke-windows', 'rke', 'rke2'];

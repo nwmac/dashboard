@@ -1,11 +1,11 @@
 <script>
-import Banner from '@/components/Banner';
+import Banner from '@shell/components/Banner';
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import Labels from '@/components/form/Labels';
-import Loading from '@/components/Loading';
-import MatchExpressions from '@/components/form/MatchExpressions';
-import NameNsDescription from '@/components/form/NameNsDescription';
+import CruResource from '@shell/components/CruResource';
+import Labels from '@shell/components/form/Labels';
+import Loading from '@shell/components/Loading';
+import MatchExpressions from '@shell/components/form/MatchExpressions';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
 
 import { set } from '@shell/utils/object';
 import { FLEET } from '@shell/config/types';

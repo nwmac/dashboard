@@ -1,7 +1,7 @@
 <script>
-import LabeledSelect from '@/components/form/LabeledSelect';
-import LabeledInput from '@/components/form/LabeledInput';
-import Checkbox from '@/components/form/Checkbox';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import Checkbox from '@shell/components/form/Checkbox';
 import Mount from '@/edit/workload/storage/Mount';
 import { mapGetters } from 'vuex';
 

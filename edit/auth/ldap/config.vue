@@ -1,10 +1,10 @@
 <script>
-import RadioGroup from '@/components/form/RadioGroup';
-import LabeledInput from '@/components/form/LabeledInput';
-import Checkbox from '@/components/form/Checkbox';
-import UnitInput from '@/components/form/UnitInput';
-import Banner from '@/components/Banner';
-import FileSelector from '@/components/form/FileSelector';
+import RadioGroup from '@shell/components/form/RadioGroup';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import Checkbox from '@shell/components/form/Checkbox';
+import UnitInput from '@shell/components/form/UnitInput';
+import Banner from '@shell/components/Banner';
+import FileSelector from '@shell/components/form/FileSelector';
 
 const DEFAULT_NON_TLS_PORT = 389;
 const DEFAULT_TLS_PORT = 636;

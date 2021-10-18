@@ -1,7 +1,7 @@
 <script>
-import LabelValue from '@/components/LabelValue';
-import BadgeState from '@/components/BadgeState';
-import Banner from '@/components/Banner';
+import LabelValue from '@shell/components/LabelValue';
+import BadgeState from '@shell/components/BadgeState';
+import Banner from '@shell/components/Banner';
 
 export default {
   components: {

@@ -1,24 +1,24 @@
 <script>
 import CreateEditView from '@shell/mixins/create-edit-view';
-import CruResource from '@/components/CruResource';
-import NameNsDescription from '@/components/form/NameNsDescription';
-import ArrayList from '@/components/form/ArrayList';
-import ArrayListGrouped from '@/components/form/ArrayListGrouped';
-import LabeledSelect from '@/components/form/LabeledSelect';
-import MatchExpressions from '@/components/form/MatchExpressions';
-import Tab from '@/components/Tabbed/Tab';
-import Tabbed from '@/components/Tabbed';
-import NodeAffinity from '@/components/form/NodeAffinity';
-import Checkbox from '@/components/form/Checkbox';
+import CruResource from '@shell/components/CruResource';
+import NameNsDescription from '@shell/components/form/NameNsDescription';
+import ArrayList from '@shell/components/form/ArrayList';
+import ArrayListGrouped from '@shell/components/form/ArrayListGrouped';
+import LabeledSelect from '@shell/components/form/LabeledSelect';
+import MatchExpressions from '@shell/components/form/MatchExpressions';
+import Tab from '@shell/components/Tabbed/Tab';
+import Tabbed from '@shell/components/Tabbed';
+import NodeAffinity from '@shell/components/form/NodeAffinity';
+import Checkbox from '@shell/components/form/Checkbox';
 import uniq from 'lodash/uniq';
-import UnitInput from '@/components/form/UnitInput';
+import UnitInput from '@shell/components/form/UnitInput';
 import { NODE, PVC, STORAGE_CLASS } from '@shell/config/types';
-import Loading from '@/components/Loading';
+import Loading from '@shell/components/Loading';
 import { LONGHORN_PLUGIN, VOLUME_PLUGINS } from '@/models/persistentvolume';
 import { _CREATE, _VIEW } from '@shell/config/query-params';
 import { clone } from '@shell/utils/object';
 import { parseSi } from '@shell/utils/units';
-import InfoBox from '@/components/InfoBox';
+import InfoBox from '@shell/components/InfoBox';
 import { mapFeature, UNSUPPORTED_STORAGE_DRIVERS } from '@shell/store/features';
 
 export default {

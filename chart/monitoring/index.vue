@@ -5,13 +5,13 @@ import merge from 'lodash/merge';
 import { mapGetters } from 'vuex';
 
 import Alerting from '@/chart/monitoring/alerting';
-import Checkbox from '@/components/form/Checkbox';
+import Checkbox from '@shell/components/form/Checkbox';
 import ClusterSelector from '@/chart/monitoring/ClusterSelector';
 import Grafana from '@/chart/monitoring/grafana';
-import LabeledInput from '@/components/form/LabeledInput';
-import Loading from '@/components/Loading';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import Loading from '@shell/components/Loading';
 import Prometheus from '@/chart/monitoring/prometheus';
-import Tab from '@/components/Tabbed/Tab';
+import Tab from '@shell/components/Tabbed/Tab';
 
 import { allHash } from '@shell/utils/promise';
 import { STORAGE_CLASS, PVC, SECRET, WORKLOAD_TYPES } from '@shell/config/types';

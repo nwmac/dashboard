@@ -1,7 +1,7 @@
 <script>
-import Banner from '@/components/Banner';
-import ResourceTable from '@/components/ResourceTable';
-import Masthead from '@/components/ResourceList/Masthead';
+import Banner from '@shell/components/Banner';
+import ResourceTable from '@shell/components/ResourceTable';
+import Masthead from '@shell/components/ResourceList/Masthead';
 import { allHash } from '@shell/utils/promise';
 import { CAPI, MANAGEMENT } from '@shell/config/types';
 import { MODE, _IMPORT } from '@shell/config/query-params';

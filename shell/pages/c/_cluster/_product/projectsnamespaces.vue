@@ -1,13 +1,13 @@
 <script>
-import ResourceTable from '@/components/ResourceTable';
+import ResourceTable from '@shell/components/ResourceTable';
 import { STATE, AGE, NAME } from '@shell/config/table-headers';
 import { uniq } from '@shell/utils/array';
 import { MANAGEMENT, NAMESPACE, VIRTUAL_TYPES } from '@shell/config/types';
-import Loading from '@/components/Loading';
+import Loading from '@shell/components/Loading';
 import { PROJECT_ID } from '@shell/config/query-params';
-import Masthead from '@/components/ResourceList/Masthead';
+import Masthead from '@shell/components/ResourceList/Masthead';
 import { mapPref, GROUP_RESOURCES, DEV } from '@shell/store/prefs';
-import MoveModal from '@/components/MoveModal';
+import MoveModal from '@shell/components/MoveModal';
 import { NAME as HARVESTER } from '@shell/config/product/harvester';
 
 export default {

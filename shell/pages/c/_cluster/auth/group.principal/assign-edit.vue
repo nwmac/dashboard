@@ -1,7 +1,7 @@
 <script>
-import FooterComponent from '@/components/form/Footer';
-import SelectPrincipal from '@/components/auth/SelectPrincipal.vue';
-import GlobalRoleBindings from '@/components/GlobalRoleBindings.vue';
+import FooterComponent from '@shell/components/form/Footer';
+import SelectPrincipal from '@shell/components/auth/SelectPrincipal.vue';
+import GlobalRoleBindings from '@shell/components/GlobalRoleBindings.vue';
 import { NORMAN } from '@shell/config/types';
 import { _VIEW, _EDIT } from '@shell/config/query-params';
 import { exceptionToErrorsArray } from '@shell/utils/error';

@@ -1,14 +1,14 @@
 <script>
-import ConsoleBar from '@/components/VMConsoleBar';
-import ResourceTable from '@/components/ResourceTable';
-import LinkDetail from '@/components/formatter/LinkDetail';
-import HarvesterVmState from '@/components/formatter/HarvesterVmState';
+import ConsoleBar from '@shell/components/VMConsoleBar';
+import ResourceTable from '@shell/components/ResourceTable';
+import LinkDetail from '@shell/components/formatter/LinkDetail';
+import HarvesterVmState from '@shell/components/formatter/HarvesterVmState';
 
 import { STATE, AGE, NAME, NAMESPACE } from '@shell/config/table-headers';
 import { HCI, NODE, POD } from '@shell/config/types';
 
 import { allHash } from '@shell/utils/promise';
-import Loading from '@/components/Loading';
+import Loading from '@shell/components/Loading';
 
 export default {
   name:       'HarvesterListVM',

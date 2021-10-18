@@ -1,7 +1,7 @@
 <script>
-import Checkbox from '@/components/form/Checkbox';
-import LabeledInput from '@/components/form/LabeledInput';
-import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret';
+import Checkbox from '@shell/components/form/Checkbox';
+import LabeledInput from '@shell/components/form/LabeledInput';
+import SelectOrCreateAuthSecret from '@shell/components/form/SelectOrCreateAuthSecret';
 import { NORMAN } from '@shell/config/types';
 
 export default {

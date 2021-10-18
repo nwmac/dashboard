@@ -1,14 +1,14 @@
 <script>
-import BackLink from '@/components/BackLink';
-import PromptChangePassword from '@/components/PromptChangePassword';
+import BackLink from '@shell/components/BackLink';
+import PromptChangePassword from '@shell/components/PromptChangePassword';
 import { NORMAN } from '@shell/config/types';
-import Loading from '@/components/Loading';
-import Principal from '@/components/auth/Principal';
+import Loading from '@shell/components/Loading';
+import Principal from '@shell/components/auth/Principal';
 import BackRoute from '@shell/mixins/back-link';
 import { mapGetters } from 'vuex';
 
-import Banner from '@/components/Banner';
-import ResourceTable from '@/components/ResourceTable';
+import Banner from '@shell/components/Banner';
+import ResourceTable from '@shell/components/ResourceTable';
 
 export default {
   layout:     'plain',
