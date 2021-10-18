@@ -1,0 +1,187 @@
+#!/bin/bash
+
+# Directories and folders not to replace in
+GREP_EXCLUDES="--exclude-dir=.git --exclude-dir=.nuxt --exclude-dir=node_modules --exclude=rejig --exclude=nuxt.config.js"
+
+echo "Re-jigging codebase"
+
+DIR=$(cd $(dirname $0); pwd)
+
+echo $DIR
+
+if [ "$1" == "-d" ]; then
+  echo "Resetting"
+  cp ${DIR}/rejig ${TMPDIR}
+  cp ${DIR}/nuxt.config.js ${TMPDIR}
+  cp ${DIR}/sh/nuxt.config.js ${TMPDIR}/nuxt.config.js.sh
+
+  git reset --hard
+  git clean -fd
+  mv ${TMPDIR}/rejig ${DIR}
+  mv ${TMPDIR}/nuxt.config.js ${DIR}
+  mv ${TMPDIR}/nuxt.config.js.sh ${DIR}/sh/nuxt.config.js
+  echo "Reset"
+  exit 0
+fi
+
+function move() {
+  if [ -d $1 ]; then
+    echo "Moving folder: $1"
+    #git mv $1/ ${SHELL}
+    mv $1/ ${SHELL}
+  fi
+}
+
+# Make new folders
+
+pushd $DIR 2>&1 > /dev/null
+
+SHELL=./shell
+
+mkdir -p ${SHELL}
+
+# Remove the design-system pages - we're going to use Storybook
+rm -rf pages/design-system
+
+move ./server
+move ./layouts
+
+exit 0
+
+# Asssets
+move ./assets
+move ./plugins
+move ./static
+move ./middleware
+move ./mixins
+move ./components
+move ./config
+move ./utils
+move ./store
+move ./pages
+
+# Update all references to ~assets, ~/assets, @/assets
+grep -rl ${GREP_EXCLUDES} . -e '~assets' | xargs sed -i.bak -e "s/~assets/~shell\/assets/g"
+# Update all references to @assets
+#grep -rl ${GREP_EXCLUDES} . -e '@/assets' | xargs sed -i.bak -e "s/@\/assets/@shell\/assets/g"
+
+grep -rl ${GREP_EXCLUDES} . -e '~/assets' | xargs sed -i.bak -e "s/~\/assets/~shell\/assets/g"
+grep -rl ${GREP_EXCLUDES} . -e '@/assets' | xargs sed -i.bak -e "s/@\/assets/~shell\/assets/g"
+
+# Update plugins references to use @~plugins
+grep -rl ${GREP_EXCLUDES} . -e '~/plugins' | xargs sed -i.bak -e "s/'~\/plugins/'~shell\/plugins/g"
+grep -rl ${GREP_EXCLUDES} . -e '@/plugins' | xargs sed -i.bak -e "s/'@\/plugins/'~shell\/plugins/g"
+
+# Mixins
+grep -rl ${GREP_EXCLUDES} . -e '~/mixins' | xargs sed -i.bak -e "s/'~\/mixins/'~shell\/mixins/g"
+grep -rl ${GREP_EXCLUDES} . -e '@/mixins' | xargs sed -i.bak -e "s/'@\/mixins/'@shell\/mixins/g"
+
+# Components
+grep -rl ${GREP_EXCLUDES} . -e '@/components' | xargs sed -i.bak -e "s/'@\/components/'@shell\/components/g"
+grep -rl ${GREP_EXCLUDES} . -e '@/components' | xargs sed -i.bak -e "s/\`@\/components/\`@shell\/components/g"
+
+# Utils imports
+
+sed -i.bak -e "s/'\.\.\/\.\.\/utils\/string/'@\/utils\/string/g" edit/networking.k8s.io.ingress/Rule.vue
+sed -i.bak -e "s/'\.\.\/utils\/error/'@\/utils\/error/g" shell/components/ResourceYaml.vue
+#sed -i.bak -e "s/'\.\.\/\.\.\/utils\/string/'@\/utils\/string/g" shell/plugins/i18n.js
+
+# Utils
+grep -rl ${GREP_EXCLUDES} . -e '~/utils' | xargs sed -i.bak -e "s/\'~\/utils/\'~shell\/utils/g"
+grep -rl ${GREP_EXCLUDES} . -e '@/utils' | xargs sed -i.bak -e "s/\'@\/utils/\'@shell\/utils/g"
+
+# Config
+grep -rl ${GREP_EXCLUDES} . -e '@/config' | xargs sed -i.bak -e "s/\'@\/config/\'@shell\/config/g"
+
+# Store
+grep -rl ${GREP_EXCLUDES} . -e '~/store' | xargs sed -i.bak -e "s/\'~\/store/\'~shell\/store/g"
+grep -rl ${GREP_EXCLUDES} . -e '@/store' | xargs sed -i.bak -e "s/\'@\/store/\'@shell\/store/g"
+
+# Pages
+grep -rl ${GREP_EXCLUDES} . -e '@/pages' | xargs sed -i.bak -e "s/\'@\/pages/\'@shell\/pages/g"
+
+# Utils
+
+# Manual fix-ups required
+
+grep .eslintignore -e 'shell'
+if [ $? -ne 0 ]; then
+  echo "Updating .eslintignore"
+  echo "shell/assets/fonts" >> .eslintignore
+fi
+
+echo "Removing any .bak files ..."
+find . -type f -name "*.bak" -delete
+
+exit 1
+
+# Move layouts
+move ./pages
+
+# Copy the utils folder - TODO: move into a core package that is shared
+# mkdir -p ${SCOPE}/shell/utils
+# cp ./utils/string.js ${SCOPE}/shell/utils/
+
+
+#sed -i.bak -e "s/'..\/utils\/string/'..\/..\/..\/utils\/string/g" ${SCOPE}/shell/plugins/i18n.js
+
+# Assets
+grep -rl ${GREP_EXCLUDES} . -e 'assets' | xargs sed -i.bak -e "s/'~assets/'@~assets/g"
+grep -rl ${GREP_EXCLUDES} . -e 'assets' | xargs sed -i.bak -e "s/'~\/assets/'@~\/assets/g"
+grep -rl ${GREP_EXCLUDES} . -e 'assets' | xargs sed -i.bak -e "s/\`~\/assets/\`@~\/assets/g"
+grep -rl ${GREP_EXCLUDES} . -e 'assets' | xargs sed -i.bak -e "s/\`~\/assets/\`@~\/assets/g"
+grep -rl ${GREP_EXCLUDES} . -e 'assets' | xargs sed -i.bak -e "s/'@\/assets/'@~\/assets/g"
+grep -rl ${GREP_EXCLUDES} . -e 'assets' | xargs sed -i.bak -e "s/\`@\/assets/\`@~\/assets/g"
+grep -rl ${GREP_EXCLUDES} . -e 'assets' | xargs sed -i.bak -e "s/\"~\/assets\/images/\"@~\/assets\/images/g"
+
+# Asset references
+
+sed -i.bak -e "s/url('@~assets/url('@\/node_modules\/@ruif\/shell\/assets/g" ${SCOPE}/shell/assets/styles/fonts/_fontstack.scss
+sed -i.bak -e "s/url('@~assets/url('@\/node_modules\/@ruif\/shell\/assets/g" ${SCOPE}/shell/pages/auth/setup.vue
+sed -i.bak -e "s/url('@~assets/url('@\/node_modules\/@ruif\/shell\/assets/g" ${SCOPE}/shell/components/CommunityLinks.vue
+
+sed -i.bak -e "s/'@~assets\/fonts/'@\/node_modules\/@ruif\/shell\/assets\/fonts/g" ${SCOPE}/shell/assets/styles/fonts/_icons.scss
+
+sed -i.bak -e "s/~assets\/fonts/..\/..\/fonts/g" ${SCOPE}/shell/assets/styles/fonts/_icons.scss
+
+sed -i.bak -e "s/~assets\/styles\/base/..\/base/g" ${SCOPE}/shell/assets/styles/global/_columns.scss
+
+# Update components references
+grep -rl ${GREP_EXCLUDES} . -e 'components' | xargs sed -i.bak -e 's/@\/components/@ruif\/components/g'
+
+sed -i.bak -e "s/'..\/..\/utils\/string/'@ruif\/utils\/string/g" ${DIR}/edit/networking.k8s.io.ingress/Rule.vue
+
+# Update config references
+# grep -rl --exclude-dir=node_modules --exclude=./nuxt.config.js -e '@config' . | xargs sed -i.bak -e 's/@\/config/@config/g'
+# grep -rl --exclude-dir=node_modules --exclude=./nuxt.config.js -e '@config' . | xargs sed -i.bak -e 's/..\/..\/config/@config/g'
+
+# Assets
+# sed -i.bak -e 's/@\/assets/@assets/g' @ruif/shell/store/i18n.js
+# sed -i.bak -e 's/@\/assets/@assets/g' ./utils/dynamic-importer.js
+
+# sed -i.bak -e 's/@\/assets/@assets/g' @ruif/shell/store/aws.js
+
+# # Store
+# sed -i.bak -e 's/@\/assets/@assets/g' @ruif/shell/store/aws.js
+
+# grep -rl --exclude-dir=node_modules . -e '@store' | xargs sed -i.bak -e 's/@\/store/@store/g'
+
+# # Move GlobalLoading component
+# mkdir -p ${SCOPE}/shell/components
+# if [ -f ./components/nav/GlobalLoading.vue ]; then
+#   mv ./components/nav/GlobalLoading.vue ${SCOPE}/shell/components
+# fi
+
+# axios.js reads the version number from the package file - just copy this for now and we'll fix later
+cp package.json ${SCOPE}/shell
+
+if [ ! -d node_modules/@ruif ]; then
+  echo "Linking @ruif folder into node_modules"
+  cd node_modules
+  ln -s ../@ruif @ruif 
+fi
+
+popd 2>&1 > /dev/null
+
+
+# Manual steps
