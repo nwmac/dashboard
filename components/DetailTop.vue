@@ -1,6 +1,6 @@
 <script>
-import Tag from '@/components/Tag';
 import isEmpty from 'lodash/isEmpty';
+import Tag from '@/components/Tag';
 import DetailText from '@/components/DetailText';
 import { _VIEW } from '@/config/query-params';
 
@@ -165,7 +165,7 @@ export default {
       flex-direction: row;
       flex-wrap: wrap;
       position: relative;
-      top: $spacing * -1/2;
+      top: $spacing * math.div(-1, 2);
 
       .label {
         position: relative;
@@ -173,7 +173,7 @@ export default {
       }
 
       .tag {
-        margin: $spacing/2 $spacing 0 $spacing/2;
+        margin: math.div($spacing, 2) $spacing 0 math.div($spacing, 2);
         font-size: 12px;
       }
     }
