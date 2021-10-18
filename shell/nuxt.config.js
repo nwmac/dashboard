@@ -112,7 +112,7 @@ export default function(dir, excludes) {
 
     // mode:    'spa', --- Use --spa CLI flag, or ?spa query param.
 
-    loading: '~/components/nav/GlobalLoading.vue',
+    loading: path.join(SHELL_ABS,'components/nav/GlobalLoading.vue'),
 
     // Axios: https://axios.nuxtjs.org/options
     axios: {
