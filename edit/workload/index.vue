@@ -1,12 +1,12 @@
 <script>
 import omitBy from 'lodash/omitBy';
-import { cleanUp } from '@/utils/object';
+import { cleanUp } from '@shell/utils/object';
 import {
   CONFIG_MAP, SECRET, WORKLOAD_TYPES, NODE, SERVICE, PVC
-} from '@/config/types';
+} from '@shell/config/types';
 import Tab from '@/components/Tabbed/Tab';
 import CreateEditView from '@/mixins/create-edit-view';
-import { allHash } from '@/utils/promise';
+import { allHash } from '@shell/utils/promise';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import LabeledInput from '@/components/form/LabeledInput';
@@ -17,7 +17,7 @@ import Loading from '@/components/Loading';
 import Networking from '@/components/form/Networking';
 import VolumeClaimTemplate from '@/edit/workload/VolumeClaimTemplate';
 import Job from '@/edit/workload/Job';
-import { _EDIT, _CREATE, _VIEW } from '@/config/query-params';
+import { _EDIT, _CREATE, _VIEW } from '@shell/config/query-params';
 import WorkloadPorts from '@/components/form/WorkloadPorts';
 import ContainerResourceLimit from '@/components/ContainerResourceLimit';
 import KeyValue from '@/components/form/KeyValue';
@@ -32,8 +32,8 @@ import LifecycleHooks from '@/components/form/LifecycleHooks';
 import Storage from '@/edit/workload/storage';
 import Labels from '@/components/form/Labels';
 import RadioGroup from '@/components/form/RadioGroup';
-import { UI_MANAGED } from '@/config/labels-annotations';
-import { removeObject } from '@/utils/array';
+import { UI_MANAGED } from '@shell/config/labels-annotations';
+import { removeObject } from '@shell/utils/array';
 import { BEFORE_SAVE_HOOKS } from '~/mixins/child-hook';
 
 export default {

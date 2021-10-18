@@ -4,7 +4,7 @@ import debounce from 'lodash/debounce';
 import CodeMirror from '@/components/CodeMirror';
 import LabeledInput from '@/components/form/LabeledInput';
 import KeyValue from '@/components/form/KeyValue';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 
 export default {
   components: {

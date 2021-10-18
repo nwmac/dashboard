@@ -1,4 +1,4 @@
-import { _EDIT, _VIEW } from '@/config/query-params';
+import { _EDIT, _VIEW } from '@shell/config/query-params';
 import $ from 'jquery';
 
 export default {

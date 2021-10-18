@@ -1,8 +1,8 @@
-import { HCI } from '@/config/types';
-import { get } from '@/utils/object';
-import { findBy } from '@/utils/array';
-import { colorForState } from '@/plugins/steve/resource-instance';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
+import { HCI } from '@shell/config/types';
+import { get } from '@shell/utils/object';
+import { findBy } from '@shell/utils/array';
+import { colorForState } from '@shell/plugins/steve/resource-instance';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
 
 export default {
   detailPageHeaderActionOverride() {

@@ -1,10 +1,10 @@
 <script>
-import { NODE, POD } from '@/config/types';
+import { NODE, POD } from '@shell/config/types';
 import Select from '@/components/form/Select';
 import { mapGetters } from 'vuex';
-import { isArray, removeObject } from '@/utils/array';
-import { clone } from '@/utils/object';
-import { convert, simplify } from '@/utils/selector';
+import { isArray, removeObject } from '@shell/utils/array';
+import { clone } from '@shell/utils/object';
+import { convert, simplify } from '@shell/utils/selector';
 
 export default {
   components: { Select },

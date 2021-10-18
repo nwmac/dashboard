@@ -1,7 +1,7 @@
 <script>
 import ResourceTable from '@/components/ResourceTable';
 import Loading from '@/components/Loading';
-import { LOGGING } from '@/config/types';
+import { LOGGING } from '@shell/config/types';
 
 export default {
   name:       'ListApps',

@@ -1,10 +1,10 @@
 <script>
-import { AGE, NAME, STATE } from '@/config/table-headers';
+import { AGE, NAME, STATE } from '@shell/config/table-headers';
 import SortableTable from '@/components/SortableTable';
-import { DESCRIPTION } from '@/config/labels-annotations';
-import { findAllConstraints } from '@/utils/gatekeeper/util';
+import { DESCRIPTION } from '@shell/config/labels-annotations';
+import { findAllConstraints } from '@shell/utils/gatekeeper/util';
 import Masthead from '@/components/ResourceList/Masthead';
-import { AS, _YAML } from '@/config/query-params';
+import { AS, _YAML } from '@shell/config/query-params';
 
 export default {
   components: { Masthead, SortableTable },

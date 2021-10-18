@@ -1,4 +1,4 @@
-import { ONE_WAY } from '@/config/features';
+import { ONE_WAY } from '@shell/config/features';
 
 export default {
 

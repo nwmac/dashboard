@@ -1,6 +1,6 @@
 <script>
-import { NAME as SETTINGS } from '@/config/product/settings';
-import { MANAGEMENT } from '@/config/types';
+import { NAME as SETTINGS } from '@shell/config/product/settings';
+import { MANAGEMENT } from '@shell/config/types';
 
 export default {
   layout: 'plain',

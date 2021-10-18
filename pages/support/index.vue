@@ -1,13 +1,13 @@
 <script>
-import { options } from '@/config/footer';
+import { options } from '@shell/config/footer';
 import BannerGraphic from '@/components/BannerGraphic';
 import AsyncButton from '@/components/AsyncButton';
 import IndentedPanel from '@/components/IndentedPanel';
 import Card from '@/components/Card';
 import CommunityLinks from '@/components/CommunityLinks';
-import { MANAGEMENT } from '@/config/types';
-import { getVendor, setBrand } from '@/config/private-label';
-import { SETTING } from '@/config/settings';
+import { MANAGEMENT } from '@shell/config/types';
+import { getVendor, setBrand } from '@shell/config/private-label';
+import { SETTING } from '@shell/config/settings';
 
 const KEY_REGX = /^[0-9a-fA-F]{16}$/;
 

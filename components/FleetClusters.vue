@@ -1,7 +1,7 @@
 <script>
 import ResourceTable from '@/components/ResourceTable';
-import { STATE, NAME, AGE, FLEET_SUMMARY } from '@/config/table-headers';
-import { FLEET, MANAGEMENT } from '@/config/types';
+import { STATE, NAME, AGE, FLEET_SUMMARY } from '@shell/config/table-headers';
+import { FLEET, MANAGEMENT } from '@shell/config/types';
 
 export default {
   components: { ResourceTable },

@@ -1,6 +1,6 @@
 <script>
-import { MANAGEMENT } from '@/config/types';
-import { SETTING } from '@/config/settings';
+import { MANAGEMENT } from '@shell/config/types';
+import { SETTING } from '@shell/config/settings';
 import isEmpty from 'lodash/isEmpty';
 
 export default {

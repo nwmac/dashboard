@@ -3,9 +3,9 @@ import { mapState, mapGetters } from 'vuex';
 import Card from '@/components/Card';
 import AsyncButton from '@/components/AsyncButton';
 import LabeledSelect from '@/components/form/LabeledSelect';
-import { MANAGEMENT } from '@/config/types';
+import { MANAGEMENT } from '@shell/config/types';
 import Loading from '@/components/Loading';
-import { PROJECT } from '@/config/labels-annotations';
+import { PROJECT } from '@shell/config/labels-annotations';
 
 export default {
   components: {

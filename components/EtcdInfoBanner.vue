@@ -2,7 +2,7 @@
 import Banner from '@/components/Banner';
 import Loading from '@/components/Loading';
 import { mapGetters } from 'vuex';
-import { hasLeader, leaderChanges, failedProposals } from '@/utils/grafana';
+import { hasLeader, leaderChanges, failedProposals } from '@shell/utils/grafana';
 
 export default {
   components: { Banner, Loading },

@@ -6,11 +6,11 @@ import ResourceTabs from '@/components/form/ResourceTabs';
 import SortableTable from '@/components/SortableTable';
 import CopyCode from '@/components/CopyCode';
 import Tab from '@/components/Tabbed/Tab';
-import { allHash } from '@/utils/promise';
-import { CAPI, MANAGEMENT, NORMAN } from '@/config/types';
+import { allHash } from '@shell/utils/promise';
+import { CAPI, MANAGEMENT, NORMAN } from '@shell/config/types';
 import {
   STATE, NAME as NAME_COL, AGE, AGE_NORMAN, STATE_NORMAN, ROLES, MACHINE_NODE_OS, MANAGEMENT_NODE_OS
-} from '@/config/table-headers';
+} from '@shell/config/table-headers';
 import CustomCommand from '@/edit/provisioning.cattle.io.cluster/CustomCommand';
 import AsyncButton from '@/components/AsyncButton.vue';
 

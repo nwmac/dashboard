@@ -3,9 +3,9 @@ import CreateEditView from '@/mixins/create-edit-view';
 import Tab from '@/components/Tabbed/Tab';
 import ResourceTabs from '@/components/form/ResourceTabs';
 import SortableTable from '@/components/SortableTable';
-import { MANAGEMENT, NORMAN } from '@/config/types';
+import { MANAGEMENT, NORMAN } from '@shell/config/types';
 import Loading from '@/components/Loading';
-import { NAME } from '@/config/table-headers';
+import { NAME } from '@shell/config/table-headers';
 
 export default {
   components: {

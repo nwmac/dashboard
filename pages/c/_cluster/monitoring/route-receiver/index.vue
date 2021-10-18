@@ -3,9 +3,9 @@ import ResourceTable from '@/components/ResourceTable';
 import Loading from '@/components/Loading';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
-import { MONITORING } from '@/config/types';
-import { areRoutesSupportedFormat, getSecret } from '@/utils/alertmanagerconfig';
-import { MODE, _EDIT } from '@/config/query-params';
+import { MONITORING } from '@shell/config/types';
+import { areRoutesSupportedFormat, getSecret } from '@shell/utils/alertmanagerconfig';
+import { MODE, _EDIT } from '@shell/config/query-params';
 
 export default {
   name:       'ListRoute',

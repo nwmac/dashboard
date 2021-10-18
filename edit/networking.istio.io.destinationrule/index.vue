@@ -7,7 +7,7 @@ import Tab from '@/components/Tabbed/Tab';
 import Tabbed from '@/components/Tabbed';
 import KeyValue from '@/components/form/KeyValue';
 import ArrayListGrouped from '@/components/form/ArrayListGrouped';
-import { get, set } from '@/utils/object';
+import { get, set } from '@shell/utils/object';
 import LoadBalancer from './LoadBalancer';
 
 export default {

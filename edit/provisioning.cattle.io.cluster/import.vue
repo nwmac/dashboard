@@ -6,15 +6,15 @@ import Loading from '@/components/Loading';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import Tab from '@/components/Tabbed/Tab';
 import Tabbed from '@/components/Tabbed';
-import { CAPI, HCI } from '@/config/types';
+import { CAPI, HCI } from '@shell/config/types';
 import ClusterMembershipEditor from '@/components/form/Members/ClusterMembershipEditor';
 import Banner from '@/components/Banner';
 import { canViewClusterMembershipEditor } from '@/components/form/Members/ClusterMembershipEditor.vue';
-import { NAME as HARVESTER_MANAGER } from '@/config/product/harvester-manager';
+import { NAME as HARVESTER_MANAGER } from '@shell/config/product/harvester-manager';
 import { HARVESTER as HARVESTER_FEATURE, mapFeature } from '@/store/features';
 import Labels from './Labels';
 import AgentEnv from './AgentEnv';
-import { addObject } from '~/utils/array';
+import { addObject } from '~shell/utils/array';
 import { HIDE_DESC, mapPref } from '~/store/prefs';
 
 const HARVESTER_HIDE_KEY = 'cm-harvester-import';

@@ -1,12 +1,12 @@
 <script>
-import { NAME, CHART_NAME } from '@/config/product/logging';
-import InstallRedirect from '@/utils/install-redirect';
-import { LOGGING } from '@/config/types';
+import { NAME, CHART_NAME } from '@shell/config/product/logging';
+import InstallRedirect from '@shell/utils/install-redirect';
+import { LOGGING } from '@shell/config/types';
 import SortableTable from '@/components/SortableTable';
-import { allHash } from '@/utils/promise';
+import { allHash } from '@shell/utils/promise';
 import {
   CONFIGURED_PROVIDERS, CLUSTER_OUTPUT, OUTPUT, NAMESPACE, NAME as NAME_COL
-} from '@/config/table-headers';
+} from '@shell/config/table-headers';
 import ChartHeading from '@/components/ChartHeading';
 
 export default {

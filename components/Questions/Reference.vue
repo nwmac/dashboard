@@ -1,8 +1,8 @@
 <script>
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
-import { filterBy } from '@/utils/array';
-import { PVC, STORAGE_CLASS } from '@/config/types';
+import { filterBy } from '@shell/utils/array';
+import { PVC, STORAGE_CLASS } from '@shell/config/types';
 import Question from './Question';
 
 // Older versions of rancher document these words as valid types

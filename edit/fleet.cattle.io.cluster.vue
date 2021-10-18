@@ -4,9 +4,9 @@ import CruResource from '@/components/CruResource';
 import Labels from '@/components/form/Labels';
 import Loading from '@/components/Loading';
 import NameNsDescription from '@/components/form/NameNsDescription';
-import { _VIEW } from '@/config/query-params';
-import { NORMAN } from '@/config/types';
-import { FLEET } from '@/config/labels-annotations';
+import { _VIEW } from '@shell/config/query-params';
+import { NORMAN } from '@shell/config/types';
+import { FLEET } from '@shell/config/labels-annotations';
 
 export default {
   name: 'CruFleetCluster',

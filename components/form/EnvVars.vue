@@ -1,8 +1,8 @@
 <script>
 import ValueFromResource from '@/components/form/ValueFromResource';
 import debounce from 'lodash/debounce';
-import { randomStr } from '@/utils/string';
-import { _VIEW } from '@/config/query-params';
+import { randomStr } from '@shell/utils/string';
+import { _VIEW } from '@shell/config/query-params';
 
 export default {
   components: { ValueFromResource },

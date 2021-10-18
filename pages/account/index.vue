@@ -1,7 +1,7 @@
 <script>
 import BackLink from '@/components/BackLink';
 import PromptChangePassword from '@/components/PromptChangePassword';
-import { NORMAN } from '@/config/types';
+import { NORMAN } from '@shell/config/types';
 import Loading from '@/components/Loading';
 import Principal from '@/components/auth/Principal';
 import BackRoute from '@/mixins/back-link';

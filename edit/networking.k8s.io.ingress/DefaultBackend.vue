@@ -1,9 +1,9 @@
 <script>
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
-import { _EDIT, _VIEW } from '@/config/query-params';
+import { _EDIT, _VIEW } from '@shell/config/query-params';
 import Banner from '@/components/Banner';
-import { get, set } from '@/utils/object';
+import { get, set } from '@shell/utils/object';
 
 export default {
   components: {

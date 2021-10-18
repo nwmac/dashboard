@@ -1,11 +1,11 @@
 import r from 'jsrsasign';
-import { CERTMANAGER, KUBERNETES } from '@/config/labels-annotations';
-import { base64Decode, base64Encode } from '@/utils/crypto';
-import { removeObjects } from '@/utils/array';
-import { SERVICE_ACCOUNT } from '@/config/types';
-import { set } from '@/utils/object';
-import { NAME as MANAGER } from '@/config/product/manager';
-import SteveModel from '@/plugins/steve/steve-class';
+import { CERTMANAGER, KUBERNETES } from '@shell/config/labels-annotations';
+import { base64Decode, base64Encode } from '@shell/utils/crypto';
+import { removeObjects } from '@shell/utils/array';
+import { SERVICE_ACCOUNT } from '@shell/config/types';
+import { set } from '@shell/utils/object';
+import { NAME as MANAGER } from '@shell/config/product/manager';
+import SteveModel from '@shell/plugins/steve/steve-class';
 
 export const TYPES = {
   OPAQUE:           'Opaque',

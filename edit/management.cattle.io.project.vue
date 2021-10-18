@@ -9,9 +9,9 @@ import ResourceQuota from '@/components/form/ResourceQuota';
 import Tab from '@/components/Tabbed/Tab';
 import Tabbed from '@/components/Tabbed';
 import NameNsDescription from '@/components/form/NameNsDescription';
-import { MANAGEMENT } from '@/config/types';
-import { NAME } from '@/config/product/explorer';
-import { PROJECT_ID } from '@/config/query-params';
+import { MANAGEMENT } from '@shell/config/types';
+import { NAME } from '@shell/config/product/explorer';
+import { PROJECT_ID } from '@shell/config/query-params';
 import ProjectMembershipEditor from '@/components/form/Members/ProjectMembershipEditor';
 import { canViewProjectMembershipEditor } from '@/components/form/Members/ProjectMembershipEditor.vue';
 

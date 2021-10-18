@@ -2,12 +2,12 @@
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
 import metricPoller from '@/mixins/metric-poller';
-import { METRIC, NODE, HCI, LONGHORN } from '@/config/types';
-import { allHash } from '@/utils/promise';
-import { formatSi } from '@/utils/units';
+import { METRIC, NODE, HCI, LONGHORN } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
+import { formatSi } from '@shell/utils/units';
 import ArrayListGrouped from '@/components/form/ArrayListGrouped';
-import { findBy } from '@/utils/array';
-import { clone } from '@/utils/object';
+import { findBy } from '@shell/utils/array';
+import { clone } from '@shell/utils/object';
 import Basic from './HarvesterHostBasic';
 import Instance from './VirtualMachineInstance';
 import Disk from './HarvesterHostDisk';

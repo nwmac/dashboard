@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import { parse } from '@/utils/url';
-import { CATALOG } from '@/config/labels-annotations';
-import { insertAt } from '@/utils/array';
-import { CATALOG as CATALOG_TYPE } from '@/config/types';
+import { parse } from '@shell/utils/url';
+import { CATALOG } from '@shell/config/labels-annotations';
+import { insertAt } from '@shell/utils/array';
+import { CATALOG as CATALOG_TYPE } from '@shell/config/types';
 
 export default {
   applyDefaults() {

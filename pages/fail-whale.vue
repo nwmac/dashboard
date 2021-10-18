@@ -1,9 +1,9 @@
 <script>
 import BrandImage from '@/components/BrandImage';
 import { mapState } from 'vuex';
-import { stringify } from '@/utils/error';
-import { getVendor } from '@/config/private-label';
-import { NAME as HARVESTER } from '@/config/product/harvester';
+import { stringify } from '@shell/utils/error';
+import { getVendor } from '@shell/config/private-label';
+import { NAME as HARVESTER } from '@shell/config/product/harvester';
 
 export default {
   layout: 'home',

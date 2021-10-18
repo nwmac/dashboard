@@ -2,7 +2,7 @@
 import LabeledSelect from '@/components/form/LabeledSelect';
 import LabeledInput from '@/components/form/LabeledInput';
 import RadioGroup from '@/components/form/RadioGroup';
-import { get } from '@/utils/object';
+import { get } from '@shell/utils/object';
 
 export default {
 

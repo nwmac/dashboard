@@ -1,6 +1,6 @@
 <script>
 import LinkDetail from '@/components/formatter/LinkDetail';
-import { HCI } from '@/config/labels-annotations';
+import { HCI } from '@shell/config/labels-annotations';
 export default {
   components: { LinkDetail },
   props:      {

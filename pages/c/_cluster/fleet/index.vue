@@ -1,6 +1,6 @@
 <script>
-import { NAME } from '@/config/product/fleet';
-import { FLEET } from '@/config/types';
+import { NAME } from '@shell/config/product/fleet';
+import { FLEET } from '@shell/config/types';
 
 export default {
   middleware({ redirect, route } ) {

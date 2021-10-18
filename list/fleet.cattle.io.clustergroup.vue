@@ -1,13 +1,13 @@
 <script>
 import ResourceTable from '@/components/ResourceTable';
-import { get } from '@/utils/object';
+import { get } from '@shell/utils/object';
 
 import {
   AGE,
   STATE,
   NAME,
   FLEET_SUMMARY
-} from '@/config/table-headers';
+} from '@shell/config/table-headers';
 
 export default {
   name:       'ListClusterGroup',

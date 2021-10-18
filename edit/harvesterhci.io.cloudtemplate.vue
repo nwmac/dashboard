@@ -7,7 +7,7 @@ import NameNsDescription from '@/components/form/NameNsDescription';
 import YamlEditor from '@/components/YamlEditor';
 
 import CreateEditView from '@/mixins/create-edit-view';
-import { HCI } from '@/config/labels-annotations';
+import { HCI } from '@shell/config/labels-annotations';
 
 export default {
   name: 'HarvesterEditCloudTemplate',

@@ -1,4 +1,4 @@
-import { CATALOG } from '@/config/types';
+import { CATALOG } from '@shell/config/types';
 
 export default {
   warnDeletionMessage() {

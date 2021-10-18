@@ -1,6 +1,6 @@
 <script>
 import ConsumptionGauge from '@/components/ConsumptionGauge';
-import { METRIC } from '@/config/types';
+import { METRIC } from '@shell/config/types';
 
 export default {
   name:       'HarvesterCpuUsed',

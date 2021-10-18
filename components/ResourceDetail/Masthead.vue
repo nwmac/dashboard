@@ -1,15 +1,15 @@
 <script>
-import { KUBERNETES, PROJECT } from '@/config/labels-annotations';
-import { FLEET, NAMESPACE, MANAGEMENT } from '@/config/types';
+import { KUBERNETES, PROJECT } from '@shell/config/labels-annotations';
+import { FLEET, NAMESPACE, MANAGEMENT } from '@shell/config/types';
 import ButtonGroup from '@/components/ButtonGroup';
 import BadgeState from '@/components/BadgeState';
 import Banner from '@/components/Banner';
-import { get } from '@/utils/object';
-import { NAME as FLEET_NAME } from '@/config/product/fleet';
+import { get } from '@shell/utils/object';
+import { NAME as FLEET_NAME } from '@shell/config/product/fleet';
 import { HIDE_SENSITIVE } from '@/store/prefs';
 import {
   AS, _DETAIL, _CONFIG, _YAML, MODE, _CREATE, _EDIT, _VIEW, _UNFLAG
-} from '@/config/query-params';
+} from '@shell/config/query-params';
 
 export default {
   components: {

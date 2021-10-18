@@ -1,6 +1,6 @@
 <script>
 import Bar from '@/components/graph/Bar';
-import { formatPercent } from '@/utils/string';
+import { formatPercent } from '@shell/utils/string';
 
 export const PreferredDirection = {
   LESS: 'LESS',

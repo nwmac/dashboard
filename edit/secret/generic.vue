@@ -1,6 +1,6 @@
 <script>
 import KeyValue from '@/components/form/KeyValue';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 
 const VALID_DATA_KEY = /^[-._a-zA-Z0-9]*$/;
 

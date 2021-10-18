@@ -5,12 +5,12 @@ import ResourceYaml from '@/components/ResourceYaml';
 import {
   _VIEW, _EDIT, _CLONE, _IMPORT, _STAGE, _CREATE,
   AS, _YAML, _DETAIL, _CONFIG, PREVIEW, MODE,
-} from '@/config/query-params';
-import { SCHEMA } from '@/config/types';
-import { createYaml } from '@/utils/create-yaml';
+} from '@shell/config/query-params';
+import { SCHEMA } from '@shell/config/types';
+import { createYaml } from '@shell/utils/create-yaml';
 import Masthead from '@/components/ResourceDetail/Masthead';
 import DetailTop from '@/components/DetailTop';
-import { clone, set, diff } from '@/utils/object';
+import { clone, set, diff } from '@shell/utils/object';
 import IconMessage from '@/components/IconMessage';
 
 function modeFor(route) {

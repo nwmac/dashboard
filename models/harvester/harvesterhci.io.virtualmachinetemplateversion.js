@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import find from 'lodash/find';
-import { HCI } from '@/config/types';
+import { HCI } from '@shell/config/types';
 import {
   AS, MODE, _VIEW, _CONFIG, _UNFLAG, _EDIT
-} from '@/config/query-params';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
+} from '@shell/config/query-params';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
 
 export default {
   availableActions() {

@@ -5,7 +5,7 @@ import Card from '@/components/Card';
 import Banner from '@/components/Banner';
 import AsyncButton from '@/components/AsyncButton';
 import Checkbox from '@/components/form/Checkbox';
-import { exceptionToErrorsArray } from '@/utils/error';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 
 export default {
   name: 'EjectCDROMModal',

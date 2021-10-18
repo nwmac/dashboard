@@ -1,6 +1,6 @@
 <script>
 import KeyValue from '@/components/form/KeyValue';
-import { _CREATE } from '@/config/query-params';
+import { _CREATE } from '@shell/config/query-params';
 
 export default {
   components: { KeyValue },

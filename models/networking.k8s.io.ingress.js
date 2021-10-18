@@ -1,6 +1,6 @@
-import { SECRET, SERVICE } from '@/config/types';
+import { SECRET, SERVICE } from '@shell/config/types';
 import isUrl from 'is-url';
-import { get } from '@/utils/object';
+import { get } from '@shell/utils/object';
 import isEmpty from 'lodash/isEmpty';
 
 export default {

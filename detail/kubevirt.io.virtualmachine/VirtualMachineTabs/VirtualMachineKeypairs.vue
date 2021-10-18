@@ -1,7 +1,7 @@
 <script>
-import { HCI } from '@/config/types';
-import { allHash } from '@/utils/promise';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
+import { HCI } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
 
 export default {
   props: {

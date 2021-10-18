@@ -1,10 +1,10 @@
-import { convert, matching, convertSelectorObj } from '@/utils/selector';
+import { convert, matching, convertSelectorObj } from '@shell/utils/selector';
 import jsyaml from 'js-yaml';
-import { escapeHtml } from '@/utils/string';
-import { FLEET } from '@/config/types';
-import { FLEET as FLEET_ANNOTATIONS } from '@/config/labels-annotations';
-import { addObject, addObjects, findBy, insertAt } from '@/utils/array';
-import { set } from '@/utils/object';
+import { escapeHtml } from '@shell/utils/string';
+import { FLEET } from '@shell/config/types';
+import { FLEET as FLEET_ANNOTATIONS } from '@shell/config/labels-annotations';
+import { addObject, addObjects, findBy, insertAt } from '@shell/utils/array';
+import { set } from '@shell/utils/object';
 
 function quacksLikeAHash(str) {
   if ( str.match(/^[a-f0-9]{40,}$/i) ) {

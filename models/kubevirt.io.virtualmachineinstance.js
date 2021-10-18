@@ -1,6 +1,6 @@
-import { colorForState } from '@/plugins/steve/resource-instance';
-import { HCI } from '@/config/types';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
+import { colorForState } from '@shell/plugins/steve/resource-instance';
+import { HCI } from '@shell/config/types';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
 
 const PAUSED = 'Paused';
 const PAUSED_VM_MODAL_MESSAGE = 'This VM has been paused. If you wish to unpause it, please click the Unpause button below. For further details, please check with your system administrator.';

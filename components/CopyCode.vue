@@ -1,5 +1,5 @@
 <script>
-import { isArray } from '@/utils/array';
+import { isArray } from '@shell/utils/array';
 
 function flatten(node) {
   if ( node.text ) {

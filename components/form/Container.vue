@@ -5,7 +5,7 @@ import Security from '@/components/form/Security';
 import WorkloadPorts from '@/components/form/WorkloadPorts';
 import ContainerResourceLimit from '@/components/ContainerResourceLimit';
 import LabeledInput from '@/components/form/LabeledInput';
-import { _CREATE, _VIEW } from '@/config/query-params';
+import { _CREATE, _VIEW } from '@shell/config/query-params';
 
 export default {
   components: {

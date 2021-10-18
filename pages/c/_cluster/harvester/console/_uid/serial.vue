@@ -1,5 +1,5 @@
 <script>
-import { HCI } from '@/config/types';
+import { HCI } from '@shell/config/types';
 import SerialConsole from '@/components/form/SerialConsole';
 import Loading from '@/components/Loading';
 

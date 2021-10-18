@@ -1,5 +1,5 @@
-import { CAPI, MANAGEMENT, NORMAN } from '@/config/types';
-import { sortBy } from '@/utils/sort';
+import { CAPI, MANAGEMENT, NORMAN } from '@shell/config/types';
+import { sortBy } from '@shell/utils/sort';
 
 export default {
 

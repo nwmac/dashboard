@@ -1,10 +1,10 @@
-import { CAPI, NODE } from '@/config/types';
-import { CAPI as CAPI_LABELS, MACHINE_ROLES } from '@/config/labels-annotations';
-import { NAME as EXPLORER } from '@/config/product/explorer';
+import { CAPI, NODE } from '@shell/config/types';
+import { CAPI as CAPI_LABELS, MACHINE_ROLES } from '@shell/config/labels-annotations';
+import { NAME as EXPLORER } from '@shell/config/product/explorer';
 import { listNodeRoles } from '@/models/cluster/node';
-import { escapeHtml } from '@/utils/string';
-import { insertAt } from '@/utils/array';
-import { downloadUrl } from '@/utils/download';
+import { escapeHtml } from '@shell/utils/string';
+import { insertAt } from '@shell/utils/array';
+import { downloadUrl } from '@shell/utils/download';
 
 export default {
   _availableActions() {

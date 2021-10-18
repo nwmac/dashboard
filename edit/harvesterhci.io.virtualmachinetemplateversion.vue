@@ -11,11 +11,11 @@ import CpuMemory from '@/edit/kubevirt.io.virtualmachine/VirtualMachineCpuMemory
 import CloudConfig from '@/edit/kubevirt.io.virtualmachine/VirtualMachineCloudConfig';
 import SSHKey from '@/edit/kubevirt.io.virtualmachine/VirtualMachineSSHKey';
 
-import { HCI } from '@/config/types';
-import { randomStr } from '@/utils/string';
-import { _CONFIG, _EDIT, _VIEW } from '@/config/query-params';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
-import { cleanForNew } from '@/plugins/steve/normalize';
+import { HCI } from '@shell/config/types';
+import { randomStr } from '@shell/utils/string';
+import { _CONFIG, _EDIT, _VIEW } from '@shell/config/query-params';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
+import { cleanForNew } from '@shell/plugins/steve/normalize';
 
 import VM_MIXIN from '@/mixins/harvester-vm';
 import CreateEditView from '@/mixins/create-edit-view';

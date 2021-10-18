@@ -5,7 +5,7 @@ import ArrayList from '@/components/form/ArrayList';
 import createEditView from '@/mixins/create-edit-view';
 import CruResource from '@/components/CruResource';
 import { mapGetters } from 'vuex';
-import { CIS } from '@/config/types';
+import { CIS } from '@shell/config/types';
 const semver = require('semver');
 
 export default {

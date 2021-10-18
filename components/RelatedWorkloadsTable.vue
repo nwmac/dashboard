@@ -1,8 +1,8 @@
 <script>
 import {
   STATE, NAME, WORKLOAD_IMAGES, WORKLOAD_ENDPOINTS, TYPE, AGE
-} from '@/config/table-headers';
-import { WORKLOAD_TYPES } from '@/config/types';
+} from '@shell/config/table-headers';
+import { WORKLOAD_TYPES } from '@shell/config/types';
 import ResourceTable from '@/components/ResourceTable';
 
 export default {

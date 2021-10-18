@@ -1,6 +1,6 @@
 <script>
 import Vue from 'vue';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 
 const component = Vue.component('InputOrDisplay', {
   render(h) {

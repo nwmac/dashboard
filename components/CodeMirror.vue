@@ -47,7 +47,7 @@ export default {
 
   created() {
     if ( process.client ) {
-      import(/* webpackChunkName: "codemirror" */ '@/plugins/codemirror').then(() => {
+      import(/* webpackChunkName: "codemirror" */ '@shell/plugins/codemirror').then(() => {
         this.loaded = true;
       });
     }

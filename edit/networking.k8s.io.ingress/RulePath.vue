@@ -2,7 +2,7 @@
 import InputWithSelect from '@/components/form/InputWithSelect';
 import LabeledInput from '@/components/form/LabeledInput';
 import Select from '@/components/form/Select';
-import { get, set } from '@/utils/object';
+import { get, set } from '@shell/utils/object';
 import debounce from 'lodash/debounce';
 
 export default {

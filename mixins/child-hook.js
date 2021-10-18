@@ -1,5 +1,5 @@
-import { findBy } from '@/utils/array';
-import { sortBy } from '@/utils/sort';
+import { findBy } from '@shell/utils/array';
+import { sortBy } from '@shell/utils/sort';
 
 let NEXT_ID = 1;
 

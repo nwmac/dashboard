@@ -1,5 +1,5 @@
 <script>
-import { get } from '@/utils/object';
+import { get } from '@shell/utils/object';
 export default {
   props:      {
     value: {

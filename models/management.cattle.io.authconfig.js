@@ -1,4 +1,4 @@
-import { insertAt } from '@/utils/array';
+import { insertAt } from '@shell/utils/array';
 
 export const configType = {
   activedirectory: 'ldap',

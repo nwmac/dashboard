@@ -1,10 +1,10 @@
 <script>
 import { mapGetters } from 'vuex';
-import { get, set } from '@/utils/object';
-import { sortBy } from '@/utils/sort';
-import { NAMESPACE } from '@/config/types';
-import { DESCRIPTION } from '@/config/labels-annotations';
-import { _VIEW, _EDIT } from '@/config/query-params';
+import { get, set } from '@shell/utils/object';
+import { sortBy } from '@shell/utils/sort';
+import { NAMESPACE } from '@shell/config/types';
+import { DESCRIPTION } from '@shell/config/labels-annotations';
+import { _VIEW, _EDIT } from '@shell/config/query-params';
 import LabeledInput from '@/components/form/LabeledInput';
 import InputWithSelect from '@/components/form/InputWithSelect';
 

@@ -5,8 +5,8 @@ import Tab from '@/components/Tabbed/Tab';
 import TypeDescription from '@/components/TypeDescription';
 
 import ResourceTable from '@/components/ResourceTable';
-import { MONITORING } from '@/config/types';
-import { allHash } from '@/utils/promise';
+import { MONITORING } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
 export default {
   components: {
     Loading, Tabbed, Tab, ResourceTable, TypeDescription

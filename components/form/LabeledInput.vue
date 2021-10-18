@@ -2,7 +2,7 @@
 import LabeledFormElement from '@/mixins/labeled-form-element';
 import TextAreaAutoGrow from '@/components/form/TextAreaAutoGrow';
 import LabeledTooltip from '@/components/form/LabeledTooltip';
-import { escapeHtml } from '@/utils/string';
+import { escapeHtml } from '@shell/utils/string';
 import cronstrue from 'cronstrue';
 import { isValidCron } from 'cron-validator';
 

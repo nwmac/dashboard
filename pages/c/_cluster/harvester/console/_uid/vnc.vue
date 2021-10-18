@@ -1,5 +1,5 @@
 <script>
-import { HCI } from '@/config/types';
+import { HCI } from '@shell/config/types';
 import NovncConsoleWrapper from '@/components/NovncConsoleWrapper';
 import Loading from '@/components/Loading';
 

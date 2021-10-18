@@ -1,8 +1,8 @@
 <script>
 import CreateEditView from '@/mixins/create-edit-view';
 import CruResource from '@/components/CruResource';
-import { MANAGEMENT } from '@/config/types';
-import { PROJECT_ID } from '@/config/query-params';
+import { MANAGEMENT } from '@shell/config/types';
+import { PROJECT_ID } from '@shell/config/query-params';
 import ProjectMemberEditor from '@/components/form/ProjectMemberEditor';
 
 export default {

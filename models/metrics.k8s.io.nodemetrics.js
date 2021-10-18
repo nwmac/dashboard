@@ -1,5 +1,5 @@
-import { NODE } from '@/config/types';
-import { parseSi } from '@/utils/units';
+import { NODE } from '@shell/config/types';
+import { parseSi } from '@shell/utils/units';
 
 export default {
   cpuUsage() {

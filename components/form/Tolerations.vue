@@ -3,8 +3,8 @@ import { mapGetters } from 'vuex';
 import LabeledInput from '@/components/form/LabeledInput';
 import Select from '@/components/form/Select';
 import UnitInput from '@/components/form/UnitInput';
-import { _VIEW } from '@/config/query-params';
-import { random32 } from '@/utils/string';
+import { _VIEW } from '@shell/config/query-params';
+import { random32 } from '@shell/utils/string';
 
 export default {
   components: {

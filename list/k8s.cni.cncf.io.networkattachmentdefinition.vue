@@ -4,11 +4,11 @@ import Loading from '@/components/Loading';
 import MessageLink from '@/components/MessageLink';
 import ResourceTable from '@/components/ResourceTable';
 
-import { NAME, AGE, NAMESPACE } from '@/config/table-headers';
-import { HCI } from '@/config/types';
+import { NAME, AGE, NAMESPACE } from '@shell/config/table-headers';
+import { HCI } from '@shell/config/types';
 
-import { findBy } from '@/utils/array';
-import { allHash } from '@/utils/promise';
+import { findBy } from '@shell/utils/array';
+import { allHash } from '@shell/utils/promise';
 
 export default {
   name:       'HarvesterListNetworks',

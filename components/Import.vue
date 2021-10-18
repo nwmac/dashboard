@@ -8,12 +8,12 @@ import FileSelector from '@/components/form/FileSelector';
 import AsyncButton from '@/components/AsyncButton';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import SortableTable from '@/components/SortableTable';
-import { sortBy } from '@/utils/sort';
-import { exceptionToErrorsArray } from '@/utils/error';
-import { NAMESPACE } from '@/config/types';
+import { sortBy } from '@shell/utils/sort';
+import { exceptionToErrorsArray } from '@shell/utils/error';
+import { NAMESPACE } from '@shell/config/types';
 import {
   NAME as NAME_COL, STATE, TYPE, NAMESPACE as NAMESPACE_COL, AGE
-} from '@/config/table-headers';
+} from '@shell/config/table-headers';
 
 export default {
   components: {

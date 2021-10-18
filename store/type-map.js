@@ -111,25 +111,25 @@
 //   mapWeight,
 //   continueOnMatch
 // )
-import { AGE, NAME, NAMESPACE, STATE } from '@/config/table-headers';
-import { COUNT, SCHEMA, MANAGEMENT } from '@/config/types';
+import { AGE, NAME, NAMESPACE, STATE } from '@shell/config/table-headers';
+import { COUNT, SCHEMA, MANAGEMENT } from '@shell/config/types';
 import { DEV, EXPANDED_GROUPS, FAVORITE_TYPES } from '@/store/prefs';
 import {
   addObject, findBy, insertAt, isArray, removeObject, filterBy
-} from '@/utils/array';
-import { clone, get } from '@/utils/object';
+} from '@shell/utils/array';
+import { clone, get } from '@shell/utils/object';
 import {
   ensureRegex, escapeHtml, escapeRegex, ucFirst, pluralize
-} from '@/utils/string';
+} from '@shell/utils/string';
 import {
   importList, importDetail, importEdit, loadProduct, importCustomPromptRemove
-} from '@/utils/dynamic-importer';
+} from '@shell/utils/dynamic-importer';
 
-import { NAME as EXPLORER } from '@/config/product/explorer';
+import { NAME as EXPLORER } from '@shell/config/product/explorer';
 import isObject from 'lodash/isObject';
-import { normalizeType } from '@/plugins/steve/normalize';
-import { sortBy } from '@/utils/sort';
-import { haveV1Monitoring, haveV2Monitoring } from '@/utils/monitoring';
+import { normalizeType } from '@shell/plugins/steve/normalize';
+import { sortBy } from '@shell/utils/sort';
+import { haveV1Monitoring, haveV2Monitoring } from '@shell/utils/monitoring';
 
 export const NAMESPACED = 'namespaced';
 export const CLUSTER_LEVEL = 'cluster';
@@ -291,7 +291,7 @@ export async function applyProducts(store) {
   }
 
   called = true;
-  const ctx = require.context('@/config/product', true, /.*/);
+  const ctx = require.context('@shell/config/product', true, /.*/);
 
   const products = ctx.keys().filter(path => !path.endsWith('.js')).map(path => path.substr(2));
 

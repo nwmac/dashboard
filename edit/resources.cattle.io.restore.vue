@@ -9,10 +9,10 @@ import Loading from '@/components/Loading';
 import RadioGroup from '@/components/form/RadioGroup';
 import S3 from '@/chart/rancher-backup/S3';
 import { mapGetters } from 'vuex';
-import { SECRET, BACKUP_RESTORE, CATALOG } from '@/config/types';
-import { allHash } from '@/utils/promise';
-import { get } from '@/utils/object';
-import { _CREATE } from '@/config/query-params';
+import { SECRET, BACKUP_RESTORE, CATALOG } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
+import { get } from '@shell/utils/object';
+import { _CREATE } from '@shell/config/query-params';
 export default {
 
   components: {

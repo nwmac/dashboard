@@ -1,8 +1,8 @@
 <script>
 import compact from 'lodash/compact';
-import { get } from '@/utils/object';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
-import { HCI } from '@/config/types';
+import { get } from '@shell/utils/object';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
+import { HCI } from '@shell/config/types';
 import CopyToClipboard from '@/components/CopyToClipboard';
 
 export default {

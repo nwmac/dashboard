@@ -1,6 +1,6 @@
 <script>
 import LabeledInput from '@/components/form/LabeledInput';
-import { convert, simplify } from '@/utils/selector'; /*  matching, */
+import { convert, simplify } from '@shell/utils/selector'; /*  matching, */
 import MatchExpressions from '@/components/form/MatchExpressions';
 
 export default {

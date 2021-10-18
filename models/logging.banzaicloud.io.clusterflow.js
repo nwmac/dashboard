@@ -1,4 +1,4 @@
-import { LOGGING } from '@/config/types';
+import { LOGGING } from '@shell/config/types';
 import uniq from 'lodash/uniq';
 import Flow from './logging.banzaicloud.io.flow';
 

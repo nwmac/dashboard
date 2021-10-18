@@ -2,10 +2,10 @@
 import Loading from '@/components/Loading';
 import BackLink from '@/components/BackLink';
 import BackRoute from '@/mixins/back-link';
-import { MANAGEMENT } from '@/config/types';
-import { SETTING } from '@/config/settings';
-import { getVendor } from '@/config/private-label';
-import { downloadFile } from '@/utils/download';
+import { MANAGEMENT } from '@shell/config/types';
+import { SETTING } from '@shell/config/settings';
+import { getVendor } from '@shell/config/private-label';
+import { downloadFile } from '@shell/utils/download';
 
 export default {
   layout:     'plain',

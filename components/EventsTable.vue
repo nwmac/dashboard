@@ -1,5 +1,5 @@
 <script>
-import { AGE, SIMPLE_TYPE, REASON, MESSAGE } from '@/config/table-headers';
+import { AGE, SIMPLE_TYPE, REASON, MESSAGE } from '@shell/config/table-headers';
 import SortableTable from '@/components/SortableTable';
 
 export default {

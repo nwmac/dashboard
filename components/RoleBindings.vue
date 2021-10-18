@@ -1,9 +1,9 @@
 <script>
-import { RBAC as RBAC_LABELS } from '@/config/labels-annotations';
-import { allHash } from '@/utils/promise';
-import { RBAC, MANAGEMENT } from '@/config/types';
-import { _CONFIG, _DETAIL, _EDIT, _VIEW } from '@/config/query-params';
-import { findBy, removeAt, removeObject } from '@/utils/array';
+import { RBAC as RBAC_LABELS } from '@shell/config/labels-annotations';
+import { allHash } from '@shell/utils/promise';
+import { RBAC, MANAGEMENT } from '@shell/config/types';
+import { _CONFIG, _DETAIL, _EDIT, _VIEW } from '@shell/config/query-params';
+import { findBy, removeAt, removeObject } from '@shell/utils/array';
 import Loading from '@/components/Loading';
 import SortableTable from '@/components/SortableTable';
 import LabeledSelect from '@/components/form/LabeledSelect';

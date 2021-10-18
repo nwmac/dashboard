@@ -1,7 +1,7 @@
 import { compatibleVersionsFor } from '@/store/catalog';
 import {
   REPO_TYPE, REPO, CHART, VERSION, _FLAGGED, HIDE_SIDE_NAV
-} from '@/config/query-params';
+} from '@shell/config/query-params';
 import { BLANK_CLUSTER } from '@/store';
 
 export default {

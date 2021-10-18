@@ -1,8 +1,8 @@
 <script>
-import { colorForState, stateDisplay, stateSort } from '@/plugins/steve/resource-instance';
+import { colorForState, stateDisplay, stateSort } from '@shell/plugins/steve/resource-instance';
 import SortableTable from '@/components/SortableTable';
-import { NAME as EXPLORER } from '@/config/product/explorer';
-import { FLEET as FLEET_ANNOTATIONS } from '@/config/labels-annotations';
+import { NAME as EXPLORER } from '@shell/config/product/explorer';
+import { FLEET as FLEET_ANNOTATIONS } from '@shell/config/labels-annotations';
 
 export default {
   components: { SortableTable },

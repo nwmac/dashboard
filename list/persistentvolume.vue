@@ -1,7 +1,7 @@
 <script>
 import ResourceTable from '@/components/ResourceTable';
 import Loading from '@/components/Loading';
-import { PVC } from '@/config/types';
+import { PVC } from '@shell/config/types';
 
 export default {
   name:       'ListPersistentVolume',

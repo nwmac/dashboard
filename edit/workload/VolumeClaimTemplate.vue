@@ -2,8 +2,8 @@
 import Mount from '@/edit/workload/storage/Mount';
 import { mapGetters } from 'vuex';
 import PersistentVolumeClaim from '@/edit/workload/storage/persistentVolumeClaim/persistentvolumeclaim.vue';
-import { PVC } from '@/config/types';
-import { _VIEW } from '@/config/query-params';
+import { PVC } from '@shell/config/types';
+import { _VIEW } from '@shell/config/query-params';
 import ArrayListGrouped from '@/components/form/ArrayListGrouped';
 
 export default {

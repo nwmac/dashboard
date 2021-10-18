@@ -3,7 +3,7 @@
 import AsyncButton from '@/components/AsyncButton';
 import Banner from '@/components/Banner';
 import Loading from '@/components/Loading';
-import { stringify } from '@/utils/error';
+import { stringify } from '@shell/utils/error';
 
 /*
 Wizard accepts an array of steps (see props), and creates named slots for each step.

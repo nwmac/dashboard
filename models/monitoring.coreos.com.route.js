@@ -1,7 +1,7 @@
-import { isEmpty, set } from '@/utils/object';
-import { areRoutesSupportedFormat, canCreate, createDefaultRouteName, updateConfig } from '@/utils/alertmanagerconfig';
-import { MONITORING } from '@/config/types';
-import { NAME as MONITORING_PRODUCT } from '@/config/product/monitoring';
+import { isEmpty, set } from '@shell/utils/object';
+import { areRoutesSupportedFormat, canCreate, createDefaultRouteName, updateConfig } from '@shell/utils/alertmanagerconfig';
+import { MONITORING } from '@shell/config/types';
+import { NAME as MONITORING_PRODUCT } from '@shell/config/product/monitoring';
 import jsyaml from 'js-yaml';
 
 export const ROOT_NAME = 'root';

@@ -1,9 +1,9 @@
 <script>
-import { MANAGEMENT, NORMAN } from '@/config/types';
+import { MANAGEMENT, NORMAN } from '@shell/config/types';
 import ArrayList from '@/components/form/ArrayList';
 import Loading from '@/components/Loading';
-import { _CREATE, _VIEW } from '@/config/query-params';
-import { get, set } from '@/utils/object';
+import { _CREATE, _VIEW } from '@shell/config/query-params';
+import { get, set } from '@shell/utils/object';
 
 function normalizeId(id) {
   return id?.replace(':', '/') || id;

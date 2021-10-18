@@ -1,6 +1,6 @@
 import EmberPage from '@/components/EmberPage';
-import { MANAGEMENT } from '@/config/types';
-import { haveV1Monitoring } from '@/utils/monitoring';
+import { MANAGEMENT } from '@shell/config/types';
+import { haveV1Monitoring } from '@shell/utils/monitoring';
 
 export default {
   components: { EmberPage },

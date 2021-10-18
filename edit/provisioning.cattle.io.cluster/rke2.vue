@@ -7,18 +7,18 @@ import { mapGetters } from 'vuex';
 
 import CreateEditView from '@/mixins/create-edit-view';
 
-import { CAPI, MANAGEMENT, NORMAN } from '@/config/types';
-import { _CREATE, _EDIT, _VIEW } from '@/config/query-params';
+import { CAPI, MANAGEMENT, NORMAN } from '@shell/config/types';
+import { _CREATE, _EDIT, _VIEW } from '@shell/config/query-params';
 import { DEFAULT_WORKSPACE } from '@/models/provisioning.cattle.io.cluster';
 
-import { findBy, removeObject, clear } from '@/utils/array';
+import { findBy, removeObject, clear } from '@shell/utils/array';
 import {
   clone, diff, isEmpty, set, get
-} from '@/utils/object';
-import { allHash } from '@/utils/promise';
-import { sortBy } from '@/utils/sort';
-import { camelToTitle, nlToBr } from '@/utils/string';
-import { compare, sortable } from '@/utils/version';
+} from '@shell/utils/object';
+import { allHash } from '@shell/utils/promise';
+import { sortBy } from '@shell/utils/sort';
+import { camelToTitle, nlToBr } from '@shell/utils/string';
+import { compare, sortable } from '@shell/utils/version';
 
 import ArrayList from '@/components/form/ArrayList';
 import ArrayListGrouped from '@/components/form/ArrayListGrouped';
@@ -44,7 +44,7 @@ import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret
 import { LEGACY } from '@/store/features';
 import semver from 'semver';
 import { canViewClusterMembershipEditor } from '@/components/form/Members/ClusterMembershipEditor.vue';
-import { SETTING } from '@/config/settings';
+import { SETTING } from '@shell/config/settings';
 import ACE from './ACE';
 import AgentEnv from './AgentEnv';
 import DrainOptions from './DrainOptions';

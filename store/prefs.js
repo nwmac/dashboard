@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import { MANAGEMENT, STEVE } from '@/config/types';
-import { clone } from '@/utils/object';
-import { SETTING } from '@/config/settings';
+import { MANAGEMENT, STEVE } from '@shell/config/types';
+import { clone } from '@shell/utils/object';
+import { SETTING } from '@shell/config/settings';
 
 const definitions = {};
 

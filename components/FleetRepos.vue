@@ -8,7 +8,7 @@ import {
   STATE,
   NAME,
   FLEET_SUMMARY
-} from '@/config/table-headers';
+} from '@shell/config/table-headers';
 
 export default {
 

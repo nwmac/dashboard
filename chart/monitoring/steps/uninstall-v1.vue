@@ -1,6 +1,6 @@
 
 <script>
-import { haveV1Monitoring, haveV1MonitoringWorkloads } from '@/utils/monitoring';
+import { haveV1Monitoring, haveV1MonitoringWorkloads } from '@shell/utils/monitoring';
 import AsyncButton from '@/components/AsyncButton';
 import IconMessage from '@/components/IconMessage';
 

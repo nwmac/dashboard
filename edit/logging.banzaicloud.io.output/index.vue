@@ -1,6 +1,6 @@
 <script>
 import CreateEditView from '@/mixins/create-edit-view';
-import { SECRET, LOGGING } from '@/config/types';
+import { SECRET, LOGGING } from '@shell/config/types';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
 import CruResource from '@/components/CruResource';
@@ -9,8 +9,8 @@ import Labels from '@/components/form/Labels';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import Banner from '@/components/Banner';
 import { PROVIDERS } from '@/models/logging.banzaicloud.io.output';
-import { _VIEW } from '@/config/query-params';
-import { clone } from '@/utils/object';
+import { _VIEW } from '@shell/config/query-params';
+import { clone } from '@shell/utils/object';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 

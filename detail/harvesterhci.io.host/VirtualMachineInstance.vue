@@ -1,11 +1,11 @@
 <script>
-import { STATE, AGE, NAME } from '@/config/table-headers';
+import { STATE, AGE, NAME } from '@shell/config/table-headers';
 import SortableTable from '@/components/SortableTable';
 import Loading from '@/components/Loading';
 import HarvesterVmState from '@/components/formatter/HarvesterVmState';
-import { allHash } from '@/utils/promise';
-import { HCI } from '@/config/types';
-import { HOSTNAME } from '@/config/labels-annotations';
+import { allHash } from '@shell/utils/promise';
+import { HCI } from '@shell/config/types';
+import { HOSTNAME } from '@shell/config/labels-annotations';
 
 export default {
   name: 'InstanceNode',

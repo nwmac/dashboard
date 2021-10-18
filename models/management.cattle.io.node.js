@@ -1,9 +1,9 @@
-import { MANAGEMENT_NODE } from '@/config/labels-annotations';
-import { CAPI, MANAGEMENT, NODE, NORMAN } from '@/config/types';
-import { NAME as EXPLORER } from '@/config/product/explorer';
+import { MANAGEMENT_NODE } from '@shell/config/labels-annotations';
+import { CAPI, MANAGEMENT, NODE, NORMAN } from '@shell/config/types';
+import { NAME as EXPLORER } from '@shell/config/product/explorer';
 import { listNodeRoles } from '@/models/cluster/node';
-import { insertAt } from '@/utils/array';
-import { downloadUrl } from '@/utils/download';
+import { insertAt } from '@shell/utils/array';
+import { downloadUrl } from '@shell/utils/download';
 
 export default {
   _availableActions() {

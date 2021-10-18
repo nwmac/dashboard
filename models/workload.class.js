@@ -1,9 +1,9 @@
-import { findBy, insertAt } from '@/utils/array';
-import { TARGET_WORKLOADS, TIMESTAMP, UI_MANAGED } from '@/config/labels-annotations';
-import { WORKLOAD_TYPES, SERVICE } from '@/config/types';
-import { clone, get, set } from '@/utils/object';
+import { findBy, insertAt } from '@shell/utils/array';
+import { TARGET_WORKLOADS, TIMESTAMP, UI_MANAGED } from '@shell/config/labels-annotations';
+import { WORKLOAD_TYPES, SERVICE } from '@shell/config/types';
+import { clone, get, set } from '@shell/utils/object';
 import day from 'dayjs';
-import SteveModel from '@/plugins/steve/steve-class';
+import SteveModel from '@shell/plugins/steve/steve-class';
 
 export default class Workload extends SteveModel {
   // remove clone as yaml/edit as yaml until API supported

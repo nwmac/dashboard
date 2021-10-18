@@ -2,7 +2,7 @@
 import { mapGetters } from 'vuex';
 import day from 'dayjs';
 import sortBy from 'lodash/sortBy';
-import { MANAGEMENT } from '@/config/types';
+import { MANAGEMENT } from '@shell/config/types';
 import Banner from '@/components/Banner';
 import DetailText from '@/components/DetailText';
 import Footer from '@/components/form/Footer';
@@ -11,8 +11,8 @@ import LabeledSelect from '@/components/form/LabeledSelect';
 import RadioGroup from '@/components/form/RadioGroup';
 import Select from '@/components/form/Select';
 import CreateEditView from '@/mixins/create-edit-view';
-import { diffFrom } from '@/utils/time';
-import { filterOnlyKubernetesClusters } from '@/utils/cluster';
+import { diffFrom } from '@shell/utils/time';
+import { filterOnlyKubernetesClusters } from '@shell/utils/cluster';
 
 export default {
   components: {

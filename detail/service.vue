@@ -8,11 +8,11 @@ import ResourceTabs from '@/components/form/ResourceTabs';
 import SortableTable from '@/components/SortableTable';
 import Tab from '@/components/Tabbed/Tab';
 
-import { CATTLE_PUBLIC_ENDPOINTS } from '@/config/labels-annotations';
-import { KEY, VALUE } from '@/config/table-headers';
-import { POD } from '@/config/types';
-import { allHash } from '@/utils/promise';
-import { findBy } from '@/utils/array';
+import { CATTLE_PUBLIC_ENDPOINTS } from '@shell/config/labels-annotations';
+import { KEY, VALUE } from '@shell/config/table-headers';
+import { POD } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
+import { findBy } from '@shell/utils/array';
 
 export default {
   components: {

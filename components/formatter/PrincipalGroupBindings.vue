@@ -1,5 +1,5 @@
 <script>
-import { NORMAN, MANAGEMENT } from '@/config/types';
+import { NORMAN, MANAGEMENT } from '@shell/config/types';
 
 export default {
   props:      {

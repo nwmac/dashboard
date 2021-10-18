@@ -1,7 +1,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex';
-import { HCI } from '@/config/types';
-import { isEmpty } from '@/utils/object';
+import { HCI } from '@shell/config/types';
+import { isEmpty } from '@shell/utils/object';
 import Parse from 'url-parse';
 
 export default {

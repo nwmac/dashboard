@@ -1,13 +1,13 @@
 <script>
-import { _VIEW } from '@/config/query-params';
-import { get, set, isEmpty, clone } from '@/utils/object';
-import { POD, NODE, NAMESPACE } from '@/config/types';
+import { _VIEW } from '@shell/config/query-params';
+import { get, set, isEmpty, clone } from '@shell/utils/object';
+import { POD, NODE, NAMESPACE } from '@shell/config/types';
 import MatchExpressions from '@/components/form/MatchExpressions';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import RadioGroup from '@/components/form/RadioGroup';
 import LabeledInput from '@/components/form/LabeledInput';
-import { randomStr } from '@/utils/string';
-import { sortBy } from '@/utils/sort';
+import { randomStr } from '@shell/utils/string';
+import { sortBy } from '@shell/utils/sort';
 import debounce from 'lodash/debounce';
 import ArrayListGrouped from '@/components/form/ArrayListGrouped';
 

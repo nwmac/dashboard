@@ -1,5 +1,5 @@
-import { get } from '@/utils/object';
-import { findBy } from '@/utils/array';
+import { get } from '@shell/utils/object';
+import { findBy } from '@shell/utils/array';
 
 export default {
   stateDisplay() {

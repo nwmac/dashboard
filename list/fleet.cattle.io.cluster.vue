@@ -1,8 +1,8 @@
 <script>
 import FleetClusters from '@/components/FleetClusters';
-import { FLEET, MANAGEMENT } from '@/config/types';
+import { FLEET, MANAGEMENT } from '@shell/config/types';
 import Loading from '@/components/Loading';
-import { isHarvesterCluster } from '@/utils/cluster';
+import { isHarvesterCluster } from '@shell/utils/cluster';
 import Banner from '@/components/Banner';
 
 export default {

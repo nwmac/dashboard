@@ -1,5 +1,5 @@
 import Parse from 'url-parse';
-import { HCI } from '@/config/types';
+import { HCI } from '@shell/config/types';
 
 export const state = function() {
   return {

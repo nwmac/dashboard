@@ -1,4 +1,4 @@
-import { set } from '@/utils/object';
+import { set } from '@shell/utils/object';
 
 export default {
   applyDefaults() {

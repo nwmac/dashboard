@@ -1,8 +1,8 @@
 <script>
 import { saveAs } from 'file-saver';
 import AnsiUp from 'ansi_up';
-import { addParams } from '@/utils/url';
-import { base64Decode } from '@/utils/crypto';
+import { addParams } from '@shell/utils/url';
+import { base64Decode } from '@shell/utils/crypto';
 import {
   LOGS_RANGE, LOGS_TIME, LOGS_WRAP, DATE_FORMAT, TIME_FORMAT
 } from '@/store/prefs';
@@ -12,7 +12,7 @@ import AsyncButton from '@/components/AsyncButton';
 import Select from '@/components/form/Select';
 import day from 'dayjs';
 
-import { escapeHtml, escapeRegex } from '@/utils/string';
+import { escapeHtml, escapeRegex } from '@shell/utils/string';
 
 import Socket, {
   EVENT_CONNECTED,
@@ -20,7 +20,7 @@ import Socket, {
   EVENT_MESSAGE,
   //  EVENT_FRAME_TIMEOUT,
   EVENT_CONNECT_ERROR
-} from '@/utils/socket';
+} from '@shell/utils/socket';
 import Window from './Window';
 
 let lastId = 1;

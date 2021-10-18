@@ -2,13 +2,13 @@
 
 import LabeledInput from '@/components/form/LabeledInput';
 import Checkbox from '@/components/form/Checkbox';
-import { _EDIT } from '@/config/query-params';
-import { importMachineConfig } from '@/utils/dynamic-importer';
+import { _EDIT } from '@shell/config/query-params';
+import { importMachineConfig } from '@shell/utils/dynamic-importer';
 import Taints from '@/components/form/Taints.vue';
 import KeyValue from '@/components/form/KeyValue.vue';
 import AdvancedSection from '@/components/AdvancedSection.vue';
 import Banner from '@/components/Banner';
-import { randomStr } from '@/utils/string';
+import { randomStr } from '@shell/utils/string';
 
 export default {
 

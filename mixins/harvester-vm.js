@@ -1,13 +1,13 @@
 import jsyaml from 'js-yaml';
 
-import { sortBy } from '@/utils/sort';
-import { clone } from '@/utils/object';
-import { allHash } from '@/utils/promise';
-import { randomStr } from '@/utils/string';
-import { SOURCE_TYPE } from '@/config/harvester-map';
-import { _CLONE } from '@/config/query-params';
-import { PVC, HCI, STORAGE_CLASS, NODE } from '@/config/types';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
+import { sortBy } from '@shell/utils/sort';
+import { clone } from '@shell/utils/object';
+import { allHash } from '@shell/utils/promise';
+import { randomStr } from '@shell/utils/string';
+import { SOURCE_TYPE } from '@shell/config/harvester-map';
+import { _CLONE } from '@shell/config/query-params';
+import { PVC, HCI, STORAGE_CLASS, NODE } from '@shell/config/types';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
 
 const QEMU_RESERVE = 0.1;
 const agentJson = {

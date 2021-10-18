@@ -1,10 +1,10 @@
 <script>
 import Vue from 'vue';
 import merge from 'lodash/merge';
-import { ucFirst } from '@/utils/string';
-import { isSimpleKeyValue } from '@/utils/object';
-import { _CREATE, _VIEW } from '@/config/query-params';
-import { SCHEMA, NAMESPACE } from '@/config/types';
+import { ucFirst } from '@shell/utils/string';
+import { isSimpleKeyValue } from '@shell/utils/object';
+import { _CREATE, _VIEW } from '@shell/config/query-params';
+import { SCHEMA, NAMESPACE } from '@shell/config/types';
 import CreateEditView from '@/mixins/create-edit-view';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import RadioGroup from '@/components/form/RadioGroup';
@@ -14,7 +14,7 @@ import Tabbed from '@/components/Tabbed';
 import YamlEditor, { EDITOR_MODES } from '@/components/YamlEditor';
 import CruResource from '@/components/CruResource';
 import { ENFORCEMENT_ACTION_VALUES } from '@/models/constraints.gatekeeper.sh.constraint';
-import { saferDump } from '@/utils/create-yaml';
+import { saferDump } from '@shell/utils/create-yaml';
 import NamespaceList, { NAMESPACE_FILTERS_HELPER } from './NamespaceList';
 import MatchKinds from './MatchKinds';
 import Scope, { SCOPE_OPTIONS } from './Scope';

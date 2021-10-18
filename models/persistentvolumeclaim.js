@@ -1,5 +1,5 @@
 
-import { _CLONE } from '@/config/query-params';
+import { _CLONE } from '@shell/config/query-params';
 import Vue from 'vue';
 
 export default {

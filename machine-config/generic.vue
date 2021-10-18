@@ -2,7 +2,7 @@
 import Loading from '@/components/Loading';
 import Banner from '@/components/Banner';
 import CreateEditView from '@/mixins/create-edit-view';
-import { exceptionToErrorsArray, stringify } from '@/utils/error';
+import { exceptionToErrorsArray, stringify } from '@shell/utils/error';
 import Questions from '@/components/Questions';
 
 export default {

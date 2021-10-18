@@ -1,14 +1,14 @@
 <script>
 import { mapGetters } from 'vuex';
-import { exceptionToErrorsArray } from '@/utils/error';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 
-import { sortBy } from '@/utils/sort';
+import { sortBy } from '@shell/utils/sort';
 import Card from '@/components/Card';
 import Banner from '@/components/Banner';
 import AsyncButton from '@/components/AsyncButton';
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
-import { NAMESPACE } from '@/config/types';
+import { NAMESPACE } from '@shell/config/types';
 
 export default {
   name: 'HarvesterExportImageDialog',

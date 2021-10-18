@@ -1,5 +1,5 @@
 <script>
-import { formatSi } from '@/utils/units';
+import { formatSi } from '@shell/utils/units';
 
 export default {
   props: {

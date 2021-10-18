@@ -2,7 +2,7 @@
 import isEmpty from 'lodash/isEmpty';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import { mapGetters } from 'vuex';
-import { findBy } from '@/utils/array';
+import { findBy } from '@shell/utils/array';
 import sortBy from 'lodash/sortBy';
 
 const MANAGED_CONFIG_KEYS = [

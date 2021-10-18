@@ -1,6 +1,6 @@
-import { canCreate, updateConfig } from '@/utils/alertmanagerconfig';
-import { isEmpty } from '@/utils/object';
-import { MONITORING } from '@/config/types';
+import { canCreate, updateConfig } from '@shell/utils/alertmanagerconfig';
+import { isEmpty } from '@shell/utils/object';
+import { MONITORING } from '@shell/config/types';
 import jsyaml from 'js-yaml';
 
 export const RECEIVERS_TYPES = [

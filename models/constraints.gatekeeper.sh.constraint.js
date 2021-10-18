@@ -1,5 +1,5 @@
 import jsyaml from 'js-yaml';
-import { cleanForNew } from '@/plugins/steve/normalize';
+import { cleanForNew } from '@shell/plugins/steve/normalize';
 
 export const ENFORCEMENT_ACTION_VALUES = {
   DENY:   'deny',

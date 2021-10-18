@@ -6,8 +6,8 @@ import Banner from '@/components/Banner';
 import RadioGroup from '@/components/form/RadioGroup';
 import Select from '@/components/form/Select';
 
-import { get } from '@/utils/object';
-import { exceptionToErrorsArray } from '@/utils/error';
+import { get } from '@shell/utils/object';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 
 export default {
   components: {

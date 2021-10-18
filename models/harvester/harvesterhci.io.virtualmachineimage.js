@@ -1,12 +1,12 @@
-import { HCI } from '@/config/types';
+import { HCI } from '@shell/config/types';
 import {
   DESCRIPTION,
   ANNOTATIONS_TO_IGNORE_REGEX,
-} from '@/config/labels-annotations';
-import { get, clone } from '@/utils/object';
-import { formatSi } from '@/utils/units';
-import { ucFirst } from '@/utils/string';
-import { stateDisplay, colorForState } from '@/plugins/steve/resource-instance';
+} from '@shell/config/labels-annotations';
+import { get, clone } from '@shell/utils/object';
+import { formatSi } from '@shell/utils/units';
+import { ucFirst } from '@shell/utils/string';
+import { stateDisplay, colorForState } from '@shell/plugins/steve/resource-instance';
 
 export const VM_IMAGE_FILE_FORMAT = ['qcow', 'qcow2', 'raw', 'img', 'iso'];
 

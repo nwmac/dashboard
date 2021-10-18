@@ -1,7 +1,7 @@
 <script>
 import CreateEditView from '@/mixins/create-edit-view';
 
-import { removeAt } from '@/utils/array';
+import { removeAt } from '@shell/utils/array';
 
 import Banner from '@/components/Banner';
 import CruResource from '@/components/CruResource';
@@ -10,7 +10,7 @@ import NameNsDescription from '@/components/form/NameNsDescription';
 import Tab from '@/components/Tabbed/Tab';
 import Tabbed from '@/components/Tabbed';
 import UnitInput from '@/components/form/UnitInput';
-import { _CREATE } from '@/config/query-params';
+import { _CREATE } from '@shell/config/query-params';
 import isString from 'lodash/isString';
 import isEmpty from 'lodash/isEmpty';
 import GroupRules from './GroupRules';

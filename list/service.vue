@@ -1,8 +1,8 @@
 <script>
 import ResourceTable from '@/components/ResourceTable';
 import Loading from '@/components/Loading';
-import { NODE } from '@/config/types';
-import { allHash } from '@/utils/promise';
+import { NODE } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
 
 export default {
   name:       'ListService',

@@ -1,8 +1,8 @@
-import { CAPI } from '@/config/labels-annotations';
+import { CAPI } from '@shell/config/labels-annotations';
 import { fullFields, prefixFields, simplify, suffixFields } from '@/store/plugins';
-import { isEmpty, set } from '@/utils/object';
-import { SECRET } from '@/config/types';
-import { escapeHtml } from '@/utils/string';
+import { isEmpty, set } from '@shell/utils/object';
+import { SECRET } from '@shell/config/types';
+import { escapeHtml } from '@shell/utils/string';
 
 export default {
   hasSensitiveData: () => true,

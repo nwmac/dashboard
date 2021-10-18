@@ -2,7 +2,7 @@
 import KeyValue from '@/components/form/KeyValue';
 import LabeledInput from '@/components/form/LabeledInput';
 import RadioGroup from '@/components/form/RadioGroup';
-import { _CREATE } from '@/config/query-params';
+import { _CREATE } from '@shell/config/query-params';
 import { LONGHORN_DRIVER } from '@/models/persistentvolume';
 
 export default {

@@ -7,9 +7,9 @@ import LabeledSelect from '@/components/form/LabeledSelect';
 import CreateEditView from '@/mixins/create-edit-view';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
-import { MONITORING } from '@/config/types';
+import { MONITORING } from '@shell/config/types';
 import Banner from '@/components/Banner';
-import { createDefaultRouteName } from '@/utils/alertmanagerconfig';
+import { createDefaultRouteName } from '@shell/utils/alertmanagerconfig';
 import Loading from '@/components/Loading';
 
 export default {

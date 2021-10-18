@@ -1,6 +1,6 @@
 <script>
-import { queryParamsFor } from '@/plugins/extend-router';
-import { SORT_BY, DESCENDING } from '@/config/query-params';
+import { queryParamsFor } from '@shell/plugins/extend-router';
+import { SORT_BY, DESCENDING } from '@shell/config/query-params';
 import Checkbox from '@/components/form/Checkbox';
 import { SOME, NONE } from './selection';
 

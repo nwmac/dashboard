@@ -6,8 +6,8 @@ import KeyValue from '@/components/form/KeyValue';
 import Labels from '@/components/form/Labels';
 import Tab from '@/components/Tabbed/Tab';
 import Tabbed from '@/components/Tabbed';
-import { asciiLike } from '@/utils/string';
-import { base64Encode, base64Decode } from '@/utils/crypto';
+import { asciiLike } from '@shell/utils/string';
+import { base64Encode, base64Decode } from '@shell/utils/crypto';
 
 export default {
   name: 'CruConfigMap',

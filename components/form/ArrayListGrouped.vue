@@ -1,7 +1,7 @@
 <script>
 import ArrayList from '@/components/form/ArrayList';
 import InfoBox from '@/components/InfoBox';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 
 export default {
   components: { ArrayList, InfoBox },

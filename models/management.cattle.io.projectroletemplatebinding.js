@@ -1,5 +1,5 @@
-import { CREATOR_ID } from '@/config/labels-annotations';
-import { MANAGEMENT, NORMAN } from '@/config/types';
+import { CREATOR_ID } from '@shell/config/labels-annotations';
+import { MANAGEMENT, NORMAN } from '@shell/config/types';
 
 export default {
   canCustomEdit() {

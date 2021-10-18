@@ -1,5 +1,5 @@
-import { MODE, _EDIT } from '@/config/query-params';
-import NormanModel from '@/plugins/steve/norman-class';
+import { MODE, _EDIT } from '@shell/config/query-params';
+import NormanModel from '@shell/plugins/steve/norman-class';
 
 export default class App extends NormanModel {
   get appEditUrl() {

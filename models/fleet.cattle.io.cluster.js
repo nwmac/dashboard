@@ -1,7 +1,7 @@
-import { MANAGEMENT, NORMAN } from '@/config/types';
-import { escapeHtml } from '@/utils/string';
-import { insertAt } from '@/utils/array';
-import { FLEET as FLEET_LABELS } from '@/config/labels-annotations';
+import { MANAGEMENT, NORMAN } from '@shell/config/types';
+import { escapeHtml } from '@shell/utils/string';
+import { insertAt } from '@shell/utils/array';
+import { FLEET as FLEET_LABELS } from '@shell/config/labels-annotations';
 
 export default {
   _availableActions() {

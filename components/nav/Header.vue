@@ -1,12 +1,12 @@
 <script>
 import { mapGetters } from 'vuex';
-import { NORMAN, HCI } from '@/config/types';
-import { NAME as VIRTUAL } from '@/config/product/harvester';
-import { ucFirst } from '@/utils/string';
-import { isMac } from '@/utils/platform';
+import { NORMAN, HCI } from '@shell/config/types';
+import { NAME as VIRTUAL } from '@shell/config/product/harvester';
+import { ucFirst } from '@shell/utils/string';
+import { isMac } from '@shell/utils/platform';
 import Import from '@/components/Import';
 import BrandImage from '@/components/BrandImage';
-import { getProduct } from '@/config/private-label';
+import { getProduct } from '@shell/config/private-label';
 import RancherProviderIcon from '@/components/RancherProviderIcon';
 import NamespaceFilter from './NamespaceFilter';
 import WorkspaceSwitcher from './WorkspaceSwitcher';

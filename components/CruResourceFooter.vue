@@ -3,7 +3,7 @@ import { mapGetters } from 'vuex';
 
 import AsyncButton from '@/components/AsyncButton';
 import ResourceCancelModal from '@/components/ResourceCancelModal';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 
 export default {
   components: { AsyncButton, ResourceCancelModal },

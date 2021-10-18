@@ -6,7 +6,7 @@ import RadioGroup from '@/components/form/RadioGroup';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import Labels from '@/components/form/Labels';
 import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret';
-import { NAMESPACE } from '@/config/types';
+import { NAMESPACE } from '@shell/config/types';
 
 export default {
   name: 'CruCatalogRepo',

@@ -1,4 +1,4 @@
-import { ALLOWED_SETTINGS } from '@/config/settings';
+import { ALLOWED_SETTINGS } from '@shell/config/settings';
 
 export default {
 

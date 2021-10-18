@@ -1,20 +1,23 @@
 import fs from 'fs';
 import path from 'path';
 
-import { STANDARD } from '../config/private-label';
-import { directiveSsr as t } from '../plugins/i18n';
-import { trimWhitespaceSsr as trimWhitespace } from '../plugins/trim-whitespace';
+import { STANDARD } from './config/private-label';
+import { directiveSsr as t } from './plugins/i18n';
+import { trimWhitespaceSsr as trimWhitespace } from './plugins/trim-whitespace';
 
 export default function(dir, excludes) {
   let SHELL = 'node_modules/@ranch/shell';
-  // let NUXT_SHELL= '~~node_modules/@ranch/shell';
+  let SHELL_ABS = path.join(dir, 'node_modules/@ranch/shell');
+  let NUXT_SHELL = '~~node_modules/@ranch/shell';
 
   if (fs.existsSync(path.join(dir, 'shell'))) {
-    SHELL = 'shell';
-    // NUXT_SHELL = '~~/shell';
+    SHELL = './shell';
+    SHELL_ABS = path.join(dir, 'shell');
+    NUXT_SHELL = '~~/shell';
   }
 
   console.log(SHELL); // eslint-disable-line no-console
+  console.log(SHELL_ABS); // eslint-disable-line no-console
 
   const SERVER = path.resolve(dir, SHELL, 'server');
 
@@ -126,6 +129,22 @@ export default function(dir, excludes) {
       middleware: ['i18n'],
     },
 
+    // alias: {
+    //   '~shell': SHELL_ABS,
+    //   '@shell': SHELL_ABS,
+    // },
+
+    alias: {
+      '~shell': SHELL_ABS,
+      '@shell': SHELL_ABS,
+    },
+
+    modulesDir: [
+      path.resolve(dir),
+      './node_modules',
+      SHELL_ABS
+    ],
+
     dir: { layouts: path.join(SHELL, 'layouts') },
 
     build: {
@@ -183,6 +202,30 @@ export default function(dir, excludes) {
             config.module.rules.splice(i, 1);
           }
         }
+
+        config.resolve.symlinks = false;
+
+        // Ensure we process files in the @ranch/shell folder
+
+        config.module.rules.forEach(r => {
+          if ('test.js'.match(r.test)) {
+            if (r.exclude) {
+              const orig = r.exclude;
+
+              r.exclude = function(modulePath) {
+                const res = orig(modulePath);
+
+                if (modulePath.indexOf(SHELL_ABS) === 0) {
+                  return false;
+                }
+
+                return orig(modulePath);
+              }
+            }
+          }
+        })
+
+        // console.log(config.module.rules);
 
         // And substitue our own
         config.module.rules.unshift({
@@ -314,7 +357,7 @@ export default function(dir, excludes) {
       '~/plugins/v-select',
       '~/plugins/directives',
       '~/plugins/transitions',
-      { src: '~plugins/vue-js-modal' },
+      { src: '~/plugins/vue-js-modal' },
       { src: '~/plugins/js-yaml', ssr: false },
       { src: '~/plugins/resize', ssr: false },
       { src: '~/plugins/shortkey', ssr: false },
@@ -374,7 +417,32 @@ export default function(dir, excludes) {
     typescript: { typeCheck: { eslint: { files: './**/*.{ts,js,vue}' } } }
   };
 
+  console.log(config.dir); // eslint-disable-line no-console
+  config.plugins = patch(config.plugins);
+  console.log(config.plugins); // eslint-disable-line no-console
+  config.modules = patch(config.modules);
+  console.log(config.modules); // eslint-disable-line no-console
+
   return config;
+
+  function patch(config) {
+    const update = [];
+
+    config.forEach((c) => {
+      if (c.src) {
+        if (c.src.startsWith('~/plugins')) {
+          c.src = path.join(NUXT_SHELL, c.src.substr(2));
+        }
+        update.push(c);
+      } else if (c.startsWith('~/plugins')) {
+        update.push(path.join(NUXT_SHELL, c.substr(2)));
+      } else {
+        update.push(c);
+      }
+    });
+
+    return update;
+  }  
 
   function proxyOpts(target) {
     return {

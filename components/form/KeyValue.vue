@@ -1,15 +1,15 @@
 <script>
 import debounce from 'lodash/debounce';
-import { typeOf } from '@/utils/sort';
-import { removeAt, removeObject } from '@/utils/array';
-import { asciiLike } from '@/utils/string';
-import { base64Encode, base64Decode } from '@/utils/crypto';
-import { downloadFile } from '@/utils/download';
+import { typeOf } from '@shell/utils/sort';
+import { removeAt, removeObject } from '@shell/utils/array';
+import { asciiLike } from '@shell/utils/string';
+import { base64Encode, base64Decode } from '@shell/utils/crypto';
+import { downloadFile } from '@shell/utils/download';
 import TextAreaAutoGrow from '@/components/form/TextAreaAutoGrow';
-import { get } from '@/utils/object';
+import { get } from '@shell/utils/object';
 import Select from '@/components/form/Select';
 import FileSelector from '@/components/form/FileSelector';
-import { _EDIT, _VIEW } from '@/config/query-params';
+import { _EDIT, _VIEW } from '@shell/config/query-params';
 
 export default {
   components: {

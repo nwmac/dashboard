@@ -1,13 +1,13 @@
 <script>
-import { _EDIT } from '@/config/query-params';
+import { _EDIT } from '@shell/config/query-params';
 import Loading from '@/components/Loading';
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
-import { NORMAN, SECRET } from '@/config/types';
+import { NORMAN, SECRET } from '@shell/config/types';
 import { TYPES as SECRET_TYPES } from '@/models/secret.class';
-import { base64Encode } from '@/utils/crypto';
-import { addObjects, insertAt } from '@/utils/array';
-import { sortBy } from '@/utils/sort';
+import { base64Encode } from '@shell/utils/crypto';
+import { addObjects, insertAt } from '@shell/utils/array';
+import { sortBy } from '@shell/utils/sort';
 
 const _NONE = '_none';
 const _BASIC = '_basic';

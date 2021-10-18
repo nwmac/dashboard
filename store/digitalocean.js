@@ -1,5 +1,5 @@
-import { sortBy } from '@/utils/sort';
-import { addParam, addParams } from '@/utils/url';
+import { sortBy } from '@shell/utils/sort';
+import { addParam, addParams } from '@shell/utils/url';
 
 const ENDPOINT = 'api.digitalocean.com/v2';
 

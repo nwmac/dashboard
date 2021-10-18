@@ -1,8 +1,8 @@
 <script>
 import ResourceTable from '@/components/ResourceTable';
 import Loading from '@/components/Loading';
-import { get } from '@/utils/object';
-import { AGE } from '@/config/table-headers';
+import { get } from '@shell/utils/object';
+import { AGE } from '@shell/config/table-headers';
 
 export default {
   components: { Loading, ResourceTable },

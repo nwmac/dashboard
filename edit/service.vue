@@ -12,13 +12,13 @@ import Tab from '@/components/Tabbed/Tab';
 import Tabbed from '@/components/Tabbed';
 import UnitInput from '@/components/form/UnitInput';
 import { DEFAULT_SERVICE_TYPES, HEADLESS, CLUSTERIP } from '@/models/service';
-import { ucFirst } from '@/utils/string';
+import { ucFirst } from '@shell/utils/string';
 import CruResource from '@/components/CruResource';
 import Banner from '@/components/Banner';
 import Labels from '@/components/form/Labels';
-import { clone } from '@/utils/object';
-import { POD } from '@/config/types';
-import { matching } from '@/utils/selector';
+import { clone } from '@shell/utils/object';
+import { POD } from '@shell/config/types';
+import { matching } from '@shell/utils/selector';
 
 const SESSION_AFFINITY_ACTION_VALUES = {
   NONE:     'None',

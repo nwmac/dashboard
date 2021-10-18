@@ -5,9 +5,9 @@ import MessageLink from '@/components/MessageLink';
 import Masthead from '@/components/ResourceList/Masthead';
 import ResourceTable from '@/components/ResourceTable';
 
-import { HCI } from '@/config/types';
-import { allHash } from '@/utils/promise';
-import { STATE, AGE, NAME, NAMESPACE } from '@/config/table-headers';
+import { HCI } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
+import { STATE, AGE, NAME, NAMESPACE } from '@shell/config/table-headers';
 
 export default {
   name:       'HarvesterListBackup',

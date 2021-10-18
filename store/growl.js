@@ -1,5 +1,5 @@
-import { clear, findBy, removeObject } from '@/utils/array';
-import { stringify } from '@/utils/error';
+import { clear, findBy, removeObject } from '@shell/utils/array';
+import { stringify } from '@shell/utils/error';
 
 const DEFAULT_TIMEOUT = 5000;
 

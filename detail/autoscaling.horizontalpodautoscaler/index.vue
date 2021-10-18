@@ -6,8 +6,8 @@ import InfoBox from '@/components/InfoBox';
 import camelCase from 'lodash/camelCase';
 import keys from 'lodash/keys';
 import startCase from 'lodash/startCase';
-import { findBy } from '@/utils/array';
-import { get } from '@/utils/object';
+import { findBy } from '@shell/utils/array';
+import { get } from '@shell/utils/object';
 
 export default {
   components: {

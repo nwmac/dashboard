@@ -1,5 +1,5 @@
 <script>
-import { allHash } from '@/utils/promise';
+import { allHash } from '@shell/utils/promise';
 import debounce from 'lodash/debounce';
 
 import Socket, {
@@ -8,7 +8,7 @@ import Socket, {
   EVENT_DISCONNECTED,
   EVENT_MESSAGE,
   EVENT_CONNECT_ERROR,
-} from '@/utils/socket';
+} from '@shell/utils/socket';
 
 export default {
   props:      {

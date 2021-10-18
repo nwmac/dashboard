@@ -2,8 +2,8 @@
 import has from 'lodash/has';
 
 import Banner from '@/components/Banner';
-import { removeAt } from '@/utils/array';
-import { _VIEW } from '@/config/query-params';
+import { removeAt } from '@shell/utils/array';
+import { _VIEW } from '@shell/config/query-params';
 import ArrayListGrouped from '@/components/form/ArrayListGrouped';
 import AlertingRule from './AlertingRule';
 import RecordingRule from './RecordingRule';

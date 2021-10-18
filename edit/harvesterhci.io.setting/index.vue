@@ -7,7 +7,7 @@ import TextAreaAutoGrow from '@/components/form/TextAreaAutoGrow';
 
 import CreateEditView from '@/mixins/create-edit-view';
 
-import { HCI_ALLOWED_SETTINGS, HCI_SINGLE_CLUSTER_ALLOWED_SETTING } from '@/config/settings';
+import { HCI_ALLOWED_SETTINGS, HCI_SINGLE_CLUSTER_ALLOWED_SETTING } from '@shell/config/settings';
 
 export default {
   components: {

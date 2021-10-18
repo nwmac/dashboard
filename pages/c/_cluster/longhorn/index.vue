@@ -1,9 +1,9 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import InstallRedirect from '@/utils/install-redirect';
+import InstallRedirect from '@shell/utils/install-redirect';
 
-import { NAME, CHART_NAME } from '@/config/product/longhorn';
+import { NAME, CHART_NAME } from '@shell/config/product/longhorn';
 
 import LazyImage from '@/components/LazyImage';
 

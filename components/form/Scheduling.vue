@@ -1,9 +1,9 @@
 <script>
 import { mapGetters } from 'vuex';
-import { isEmpty, get } from '@/utils/object';
+import { isEmpty, get } from '@shell/utils/object';
 import Tolerations from '@/components/form/Tolerations';
 import LabeledInput from '@/components/form/LabeledInput';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 import PodScheduling from '@/components/form/PodScheduling';
 import NodeScheduling from '@/components/form/NodeScheduling';
 

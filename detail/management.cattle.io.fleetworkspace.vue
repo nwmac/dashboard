@@ -4,8 +4,8 @@ import CountBox from '@/components/CountBox';
 import ResourceTabs from '@/components/form/ResourceTabs';
 // import Tab from '@/components/Tabbed/Tab';
 import { SCOPE_NAMESPACE, SCOPE_CLUSTER } from '@/components/RoleBindings.vue';
-import { NAME as FLEET_NAME } from '@/config/product/fleet';
-import { FLEET } from '@/config/types';
+import { NAME as FLEET_NAME } from '@shell/config/product/fleet';
+import { FLEET } from '@shell/config/types';
 
 export default {
   name: 'DetailWorkspace',

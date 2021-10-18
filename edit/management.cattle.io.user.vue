@@ -1,12 +1,12 @@
 <script>
-import { MANAGEMENT, NORMAN } from '@/config/types';
+import { MANAGEMENT, NORMAN } from '@shell/config/types';
 import CreateEditView from '@/mixins/create-edit-view';
 import GlobalRoleBindings from '@/components/GlobalRoleBindings.vue';
 import ChangePassword from '@/components/form/ChangePassword';
 import LabeledInput from '@/components/form/LabeledInput';
 import CruResource from '@/components/CruResource';
-import { exceptionToErrorsArray } from '@/utils/error';
-import { _CREATE, _EDIT } from '@/config/query-params';
+import { exceptionToErrorsArray } from '@shell/utils/error';
+import { _CREATE, _EDIT } from '@shell/config/query-params';
 import Loading from '@/components/Loading';
 
 export default {

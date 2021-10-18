@@ -1,7 +1,7 @@
 <script>
 import Loading from '@/components/Loading';
 import CreateEditView from '@/mixins/create-edit-view';
-import { stringify, exceptionToErrorsArray } from '@/utils/error';
+import { stringify, exceptionToErrorsArray } from '@shell/utils/error';
 import Banner from '@/components/Banner';
 import merge from 'lodash/merge';
 import isEmpty from 'lodash/isEmpty';
@@ -9,8 +9,8 @@ import LabeledSelect from '@/components/form/LabeledSelect';
 import LabeledInput from '@/components/form/LabeledInput';
 import Checkbox from '@/components/form/Checkbox';
 import ArrayList from '@/components/form/ArrayList';
-import { randomStr } from '@/utils/string';
-import { addParam, addParams } from '@/utils/url';
+import { randomStr } from '@shell/utils/string';
+import { addParam, addParams } from '@shell/utils/url';
 
 export const azureEnvironments = [
   { value: 'AzurePublicCloud' },

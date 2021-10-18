@@ -5,19 +5,19 @@ import utc from 'dayjs/plugin/utc';
 import { mapGetters } from 'vuex';
 import Loading from '@/components/Loading';
 import SortableTable from '@/components/SortableTable';
-import { allHash } from '@/utils/promise';
-import { parseSi, formatSi, exponentNeeded, UNITS } from '@/utils/units';
-import { REASON } from '@/config/table-headers';
+import { allHash } from '@shell/utils/promise';
+import { parseSi, formatSi, exponentNeeded, UNITS } from '@shell/utils/units';
+import { REASON } from '@shell/config/table-headers';
 import {
   EVENT, METRIC, NODE, HCI, SERVICE, PVC, LONGHORN
-} from '@/config/types';
+} from '@shell/config/types';
 import ResourceSummary, { resourceCounts } from '@/components/ResourceSummary';
 import HardwareResourceGauge from '@/components/HardwareResourceGauge';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
 import DashboardMetrics from '@/components/DashboardMetrics';
 import metricPoller from '@/mixins/metric-poller';
-import { allDashboardsExist } from '@/utils/grafana';
+import { allDashboardsExist } from '@shell/utils/grafana';
 import HarvesterUpgrade from './HarvesterUpgrade';
 
 dayjs.extend(utc);

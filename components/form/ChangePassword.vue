@@ -3,8 +3,8 @@ import { mapGetters } from 'vuex';
 import Banner from '@/components/Banner';
 import Checkbox from '@/components/form/Checkbox';
 import Password from '@/components/form/Password';
-import { NORMAN } from '@/config/types';
-import { _CREATE, _EDIT } from '@/config/query-params';
+import { NORMAN } from '@shell/config/types';
+import { _CREATE, _EDIT } from '@shell/config/query-params';
 
 // Component handles three use cases
 // 1) isChange - Current user is changing their own password

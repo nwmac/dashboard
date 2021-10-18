@@ -1,5 +1,5 @@
 <script>
-import { NAME } from '@/config/product/multi-cluster-apps';
+import { NAME } from '@shell/config/product/multi-cluster-apps';
 
 export default {
   middleware({ redirect, route } ) {

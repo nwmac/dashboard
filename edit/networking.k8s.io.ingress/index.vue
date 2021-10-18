@@ -1,13 +1,13 @@
 <script>
-import { allHash } from '@/utils/promise';
-import { SECRET, SERVICE } from '@/config/types';
+import { allHash } from '@shell/utils/promise';
+import { SECRET, SERVICE } from '@shell/config/types';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import CreateEditView from '@/mixins/create-edit-view';
 import Tab from '@/components/Tabbed/Tab';
 import CruResource from '@/components/CruResource';
 import Labels from '@/components/form/Labels';
 import Tabbed from '@/components/Tabbed';
-import { get, set } from '@/utils/object';
+import { get, set } from '@shell/utils/object';
 import { TYPES } from '@/models/secret.class';
 import DefaultBackend from './DefaultBackend';
 import Certificates from './Certificates';

@@ -6,8 +6,8 @@ import ResourceTable from '@/components/ResourceTable';
 import Loading from '@/components/Loading';
 import Banner from '@/components/Banner';
 import LabeledInput from '@/components/form/LabeledInput';
-import { MANAGEMENT } from '@/config/types';
-import { SETTING } from '@/config/settings';
+import { MANAGEMENT } from '@shell/config/types';
+import { SETTING } from '@shell/config/settings';
 
 export default {
   components: {

@@ -1,11 +1,11 @@
 <script>
 import Tab from '@/components/Tabbed/Tab';
 import Tabbed from '@/components/Tabbed';
-import { MANAGEMENT } from '@/config/types';
+import { MANAGEMENT } from '@shell/config/types';
 import ResourceTable from '@/components/ResourceTable';
 import Loading from '@/components/Loading';
 import { SUBTYPE_MAPPING } from '@/models/management.cattle.io.roletemplate';
-import { NAME } from '@/config/product/auth';
+import { NAME } from '@shell/config/product/auth';
 import { BLANK_CLUSTER } from '@/store';
 
 const GLOBAL = SUBTYPE_MAPPING.GLOBAL.key;

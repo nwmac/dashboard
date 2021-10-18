@@ -2,7 +2,7 @@
 import isEmpty from 'lodash/isEmpty';
 import Tag from '@/components/Tag';
 import DetailText from '@/components/DetailText';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 
 export default {
   components: { DetailText, Tag },

@@ -6,7 +6,7 @@ import InputOrDisplay from '@/components/InputOrDisplay';
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 
-import { PVC } from '@/config/types';
+import { PVC } from '@shell/config/types';
 
 export default {
   name:       'HarvesterEditVolume',

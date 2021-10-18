@@ -1,5 +1,5 @@
 <script>
-import { NAME as EXPLORER } from '@/config/product/explorer';
+import { NAME as EXPLORER } from '@shell/config/product/explorer';
 
 export default {
   layout: 'plain',

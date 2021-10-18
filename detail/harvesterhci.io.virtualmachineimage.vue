@@ -1,11 +1,11 @@
 <script>
 import CopyToClipboardText from '@/components/CopyToClipboardText';
 import LabelValue from '@/components/LabelValue';
-import { DESCRIPTION, HCI } from '@/config/labels-annotations';
+import { DESCRIPTION, HCI } from '@shell/config/labels-annotations';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
-import { findBy } from '@/utils/array';
-import { get } from '@/utils/object';
+import { findBy } from '@shell/utils/array';
+import { get } from '@shell/utils/object';
 
 export default {
   components: {

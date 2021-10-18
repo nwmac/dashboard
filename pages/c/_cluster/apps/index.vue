@@ -1,5 +1,5 @@
 <script>
-import { NAME as APPS } from '@/config/product/apps';
+import { NAME as APPS } from '@shell/config/product/apps';
 
 export default {
   layout: 'plain',

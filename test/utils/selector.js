@@ -1,5 +1,5 @@
 import test from 'ava';
-import { parse, convert, simplify, matching } from '@/utils/selector';
+import { parse, convert, simplify, matching } from '@shell/utils/selector';
 
 test('Parse equals', (t) => {
   const e1 = {

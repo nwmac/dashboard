@@ -1,6 +1,6 @@
-import { SCHEMA } from '@/config/types';
+import { SCHEMA } from '@shell/config/types';
 import { CATTLE_API_GROUP, SUBTYPE_MAPPING } from '@/models/management.cattle.io.roletemplate';
-import { uniq } from '@/utils/array';
+import { uniq } from '@shell/utils/array';
 
 export default {
   customValidationRules() {

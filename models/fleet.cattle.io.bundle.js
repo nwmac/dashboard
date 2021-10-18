@@ -1,4 +1,4 @@
-import { escapeHtml } from '@/utils/string';
+import { escapeHtml } from '@shell/utils/string';
 
 export default {
   deploymentInfo() {

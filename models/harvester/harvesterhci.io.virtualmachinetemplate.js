@@ -1,5 +1,5 @@
-import { HCI } from '@/config/types';
-import { MODE, _CREATE } from '@/config/query-params';
+import { HCI } from '@shell/config/types';
+import { MODE, _CREATE } from '@shell/config/query-params';
 
 export default {
   availableActions() {

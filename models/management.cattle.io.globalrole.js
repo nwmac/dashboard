@@ -1,9 +1,9 @@
-import { DESCRIPTION } from '@/config/labels-annotations';
-import { SCHEMA, NORMAN } from '@/config/types';
+import { DESCRIPTION } from '@shell/config/labels-annotations';
+import { SCHEMA, NORMAN } from '@shell/config/types';
 import { CATTLE_API_GROUP, SUBTYPE_MAPPING } from '@/models/management.cattle.io.roletemplate';
-import { uniq } from '@/utils/array';
+import { uniq } from '@shell/utils/array';
 import Vue from 'vue';
-import { get } from '@/utils/object';
+import { get } from '@shell/utils/object';
 import Role from './rbac.authorization.k8s.io.role';
 
 const BASE = 'user-base';

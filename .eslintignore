@@ -10,5 +10,7 @@ node_modules/
 .nuxt
 dist
 .DS_Store
-utils/dynamic-importer.js
+dynamic-importer.js
 ksconfig.json
+nuxt.config.js
+shell/utils/dynamic-importer.js

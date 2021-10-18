@@ -9,18 +9,18 @@ import {
   KEY,
   SIMPLE_NAME,
   VALUE
-} from '@/config/table-headers';
+} from '@shell/config/table-headers';
 import ResourceTabs from '@/components/form/ResourceTabs';
 import EmberPage from '@/components/EmberPage';
-import { METRIC, POD } from '@/config/types';
+import { METRIC, POD } from '@shell/config/types';
 import createEditView from '@/mixins/create-edit-view';
-import { formatSi, exponentNeeded, UNITS } from '@/utils/units';
+import { formatSi, exponentNeeded, UNITS } from '@shell/utils/units';
 import DashboardMetrics from '@/components/DashboardMetrics';
 import { mapGetters } from 'vuex';
-import { allDashboardsExist } from '@/utils/grafana';
+import { allDashboardsExist } from '@shell/utils/grafana';
 import Loading from '@/components/Loading';
 import metricPoller from '@/mixins/metric-poller';
-import { haveV1Monitoring } from '@/utils/monitoring';
+import { haveV1Monitoring } from '@shell/utils/monitoring';
 
 const NODE_METRICS_DETAIL_URL = '/api/v1/namespaces/cattle-monitoring-system/services/http:rancher-monitoring-grafana:80/proxy/d/rancher-node-detail-1/rancher-node-detail?orgId=1';
 const NODE_METRICS_SUMMARY_URL = '/api/v1/namespaces/cattle-monitoring-system/services/http:rancher-monitoring-grafana:80/proxy/d/rancher-node-1/rancher-node?orgId=1';

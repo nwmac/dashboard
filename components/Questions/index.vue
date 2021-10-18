@@ -1,9 +1,9 @@
 <script>
 import Jexl from 'jexl';
 import Tab from '@/components/Tabbed/Tab';
-import { get, set } from '@/utils/object';
+import { get, set } from '@shell/utils/object';
 import sortBy from 'lodash/sortBy';
-import { _EDIT } from '@/config/query-params';
+import { _EDIT } from '@shell/config/query-params';
 import StringType from './String';
 import BooleanType from './Boolean';
 import EnumType from './Enum';

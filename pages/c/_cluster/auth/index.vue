@@ -1,6 +1,6 @@
 <script>
-import { NAME as AUTH } from '@/config/product/auth';
-import { MANAGEMENT } from '@/config/types';
+import { NAME as AUTH } from '@shell/config/product/auth';
+import { MANAGEMENT } from '@shell/config/types';
 
 export default {
   layout: 'plain',

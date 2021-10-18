@@ -1,6 +1,6 @@
 <script>
 import $ from 'jquery';
-import { escapeHtml } from '@/utils/string';
+import { escapeHtml } from '@shell/utils/string';
 
 const RADIUS = 5;
 

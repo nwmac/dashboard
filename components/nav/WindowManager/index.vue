@@ -1,7 +1,7 @@
 <script>
 import { mapState } from 'vuex';
 import debounce from 'lodash/debounce';
-import { screenRect, boundingRect } from '@/utils/position';
+import { screenRect, boundingRect } from '@shell/utils/position';
 
 export default {
   data() {

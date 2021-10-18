@@ -1,5 +1,5 @@
 <script>
-import { LOGGED_OUT } from '@/config/query-params';
+import { LOGGED_OUT } from '@shell/config/query-params';
 
 export default {
   layout: 'unauthenticated',

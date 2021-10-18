@@ -1,4 +1,4 @@
-import Poller from '@/utils/poller';
+import Poller from '@shell/utils/poller';
 
 const METRICS_POLL_RATE_MS = 30000;
 const MAX_FAILURES = 2;

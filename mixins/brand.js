@@ -1,8 +1,8 @@
-import { MANAGEMENT } from '@/config/types';
-import { getVendor } from '@/config/private-label';
-import { SETTING } from '@/config/settings';
-import { findBy } from '@/utils/array';
-import { createCssVars } from '@/utils/color';
+import { MANAGEMENT } from '@shell/config/types';
+import { getVendor } from '@shell/config/private-label';
+import { SETTING } from '@shell/config/settings';
+import { findBy } from '@shell/utils/array';
+import { createCssVars } from '@shell/utils/color';
 
 export default {
   async fetch() {

@@ -2,9 +2,9 @@
 import ConsumptionGauge from '@/components/ConsumptionGauge';
 import LabelValue from '@/components/LabelValue';
 import Banner from '@/components/Banner';
-import { formatSi, exponentNeeded, UNITS } from '@/utils/units';
-import { HCI } from '@/config/labels-annotations';
-import { LONGHORN } from '@/config/types';
+import { formatSi, exponentNeeded, UNITS } from '@shell/utils/units';
+import { HCI } from '@shell/config/labels-annotations';
+import { LONGHORN } from '@shell/config/types';
 
 const COMPLETE = 'complete';
 const NONE = 'none';

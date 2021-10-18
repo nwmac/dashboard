@@ -5,9 +5,9 @@ import Banner from '@/components/Banner';
 import Card from '@/components/Card';
 import RadioGroup from '@/components/form/RadioGroup';
 import UnitInput from '@/components/form/UnitInput';
-import { _EDIT, _VIEW } from '@/config/query-params';
+import { _EDIT, _VIEW } from '@shell/config/query-params';
 
-import { exceptionToErrorsArray } from '@/utils/error';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 
 export default {
   components: {

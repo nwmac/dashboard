@@ -1,8 +1,8 @@
 <script>
-import { exceptionToErrorsArray } from '@/utils/error';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 import { mapGetters } from 'vuex';
-import { FLEET, VIRTUAL_HARVESTER_PROVIDER } from '@/config/types';
-import { set } from '@/utils/object';
+import { FLEET, VIRTUAL_HARVESTER_PROVIDER } from '@shell/config/types';
+import { set } from '@shell/utils/object';
 import ArrayList from '@/components/form/ArrayList';
 import Banner from '@/components/Banner';
 import CreateEditView from '@/mixins/create-edit-view';
@@ -16,11 +16,11 @@ import Labels from '@/components/form/Labels';
 import Loading from '@/components/Loading';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import YamlEditor from '@/components/YamlEditor';
-import { base64Decode, base64Encode } from '@/utils/crypto';
+import { base64Decode, base64Encode } from '@shell/utils/crypto';
 import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret';
-import { _CREATE } from '@/config/query-params';
-import { isHarvesterCluster } from '@/utils/cluster';
-import { CAPI } from '@/config/labels-annotations';
+import { _CREATE } from '@shell/config/query-params';
+import { isHarvesterCluster } from '@shell/utils/cluster';
+import { CAPI } from '@shell/config/labels-annotations';
 
 const _VERIFY = 'verify';
 const _SKIP = 'skip';

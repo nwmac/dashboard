@@ -3,8 +3,8 @@ import Loading from '@/components/Loading';
 import CreateEditView from '@/mixins/create-edit-view';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import Checkbox from '@/components/form/Checkbox';
-import { NORMAN } from '@/config/types';
-import { stringify, exceptionToErrorsArray } from '@/utils/error';
+import { NORMAN } from '@shell/config/types';
+import { stringify, exceptionToErrorsArray } from '@shell/utils/error';
 import Banner from '@/components/Banner';
 
 export default {

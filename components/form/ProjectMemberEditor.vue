@@ -1,12 +1,12 @@
 <script>
 import CreateEditView from '@/mixins/create-edit-view';
 import SelectPrincipal from '@/components/auth/SelectPrincipal';
-import { MANAGEMENT } from '@/config/types';
+import { MANAGEMENT } from '@shell/config/types';
 import Loading from '@/components/Loading';
 import Card from '@/components/Card';
 import RadioGroup from '@/components/form/RadioGroup';
 import Checkbox from '@/components/form/Checkbox';
-import { DESCRIPTION } from '@/config/labels-annotations';
+import { DESCRIPTION } from '@shell/config/labels-annotations';
 
 export default {
   components: {

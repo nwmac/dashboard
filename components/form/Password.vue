@@ -1,7 +1,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import LabeledInput from '@/components/form/LabeledInput';
-import { CHARSET, randomStr } from '@/utils/string';
+import { CHARSET, randomStr } from '@shell/utils/string';
 
 export default {
   components: { LabeledInput },

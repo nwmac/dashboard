@@ -1,21 +1,21 @@
 <script>
 import { TYPES } from '@/models/secret.class';
-import { MANAGEMENT, NORMAN, SCHEMA } from '@/config/types';
+import { MANAGEMENT, NORMAN, SCHEMA } from '@shell/config/types';
 import CreateEditView from '@/mixins/create-edit-view';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import CruResource from '@/components/CruResource';
-import { _CREATE } from '@/config/query-params';
+import { _CREATE } from '@shell/config/query-params';
 import Loading from '@/components/Loading';
 import Labels from '@/components/form/Labels';
 import { HIDE_SENSITIVE } from '@/store/prefs';
-import { CAPI } from '@/config/labels-annotations';
-import { clear, uniq } from '@/utils/array';
-import { importCloudCredential } from '@/utils/dynamic-importer';
+import { CAPI } from '@shell/config/labels-annotations';
+import { clear, uniq } from '@shell/utils/array';
+import { importCloudCredential } from '@shell/utils/dynamic-importer';
 import SelectIconGrid from '@/components/SelectIconGrid';
 import { DEFAULT_WORKSPACE } from '@/models/provisioning.cattle.io.cluster';
-import { sortBy } from '@/utils/sort';
-import { ucFirst } from '@/utils/string';
-import { set } from '@/utils/object';
+import { sortBy } from '@shell/utils/sort';
+import { ucFirst } from '@shell/utils/string';
+import { set } from '@shell/utils/object';
 import { mapFeature, RKE2 as RKE2_FEATURE } from '@/store/features';
 import { rke1Supports } from '@/store/plugins';
 

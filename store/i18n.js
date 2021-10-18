@@ -1,9 +1,9 @@
 import IntlMessageFormat from 'intl-messageformat';
-import { LOCALE } from '@/config/cookies';
-import { get } from '@/utils/object';
+import { LOCALE } from '@shell/config/cookies';
+import { get } from '@shell/utils/object';
 import en from '@/assets/translations/en-us.yaml';
-import { getProduct, getVendor, DOCS_BASE } from '@/config/private-label';
-import { loadTranslation } from '@/utils/dynamic-importer';
+import { getProduct, getVendor, DOCS_BASE } from '@shell/config/private-label';
+import { loadTranslation } from '@shell/utils/dynamic-importer';
 
 const NONE = 'none';
 

@@ -2,12 +2,12 @@
 import Banner from '@/components/Banner';
 import ResourceTable from '@/components/ResourceTable';
 import Masthead from '@/components/ResourceList/Masthead';
-import { allHash } from '@/utils/promise';
-import { CAPI, MANAGEMENT } from '@/config/types';
-import { MODE, _IMPORT } from '@/config/query-params';
-import { filterOnlyKubernetesClusters } from '@/utils/cluster';
+import { allHash } from '@shell/utils/promise';
+import { CAPI, MANAGEMENT } from '@shell/config/types';
+import { MODE, _IMPORT } from '@shell/config/query-params';
+import { filterOnlyKubernetesClusters } from '@shell/utils/cluster';
 import { mapFeature, HARVESTER as HARVESTER_FEATURE } from '@/store/features';
-import { NAME as EXPLORER } from '@/config/product/explorer';
+import { NAME as EXPLORER } from '@shell/config/product/explorer';
 
 export default {
   components: {

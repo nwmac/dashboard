@@ -3,7 +3,7 @@ import Loading from '@/components/Loading';
 import ResourceTabs from '@/components/form/ResourceTabs';
 import CopyCode from '@/components/CopyCode';
 import Tab from '@/components/Tabbed/Tab';
-import { allHash } from '@/utils/promise';
+import { allHash } from '@shell/utils/promise';
 import CustomCommand from '@/edit/provisioning.cattle.io.cluster/CustomCommand';
 
 export default {

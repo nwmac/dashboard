@@ -1,5 +1,5 @@
 <script>
-import { addParams } from '@/utils/url';
+import { addParams } from '@shell/utils/url';
 import ContainerShell from './ContainerShell';
 
 export default {

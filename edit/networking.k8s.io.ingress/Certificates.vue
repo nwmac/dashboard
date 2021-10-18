@@ -1,7 +1,7 @@
 <script>
 import SortableTable from '@/components/SortableTable';
-import { _EDIT, _VIEW } from '@/config/query-params';
-import { SECRET } from '@/config/types';
+import { _EDIT, _VIEW } from '@shell/config/query-params';
+import { SECRET } from '@shell/config/types';
 import ArrayListGrouped from '@/components/form/ArrayListGrouped';
 import Certificate from './Certificate';
 

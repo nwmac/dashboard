@@ -1,6 +1,6 @@
 <script>
 import LazyImage from '@/components/LazyImage';
-import { get } from '@/utils/object';
+import { get } from '@shell/utils/object';
 
 export default {
   components: { LazyImage },

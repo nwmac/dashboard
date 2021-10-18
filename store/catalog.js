@@ -1,15 +1,15 @@
-import { CATALOG } from '@/config/types';
-import { CATALOG as CATALOG_ANNOTATIONS } from '@/config/labels-annotations';
-import { addParams } from '@/utils/url';
-import { allHash, allHashSettled } from '@/utils/promise';
-import { clone } from '@/utils/object';
-import { findBy, addObject, filterBy } from '@/utils/array';
-import { stringify } from '@/utils/error';
-import { proxyFor } from '@/plugins/steve/resource-proxy';
-import { sortBy } from '@/utils/sort';
-import { importChart } from '@/utils/dynamic-importer';
-import { ensureRegex } from '@/utils/string';
-import { isPrerelease } from '@/utils/version';
+import { CATALOG } from '@shell/config/types';
+import { CATALOG as CATALOG_ANNOTATIONS } from '@shell/config/labels-annotations';
+import { addParams } from '@shell/utils/url';
+import { allHash, allHashSettled } from '@shell/utils/promise';
+import { clone } from '@shell/utils/object';
+import { findBy, addObject, filterBy } from '@shell/utils/array';
+import { stringify } from '@shell/utils/error';
+import { proxyFor } from '@shell/plugins/steve/resource-proxy';
+import { sortBy } from '@shell/utils/sort';
+import { importChart } from '@shell/utils/dynamic-importer';
+import { ensureRegex } from '@shell/utils/string';
+import { isPrerelease } from '@shell/utils/version';
 
 const ALLOWED_CATEGORIES = [
   'Storage',

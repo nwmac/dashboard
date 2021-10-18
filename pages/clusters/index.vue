@@ -1,5 +1,5 @@
 <script>
-import { NAME as MANAGER } from '@/config/product/manager';
+import { NAME as MANAGER } from '@shell/config/product/manager';
 
 export default {
   fetch({ store, redirect }) {

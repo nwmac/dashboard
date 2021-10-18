@@ -2,7 +2,7 @@
 import jsyaml from 'js-yaml';
 import { mapPref, DIFF } from '@/store/prefs';
 import isEmpty from 'lodash/isEmpty';
-import { saferDump } from '@/utils/create-yaml';
+import { saferDump } from '@shell/utils/create-yaml';
 import CodeMirror from './CodeMirror';
 import FileDiff from './FileDiff';
 

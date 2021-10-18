@@ -5,15 +5,15 @@ import Tag from '@/components/Tag';
 import Banner from '@/components/Banner';
 import {
   STATE, NAME, ROLES, VERSION, INTERNAL_EXTERNAL_IP, CPU, RAM, PODS, AGE, KUBE_NODE_OS
-} from '@/config/table-headers';
+} from '@shell/config/table-headers';
 import metricPoller from '@/mixins/metric-poller';
 
 import {
   CAPI,
   MANAGEMENT, METRIC, NODE, NORMAN, POD
-} from '@/config/types';
-import { allHash } from '@/utils/promise';
-import { get } from '@/utils/object';
+} from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
+import { get } from '@shell/utils/object';
 import { GROUP_RESOURCES, mapPref } from '@/store/prefs';
 import { COLUMN_BREAKPOINTS } from '@/components/SortableTable/index.vue';
 

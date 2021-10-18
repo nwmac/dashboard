@@ -2,12 +2,12 @@
 import { mapGetters } from 'vuex';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
-import { EVENT, HCI, SERVICE, NODE } from '@/config/types';
+import { EVENT, HCI, SERVICE, NODE } from '@shell/config/types';
 import CreateEditView from '@/mixins/create-edit-view';
 import DashboardMetrics from '@/components/DashboardMetrics';
-import { allHash } from '@/utils/promise';
+import { allHash } from '@shell/utils/promise';
 import NodeScheduling from '@/components/form/NodeScheduling';
-import { allDashboardsExist } from '@/utils/grafana';
+import { allDashboardsExist } from '@shell/utils/grafana';
 import OverviewBasics from './VirtualMachineTabs/VirtualMachineBasics';
 import OverviewDisks from './VirtualMachineTabs/VirtualMachineDisks';
 import OverviewNetworks from './VirtualMachineTabs/VirtualMachineNetworks';

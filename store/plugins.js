@@ -1,4 +1,4 @@
-import { removeObjects } from '@/utils/array';
+import { removeObjects } from '@shell/utils/array';
 
 export function simplify(key) {
   return key.toLowerCase().replace(/[^a-z0-9]/ig, '');

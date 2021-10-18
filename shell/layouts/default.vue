@@ -15,16 +15,16 @@ import Brand from '@/mixins/brand';
 import FixedBanner from '@/components/FixedBanner';
 import {
   COUNT, SCHEMA, MANAGEMENT, UI, CATALOG, HCI
-} from '@/config/types';
+} from '@shell/config/types';
 import { BASIC, FAVORITE, USED } from '@/store/type-map';
-import { addObjects, replaceWith, clear, addObject } from '@/utils/array';
-import { NAME as EXPLORER } from '@/config/product/explorer';
-import { NAME as NAVLINKS } from '@/config/product/navlinks';
-import { NAME as HARVESTER } from '@/config/product/harvester';
+import { addObjects, replaceWith, clear, addObject } from '@shell/utils/array';
+import { NAME as EXPLORER } from '@shell/config/product/explorer';
+import { NAME as NAVLINKS } from '@shell/config/product/navlinks';
+import { NAME as HARVESTER } from '@shell/config/product/harvester';
 import isEqual from 'lodash/isEqual';
-import { ucFirst } from '@/utils/string';
-import { getVersionInfo, markSeenReleaseNotes } from '@/utils/version';
-import { sortBy } from '@/utils/sort';
+import { ucFirst } from '@shell/utils/string';
+import { getVersionInfo, markSeenReleaseNotes } from '@shell/utils/version';
+import { sortBy } from '@shell/utils/sort';
 import PageHeaderActions from '@/mixins/page-actions';
 
 const SET_LOGIN_ACTION = 'set-as-login';

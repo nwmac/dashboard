@@ -7,9 +7,9 @@ import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
 import CreateEditView from '@/mixins/create-edit-view';
 import Conditions from '@/components/form/Conditions';
-import { EVENT } from '@/config/types';
+import { EVENT } from '@shell/config/types';
 import SortableTable from '@/components/SortableTable';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 import RelatedResources from '@/components/RelatedResources';
 
 export default {

@@ -1,5 +1,5 @@
-import { HCI } from '@/config/types';
-import { clone } from '@/utils/object';
+import { HCI } from '@shell/config/types';
+import { clone } from '@shell/utils/object';
 
 export default {
   availableActions() {

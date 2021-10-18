@@ -1,6 +1,6 @@
 <script>
 import day from 'dayjs';
-import { safeSetTimeout } from '@/utils/time';
+import { safeSetTimeout } from '@shell/utils/time';
 
 export default {
   props: {

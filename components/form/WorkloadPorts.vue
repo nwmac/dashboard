@@ -1,8 +1,8 @@
 <script>
 import debounce from 'lodash/debounce';
-import { _EDIT, _VIEW } from '@/config/query-params';
-import { removeAt, findBy } from '@/utils/array';
-import { clone } from '@/utils/object';
+import { _EDIT, _VIEW } from '@shell/config/query-params';
+import { removeAt, findBy } from '@shell/utils/array';
+import { clone } from '@shell/utils/object';
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 

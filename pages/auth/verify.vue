@@ -1,7 +1,7 @@
 <script>
-import { GITHUB_CODE, GITHUB_NONCE, BACK_TO } from '@/config/query-params';
-import { get } from '@/utils/object';
-import { base64Decode } from '@/utils/crypto';
+import { GITHUB_CODE, GITHUB_NONCE, BACK_TO } from '@shell/config/query-params';
+import { get } from '@shell/utils/object';
+import { base64Decode } from '@shell/utils/crypto';
 const samlProviders = ['ping', 'adfs', 'keycloak', 'okta', 'shibboleth'];
 
 function reply(err, code) {

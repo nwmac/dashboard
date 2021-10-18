@@ -1,4 +1,4 @@
-import { _EDIT } from '@/config/query-params';
+import { _EDIT } from '@shell/config/query-params';
 
 export default {
   props: {

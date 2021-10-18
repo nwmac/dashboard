@@ -1,7 +1,7 @@
 <script>
 import LabeledSelect from '@/components/form/LabeledSelect';
-import { SECRET } from '@/config/types';
-import { _EDIT, _VIEW } from '@/config/query-params';
+import { SECRET } from '@shell/config/types';
+import { _EDIT, _VIEW } from '@shell/config/query-params';
 import { TYPES } from '@/models/secret.class';
 import sortBy from 'lodash/sortBy';
 

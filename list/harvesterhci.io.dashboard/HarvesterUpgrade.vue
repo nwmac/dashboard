@@ -1,8 +1,8 @@
 <script>
 import dayjs from 'dayjs';
 import { mapGetters } from 'vuex';
-import { HCI } from '@/config/types';
-import { allHash } from '@/utils/promise';
+import { HCI } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
 import ModalWithCard from '@/components/ModalWithCard';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import Banner from '@/components/Banner';

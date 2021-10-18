@@ -5,14 +5,14 @@ import LabeledInput from '@/components/form/LabeledInput';
 import UnitInput from '@/components/form/UnitInput';
 import Banner from '@/components/Banner';
 import Loading from '@/components/Loading';
-import { CIS, CONFIG_MAP } from '@/config/types';
+import { CIS, CONFIG_MAP } from '@shell/config/types';
 import { mapGetters } from 'vuex';
 import createEditView from '@/mixins/create-edit-view';
-import { allHash } from '@/utils/promise';
+import { allHash } from '@shell/utils/promise';
 import Checkbox from '@/components/form/Checkbox';
 import RadioGroup from '@/components/form/RadioGroup';
-import { get } from '@/utils/object';
-import { _VIEW, _CREATE } from '@/config/query-params';
+import { get } from '@shell/utils/object';
+import { _VIEW, _CREATE } from '@shell/config/query-params';
 import { isValidCron } from 'cron-validator';
 
 const semver = require('semver');

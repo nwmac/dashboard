@@ -1,7 +1,7 @@
-import { escapeHtml } from '@/utils/string';
-import { matching, convert } from '@/utils/selector';
-import { FLEET } from '@/config/types';
-import { set } from '@/utils/object';
+import { escapeHtml } from '@shell/utils/string';
+import { matching, convert } from '@shell/utils/selector';
+import { FLEET } from '@shell/config/types';
+import { set } from '@shell/utils/object';
 
 export default {
   applyDefaults() {

@@ -5,10 +5,10 @@ import RadioGroup from '@/components/form/RadioGroup';
 import Checkbox from '@/components/form/Checkbox';
 import LabeledInput from '@/components/form/LabeledInput';
 import { mapGetters } from 'vuex';
-import { removeObject, addObject } from '@/utils/array';
-import { STORAGE_CLASS, PV } from '@/config/types';
-import { allHash } from '@/utils/promise';
-import { get } from '@/utils/object';
+import { removeObject, addObject } from '@shell/utils/array';
+import { STORAGE_CLASS, PV } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
+import { get } from '@shell/utils/object';
 
 export default {
 

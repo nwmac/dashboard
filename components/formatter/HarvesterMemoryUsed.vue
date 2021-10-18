@@ -1,7 +1,7 @@
 <script>
 import ConsumptionGauge from '@/components/ConsumptionGauge';
-import { METRIC } from '@/config/types';
-import { formatSi, exponentNeeded, UNITS } from '@/utils/units';
+import { METRIC } from '@shell/config/types';
+import { formatSi, exponentNeeded, UNITS } from '@shell/utils/units';
 
 export default {
   name:       'HarvesterMemoryUsed',

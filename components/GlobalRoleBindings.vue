@@ -1,11 +1,11 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { MANAGEMENT } from '@/config/types';
+import { MANAGEMENT } from '@shell/config/types';
 import Checkbox from '@/components/form/Checkbox';
-import { _CREATE, _VIEW } from '@/config/query-params';
+import { _CREATE, _VIEW } from '@shell/config/query-params';
 import Loading from '@/components/Loading';
-import { addObjects, isArray } from '@/utils/array';
+import { addObjects, isArray } from '@shell/utils/array';
 import Card from '@/components/Card';
 
 /**

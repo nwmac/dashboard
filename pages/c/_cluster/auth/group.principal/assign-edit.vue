@@ -2,10 +2,10 @@
 import FooterComponent from '@/components/form/Footer';
 import SelectPrincipal from '@/components/auth/SelectPrincipal.vue';
 import GlobalRoleBindings from '@/components/GlobalRoleBindings.vue';
-import { NORMAN } from '@/config/types';
-import { _VIEW, _EDIT } from '@/config/query-params';
-import { exceptionToErrorsArray } from '@/utils/error';
-import { NAME } from '@/config/product/auth';
+import { NORMAN } from '@shell/config/types';
+import { _VIEW, _EDIT } from '@shell/config/query-params';
+import { exceptionToErrorsArray } from '@shell/utils/error';
+import { NAME } from '@shell/config/product/auth';
 
 export default {
   components: {

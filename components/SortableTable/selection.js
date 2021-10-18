@@ -1,7 +1,7 @@
 import $ from 'jquery';
-import { isMore, isRange, suppressContextMenu, isAlternate } from '@/utils/platform';
-import { get } from '@/utils/object';
-import { randomStr } from '@/utils/string';
+import { isMore, isRange, suppressContextMenu, isAlternate } from '@shell/utils/platform';
+import { get } from '@shell/utils/object';
+import { randomStr } from '@shell/utils/string';
 import selectionStore from './selectionStore';
 export const ALL = 'all';
 export const SOME = 'some';

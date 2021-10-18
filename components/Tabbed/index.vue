@@ -1,8 +1,8 @@
 <script>
 import head from 'lodash/head';
 import isEmpty from 'lodash/isEmpty';
-import { addObject, removeObject, findBy } from '@/utils/array';
-import { sortBy } from '@/utils/sort';
+import { addObject, removeObject, findBy } from '@shell/utils/array';
+import { sortBy } from '@shell/utils/sort';
 import findIndex from 'lodash/findIndex';
 
 export default {

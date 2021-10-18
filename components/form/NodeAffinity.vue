@@ -1,11 +1,11 @@
 <script>
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 import { mapGetters } from 'vuex';
-import { get, isEmpty, clone } from '@/utils/object';
-import { NODE } from '@/config/types';
+import { get, isEmpty, clone } from '@shell/utils/object';
+import { NODE } from '@shell/config/types';
 import MatchExpressions from '@/components/form/MatchExpressions';
 import LabeledSelect from '@/components/form/LabeledSelect';
-import { randomStr } from '@/utils/string';
+import { randomStr } from '@shell/utils/string';
 import ArrayListGrouped from '@/components/form/ArrayListGrouped';
 
 export default {

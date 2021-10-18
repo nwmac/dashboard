@@ -4,8 +4,8 @@ import { mapFeature, MULTI_CLUSTER } from '@/store/features';
 import RadioGroup from '@/components/form/RadioGroup';
 import RadioButton from '@/components/form/RadioButton';
 import Select from '@/components/form/Select';
-import { MANAGEMENT } from '@/config/types';
-import { filterOnlyKubernetesClusters } from '@/utils/cluster';
+import { MANAGEMENT } from '@shell/config/types';
+import { filterOnlyKubernetesClusters } from '@shell/utils/cluster';
 
 export default {
   components: {

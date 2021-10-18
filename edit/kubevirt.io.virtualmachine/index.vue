@@ -19,10 +19,10 @@ import CpuMemory from '@/edit/kubevirt.io.virtualmachine/VirtualMachineCpuMemory
 import CloudConfig from '@/edit/kubevirt.io.virtualmachine/VirtualMachineCloudConfig';
 import NodeScheduling from '@/components/form/NodeScheduling';
 
-import { clone } from '@/utils/object';
-import { HCI } from '@/config/types';
-import { cleanForNew } from '@/plugins/steve/normalize';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
+import { clone } from '@shell/utils/object';
+import { HCI } from '@shell/config/types';
+import { cleanForNew } from '@shell/plugins/steve/normalize';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
 
 import VM_MIXIN from '@/mixins/harvester-vm';
 import CreateEditView from '@/mixins/create-edit-view';

@@ -1,7 +1,7 @@
 <script>
 import Card from '@/components/Card';
 import ProjectMemberEditor from '@/components/form/ProjectMemberEditor';
-import { NORMAN } from '@/config/types';
+import { NORMAN } from '@shell/config/types';
 
 export default {
   components: {

@@ -13,8 +13,8 @@ import Loading from '@/components/Loading';
 import Prometheus from '@/chart/monitoring/prometheus';
 import Tab from '@/components/Tabbed/Tab';
 
-import { allHash } from '@/utils/promise';
-import { STORAGE_CLASS, PVC, SECRET, WORKLOAD_TYPES } from '@/config/types';
+import { allHash } from '@shell/utils/promise';
+import { STORAGE_CLASS, PVC, SECRET, WORKLOAD_TYPES } from '@shell/config/types';
 
 export default {
   components: {

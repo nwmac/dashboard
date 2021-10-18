@@ -5,9 +5,9 @@ import Card from '@/components/Card';
 import Banner from '@/components/Banner';
 import Date from '@/components/formatter/Date.vue';
 import RadioGroup from '@/components/form/RadioGroup.vue';
-import { exceptionToErrorsArray } from '@/utils/error';
-import { CAPI } from '@/config/types';
-import { set } from '@/utils/object';
+import { exceptionToErrorsArray } from '@shell/utils/error';
+import { CAPI } from '@shell/config/types';
+import { set } from '@shell/utils/object';
 import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret';
 import ChildHook, { BEFORE_SAVE_HOOKS } from '@/mixins/child-hook';
 

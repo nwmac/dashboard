@@ -2,12 +2,12 @@
 import InfoBox from '@/components/InfoBox';
 import Base from '@/edit/kubevirt.io.virtualmachine/VirtualMachineNetwork/base';
 
-import { HCI } from '@/config/types';
-import { sortBy } from '@/utils/sort';
-import { clone } from '@/utils/object';
-import { randomStr } from '@/utils/string';
-import { removeObject } from '@/utils/array';
-import { _VIEW } from '@/config/query-params';
+import { HCI } from '@shell/config/types';
+import { sortBy } from '@shell/utils/sort';
+import { clone } from '@shell/utils/object';
+import { randomStr } from '@shell/utils/string';
+import { removeObject } from '@shell/utils/array';
+import { _VIEW } from '@shell/config/query-params';
 
 export default {
   components: { InfoBox, Base },

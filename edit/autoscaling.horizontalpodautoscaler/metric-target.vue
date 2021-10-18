@@ -1,10 +1,10 @@
 <script>
 import LabeledSelect from '@/components/form/LabeledSelect';
 import LabeledInput from '@/components/form/LabeledInput';
-import { findBy } from '@/utils/array';
+import { findBy } from '@shell/utils/array';
 import filter from 'lodash/filter';
 import UnitInput from '@/components/form/UnitInput';
-import { parseSi } from '@/utils/units';
+import { parseSi } from '@shell/utils/units';
 
 export default {
   components: {

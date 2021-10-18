@@ -2,7 +2,7 @@
 import RadioGroup from '@/components/form/RadioGroup';
 import LabeledInput from '@/components/form/LabeledInput';
 import FileSelector, { createOnSelected } from '@/components/form/FileSelector';
-import { set } from '@/utils/object';
+import { set } from '@shell/utils/object';
 import isEmpty from 'lodash/isEmpty';
 
 export default {

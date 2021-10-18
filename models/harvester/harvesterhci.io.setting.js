@@ -1,5 +1,5 @@
-import { findBy } from '@/utils/array';
-import { HCI_ALLOWED_SETTINGS } from '@/config/settings';
+import { findBy } from '@shell/utils/array';
+import { HCI_ALLOWED_SETTINGS } from '@shell/config/settings';
 
 export default {
   _availableActions() {

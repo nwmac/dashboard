@@ -1,9 +1,9 @@
 <script>
-import { FLEET } from '@/config/types';
+import { FLEET } from '@shell/config/types';
 import Banner from '@/components/Banner';
 import Loading from '@/components/Loading';
 import ResourceTable from '@/components/ResourceTable';
-import { isHarvesterCluster } from '@/utils/cluster';
+import { isHarvesterCluster } from '@shell/utils/cluster';
 
 export default {
   name:       'ListClusterGroup',

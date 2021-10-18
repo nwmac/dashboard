@@ -1,8 +1,8 @@
 <script>
 import ResourceTable from '@/components/ResourceTable';
 import Loading from '@/components/Loading';
-import { MANAGEMENT } from '@/config/types';
-import { filterOnlyKubernetesClusters } from '@/utils/cluster';
+import { MANAGEMENT } from '@shell/config/types';
+import { filterOnlyKubernetesClusters } from '@shell/utils/cluster';
 
 export default {
   name:       'ListMgmtClusters',

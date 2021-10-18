@@ -1,6 +1,6 @@
 <script>
-import { NORMAN } from '@/config/types';
-import { _CREATE, _VIEW } from '@/config/query-params';
+import { NORMAN } from '@shell/config/types';
+import { _CREATE, _VIEW } from '@shell/config/query-params';
 import MembershipEditor from '@/components/form/Members/MembershipEditor';
 import { canViewMembershipEditor } from '@/components/form/Members/MembershipEditor.vue';
 

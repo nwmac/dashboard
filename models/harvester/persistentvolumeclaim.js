@@ -1,9 +1,9 @@
 import Vue from 'vue';
-import { _CLONE } from '@/config/query-params';
-import { HCI } from '@/config/types';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
-import { findBy } from '@/utils/array';
-import { get, clone } from '@/utils/object';
+import { _CLONE } from '@shell/config/query-params';
+import { HCI } from '@shell/config/types';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
+import { findBy } from '@shell/utils/array';
+import { get, clone } from '@shell/utils/object';
 
 export default {
   applyDefaults() {

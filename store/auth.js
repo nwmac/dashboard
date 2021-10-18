@@ -1,12 +1,12 @@
-import { GITHUB_NONCE, GITHUB_REDIRECT, GITHUB_SCOPE } from '@/config/query-params';
-import { NORMAN } from '@/config/types';
-import { _MULTI } from '@/plugins/steve/actions';
-import { addObjects, findBy } from '@/utils/array';
-import { openAuthPopup, returnTo } from '@/utils/auth';
-import { base64Encode } from '@/utils/crypto';
-import { removeEmberPage } from '@/utils/ember-page';
-import { randomStr } from '@/utils/string';
-import { addParams, parse as parseUrl, removeParam } from '@/utils/url';
+import { GITHUB_NONCE, GITHUB_REDIRECT, GITHUB_SCOPE } from '@shell/config/query-params';
+import { NORMAN } from '@shell/config/types';
+import { _MULTI } from '@shell/plugins/steve/actions';
+import { addObjects, findBy } from '@shell/utils/array';
+import { openAuthPopup, returnTo } from '@shell/utils/auth';
+import { base64Encode } from '@shell/utils/crypto';
+import { removeEmberPage } from '@shell/utils/ember-page';
+import { randomStr } from '@shell/utils/string';
+import { addParams, parse as parseUrl, removeParam } from '@shell/utils/url';
 
 export const BASE_SCOPES = {
   github:       ['read:org'],

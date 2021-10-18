@@ -1,5 +1,5 @@
-import { findBy, insertAt } from '@/utils/array';
-import { ucFirst } from '@/utils/string';
+import { findBy, insertAt } from '@shell/utils/array';
+import { ucFirst } from '@shell/utils/string';
 
 export default {
   _availableActions() {

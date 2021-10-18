@@ -2,11 +2,11 @@
 import AsyncButton from '@/components/AsyncButton';
 import day from 'dayjs';
 import Card from '@/components/Card';
-import { exceptionToErrorsArray } from '@/utils/error';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import Banner from '@/components/Banner';
-import { WORKLOAD_TYPES } from '@/config/types';
-import { diffFrom } from '@/utils/time';
+import { WORKLOAD_TYPES } from '@shell/config/types';
+import { diffFrom } from '@shell/utils/time';
 import { mapGetters } from 'vuex';
 
 export default {

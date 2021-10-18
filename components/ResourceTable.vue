@@ -1,12 +1,12 @@
 <script>
 import { mapGetters } from 'vuex';
-import { get } from '@/utils/object';
+import { get } from '@shell/utils/object';
 import { mapPref, GROUP_RESOURCES } from '@/store/prefs';
 import ButtonGroup from '@/components/ButtonGroup';
 import SortableTable from '@/components/SortableTable';
-import { NAMESPACE } from '@/config/table-headers';
-import { findBy } from '@/utils/array';
-import { NAME as HARVESTER } from '@/config/product/harvester';
+import { NAMESPACE } from '@shell/config/table-headers';
+import { findBy } from '@shell/utils/array';
+import { NAME as HARVESTER } from '@shell/config/product/harvester';
 
 export default {
   components: { ButtonGroup, SortableTable },

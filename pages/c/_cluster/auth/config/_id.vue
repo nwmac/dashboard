@@ -1,7 +1,7 @@
 <script>
 import ResourceDetail from '@/components/ResourceDetail';
-import { MANAGEMENT } from '@/config/types';
-import { authProvidersInfo } from '@/utils/auth';
+import { MANAGEMENT } from '@shell/config/types';
+import { authProvidersInfo } from '@shell/utils/auth';
 
 export default {
   name:        'AuthConfigDetail',

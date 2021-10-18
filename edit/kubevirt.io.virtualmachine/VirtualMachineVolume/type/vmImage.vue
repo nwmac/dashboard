@@ -4,7 +4,7 @@ import UnitInput from '@/components/form/UnitInput';
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import InputOrDisplay from '@/components/InputOrDisplay';
-import { HCI, PVC } from '@/config/types';
+import { HCI, PVC } from '@shell/config/types';
 
 export default {
   name: 'HarvesterEditVMImage',

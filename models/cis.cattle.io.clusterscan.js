@@ -1,9 +1,9 @@
-import { _CREATE, _EDIT } from '@/config/query-params';
-import { CIS } from '@/config/types';
-import { findBy } from '@/utils/array';
-import { downloadFile, generateZip } from '@/utils/download';
-import { get, isEmpty, set } from '@/utils/object';
-import { sortBy } from '@/utils/sort';
+import { _CREATE, _EDIT } from '@shell/config/query-params';
+import { CIS } from '@shell/config/types';
+import { findBy } from '@shell/utils/array';
+import { downloadFile, generateZip } from '@shell/utils/download';
+import { get, isEmpty, set } from '@shell/utils/object';
+import { sortBy } from '@shell/utils/sort';
 import day from 'dayjs';
 
 export default {

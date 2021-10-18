@@ -4,8 +4,8 @@ import RadioGroup from '@/components/form/RadioGroup';
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import ShellInput from '@/components/form/ShellInput';
-import { _VIEW } from '@/config/query-params';
-import { isEmpty } from '@/utils/object';
+import { _VIEW } from '@shell/config/query-params';
+import { isEmpty } from '@shell/utils/object';
 
 export default {
   props: {

@@ -2,12 +2,12 @@
 <script>
 import CreateEditView from '@/mixins/create-edit-view';
 import SelectPrincipal from '@/components/auth/SelectPrincipal';
-import { MANAGEMENT, NORMAN } from '@/config/types';
+import { MANAGEMENT, NORMAN } from '@shell/config/types';
 import RadioGroup from '@/components/form/RadioGroup';
 import Card from '@/components/Card';
 import Loading from '@/components/Loading';
 import Checkbox from '@/components/form/Checkbox';
-import { DESCRIPTION } from '@/config/labels-annotations';
+import { DESCRIPTION } from '@shell/config/labels-annotations';
 
 export function canViewClusterPermissionsEditor(store) {
   return !!store.getters['management/schemaFor'](MANAGEMENT.CLUSTER_ROLE_TEMPLATE_BINDING) &&

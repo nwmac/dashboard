@@ -4,8 +4,8 @@ import FleetSummary from '@/components/FleetSummary';
 import FleetRepos from '@/components/FleetRepos';
 import ResourceTabs from '@/components/form/ResourceTabs';
 import Tab from '@/components/Tabbed/Tab';
-import { MANAGEMENT, FLEET } from '@/config/types';
-import { FLEET as FLEET_LABELS } from '@/config/labels-annotations';
+import { MANAGEMENT, FLEET } from '@shell/config/types';
+import { FLEET as FLEET_LABELS } from '@shell/config/labels-annotations';
 
 export default {
   name: 'DetailCluster',

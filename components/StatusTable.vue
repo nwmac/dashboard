@@ -1,7 +1,7 @@
 <script>
 import {
   LAST_UPDATED, TYPE, REASON, MESSAGE, STATUS
-} from '@/config/table-headers';
+} from '@shell/config/table-headers';
 import SortableTable from '@/components/SortableTable';
 export default {
   components: { SortableTable },

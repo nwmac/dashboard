@@ -4,11 +4,11 @@ import RadioGroup from '@/components/form/RadioGroup';
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import CreateEditView from '@/mixins/create-edit-view';
-import { allHash } from '@/utils/promise';
-import { exceptionToErrorsArray } from '@/utils/error';
-import { HCI, NAMESPACE } from '@/config/types';
-import { sortBy } from '@/utils/sort';
-import { clone } from '@/utils/object';
+import { allHash } from '@shell/utils/promise';
+import { exceptionToErrorsArray } from '@shell/utils/error';
+import { HCI, NAMESPACE } from '@shell/config/types';
+import { sortBy } from '@shell/utils/sort';
+import { clone } from '@shell/utils/object';
 
 const createObject = {
   apiVersion: 'harvesterhci.io/v1beta1',

@@ -1,13 +1,13 @@
 <script>
 import { mapState, mapGetters } from 'vuex';
-import { FLEET, NORMAN } from '@/config/types';
+import { FLEET, NORMAN } from '@shell/config/types';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import KeyValue from '@/components/form/KeyValue';
 import AsyncButton from '@/components/AsyncButton';
 import Card from '@/components/Card';
 import Banner from '@/components/Banner';
-import { exceptionToErrorsArray } from '@/utils/error';
-import { set } from '@/utils/object';
+import { exceptionToErrorsArray } from '@shell/utils/error';
+import { set } from '@shell/utils/object';
 
 export default {
   components: {

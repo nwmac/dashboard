@@ -1,5 +1,5 @@
 <script>
-import { MONITORING } from '@/config/types';
+import { MONITORING } from '@shell/config/types';
 import ArrayListGrouped from '@/components/form/ArrayListGrouped';
 import Loading from '@/components/Loading';
 import Banner from '@/components/Banner';

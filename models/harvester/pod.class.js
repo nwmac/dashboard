@@ -1,8 +1,8 @@
 import includes from 'lodash/includes';
-import { findBy } from '@/utils/array';
-import { get } from '@/utils/object';
-import { NODE } from '@/config/types';
-import { Resource } from '@/plugins/steve/resource-class';
+import { findBy } from '@shell/utils/array';
+import { get } from '@shell/utils/object';
+import { NODE } from '@shell/config/types';
+import { Resource } from '@shell/plugins/steve/resource-class';
 
 const POD_STATUS_NOT_SCHEDULABLE = 'POD_NOT_SCHEDULABLE';
 

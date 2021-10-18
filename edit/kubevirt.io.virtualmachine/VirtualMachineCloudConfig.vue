@@ -4,9 +4,9 @@ import { mapGetters } from 'vuex';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import YamlEditor, { EDITOR_MODES } from '@/components/YamlEditor';
 
-import { CONFIG_MAP } from '@/config/types';
-import { HCI } from '@/config/labels-annotations';
-import { _CREATE, _EDIT, _VIEW } from '@/config/query-params';
+import { CONFIG_MAP } from '@shell/config/types';
+import { HCI } from '@shell/config/labels-annotations';
+import { _CREATE, _EDIT, _VIEW } from '@shell/config/query-params';
 
 export default {
   components: { YamlEditor, LabeledSelect },

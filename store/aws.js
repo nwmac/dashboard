@@ -1,6 +1,6 @@
-import { sortBy } from '@/utils/sort';
-import { randomStr } from '@/utils/string';
-import { parseSi } from '@/utils/units';
+import { sortBy } from '@shell/utils/sort';
+import { randomStr } from '@shell/utils/string';
+import { parseSi } from '@shell/utils/units';
 import { FetchHttpHandler } from '@aws-sdk/fetch-http-handler';
 
 export const state = () => {

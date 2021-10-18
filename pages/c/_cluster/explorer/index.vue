@@ -3,16 +3,16 @@ import Loading from '@/components/Loading';
 import DashboardMetrics from '@/components/DashboardMetrics';
 import { mapGetters } from 'vuex';
 import SortableTable from '@/components/SortableTable';
-import { allHash } from '@/utils/promise';
+import { allHash } from '@shell/utils/promise';
 import AlertTable from '@/components/AlertTable';
 import Banner from '@/components/Banner';
-import { parseSi, createMemoryValues } from '@/utils/units';
+import { parseSi, createMemoryValues } from '@shell/utils/units';
 import {
   NAME,
   REASON,
   ROLES,
   STATE,
-} from '@/config/table-headers';
+} from '@shell/config/table-headers';
 import {
   NAMESPACE,
   INGRESS,
@@ -25,19 +25,19 @@ import {
   WORKLOAD_TYPES,
   COUNT,
   CATALOG,
-} from '@/config/types';
-import { findBy } from '@/utils/array';
+} from '@shell/config/types';
+import { findBy } from '@shell/utils/array';
 import { mapPref, CLUSTER_TOOLS_TIP } from '@/store/prefs';
-import { haveV1Monitoring, monitoringStatus } from '@/utils/monitoring';
+import { haveV1Monitoring, monitoringStatus } from '@shell/utils/monitoring';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
-import { allDashboardsExist } from '@/utils/grafana';
+import { allDashboardsExist } from '@shell/utils/grafana';
 import EtcdInfoBanner from '@/components/EtcdInfoBanner';
 import metricPoller from '@/mixins/metric-poller';
 import EmberPage from '@/components/EmberPage';
 import ResourceSummary, { resourceCounts } from '@/components/ResourceSummary';
 import HardwareResourceGauge from '@/components/HardwareResourceGauge';
-import { isEmpty } from '@/utils/object';
+import { isEmpty } from '@shell/utils/object';
 
 export const RESOURCES = [NAMESPACE, INGRESS, PV, WORKLOAD_TYPES.DEPLOYMENT, WORKLOAD_TYPES.STATEFUL_SET, WORKLOAD_TYPES.JOB, WORKLOAD_TYPES.DAEMON_SET, SERVICE];
 

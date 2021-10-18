@@ -1,4 +1,4 @@
-import { addObject, removeObject } from '@/utils/array';
+import { addObject, removeObject } from '@shell/utils/array';
 
 export const state = function() {
   return {

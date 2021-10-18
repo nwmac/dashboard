@@ -1,6 +1,6 @@
 <script>
 import ArrayListGrouped from '@/components/form/ArrayListGrouped';
-import { set } from '@/utils/object';
+import { set } from '@shell/utils/object';
 import LabeledInput from '@/components/form/LabeledInput';
 import Checkbox from '@/components/form/Checkbox';
 import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret';

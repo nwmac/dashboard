@@ -2,7 +2,7 @@
 import LabeledInput from '@/components/form/LabeledInput';
 import RadioGroup from '@/components/form/RadioGroup';
 import UnitInput from '@/components/form/UnitInput';
-import { _CREATE } from '@/config/query-params';
+import { _CREATE } from '@shell/config/query-params';
 
 export default {
   components: {

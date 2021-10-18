@@ -1,6 +1,6 @@
 <script>
 import PercentageBar from '@/components/PercentageBar';
-import { formatPercent } from '@/utils/string';
+import { formatPercent } from '@shell/utils/string';
 
 /**
  * A detailed view of how much a resource is being consumed.

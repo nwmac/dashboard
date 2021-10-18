@@ -1,5 +1,5 @@
-import { STORAGE } from '@/config/labels-annotations';
-import { STORAGE_CLASS } from '@/config/types';
+import { STORAGE } from '@shell/config/labels-annotations';
+import { STORAGE_CLASS } from '@shell/config/types';
 
 export const PROVISIONER_OPTIONS = [
   {

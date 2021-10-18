@@ -1,7 +1,7 @@
 <script>
 import { mapState } from 'vuex';
-import { isArray } from '@/utils/array';
-import { importDialog } from '@/utils/dynamic-importer';
+import { isArray } from '@shell/utils/array';
+import { importDialog } from '@shell/utils/dynamic-importer';
 
 export default {
   data() {

@@ -2,9 +2,9 @@
 import Loading from '@/components/Loading';
 import ResourceTable from '@/components/ResourceTable';
 
-import { allHash } from '@/utils/promise';
-import { PVC, SCHEMA, HCI } from '@/config/types';
-import { STATE, AGE, NAME, NAMESPACE } from '@/config/table-headers';
+import { allHash } from '@shell/utils/promise';
+import { PVC, SCHEMA, HCI } from '@shell/config/types';
+import { STATE, AGE, NAME, NAMESPACE } from '@shell/config/table-headers';
 
 const schema = {
   id:         HCI.VOLUME,

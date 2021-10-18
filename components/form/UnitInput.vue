@@ -1,7 +1,7 @@
 <script>
-import { parseSi, UNITS, FRACTIONAL } from '@/utils/units';
+import { parseSi, UNITS, FRACTIONAL } from '@shell/utils/units';
 import LabeledInput from '@/components/form/LabeledInput';
-import { _EDIT } from '@/config/query-params';
+import { _EDIT } from '@shell/config/query-params';
 
 export default {
   components: { LabeledInput },

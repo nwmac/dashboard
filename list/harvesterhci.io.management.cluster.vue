@@ -3,9 +3,9 @@ import BrandImage from '@/components/BrandImage';
 import TypeDescription from '@/components/TypeDescription';
 import ResourceTable from '@/components/ResourceTable';
 import Masthead from '@/components/ResourceList/Masthead';
-import { NAME as VIRTUAL } from '@/config/product/harvester';
-import { CAPI, HCI, VIRTUAL_HARVESTER_PROVIDER, MANAGEMENT } from '@/config/types';
-import { isHarvesterCluster } from '@/utils/cluster';
+import { NAME as VIRTUAL } from '@shell/config/product/harvester';
+import { CAPI, HCI, VIRTUAL_HARVESTER_PROVIDER, MANAGEMENT } from '@shell/config/types';
+import { isHarvesterCluster } from '@shell/utils/cluster';
 
 export default {
   components: {

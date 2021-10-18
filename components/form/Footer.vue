@@ -1,6 +1,6 @@
 <script lang="ts">
 import Vue from 'vue';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 import AsyncButton, { AsyncButtonCallback } from '@/components/AsyncButton.vue';
 import Banner from '@/components/Banner.vue';
 

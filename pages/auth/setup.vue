@@ -1,18 +1,18 @@
 <script>
-import { randomStr } from '@/utils/string';
+import { randomStr } from '@shell/utils/string';
 import LabeledInput from '@/components/form/LabeledInput';
 import CopyToClipboard from '@/components/CopyToClipboard';
 import AsyncButton from '@/components/AsyncButton';
-import { LOGGED_OUT, SETUP } from '@/config/query-params';
-import { NORMAN, MANAGEMENT } from '@/config/types';
-import { findBy } from '@/utils/array';
+import { LOGGED_OUT, SETUP } from '@shell/config/query-params';
+import { NORMAN, MANAGEMENT } from '@shell/config/types';
+import { findBy } from '@shell/utils/array';
 import Checkbox from '@/components/form/Checkbox';
-import { getVendor, getProduct, setVendor } from '@/config/private-label';
+import { getVendor, getProduct, setVendor } from '@shell/config/private-label';
 import RadioGroup from '@/components/form/RadioGroup';
-import { setSetting, SETTING } from '@/config/settings';
-import { _ALL_IF_AUTHED } from '@/plugins/steve/actions';
-import { isDevBuild } from '@/utils/version';
-import { exceptionToErrorsArray } from '@/utils/error';
+import { setSetting, SETTING } from '@shell/config/settings';
+import { _ALL_IF_AUTHED } from '@shell/plugins/steve/actions';
+import { isDevBuild } from '@shell/utils/version';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 import Password from '@/components/form/Password';
 
 const calcIsFirstLogin = (store) => {

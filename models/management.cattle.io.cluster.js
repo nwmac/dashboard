@@ -1,14 +1,14 @@
-import { CATALOG } from '@/config/labels-annotations';
-import { FLEET, MANAGEMENT } from '@/config/types';
-import { insertAt } from '@/utils/array';
-import { downloadFile } from '@/utils/download';
-import { parseSi } from '@/utils/units';
+import { CATALOG } from '@shell/config/labels-annotations';
+import { FLEET, MANAGEMENT } from '@shell/config/types';
+import { insertAt } from '@shell/utils/array';
+import { downloadFile } from '@shell/utils/download';
+import { parseSi } from '@shell/utils/units';
 import jsyaml from 'js-yaml';
-import { eachLimit } from '@/utils/promise';
-import { addParams } from '@/utils/url';
-import { isEmpty } from '@/utils/object';
-import { NAME as HARVESTER } from '@/config/product/harvester';
-import { isHarvesterCluster } from '@/utils/cluster';
+import { eachLimit } from '@shell/utils/promise';
+import { addParams } from '@shell/utils/url';
+import { isEmpty } from '@shell/utils/object';
+import { NAME as HARVESTER } from '@shell/config/product/harvester';
+import { isHarvesterCluster } from '@shell/utils/cluster';
 import { KONTAINER_TO_DRIVER } from './management.cattle.io.kontainerdriver';
 
 // See translation file cluster.providers for list of providers

@@ -6,7 +6,7 @@ import LabeledInput from '@/components/form/LabeledInput';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import FileSelector, { createOnSelected } from '@/components/form/FileSelector';
 
-import { randomStr } from '@/utils/string';
+import { randomStr } from '@shell/utils/string';
 import CreateEditView from '@/mixins/create-edit-view';
 
 export default {

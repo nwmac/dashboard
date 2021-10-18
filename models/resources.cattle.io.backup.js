@@ -1,6 +1,6 @@
-import { colorForState, stateDisplay } from '@/plugins/steve/resource-instance';
-import { findBy } from '@/utils/array';
-import { get } from '@/utils/object';
+import { colorForState, stateDisplay } from '@shell/plugins/steve/resource-instance';
+import { findBy } from '@shell/utils/array';
+import { get } from '@shell/utils/object';
 
 export default {
   readyMessage() {

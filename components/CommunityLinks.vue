@@ -1,9 +1,9 @@
 <script>
-import { options } from '@/config/footer';
+import { options } from '@shell/config/footer';
 import SimpleBox from '@/components/SimpleBox';
 import Closeable from '@/mixins/closeable';
-import { MANAGEMENT } from '@/config/types';
-import { SETTING } from '@/config/settings';
+import { MANAGEMENT } from '@shell/config/types';
+import { SETTING } from '@shell/config/settings';
 import { mapGetters } from 'vuex';
 
 export default {

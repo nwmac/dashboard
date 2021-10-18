@@ -1,9 +1,9 @@
 <script>
 import ResourceTable from '@/components/ResourceTable';
 import Loading from '@/components/Loading';
-import { CONFIG_MAP, SCHEMA, HCI } from '@/config/types';
-import { NAME, AGE, NAMESPACE } from '@/config/table-headers';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
+import { CONFIG_MAP, SCHEMA, HCI } from '@shell/config/types';
+import { NAME, AGE, NAMESPACE } from '@shell/config/table-headers';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
 
 const schema = {
   id:         HCI.CLOUD_TEMPLATE,

@@ -1,7 +1,7 @@
 <script>
 import ResourceTable from '@/components/ResourceTable';
-import { STATE, NAME, AGE } from '@/config/table-headers';
-import { NAMESPACE, VIRTUAL_TYPES } from '@/config/types';
+import { STATE, NAME, AGE } from '@shell/config/table-headers';
+import { NAMESPACE, VIRTUAL_TYPES } from '@shell/config/types';
 import Loading from '@/components/Loading';
 import Masthead from '@/components/ResourceList/Masthead';
 

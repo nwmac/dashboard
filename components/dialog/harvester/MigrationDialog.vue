@@ -1,9 +1,9 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import { NODE, HCI } from '@/config/types';
-import { exceptionToErrorsArray } from '@/utils/error';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
+import { NODE, HCI } from '@shell/config/types';
+import { exceptionToErrorsArray } from '@shell/utils/error';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
 
 import Card from '@/components/Card';
 import Banner from '@/components/Banner';

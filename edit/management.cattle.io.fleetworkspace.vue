@@ -4,12 +4,12 @@ import CruResource from '@/components/CruResource';
 import Labels from '@/components/form/Labels';
 import Loading from '@/components/Loading';
 import NameNsDescription from '@/components/form/NameNsDescription';
-import { FLEET, MANAGEMENT } from '@/config/types';
+import { FLEET, MANAGEMENT } from '@shell/config/types';
 // import RoleBindings from '@/components/RoleBindings';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
 import { SCOPE_NAMESPACE, SCOPE_CLUSTER } from '@/components/RoleBindings.vue';
-import { NAME as FLEET_NAME } from '@/config/product/fleet';
+import { NAME as FLEET_NAME } from '@shell/config/product/fleet';
 
 export default {
   name: 'FleetCruWorkspace',

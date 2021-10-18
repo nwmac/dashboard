@@ -5,7 +5,7 @@ import CruResource from '@/components/CruResource';
 import LabeledInput from '@/components/form/LabeledInput';
 import NameNsDescription from '@/components/form/NameNsDescription';
 
-import { HCI } from '@/config/labels-annotations';
+import { HCI } from '@shell/config/labels-annotations';
 import CreateEditView from '@/mixins/create-edit-view';
 
 export default {

@@ -7,9 +7,9 @@ import Loading from '@/components/Loading';
 import MatchExpressions from '@/components/form/MatchExpressions';
 import NameNsDescription from '@/components/form/NameNsDescription';
 
-import { set } from '@/utils/object';
-import { FLEET } from '@/config/types';
-import { convert, matching, simplify } from '@/utils/selector';
+import { set } from '@shell/utils/object';
+import { FLEET } from '@shell/config/types';
+import { convert, matching, simplify } from '@shell/utils/selector';
 import throttle from 'lodash/throttle';
 
 export default {

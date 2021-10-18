@@ -8,15 +8,15 @@ import UnitInput from '@/components/form/UnitInput';
 import YamlEditor from '@/components/YamlEditor';
 import Banner from '@/components/Banner';
 
-import { get } from '@/utils/object';
+import { get } from '@shell/utils/object';
 import { mapGetters } from 'vuex';
 import {
   HCI, NAMESPACE, MANAGEMENT, CONFIG_MAP, NORMAN
-} from '@/config/types';
-import { base64Decode, base64Encode } from '@/utils/crypto';
-import { allHashSettled } from '@/utils/promise';
-import { stringify, exceptionToErrorsArray } from '@/utils/error';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
+} from '@shell/config/types';
+import { base64Decode, base64Encode } from '@shell/utils/crypto';
+import { allHashSettled } from '@shell/utils/promise';
+import { stringify, exceptionToErrorsArray } from '@shell/utils/error';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
 
 export default {
   components: {

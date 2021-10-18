@@ -1,11 +1,11 @@
 <script>
 import { mapGetters } from 'vuex';
 import { NAMESPACE_FILTERS } from '@/store/prefs';
-import { NAMESPACE, MANAGEMENT } from '@/config/types';
-import { sortBy } from '@/utils/sort';
-import { isArray, addObjects, findBy, filterBy } from '@/utils/array';
+import { NAMESPACE, MANAGEMENT } from '@shell/config/types';
+import { sortBy } from '@shell/utils/sort';
+import { isArray, addObjects, findBy, filterBy } from '@shell/utils/array';
 import Select from '@/components/form/Select';
-import { NAME as HARVESTER } from '@/config/product/harvester';
+import { NAME as HARVESTER } from '@shell/config/product/harvester';
 
 export default {
   components: { Select },

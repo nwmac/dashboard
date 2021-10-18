@@ -1,9 +1,9 @@
 <script>
-import { MANAGEMENT } from '@/config/types';
+import { MANAGEMENT } from '@shell/config/types';
 import SelectIconGrid from '@/components/SelectIconGrid';
-import { sortBy } from '@/utils/sort';
-import { MODE, _EDIT } from '@/config/query-params';
-import { authProvidersInfo } from '@/utils/auth';
+import { sortBy } from '@shell/utils/sort';
+import { MODE, _EDIT } from '@shell/config/query-params';
+import { authProvidersInfo } from '@shell/utils/auth';
 import Banner from '@/components/Banner';
 
 export default {

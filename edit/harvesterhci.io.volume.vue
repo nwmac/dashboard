@@ -6,14 +6,14 @@ import UnitInput from '@/components/form/UnitInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import NameNsDescription from '@/components/form/NameNsDescription';
 
-import { get } from '@/utils/object';
-import { HCI } from '@/config/types';
-import { sortBy } from '@/utils/sort';
-import { InterfaceOption } from '@/config/harvester-map';
-import { _CREATE } from '@/config/query-params';
-import { formatSi, parseSi } from '@/utils/units';
+import { get } from '@shell/utils/object';
+import { HCI } from '@shell/config/types';
+import { sortBy } from '@shell/utils/sort';
+import { InterfaceOption } from '@shell/config/harvester-map';
+import { _CREATE } from '@shell/config/query-params';
+import { formatSi, parseSi } from '@shell/utils/units';
 import CreateEditView from '@/mixins/create-edit-view';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
 
 export default {
   name: 'HarvesterVolume',

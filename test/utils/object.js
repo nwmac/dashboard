@@ -1,5 +1,5 @@
 import test from 'ava';
-import { get, getter, clone, isEmpty } from '@/utils/object';
+import { get, getter, clone, isEmpty } from '@shell/utils/object';
 
 const obj = { foo: 'bar', baz: { bat: 42, 'with.dots': 43 } };
 

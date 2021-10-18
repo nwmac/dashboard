@@ -1,6 +1,6 @@
 <script>
-import { _EDIT, _VIEW } from '@/config/query-params';
-import { set } from '@/utils/object';
+import { _EDIT, _VIEW } from '@shell/config/query-params';
+import { set } from '@shell/utils/object';
 
 export function createOnSelected(field) {
   return function(contents) {

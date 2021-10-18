@@ -4,8 +4,8 @@ import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import RadioGroup from '@/components/form/RadioGroup';
 
-import { get, set } from '@/utils/object';
-import { MANAGEMENT, VIRTUAL_HARVESTER_PROVIDER } from '@/config/types';
+import { get, set } from '@shell/utils/object';
+import { MANAGEMENT, VIRTUAL_HARVESTER_PROVIDER } from '@shell/config/types';
 
 const IMPORTED = 'imported';
 

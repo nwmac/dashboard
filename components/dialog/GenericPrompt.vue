@@ -2,7 +2,7 @@
 import AsyncButton from '@/components/AsyncButton';
 import Card from '@/components/Card';
 import Banner from '@/components/Banner';
-import { exceptionToErrorsArray } from '@/utils/error';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 
 export default {
   components: {

@@ -1,5 +1,5 @@
 <script>
-import { exceptionToErrorsArray } from '@/utils/error';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 import { mapGetters } from 'vuex';
 
 import Card from '@/components/Card';

@@ -1,17 +1,17 @@
 <script>
 import isEmpty from 'lodash/isEmpty';
-import { createYaml } from '@/utils/create-yaml';
-import { clone } from '@/utils/object';
-import { SCHEMA } from '@/config/types';
+import { createYaml } from '@shell/utils/create-yaml';
+import { clone } from '@shell/utils/object';
+import { SCHEMA } from '@shell/config/types';
 import ResourceYaml from '@/components/ResourceYaml';
 import Banner from '@/components/Banner';
 import AsyncButton from '@/components/AsyncButton';
 import { mapGetters } from 'vuex';
-import { stringify } from '@/utils/error';
+import { stringify } from '@shell/utils/error';
 import CruResourceFooter from '@/components/CruResourceFooter';
 import {
   _EDIT, _VIEW, AS, _YAML, _UNFLAG, SUB_TYPE
-} from '@/config/query-params';
+} from '@shell/config/query-params';
 import { BEFORE_SAVE_HOOKS } from '@/mixins/child-hook';
 
 export default {

@@ -4,7 +4,7 @@ import FleetSummary from '@/components/FleetSummary';
 import FleetClusters from '@/components/FleetClusters';
 import ResourceTabs from '@/components/form/ResourceTabs';
 import Tab from '@/components/Tabbed/Tab';
-import { FLEET } from '@/config/types';
+import { FLEET } from '@shell/config/types';
 
 export default {
   name: 'DetailClusterGroup',

@@ -1,10 +1,10 @@
 <script>
 import isEmpty from 'lodash/isEmpty';
 import UnitInput from '@/components/form/UnitInput';
-import { CONTAINER_DEFAULT_RESOURCE_LIMIT } from '@/config/labels-annotations';
-import { _VIEW } from '@/config/query-params';
-import { parseSi, formatSi } from '@/utils/units';
-import { cleanUp } from '@/utils/object';
+import { CONTAINER_DEFAULT_RESOURCE_LIMIT } from '@shell/config/labels-annotations';
+import { _VIEW } from '@shell/config/query-params';
+import { parseSi, formatSi } from '@shell/utils/units';
+import { cleanUp } from '@shell/utils/object';
 
 export default {
   components: { UnitInput },

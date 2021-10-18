@@ -3,14 +3,14 @@ import { mapGetters } from 'vuex';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import CreateEditView from '@/mixins/create-edit-view';
 import LabeledSelect from '@/components/form/LabeledSelect';
-import { MANAGEMENT } from '@/config/types';
-import { CONTAINER_DEFAULT_RESOURCE_LIMIT, PROJECT } from '@/config/labels-annotations';
+import { MANAGEMENT } from '@shell/config/types';
+import { CONTAINER_DEFAULT_RESOURCE_LIMIT, PROJECT } from '@shell/config/labels-annotations';
 import ContainerResourceLimit from '@/components/ContainerResourceLimit';
 import Tabbed from '@/components/Tabbed';
 import Tab from '@/components/Tabbed/Tab';
 import CruResource from '@/components/CruResource';
 import Labels from '@/components/form/Labels';
-import { PROJECT_ID } from '@/config/query-params';
+import { PROJECT_ID } from '@shell/config/query-params';
 import MoveModal from '@/components/MoveModal';
 
 export default {

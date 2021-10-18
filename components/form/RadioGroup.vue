@@ -1,6 +1,6 @@
 <script>
 import RadioButton from '@/components/form/RadioButton';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 
 export default {
   components: { RadioButton },

@@ -1,5 +1,5 @@
-import { DEFAULT_PROJECT, SYSTEM_PROJECT } from '@/config/labels-annotations';
-import { MANAGEMENT, NAMESPACE, NORMAN } from '@/config/types';
+import { DEFAULT_PROJECT, SYSTEM_PROJECT } from '@shell/config/labels-annotations';
+import { MANAGEMENT, NAMESPACE, NORMAN } from '@shell/config/types';
 
 export default {
   isSystem() {

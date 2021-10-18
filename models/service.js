@@ -1,5 +1,5 @@
 import find from 'lodash/find';
-import { POD } from '@/config/types';
+import { POD } from '@shell/config/types';
 
 export const DEFAULT_SERVICE_TYPES = [
   {

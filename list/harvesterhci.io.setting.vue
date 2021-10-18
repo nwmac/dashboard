@@ -4,9 +4,9 @@ import Banner from '@/components/Banner';
 import Loading from '@/components/Loading';
 
 import { DEV } from '@/store/prefs';
-import { HCI, MANAGEMENT } from '@/config/types';
-import { allHash } from '@/utils/promise';
-import { HCI_ALLOWED_SETTINGS, HCI_SINGLE_CLUSTER_ALLOWED_SETTING, ALLOWED_SETTINGS, SETTING } from '@/config/settings';
+import { HCI, MANAGEMENT } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
+import { HCI_ALLOWED_SETTINGS, HCI_SINGLE_CLUSTER_ALLOWED_SETTING, ALLOWED_SETTINGS, SETTING } from '@shell/config/settings';
 
 export default {
   components: { Banner, Loading },

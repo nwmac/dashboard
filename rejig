@@ -45,18 +45,33 @@ rm -rf pages/design-system
 
 move ./server
 move ./layouts
+move ./plugins
+move ./utils
+move ./config
+
+# Update plugins references to use @~plugins
+grep -rl ${GREP_EXCLUDES} . -e '~/plugins' | xargs sed -i.bak -e "s/'~\/plugins/'~shell\/plugins/g"
+grep -rl ${GREP_EXCLUDES} . -e '@/plugins' | xargs sed -i.bak -e "s/'@\/plugins/'@shell\/plugins/g"
+
+# Utils
+grep -rl ${GREP_EXCLUDES} . -e '~/utils' | xargs sed -i.bak -e "s/\'~\/utils/\'~shell\/utils/g"
+grep -rl ${GREP_EXCLUDES} . -e '@/utils' | xargs sed -i.bak -e "s/\'@\/utils/\'@shell\/utils/g"
+
+# Config
+grep -rl ${GREP_EXCLUDES} . -e '@/config' | xargs sed -i.bak -e "s/\'@\/config/\'@shell\/config/g"
+
+echo "Removing any .bak files ..."
+find . -type f -name "*.bak" -delete
 
 exit 0
 
 # Asssets
 move ./assets
-move ./plugins
 move ./static
 move ./middleware
 move ./mixins
 move ./components
 move ./config
-move ./utils
 move ./store
 move ./pages
 
@@ -68,9 +83,6 @@ grep -rl ${GREP_EXCLUDES} . -e '~assets' | xargs sed -i.bak -e "s/~assets/~shell
 grep -rl ${GREP_EXCLUDES} . -e '~/assets' | xargs sed -i.bak -e "s/~\/assets/~shell\/assets/g"
 grep -rl ${GREP_EXCLUDES} . -e '@/assets' | xargs sed -i.bak -e "s/@\/assets/~shell\/assets/g"
 
-# Update plugins references to use @~plugins
-grep -rl ${GREP_EXCLUDES} . -e '~/plugins' | xargs sed -i.bak -e "s/'~\/plugins/'~shell\/plugins/g"
-grep -rl ${GREP_EXCLUDES} . -e '@/plugins' | xargs sed -i.bak -e "s/'@\/plugins/'~shell\/plugins/g"
 
 # Mixins
 grep -rl ${GREP_EXCLUDES} . -e '~/mixins' | xargs sed -i.bak -e "s/'~\/mixins/'~shell\/mixins/g"

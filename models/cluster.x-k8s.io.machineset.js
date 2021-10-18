@@ -1,5 +1,5 @@
-import { CAPI } from '@/config/types';
-import { escapeHtml } from '@/utils/string';
+import { CAPI } from '@shell/config/types';
+import { escapeHtml } from '@shell/utils/string';
 
 export default {
   cluster() {

@@ -1,8 +1,8 @@
 <script>
 import { mapGetters } from 'vuex';
-import { NAME, CHART_NAME } from '@/config/product/istio';
-import InstallRedirect from '@/utils/install-redirect';
-import { SERVICE } from '@/config/types';
+import { NAME, CHART_NAME } from '@shell/config/product/istio';
+import InstallRedirect from '@shell/utils/install-redirect';
+import { SERVICE } from '@shell/config/types';
 export default {
   components: {},
 

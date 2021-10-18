@@ -1,4 +1,4 @@
-import { compare } from '@/utils/sort';
+import { compare } from '@shell/utils/sort';
 
 export default {
   aggregatedTests() {

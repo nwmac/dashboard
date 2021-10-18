@@ -1,7 +1,7 @@
 <script>
 import FleetRepos from '@/components/FleetRepos';
 import Loading from '@/components/Loading';
-import { FLEET } from '@/config/types';
+import { FLEET } from '@shell/config/types';
 
 export default {
   name:       'ListGitRepo',

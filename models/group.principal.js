@@ -1,5 +1,5 @@
-import { MANAGEMENT, NORMAN } from '@/config/types';
-import { clone } from '@/utils/object';
+import { MANAGEMENT, NORMAN } from '@shell/config/types';
+import { clone } from '@shell/utils/object';
 import principal from './principal';
 
 export default {

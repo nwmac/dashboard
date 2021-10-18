@@ -1,9 +1,9 @@
 <script>
-import { MANAGEMENT, NORMAN, VIRTUAL_TYPES } from '@/config/types';
+import { MANAGEMENT, NORMAN, VIRTUAL_TYPES } from '@shell/config/types';
 import ResourceTable from '@/components/ResourceTable';
 import Loading from '@/components/Loading';
 import Masthead from '@/components/ResourceList/Masthead';
-import { AGE, ROLE, STATE, PRINCIPAL } from '@/config/table-headers';
+import { AGE, ROLE, STATE, PRINCIPAL } from '@shell/config/table-headers';
 import { canViewClusterPermissionsEditor } from '@/components/form/Members/ClusterPermissionsEditor.vue';
 
 export default {

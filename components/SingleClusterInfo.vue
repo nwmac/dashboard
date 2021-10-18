@@ -3,7 +3,7 @@ import RancherProviderIcon from '@/components/RancherProviderIcon';
 import ResourceSummary, { resourceCounts } from '@/components/ResourceSummary';
 import {
   NAMESPACE, MANAGEMENT, NODE, COUNT, CATALOG
-} from '@/config/types';
+} from '@shell/config/types';
 import { RESOURCES } from '@/pages/c/_cluster/explorer/index';
 
 export default {

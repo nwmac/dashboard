@@ -2,8 +2,8 @@
 import { mapGetters } from 'vuex';
 import Favorite from '@/components/nav/Favorite';
 import TypeDescription from '@/components/TypeDescription';
-import { get } from '@/utils/object';
-import { AS, _YAML } from '@/config/query-params';
+import { get } from '@shell/utils/object';
+import { AS, _YAML } from '@shell/config/query-params';
 
 export default {
   components: {

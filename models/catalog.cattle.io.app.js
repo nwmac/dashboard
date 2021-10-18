@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import {
   NAMESPACE, NAME, REPO, REPO_TYPE, CHART, VERSION, _VIEW, FROM_TOOLS, _FLAGGED
-} from '@/config/query-params';
-import { CATALOG as CATALOG_ANNOTATIONS, FLEET } from '@/config/labels-annotations';
-import { compare, isPrerelease, sortable } from '@/utils/version';
-import { filterBy } from '@/utils/array';
-import { CATALOG } from '@/config/types';
+} from '@shell/config/query-params';
+import { CATALOG as CATALOG_ANNOTATIONS, FLEET } from '@shell/config/labels-annotations';
+import { compare, isPrerelease, sortable } from '@shell/utils/version';
+import { filterBy } from '@shell/utils/array';
+import { CATALOG } from '@shell/config/types';
 import { SHOW_PRE_RELEASE } from '@/store/prefs';
 
 export default {

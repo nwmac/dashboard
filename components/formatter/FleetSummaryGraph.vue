@@ -1,8 +1,8 @@
 <script>
 import ProgressBarMulti from '@/components/ProgressBarMulti';
-import { ucFirst } from '@/utils/string';
-import { colorForState, stateSort } from '@/plugins/steve/resource-instance';
-import { sortBy } from '@/utils/sort';
+import { ucFirst } from '@shell/utils/string';
+import { colorForState, stateSort } from '@shell/plugins/steve/resource-instance';
+import { sortBy } from '@shell/utils/sort';
 
 export default {
   components: { ProgressBarMulti },

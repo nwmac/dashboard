@@ -1,21 +1,21 @@
 <script>
-import { removeObject } from '@/utils/array';
-import { USERNAME } from '@/config/cookies';
+import { removeObject } from '@shell/utils/array';
+import { USERNAME } from '@shell/config/cookies';
 import LabeledInput from '@/components/form/LabeledInput';
 import AsyncButton from '@/components/AsyncButton';
 import BrandImage from '@/components/BrandImage';
 import InfoBox from '@/components/InfoBox';
 import CopyCode from '@/components/CopyCode';
 import Banner from '@/components/Banner';
-import { LOCAL, LOGGED_OUT, TIMED_OUT, _FLAGGED } from '@/config/query-params';
+import { LOCAL, LOGGED_OUT, TIMED_OUT, _FLAGGED } from '@shell/config/query-params';
 import Checkbox from '@/components/form/Checkbox';
-import { sortBy } from '@/utils/sort';
+import { sortBy } from '@shell/utils/sort';
 import { configType } from '@/models/management.cattle.io.authconfig';
 import { mapGetters } from 'vuex';
-import { importLogin } from '@/utils/dynamic-importer';
-import { _ALL_IF_AUTHED, _MULTI } from '@/plugins/steve/actions';
-import { MANAGEMENT, NORMAN } from '@/config/types';
-import { SETTING } from '@/config/settings';
+import { importLogin } from '@shell/utils/dynamic-importer';
+import { _ALL_IF_AUTHED, _MULTI } from '@shell/plugins/steve/actions';
+import { MANAGEMENT, NORMAN } from '@shell/config/types';
+import { SETTING } from '@shell/config/settings';
 import { LOGIN_ERRORS } from '@/store/auth';
 import {
   getBrand,
@@ -23,7 +23,7 @@ import {
   getProduct,
   setBrand,
   setVendor
-} from '@/config/private-label';
+} from '@shell/config/private-label';
 
 export default {
   name:       'Login',

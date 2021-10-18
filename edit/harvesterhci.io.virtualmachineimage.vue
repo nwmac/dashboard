@@ -9,8 +9,8 @@ import RadioGroup from '@/components/form/RadioGroup';
 import LabelValue from '@/components/LabelValue';
 import CreateEditView from '@/mixins/create-edit-view';
 import { VM_IMAGE_FILE_FORMAT } from '@/models/harvester/harvesterhci.io.virtualmachineimage';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
-import { exceptionToErrorsArray } from '@/utils/error';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 
 const DOWNLOAD = 'download';
 const UPLOAD = 'upload';

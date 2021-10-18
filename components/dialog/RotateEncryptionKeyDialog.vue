@@ -2,11 +2,11 @@
 import AsyncButton from '@/components/AsyncButton';
 import Card from '@/components/Card';
 import Banner from '@/components/Banner';
-import { exceptionToErrorsArray } from '@/utils/error';
-import { NORMAN } from '@/config/types';
-import { sortBy } from '@/utils/sort';
+import { exceptionToErrorsArray } from '@shell/utils/error';
+import { NORMAN } from '@shell/config/types';
+import { sortBy } from '@shell/utils/sort';
 import day from 'dayjs';
-import { escapeHtml } from '@/utils/string';
+import { escapeHtml } from '@shell/utils/string';
 import { DATE_FORMAT, TIME_FORMAT } from '@/store/prefs';
 
 export default {

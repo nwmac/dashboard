@@ -3,8 +3,8 @@ import jsyaml from 'js-yaml';
 import YamlEditor, { EDITOR_MODES } from '@/components/YamlEditor';
 import FileSelector from '@/components/form/FileSelector';
 import Footer from '@/components/form/Footer';
-import { ANNOTATIONS_TO_FOLD } from '@/config/labels-annotations';
-import { ensureRegex } from '@/utils/string';
+import { ANNOTATIONS_TO_FOLD } from '@shell/config/labels-annotations';
+import { ensureRegex } from '@shell/utils/string';
 
 import {
   _CREATE,
@@ -13,9 +13,9 @@ import {
   _FLAGGED,
   _UNFLAG,
   _EDIT,
-} from '@/config/query-params';
+} from '@shell/config/query-params';
 import { BEFORE_SAVE_HOOKS, AFTER_SAVE_HOOKS } from '@/mixins/child-hook';
-import { exceptionToErrorsArray } from '../utils/error';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 
 export default {
   components: {

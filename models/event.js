@@ -1,5 +1,5 @@
 import isEmpty from 'lodash/isEmpty';
-import { ucFirst } from '@/utils/string';
+import { ucFirst } from '@shell/utils/string';
 
 export default {
   displayInvolvedObject() {

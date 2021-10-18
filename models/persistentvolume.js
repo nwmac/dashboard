@@ -1,4 +1,4 @@
-import { PVC } from '@/config/types';
+import { PVC } from '@shell/config/types';
 
 export const VOLUME_PLUGINS = [
   {

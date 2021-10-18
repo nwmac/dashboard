@@ -1,9 +1,9 @@
-import { formatPercent } from '@/utils/string';
-import { CAPI as CAPI_ANNOTATIONS, NODE_ROLES, RKE } from '@/config/labels-annotations.js';
+import { formatPercent } from '@shell/utils/string';
+import { CAPI as CAPI_ANNOTATIONS, NODE_ROLES, RKE } from '@shell/config/labels-annotations.js';
 import {
   CAPI, MANAGEMENT, METRIC, NORMAN, POD
-} from '@/config/types';
-import { parseSi } from '@/utils/units';
+} from '@shell/config/types';
+import { parseSi } from '@shell/utils/units';
 import findLast from 'lodash/findLast';
 
 export const listNodeRoles = (isControlPlane, isWorker, isEtcd, allString) => {

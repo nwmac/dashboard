@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
-import { addParam, parseLinkHeader } from '@/utils/url';
-import { addObjects, isArray } from '@/utils/array';
-import { GITHUB_REPOS, GITHUB_SCOPES, _DATE } from '@/config/local-storage';
+import { addParam, parseLinkHeader } from '@shell/utils/url';
+import { addObjects, isArray } from '@shell/utils/array';
+import { GITHUB_REPOS, GITHUB_SCOPES, _DATE } from '@shell/config/local-storage';
 
 const API_BASE = 'https://api.github.com/';
 

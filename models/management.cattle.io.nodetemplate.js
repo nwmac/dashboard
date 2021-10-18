@@ -1,4 +1,4 @@
-import { formatSi } from '@/utils/units';
+import { formatSi } from '@shell/utils/units';
 
 const CONFIG_KEYS = [
   {

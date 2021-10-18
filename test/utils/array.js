@@ -6,7 +6,7 @@ import {
   filterBy, findBy,
   sameContents, uniq,
   replaceWith,
-} from '@/utils/array';
+} from '@shell/utils/array';
 
 const obj1 = { foo: 'bar' };
 const obj2 = { foo: 'baz', bar: false };

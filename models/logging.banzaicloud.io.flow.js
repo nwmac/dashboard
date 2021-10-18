@@ -1,5 +1,5 @@
-import { LOGGING } from '@/config/types';
-import { set } from '@/utils/object';
+import { LOGGING } from '@shell/config/types';
+import { set } from '@shell/utils/object';
 import uniq from 'lodash/uniq';
 
 export function matchRuleIsPopulated(rule) {

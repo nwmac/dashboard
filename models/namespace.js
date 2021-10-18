@@ -1,10 +1,10 @@
-import SYSTEM_NAMESPACES from '@/config/system-namespaces';
-import { PROJECT, SYSTEM_NAMESPACE, ISTIO as ISTIO_LABELS, FLEET } from '@/config/labels-annotations';
-import { ISTIO, MANAGEMENT } from '@/config/types';
+import SYSTEM_NAMESPACES from '@shell/config/system-namespaces';
+import { PROJECT, SYSTEM_NAMESPACE, ISTIO as ISTIO_LABELS, FLEET } from '@shell/config/labels-annotations';
+import { ISTIO, MANAGEMENT } from '@shell/config/types';
 
-import { get } from '@/utils/object';
-import { escapeHtml } from '@/utils/string';
-import { insertAt, isArray } from '@/utils/array';
+import { get } from '@shell/utils/object';
+import { escapeHtml } from '@shell/utils/string';
+import { insertAt, isArray } from '@shell/utils/array';
 
 const OBSCURE_NAMESPACE_PREFIX = [
   'c-', // cluster namesapce

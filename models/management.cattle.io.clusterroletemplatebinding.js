@@ -1,6 +1,6 @@
-import { CREATOR_ID } from '@/config/labels-annotations';
-import { _CREATE } from '@/config/query-params';
-import { MANAGEMENT, NORMAN } from '@/config/types';
+import { CREATOR_ID } from '@shell/config/labels-annotations';
+import { _CREATE } from '@shell/config/query-params';
+import { MANAGEMENT, NORMAN } from '@shell/config/types';
 
 export default {
   detailPageHeaderActionOverride() {

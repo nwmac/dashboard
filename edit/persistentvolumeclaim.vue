@@ -8,8 +8,8 @@ import RadioGroup from '@/components/form/RadioGroup';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import UnitInput from '@/components/form/UnitInput';
 import uniq from 'lodash/uniq';
-import { _CREATE } from '@/config/query-params';
-import { STORAGE_CLASS, PV } from '@/config/types';
+import { _CREATE } from '@shell/config/query-params';
+import { STORAGE_CLASS, PV } from '@shell/config/types';
 import StatusTable from '@/components/StatusTable';
 import ResourceTabs from '@/components/form/ResourceTabs';
 

@@ -7,12 +7,12 @@ import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import ModalWithCard from '@/components/ModalWithCard';
 
-import { PVC } from '@/config/types';
-import { clone } from '@/utils/object';
-import { removeObject } from '@/utils/array';
-import { randomStr } from '@/utils/string';
-import { SOURCE_TYPE, InterfaceOption } from '@/config/harvester-map';
-import { _VIEW, _EDIT, _CREATE } from '@/config/query-params';
+import { PVC } from '@shell/config/types';
+import { clone } from '@shell/utils/object';
+import { removeObject } from '@shell/utils/array';
+import { randomStr } from '@shell/utils/string';
+import { SOURCE_TYPE, InterfaceOption } from '@shell/config/harvester-map';
+import { _VIEW, _EDIT, _CREATE } from '@shell/config/query-params';
 
 export default {
   components: {

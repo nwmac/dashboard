@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import { load } from 'js-yaml';
-import ResourceInstance, { colorForState } from '@/plugins/steve/resource-instance';
-import { POD, NODE, HCI } from '@/config/types';
-import { findBy } from '@/utils/array';
-import { get } from '@/utils/object';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
-import { _CLONE } from '@/config/query-params';
+import ResourceInstance, { colorForState } from '@shell/plugins/steve/resource-instance';
+import { POD, NODE, HCI } from '@shell/config/types';
+import { findBy } from '@shell/utils/array';
+import { get } from '@shell/utils/object';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
+import { _CLONE } from '@shell/config/query-params';
 
 const VMI_WAITING_MESSAGE = 'The virtual machine is waiting for resources to become available.';
 const VM_ERROR = 'VM error';

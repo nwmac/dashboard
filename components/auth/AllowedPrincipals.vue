@@ -3,8 +3,8 @@ import RadioGroup from '@/components/form/RadioGroup';
 import ArrayList from '@/components/form/ArrayList';
 import Principal from '@/components/auth/Principal';
 import SelectPrincipal from '@/components/auth/SelectPrincipal';
-import { _EDIT } from '@/config/query-params';
-import { addObject } from '@/utils/array';
+import { _EDIT } from '@shell/config/query-params';
+import { addObject } from '@shell/utils/array';
 
 export default {
   components: {

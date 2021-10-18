@@ -1,6 +1,6 @@
-import { clone } from '@/utils/object';
-import { HCI } from '@/config/types';
-import { Resource } from '@/plugins/steve/resource-class';
+import { clone } from '@shell/utils/object';
+import { HCI } from '@shell/config/types';
+import { Resource } from '@shell/plugins/steve/resource-class';
 
 export default class Pod extends Resource {
   get detailLocation() {

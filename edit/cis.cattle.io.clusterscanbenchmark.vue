@@ -5,7 +5,7 @@ import LabeledSelect from '@/components/form/LabeledSelect';
 import LabeledInput from '@/components/form/LabeledInput';
 import NameNsDescription from '@/components/form/NameNsDescription';
 import { mapGetters } from 'vuex';
-import { CONFIG_MAP } from '@/config/types';
+import { CONFIG_MAP } from '@shell/config/types';
 const providers = ['aks', 'docker', 'eks', 'gke', 'k3s', 'minikube', 'rke-windows', 'rke', 'rke2'];
 
 export default {

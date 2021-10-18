@@ -2,8 +2,8 @@
 import Loading from '@/components/Loading';
 import ResourceTable from '@/components/ResourceTable';
 import Masthead from '@/components/ResourceList/Masthead';
-import { NORMAN, SECRET } from '@/config/types';
-import { AGE_NORMAN, DESCRIPTION, ID_UNLINKED, NAME_UNLINKED } from '@/config/table-headers';
+import { NORMAN, SECRET } from '@shell/config/types';
+import { AGE_NORMAN, DESCRIPTION, ID_UNLINKED, NAME_UNLINKED } from '@shell/config/table-headers';
 
 export default {
   components: {

@@ -1,8 +1,8 @@
 <script>
 import day from 'dayjs';
 import { DATE_FORMAT, TIME_FORMAT } from '@/store/prefs';
-import { escapeHtml } from '@/utils/string';
-import { diffFrom } from '@/utils/time';
+import { escapeHtml } from '@shell/utils/string';
+import { diffFrom } from '@shell/utils/time';
 
 export default {
   props: {

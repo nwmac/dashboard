@@ -1,10 +1,10 @@
 <script>
 import Loading from '@/components/Loading';
 import { mapGetters, mapState } from 'vuex';
-import { NAME as MANAGER } from '@/config/product/manager';
-import { CAPI, MANAGEMENT } from '@/config/types';
-import { SETTING } from '@/config/settings';
-import { findEmberPage, clearEmberInactiveTimer, startEmberInactiveTimer, EMBER_FRAME } from '@/utils/ember-page';
+import { NAME as MANAGER } from '@shell/config/product/manager';
+import { CAPI, MANAGEMENT } from '@shell/config/types';
+import { SETTING } from '@shell/config/settings';
+import { findEmberPage, clearEmberInactiveTimer, startEmberInactiveTimer, EMBER_FRAME } from '@shell/utils/ember-page';
 
 const EMBER_FRAME_HIDE_CLASS = 'ember-iframe-hidden';
 const PAGE_CHECK_TIMEOUT = 30000;

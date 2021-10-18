@@ -1,10 +1,10 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import { randomStr } from '@/utils/string';
-import { HCI } from '@/config/types';
-import { allHash } from '@/utils/promise';
-import { exceptionToErrorsArray } from '@/utils/error';
+import { randomStr } from '@shell/utils/string';
+import { HCI } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 
 import Card from '@/components/Card';
 import Banner from '@/components/Banner';

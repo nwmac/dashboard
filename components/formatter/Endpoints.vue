@@ -1,5 +1,5 @@
 <script>
-import { NODE } from '@/config/types';
+import { NODE } from '@shell/config/types';
 
 export default {
   props: {

@@ -1,6 +1,6 @@
 <script>
-import { sortBy } from '@/utils/sort';
-import { get } from '@/utils/object';
+import { sortBy } from '@shell/utils/sort';
+import { get } from '@shell/utils/object';
 
 export default {
   props: {

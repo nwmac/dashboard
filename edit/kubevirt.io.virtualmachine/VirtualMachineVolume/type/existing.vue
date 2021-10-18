@@ -5,9 +5,9 @@ import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import InputOrDisplay from '@/components/InputOrDisplay';
 
-import { sortBy } from '@/utils/sort';
-import { HCI, PVC } from '@/config/types';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
+import { sortBy } from '@shell/utils/sort';
+import { HCI, PVC } from '@shell/config/types';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
 
 export default {
   name:       'HarvesterEditExisting',

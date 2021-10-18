@@ -57,7 +57,7 @@ Schemas are provided in bulk via the APIs and cached locally in the relevant sto
 A schema can be fetched synchronously via store getter
 
 ```
-import { POD } from '@/config/types';
+import { POD } from '@shell/config/types';
 
 this.$store.getters['cluster/schemaFor'](POD)`
 ```
@@ -420,10 +420,10 @@ export function exampleValidator(value, getters, errors, validatorArgs, displayK
 In order to make a custom validator available for usage in forms and component, it will need to exposed by importing the new validator function into `utils/custom-validators.js`:
 
 ```diff
-import { podAffinity } from '@/utils/validators/pod-affinity';
-import { roleTemplateRules } from '@/utils/validators/role-template';
-import { clusterName } from '@/utils/validators/cluster-name';
-+ import { exampleValidator } from '@/utils/validators/setting';
+import { podAffinity } from '@shell/utils/validators/pod-affinity';
+import { roleTemplateRules } from '@shell/utils/validators/role-template';
+import { clusterName } from '@shell/utils/validators/cluster-name';
++ import { exampleValidator } from '@shell/utils/validators/setting';
 ```
 
 and add it to the default exports:

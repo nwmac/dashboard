@@ -5,11 +5,11 @@ import RadioGroup from '@/components/form/RadioGroup';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import LabeledInput from '@/components/form/LabeledInput';
 import Banner from '@/components/Banner';
-import { get } from '@/utils/object';
-import { allHash } from '@/utils/promise';
-import { STORAGE_CLASS, SECRET, PV } from '@/config/types';
+import { get } from '@shell/utils/object';
+import { allHash } from '@shell/utils/promise';
+import { STORAGE_CLASS, SECRET, PV } from '@shell/config/types';
 import { mapGetters } from 'vuex';
-import { STORAGE } from '@/config/labels-annotations';
+import { STORAGE } from '@shell/config/labels-annotations';
 
 export default {
   components: {

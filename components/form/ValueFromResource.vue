@@ -1,7 +1,7 @@
 <script>
-import { CONFIG_MAP, SECRET, NAMESPACE } from '@/config/types';
-import { get } from '@/utils/object';
-import { _VIEW } from '@/config/query-params';
+import { CONFIG_MAP, SECRET, NAMESPACE } from '@shell/config/types';
+import { get } from '@shell/utils/object';
+import { _VIEW } from '@shell/config/query-params';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import LabeledInput from '@/components/form/LabeledInput';
 

@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import { get } from '@/utils/object';
-import { DESCRIPTION } from '@/config/labels-annotations';
-import { NORMAN } from '@/config/types';
+import { get } from '@shell/utils/object';
+import { DESCRIPTION } from '@shell/config/labels-annotations';
+import { NORMAN } from '@shell/config/types';
 import Role from './rbac.authorization.k8s.io.role';
 
 export const CATTLE_API_GROUP = '.cattle.io';

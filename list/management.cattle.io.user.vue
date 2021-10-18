@@ -1,7 +1,7 @@
 <script>
 import AsyncButton from '@/components/AsyncButton';
-import { NORMAN } from '@/config/types';
-import { NAME } from '@/config/product/auth';
+import { NORMAN } from '@shell/config/types';
+import { NAME } from '@shell/config/product/auth';
 import ResourceTable from '@/components/ResourceTable';
 import Loading from '@/components/Loading';
 import Masthead from '@/components/ResourceList/Masthead';

@@ -1,5 +1,5 @@
 <script>
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import UnitInput from '@/components/form/UnitInput';
 

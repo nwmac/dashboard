@@ -10,7 +10,7 @@ import KeyValue from '@/components/form/KeyValue';
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import UnitInput from '@/components/form/UnitInput';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 
 const INGORED_ANNOTATIONS = [
   'summary',

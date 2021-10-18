@@ -1,4 +1,4 @@
-import { MANAGEMENT } from '@/config/types';
+import { MANAGEMENT } from '@shell/config/types';
 
 const definitions = {};
 

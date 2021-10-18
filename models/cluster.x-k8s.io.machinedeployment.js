@@ -1,6 +1,6 @@
-import { CAPI } from '@/config/types';
-import { escapeHtml } from '@/utils/string';
-import { sortBy } from '@/utils/sort';
+import { CAPI } from '@shell/config/types';
+import { escapeHtml } from '@shell/utils/string';
+import { sortBy } from '@shell/utils/sort';
 
 export default {
   cluster() {

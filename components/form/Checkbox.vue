@@ -1,7 +1,7 @@
 <script>
 import $ from 'jquery';
-import { _EDIT, _VIEW } from '@/config/query-params';
-import { addObject, removeObject } from '@/utils/array';
+import { _EDIT, _VIEW } from '@shell/config/query-params';
+import { addObject, removeObject } from '@shell/utils/array';
 
 export default {
   props: {

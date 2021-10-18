@@ -1,7 +1,7 @@
 <script>
 import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
-import { _CREATE } from '@/config/query-params';
+import { _CREATE } from '@shell/config/query-params';
 
 export default {
   components: { LabeledInput, LabeledSelect },

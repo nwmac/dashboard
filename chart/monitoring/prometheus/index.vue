@@ -10,9 +10,9 @@ import MatchExpressions from '@/components/form/MatchExpressions';
 import StorageClassSelector from '@/chart/monitoring/StorageClassSelector';
 import RadioGroup from '@/components/form/RadioGroup';
 
-import { set } from '@/utils/object';
-import { simplify, convert } from '@/utils/selector';
-import { POD } from '@/config/types';
+import { set } from '@shell/utils/object';
+import { simplify, convert } from '@shell/utils/selector';
+import { POD } from '@shell/config/types';
 
 export default {
   components: {

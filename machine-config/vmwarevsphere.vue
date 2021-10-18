@@ -3,7 +3,7 @@ import Loading from '@/components/Loading';
 import CreateEditView from '@/mixins/create-edit-view';
 import LabeledSelect from '@/components/form/LabeledSelect';
 // import Checkbox from '@/components/form/Checkbox';
-import { exceptionToErrorsArray, stringify } from '@/utils/error';
+import { exceptionToErrorsArray, stringify } from '@shell/utils/error';
 import Banner from '@/components/Banner';
 import UnitInput from '@/components/form/UnitInput';
 import Card from '@/components/Card';
@@ -12,9 +12,9 @@ import KeyValue from '@/components/form/KeyValue';
 import LabeledInput from '@/components/form/LabeledInput';
 import ArrayListSelect from '@/components/form/ArrayListSelect';
 import YamlEditor from '@/components/YamlEditor';
-import { get, set } from '@/utils/object';
-import { integerString, keyValueStrings } from '@/utils/computed';
-import { _CREATE } from '@/config/query-params';
+import { get, set } from '@shell/utils/object';
+import { integerString, keyValueStrings } from '@shell/utils/computed';
+import { _CREATE } from '@shell/config/query-params';
 
 const SENTINEL = '__SENTINEL__';
 const VAPP_MODE = {

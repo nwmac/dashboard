@@ -1,7 +1,7 @@
 <script>
 import LabeledInput from '@/components/form/LabeledInput';
 import Checkbox from '@/components/form/Checkbox';
-import { _CREATE } from '@/config/query-params';
+import { _CREATE } from '@shell/config/query-params';
 
 export default {
   components: { Checkbox, LabeledInput },

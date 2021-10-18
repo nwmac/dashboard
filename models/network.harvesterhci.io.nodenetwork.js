@@ -1,6 +1,6 @@
-import { findBy } from '@/utils/array';
-import { get } from '@/utils/object';
-import { HCI } from '@/config/types';
+import { findBy } from '@shell/utils/array';
+import { get } from '@shell/utils/object';
+import { HCI } from '@shell/config/types';
 
 export default {
   message() {

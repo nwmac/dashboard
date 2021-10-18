@@ -1,6 +1,6 @@
 <script>
 import Banner from '@/components/Banner';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 
 export default {
   components: { Banner },

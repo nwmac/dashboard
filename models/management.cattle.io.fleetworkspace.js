@@ -1,5 +1,5 @@
-import { COUNT, FLEET, NORMAN } from '@/config/types';
-import { filterBy } from '@/utils/array';
+import { COUNT, FLEET, NORMAN } from '@shell/config/types';
+import { filterBy } from '@shell/utils/array';
 
 export default {
   isLocal() {

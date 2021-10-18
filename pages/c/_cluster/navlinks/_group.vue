@@ -1,6 +1,6 @@
 <script>
-import { UI } from '@/config/types';
-import { filterBy } from '@/utils/array';
+import { UI } from '@shell/config/types';
+import { filterBy } from '@shell/utils/array';
 import SelectIconGrid from '@/components/SelectIconGrid';
 
 export default {

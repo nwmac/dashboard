@@ -1,10 +1,10 @@
 <script>
 import CreateEditView from '@/mixins/create-edit-view';
 import CruResource from '@/components/CruResource';
-import { MANAGEMENT } from '@/config/types';
+import { MANAGEMENT } from '@shell/config/types';
 import Loading from '@/components/Loading';
 import ClusterPermissionsEditor from '@/components/form/Members/ClusterPermissionsEditor';
-import { exceptionToErrorsArray } from '@/utils/error';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 
 export default {
   components: {

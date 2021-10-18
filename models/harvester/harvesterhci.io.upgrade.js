@@ -1,4 +1,4 @@
-import { NODE } from '@/config/types';
+import { NODE } from '@shell/config/types';
 const LATEST_UPGRADE_RESOURCE = 'harvesterhci.io/latestUpgrade';
 
 export default {

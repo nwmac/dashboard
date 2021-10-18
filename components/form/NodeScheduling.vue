@@ -3,10 +3,10 @@ import { mapGetters } from 'vuex';
 import RadioGroup from '@/components/form/RadioGroup';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import NodeAffinity from '@/components/form/NodeAffinity';
-import { NAME as VIRTUAL } from '@/config/product/harvester';
-import { _VIEW } from '@/config/query-params';
-import { isEmpty } from '@/utils/object';
-import { HOSTNAME } from '@/config/labels-annotations';
+import { NAME as VIRTUAL } from '@shell/config/product/harvester';
+import { _VIEW } from '@shell/config/query-params';
+import { isEmpty } from '@shell/utils/object';
+import { HOSTNAME } from '@shell/config/labels-annotations';
 
 export default {
   components: {

@@ -1,7 +1,7 @@
-import { insertAt } from '@/utils/array';
-import { colorForState, stateDisplay } from '@/plugins/steve/resource-instance';
-import { NODE, WORKLOAD_TYPES } from '@/config/types';
-import SteveModel from '@/plugins/steve/steve-class';
+import { insertAt } from '@shell/utils/array';
+import { colorForState, stateDisplay } from '@shell/plugins/steve/resource-instance';
+import { NODE, WORKLOAD_TYPES } from '@shell/config/types';
+import SteveModel from '@shell/plugins/steve/steve-class';
 
 export const WORKLOAD_PRIORITY = {
   [WORKLOAD_TYPES.DEPLOYMENT]:             1,

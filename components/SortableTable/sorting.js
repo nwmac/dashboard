@@ -1,6 +1,6 @@
-import { SORT_BY, DESCENDING, PAGE } from '@/config/query-params';
-import { sortBy } from '@/utils/sort';
-import { addObject } from '@/utils/array';
+import { SORT_BY, DESCENDING, PAGE } from '@shell/config/query-params';
+import { sortBy } from '@shell/utils/sort';
+import { addObject } from '@shell/utils/array';
 
 export default {
   computed: {

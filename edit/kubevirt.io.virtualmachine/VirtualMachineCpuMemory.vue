@@ -1,5 +1,5 @@
 <script>
-import { formatSi, parseSi } from '@/utils/units';
+import { formatSi, parseSi } from '@shell/utils/units';
 import UnitInput from '@/components/form/UnitInput';
 import InputOrDisplay from '@/components/InputOrDisplay';
 

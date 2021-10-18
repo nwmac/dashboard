@@ -1,7 +1,7 @@
 <script>
-import { asciiLike } from '@/utils/string';
-import { base64Decode } from '@/utils/crypto';
-import { downloadFile } from '@/utils/download';
+import { asciiLike } from '@shell/utils/string';
+import { base64Decode } from '@shell/utils/crypto';
+import { downloadFile } from '@shell/utils/download';
 
 export default {
   components: {},

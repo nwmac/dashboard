@@ -1,5 +1,5 @@
 <script>
-import { WORKLOAD_TYPES } from '@/config/types';
+import { WORKLOAD_TYPES } from '@shell/config/types';
 import IngressFullPath from '@/components/formatter/IngressFullPath';
 
 export default {

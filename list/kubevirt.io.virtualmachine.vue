@@ -4,10 +4,10 @@ import ResourceTable from '@/components/ResourceTable';
 import LinkDetail from '@/components/formatter/LinkDetail';
 import HarvesterVmState from '@/components/formatter/HarvesterVmState';
 
-import { STATE, AGE, NAME, NAMESPACE } from '@/config/table-headers';
-import { HCI, NODE, POD } from '@/config/types';
+import { STATE, AGE, NAME, NAMESPACE } from '@shell/config/table-headers';
+import { HCI, NODE, POD } from '@shell/config/types';
 
-import { allHash } from '@/utils/promise';
+import { allHash } from '@shell/utils/promise';
 import Loading from '@/components/Loading';
 
 export default {

@@ -1,8 +1,8 @@
 <script>
 import { mapState } from 'vuex';
-import { dasherize, ucFirst } from '@/utils/string';
-import { get, clone } from '@/utils/object';
-import { removeObject, filterBy } from '@/utils/array';
+import { dasherize, ucFirst } from '@shell/utils/string';
+import { get, clone } from '@shell/utils/object';
+import { removeObject, filterBy } from '@shell/utils/array';
 import Checkbox from '@/components/form/Checkbox';
 import ActionDropdown from '@/components/ActionDropdown';
 import $ from 'jquery';

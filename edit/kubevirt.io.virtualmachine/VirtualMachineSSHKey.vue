@@ -5,9 +5,9 @@ import LabeledInput from '@/components/form/LabeledInput';
 import LabeledSelect from '@/components/form/LabeledSelect';
 import ModalWithCard from '@/components/ModalWithCard';
 
-import { HCI } from '@/config/types';
-import { clone } from '@/utils/object';
-import { _VIEW, _CONFIG } from '@/config/query-params';
+import { HCI } from '@shell/config/types';
+import { clone } from '@shell/utils/object';
+import { _VIEW, _CONFIG } from '@shell/config/query-params';
 
 export default {
   components: {

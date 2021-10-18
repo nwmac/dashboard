@@ -3,7 +3,7 @@ import BannerGraphic from '@/components/BannerGraphic';
 import IndentedPanel from '@/components/IndentedPanel';
 import SupportBundle from '@/components/dialog/SupportBundle';
 import CommunityLinks from '@/components/CommunityLinks';
-import { SCHEMA, HCI } from '@/config/types';
+import { SCHEMA, HCI } from '@shell/config/types';
 
 export default {
   layout: 'home',

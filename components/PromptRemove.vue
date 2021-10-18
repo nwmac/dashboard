@@ -1,9 +1,9 @@
 <script>
 import { mapState, mapGetters } from 'vuex';
-import { get, isEmpty } from '@/utils/object';
+import { get, isEmpty } from '@shell/utils/object';
 import Card from '@/components/Card';
-import { alternateLabel } from '@/utils/platform';
-import { uniq } from '@/utils/array';
+import { alternateLabel } from '@shell/utils/platform';
+import { uniq } from '@shell/utils/array';
 import AsyncButton from '@/components/AsyncButton';
 
 export default {

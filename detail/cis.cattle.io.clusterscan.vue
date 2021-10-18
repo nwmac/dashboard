@@ -6,10 +6,10 @@ import LabeledSelect from '@/components/form/LabeledSelect';
 import Loading from '@/components/Loading';
 import day from 'dayjs';
 import { DATE_FORMAT, TIME_FORMAT } from '@/store/prefs';
-import { escapeHtml, randomStr } from '@/utils/string';
-import { CIS } from '@/config/types';
-import { STATE } from '@/config/table-headers';
-import { get } from '@/utils/object';
+import { escapeHtml, randomStr } from '@shell/utils/string';
+import { CIS } from '@shell/config/types';
+import { STATE } from '@shell/config/table-headers';
+import { get } from '@shell/utils/object';
 
 export default {
   components: {

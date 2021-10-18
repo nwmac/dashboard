@@ -3,7 +3,7 @@ import ResourceTabs from '@/components/form/ResourceTabs';
 import FleetSummary from '@/components/FleetSummary';
 import FleetResources from '@/components/FleetResources';
 import Tab from '@/components/Tabbed/Tab';
-import { FLEET } from '@/config/types';
+import { FLEET } from '@shell/config/types';
 
 export default {
   name: 'DetailGitRepo',

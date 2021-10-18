@@ -4,7 +4,7 @@ import LabeledInput from '@/components/form/LabeledInput';
 import Select from '@/components/form/Select';
 import Checkbox from '@/components/form/Checkbox';
 import InputWithSelect from '@/components/form/InputWithSelect';
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 
 export const TARGETS = [
   {

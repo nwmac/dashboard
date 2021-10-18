@@ -1,6 +1,6 @@
-import { SEARCH_QUERY } from '@/config/query-params';
-import { get } from '@/utils/object';
-import { addObject, addObjects, isArray, removeAt } from '@/utils/array';
+import { SEARCH_QUERY } from '@shell/config/query-params';
+import { get } from '@shell/utils/object';
+import { addObject, addObjects, isArray, removeAt } from '@shell/utils/array';
 
 export default {
   data() {

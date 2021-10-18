@@ -1,5 +1,5 @@
 <script>
-import { REASON } from '@/config/table-headers';
+import { REASON } from '@shell/config/table-headers';
 import SortableTable from '@/components/SortableTable';
 
 export default {

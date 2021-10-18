@@ -1,9 +1,9 @@
 <script>
 import ResourceTable from '@/components/ResourceTable';
 import Loading from '@/components/Loading';
-import { STATE, NAME, AGE } from '@/config/table-headers';
-import { METRIC, NODE, SCHEMA, HCI } from '@/config/types';
-import { allHash } from '@/utils/promise';
+import { STATE, NAME, AGE } from '@shell/config/table-headers';
+import { METRIC, NODE, SCHEMA, HCI } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
 import metricPoller from '@/mixins/metric-poller';
 import CopyToClipboard from '@/components/CopyToClipboard';
 

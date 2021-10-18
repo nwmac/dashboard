@@ -1,5 +1,5 @@
-import { _VIEW } from '@/config/query-params';
-import { set } from '@/utils/object';
+import { _VIEW } from '@shell/config/query-params';
+import { set } from '@shell/utils/object';
 
 export default {
   showMasthead() {

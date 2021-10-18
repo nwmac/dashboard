@@ -1,9 +1,9 @@
 <script>
-import { get } from '@/utils/object';
+import { get } from '@shell/utils/object';
 import RadioGroup from '@/components/form/RadioGroup';
 import UnitInput from '@/components/form/UnitInput';
-import { WORKLOAD_TYPES } from '@/config/types';
-import { _CREATE } from '@/config/query-params';
+import { WORKLOAD_TYPES } from '@shell/config/types';
+import { _CREATE } from '@shell/config/query-params';
 import { mapGetters } from 'vuex';
 import InputWithSelect from '@/components/form/InputWithSelect';
 

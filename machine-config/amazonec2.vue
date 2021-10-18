@@ -8,11 +8,11 @@ import KeyValue from '@/components/form/KeyValue';
 import UnitInput from '@/components/form/UnitInput';
 import RadioGroup from '@/components/form/RadioGroup';
 import Checkbox from '@/components/form/Checkbox';
-import { NORMAN } from '@/config/types';
-import { allHash } from '@/utils/promise';
-import { addObject, addObjects, findBy } from '@/utils/array';
-import { sortBy } from '@/utils/sort';
-import { stringify, exceptionToErrorsArray } from '@/utils/error';
+import { NORMAN } from '@shell/config/types';
+import { allHash } from '@shell/utils/promise';
+import { addObject, addObjects, findBy } from '@shell/utils/array';
+import { sortBy } from '@shell/utils/sort';
+import { stringify, exceptionToErrorsArray } from '@shell/utils/error';
 
 const DEFAULT_GROUP = 'rancher-nodes';
 

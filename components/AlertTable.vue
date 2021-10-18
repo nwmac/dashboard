@@ -1,8 +1,8 @@
 <script>
 import isEmpty from 'lodash/isEmpty';
-import Poller from '@/utils/poller';
+import Poller from '@shell/utils/poller';
 import SortableTable from '@/components/SortableTable';
-import { ENDPOINTS } from '@/config/types';
+import { ENDPOINTS } from '@shell/config/types';
 import { mapGetters } from 'vuex';
 const CATTLE_MONITORING_NAMESPACE = 'cattle-monitoring-system';
 const ALERTMANAGER_POLL_RATE_MS = 30000;

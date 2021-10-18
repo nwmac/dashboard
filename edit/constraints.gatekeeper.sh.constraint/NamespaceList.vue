@@ -1,7 +1,7 @@
 <script>
-import { sortBy } from '@/utils/sort';
-import { _EDIT } from '@/config/query-params';
-import { NAMESPACE } from '@/config/types';
+import { sortBy } from '@shell/utils/sort';
+import { _EDIT } from '@shell/config/query-params';
+import { NAMESPACE } from '@shell/config/types';
 import LabeledSelect from '@/components/form/LabeledSelect';
 
 export const NAMESPACE_FILTERS_HELPER = {

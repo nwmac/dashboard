@@ -1,9 +1,9 @@
 <script>
-import { exceptionToErrorsArray } from '@/utils/error';
-import { sortBy } from '@/utils/sort';
+import { exceptionToErrorsArray } from '@shell/utils/error';
+import { sortBy } from '@shell/utils/sort';
 import { mapGetters } from 'vuex';
-import { PVC } from '@/config/types';
-import { HCI as HCI_ANNOTATIONS } from '@/config/labels-annotations';
+import { PVC } from '@shell/config/types';
+import { HCI as HCI_ANNOTATIONS } from '@shell/config/labels-annotations';
 import Card from '@/components/Card';
 import Banner from '@/components/Banner';
 import AsyncButton from '@/components/AsyncButton';

@@ -1,5 +1,5 @@
 <script>
-import { _VIEW } from '@/config/query-params';
+import { _VIEW } from '@shell/config/query-params';
 import ArrayList from '@/components/form/ArrayList';
 import ArrayListGrouped from '@/components/form/ArrayListGrouped';
 

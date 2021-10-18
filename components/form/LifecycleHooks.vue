@@ -2,8 +2,8 @@
 import Vue from 'vue';
 
 import HookOption from '@/components/form/HookOption';
-import { _VIEW } from '@/config/query-params';
-import { isEmpty } from '@/utils/object';
+import { _VIEW } from '@shell/config/query-params';
+import { isEmpty } from '@shell/utils/object';
 
 export default {
   components: { HookOption },

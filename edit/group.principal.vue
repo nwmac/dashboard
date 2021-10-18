@@ -2,8 +2,8 @@
 import CreateEditView from '@/mixins/create-edit-view';
 import GlobalRoleBindings from '@/components/GlobalRoleBindings.vue';
 import CruResource from '@/components/CruResource';
-import { exceptionToErrorsArray } from '@/utils/error';
-import { NORMAN } from '@/config/types';
+import { exceptionToErrorsArray } from '@shell/utils/error';
+import { NORMAN } from '@shell/config/types';
 
 export default {
   components: {

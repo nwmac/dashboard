@@ -5,16 +5,16 @@ import Banner from '@/components/Banner';
 import SelectIconGrid from '@/components/SelectIconGrid';
 import {
   REPO_TYPE, REPO, CHART, VERSION, SEARCH_QUERY, _FLAGGED, CATEGORY, DEPRECATED, HIDDEN
-} from '@/config/query-params';
-import { lcFirst } from '@/utils/string';
-import { sortBy } from '@/utils/sort';
+} from '@shell/config/query-params';
+import { lcFirst } from '@shell/utils/string';
+import { sortBy } from '@shell/utils/sort';
 import { mapGetters } from 'vuex';
 import Checkbox from '@/components/form/Checkbox';
 import Select from '@/components/form/Select';
 import { mapPref, HIDE_REPOS, SHOW_PRE_RELEASE } from '@/store/prefs';
-import { removeObject, addObject, findBy } from '@/utils/array';
+import { removeObject, addObject, findBy } from '@shell/utils/array';
 import { compatibleVersionsFor, filterAndArrangeCharts } from '@/store/catalog';
-import { CATALOG } from '@/config/labels-annotations';
+import { CATALOG } from '@shell/config/labels-annotations';
 
 export default {
   components: {

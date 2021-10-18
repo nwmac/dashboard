@@ -1,6 +1,6 @@
 <script>
-import { NAME } from '@/config/product/manager';
-import { CAPI } from '@/config/types';
+import { NAME } from '@shell/config/product/manager';
+import { CAPI } from '@shell/config/types';
 
 export default {
   middleware({ redirect, route } ) {
