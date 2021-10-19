@@ -2,6 +2,7 @@
 
 const fs = require('fs-extra');
 const path = require('path');
+const exec = require('child_process').exec;
 
 const targets = {
   'dev': './node_modules/.bin/nuxt dev',
@@ -38,10 +39,12 @@ Object.keys(targets).forEach((target) => {
   }
 });
 
+// Add core-js dependency
+pkg.dependencies['core-js'] = '^3.18.3';
+
 fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
 
 // Copy base files
-
 files.forEach((file) => {
   const src = path.join(__dirname, file);
   const dest = file;
@@ -50,4 +53,9 @@ files.forEach((file) => {
     console.log('Adding file: ' + file);
     fs.copySync(src, dest);
   }
+});
+
+require("child_process").spawn('yarn', ['install'], {
+  cwd: process.cwd(),
+  stdio: "inherit"
 });
