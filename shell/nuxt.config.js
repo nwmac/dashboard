@@ -550,7 +550,12 @@ export default function(dir, excludes) {
     serverMiddleware,
 
     // Eslint module options
-    eslint: { cache: './node_modules/.cache/eslint' },
+    eslint: {
+      cache: path.join(dir, 'node_modules/.cache/eslint'),
+      exclude: [
+        '.nuxt'
+      ]
+    },
 
     typescript: { typeCheck: { eslint: { files: './**/*.{ts,js,vue}' } } }
   };

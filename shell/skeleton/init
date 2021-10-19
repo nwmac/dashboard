@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+const fs = require('fs-extra');
+const path = require('path');
+
+const targets = {
+  'dev': './node_modules/.bin/nuxt dev',
+  'nuxt': './node_modules/.bin/nuxt',
+};
+
+const files = [
+  'tsconfig.json',
+  'nuxt.config.js',
+  '.eslintignore',
+  '.eslintrc.js',
+  'babel.config.js'
+];
+
+// Check that there is a package file
+
+if (!fs.existsSync('./package.json')) {
+  console.log('No package file - please create one');
+
+  return;
+}
+
+const rawdata = fs.readFileSync('package.json');
+const pkg = JSON.parse(rawdata);
+
+if (!pkg.scripts) {
+  pkg.scripts = {};
+}
+
+Object.keys(targets).forEach((target) => {
+  if (!pkg.scripts[target]) {
+    pkg.scripts[target] = targets[target];
+    console.log(`Adding script '${ target }' to package.json`);
+  }
+});
+
+fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+
+// Copy base files
+
+files.forEach((file) => {
+  const src = path.join(__dirname, file);
+  const dest = file;
+
+  if (!fs.existsSync(dest)) {
+    console.log('Adding file: ' + file);
+    fs.copySync(src, dest);
+  }
+});
