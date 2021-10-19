@@ -100,13 +100,7 @@ export default {
 
       this.getNav.forEach((i) => {
         if (!i.category) {
-          items.push({
-            label:  i.label,
-            icon:   i.icon,
-            value:  i.id,
-            weight: 1,
-            to:     i.route,
-          });
+          items.push(this.mapNav(i));
         }
       });
 
@@ -125,13 +119,7 @@ export default {
 
       this.getNav.forEach((i) => {
         if (i.category === 'configuration') {
-          items.push({
-            label:  i.label,
-            icon:   i.icon,
-            value:  i.id,
-            weight: 1,
-            to:     i.route,
-          });
+          items.push(this.mapNav(i));
         }
       });
 
@@ -192,6 +180,17 @@ export default {
   },
 
   methods: {
+    mapNav(i) {
+      return {
+        label:   i.label,
+        inStoer: 'management',
+        icon:    i.icon,
+        value:   i.id,
+        weight:  1,
+        to:      i.route,
+      };
+    },
+
     // Cluster list number of items shown is configurbale via user preference
     setClusterListHeight(maxToShow) {
       const el = this.$refs.clusterList;
