@@ -9,6 +9,7 @@
     "node": ">=12"
   },
   "scripts": {
+    "build-ext": "./shell/scripts/build-ext.sh",
     "clean": "./scripts/clean",
     "lint": "./node_modules/.bin/eslint --max-warnings 0 --ext .ts,.js,.vue .",
     "test": "./node_modules/.bin/nyc ava --serial --verbose",
@@ -108,6 +109,7 @@
     "@nuxtjs/eslint-module": "^1.1.0",
     "@nuxtjs/style-resources": "^1.2.1",
     "@types/node": "^16.4.3",
+    "@vue/cli-service": "^4.5.13",
     "@vue/test-utils": "^1.0.0-beta.27",
     "add": "^2.0.6",
     "ava": "^2.2.0",
