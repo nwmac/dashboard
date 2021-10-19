@@ -40,6 +40,7 @@ export default {
     ...mapGetters('type-map', ['activeProducts']),
     ...mapGetters('i18n', ['selectedLocaleLabel', 'availableLocales']),
     ...mapGetters({ features: 'features/get' }),
+    ...mapGetters('nav', ['getNav']),
 
     value: {
       get() {
@@ -95,8 +96,20 @@ export default {
 
     multiClusterApps() {
       const options = this.options;
+      const nav = this.getNav;
+      const items = options.filter(opt => opt.inStore === 'management' && opt.category !== 'configuration' && opt.category !== 'legacy');
 
-      return options.filter(opt => opt.inStore === 'management' && opt.category !== 'configuration' && opt.category !== 'legacy');
+      nav.forEach((i) => {
+        items.push({
+          label:  i.label,
+          icon:   i.icon,
+          value:  i.id,
+          weight: 1,
+          to:     i.route,
+        });
+      });
+
+      return items;
     },
 
     legacyApps() {

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import webpack from 'webpack';
+import serveStatic from 'serve-static'
 
 import { STANDARD } from './config/private-label';
 import { directiveSsr as t } from './plugins/i18n';
@@ -23,6 +24,68 @@ export default function(dir, excludes) {
     SHELL_ABS = path.join(dir, 'shell');
     NUXT_SHELL = '~~/shell';
   }
+
+  const serverMiddleware = [
+    path.resolve(dir, SHELL, 'server', 'server-middleware')
+  ];
+
+  // Find any packages in node_modules
+  const NM = path.join(dir, 'node_modules');
+  const pkg = require(path.join(dir, 'package.json'));
+  const nmPackages = {};
+
+  if (pkg && pkg.dependencies) {
+    Object.keys(pkg.dependencies).forEach(pkg => {
+      const f = require(path.join(NM, pkg, 'package.json'));
+      if (f.ruif) {
+        nmPackages[f.name] = f.main;
+
+        serverMiddleware.push({
+          path: '/pkg/' + f.name,
+          handler: serveStatic(path.join(NM, pkg))
+        });
+      }
+    });
+  }
+
+  const VirtualModulesPlugin = require('webpack-virtual-modules');
+  let reqs = '';
+  const pkgFolder = path.relative(dir, './pkg');
+  if (fs.existsSync(pkgFolder)) {
+    const items = fs.readdirSync(path.relative(dir, './pkg'));
+  
+    items.forEach(name => {
+      if (!excludes || (excludes && !excludes.includes(name))) {
+        reqs += `require(\'~/pkg/${name}\').default(app.router, store, $extension); `;
+      }
+
+      // Serve the code for the embedded package in case its used for dynamic loading
+      if (!nmPackages[name]) {
+        serverMiddleware.push({ path: `/pkg/${name}`, handler: serveStatic(dir + `/dist-pkg/${name}`) });
+      }
+    });
+  }
+
+  Object.keys(nmPackages).forEach(m => {
+    reqs += `$extension.load('${m}', '/pkg/${m}/${nmPackages[m]}');`;
+  });
+
+  const virtualModules = new VirtualModulesPlugin({
+    'node_modules/@ranch/dynamic.js': `export default function (store, app, $extension) { ${reqs} };`,
+  });
+
+  // const plugin = new webpack.NormalModuleReplacementPlugin(/^assets\//, function(resource) {
+  //   if (resource.request.indexOf('assets/') === 0) {
+  //     const customized = path.join('personality', resource.request);
+  //     const shell = path.join(SHELL, resource.request);
+
+  //     if (fs.existsSync(customized)) {
+  //       resource.request = path.resolve(customized);
+  //     } else if (fs.existsSync(shell)) {
+  //       resource.request = path.resolve(shell);
+  //     }
+  //   }
+  // });
 
   // console.log(SHELL); // eslint-disable-line no-console
   // console.log(SHELL_ABS); // eslint-disable-line no-console
@@ -237,6 +300,7 @@ export default function(dir, excludes) {
       // },
 
       plugins: [
+        virtualModules,
         ctxrp,
         nmrp,
       ],      
@@ -406,6 +470,10 @@ export default function(dir, excludes) {
 
     // Vue plugins
     plugins: [
+      // Extensions
+      path.relative(dir, path.join(SHELL, 'extensions/extension.js')),
+      path.relative(dir, path.join(SHELL, 'extensions/extension-loader.js')),
+      
       // Third-party
       '~/plugins/axios',
       '~/plugins/tooltip',
@@ -463,9 +531,7 @@ export default function(dir, excludes) {
     },
 
     // Server middleware
-    serverMiddleware: [
-      path.resolve(dir, SHELL, 'server', 'server-middleware')
-    ],
+    serverMiddleware,
 
     // Eslint module options
     eslint: { cache: './node_modules/.cache/eslint' },
