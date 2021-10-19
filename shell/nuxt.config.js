@@ -6,7 +6,7 @@ import { STANDARD } from './config/private-label';
 import { directiveSsr as t } from './plugins/i18n';
 import { trimWhitespaceSsr as trimWhitespace } from './plugins/trim-whitespace';
 
-const contextFolders = ['chart', 'cloud-credential', 'detail', 'edit', 'list', 'machine-config', 'models', 'promptRemove'];
+const contextFolders = ['chart', 'cloud-credential', 'content', 'detail', 'edit', 'list', 'machine-config', 'models', 'promptRemove'];
 const contextMap = contextFolders.reduce((map, obj) => {
   map[obj] = true;
 
@@ -24,8 +24,8 @@ export default function(dir, excludes) {
     NUXT_SHELL = '~~/shell';
   }
 
-  console.log(SHELL); // eslint-disable-line no-console
-  console.log(SHELL_ABS); // eslint-disable-line no-console
+  // console.log(SHELL); // eslint-disable-line no-console
+  // console.log(SHELL_ABS); // eslint-disable-line no-console
 
   const ctxrp = new webpack.ContextReplacementPlugin(/^@\//, function(context) {
     const folder = context.request.split('/')[1];
@@ -473,11 +473,8 @@ export default function(dir, excludes) {
     typescript: { typeCheck: { eslint: { files: './**/*.{ts,js,vue}' } } }
   };
 
-  console.log(config.dir); // eslint-disable-line no-console
   config.plugins = patch(config.plugins);
-  console.log(config.plugins); // eslint-disable-line no-console
   config.modules = patch(config.modules);
-  console.log(config.modules); // eslint-disable-line no-console
 
   return config;
 
