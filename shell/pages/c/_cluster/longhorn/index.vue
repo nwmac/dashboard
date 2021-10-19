@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       externalLinks:  [],
-      longhornImgSrc: require('~/assets/images/vendor/longhorn.svg'),
+      longhornImgSrc: require('~shell/assets/images/vendor/longhorn.svg'),
     };
   },
 

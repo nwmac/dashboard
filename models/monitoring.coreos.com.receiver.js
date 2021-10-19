@@ -10,14 +10,14 @@ export const RECEIVERS_TYPES = [
     title: 'monitoringReceiver.slack.title',
     info:  'monitoringReceiver.slack.info',
     key:   'slack_configs',
-    logo:  require(`~/assets/images/vendor/slack.svg`)
+    logo:  require(`~shell/assets/images/vendor/slack.svg`)
   },
   {
     name:  'email',
     label: 'monitoringReceiver.email.label',
     title: 'monitoringReceiver.email.title',
     key:   'email_configs',
-    logo:  require(`~/assets/images/vendor/email.svg`)
+    logo:  require(`~shell/assets/images/vendor/email.svg`)
   },
   {
     name:  'pagerduty',
@@ -25,21 +25,21 @@ export const RECEIVERS_TYPES = [
     title: 'monitoringReceiver.pagerduty.title',
     info:  'monitoringReceiver.pagerduty.info',
     key:   'pagerduty_configs',
-    logo:  require(`~/assets/images/vendor/pagerduty.svg`)
+    logo:  require(`~shell/assets/images/vendor/pagerduty.svg`)
   },
   {
     name:  'opsgenie',
     label: 'monitoringReceiver.opsgenie.label',
     title: 'monitoringReceiver.opsgenie.title',
     key:   'opsgenie_configs',
-    logo:  require(`~/assets/images/vendor/email.svg`)
+    logo:  require(`~shell/assets/images/vendor/email.svg`)
   },
   {
     name:         'webhook',
     label:        'monitoringReceiver.webhook.label',
     title:        'monitoringReceiver.webhook.title',
     key:          'webhook_configs',
-    logo:         require(`~/assets/images/vendor/webhook.svg`),
+    logo:         require(`~shell/assets/images/vendor/webhook.svg`),
     banner:       'webhook.banner',
     addButton:    'webhook.add'
   },
@@ -49,7 +49,7 @@ export const RECEIVERS_TYPES = [
     title: 'monitoringReceiver.custom.title',
     info:  'monitoringReceiver.custom.info',
     key:   'webhook_configs',
-    logo:  require(`~/assets/images/vendor/custom.svg`)
+    logo:  require(`~shell/assets/images/vendor/custom.svg`)
   },
 ];
 

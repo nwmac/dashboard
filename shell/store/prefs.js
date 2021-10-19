@@ -439,7 +439,7 @@ export const actions = {
         if (brandSetting && brandSetting.value && brandSetting.value !== '') {
           const brand = brandSetting.value;
 
-          const brandMeta = require(`~/assets/brand/${ brand }/metadata.json`);
+          const brandMeta = require(`~shell/assets/brand/${ brand }/metadata.json`);
           const hasStylesheet = brandMeta.hasStylesheet === 'true';
 
           if (hasStylesheet) {

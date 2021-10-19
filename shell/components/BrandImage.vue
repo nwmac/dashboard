@@ -45,9 +45,9 @@ export default {
       const themePrefix = this.theme === 'dark' ? 'dark/' : '';
 
       try {
-        return require(`~/assets/images/pl/${ themePrefix }${ this.fileName }`);
+        return require(`~shell/assets/images/pl/${ themePrefix }${ this.fileName }`);
       } catch {
-        return require(`~/assets/images/pl/${ this.fileName }`);
+        return require(`~shell/assets/images/pl/${ this.fileName }`);
       }
     },
 
@@ -67,11 +67,11 @@ export default {
       } else {
         if (this.theme === 'dark' || this.dark) {
           try {
-            return require(`~/assets/brand/${ this.brand }/dark/${ this.fileName }`);
+            return require(`~shell/assets/brand/${ this.brand }/dark/${ this.fileName }`);
           } catch {}
         }
         try {
-          return require(`~/assets/brand/${ this.brand }/${ this.fileName }`);
+          return require(`~shell/assets/brand/${ this.brand }/${ this.fileName }`);
         } catch {}
 
         return this.defaultPathToBrandedImage;

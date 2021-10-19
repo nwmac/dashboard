@@ -85,7 +85,7 @@ export default {
     let brandMeta;
 
     if (getVendor() === 'Harvester') {
-      const ico = require(`~/assets/images/pl/harvester.png`);
+      const ico = require(`~shell/assets/images/pl/harvester.png`);
 
       out = {
         title: 'Harvester',
@@ -99,7 +99,7 @@ export default {
     }
 
     try {
-      brandMeta = require(`~/assets/brand/${ this.brand }/metadata.json`);
+      brandMeta = require(`~shell/assets/brand/${ this.brand }/metadata.json`);
     } catch {
       out = {
         bodyAttrs: { class: `theme-${ this.theme } ${ cssClass }` },

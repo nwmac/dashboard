@@ -30,8 +30,8 @@ export default {
   },
 
   data() {
-    const grafanaSrc = require('~/assets/images/vendor/grafana.svg');
-    const prometheusSrc = require('~/assets/images/vendor/prometheus.svg');
+    const grafanaSrc = require('~shell/assets/images/vendor/grafana.svg');
+    const prometheusSrc = require('~shell/assets/images/vendor/prometheus.svg');
     const currentCluster = this.$store.getters['currentCluster'];
 
     return {

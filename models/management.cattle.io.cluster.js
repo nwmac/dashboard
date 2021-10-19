@@ -168,7 +168,7 @@ export default {
   },
 
   providerOsLogo() {
-    return require(`~/assets/images/vendor/${ this.providerOs }.svg`);
+    return require(`~shell/assets/images/vendor/${ this.providerOs }.svg`);
   },
 
   isLocal() {
@@ -189,11 +189,11 @@ export default {
     let icon;
 
     try {
-      icon = require(`~/assets/images/providers/${ prv }.svg`);
+      icon = require(`~shell/assets/images/providers/${ prv }.svg`);
     } catch (e) {
       console.warn(`Can not find provider logo for provider ${ logo }`); // eslint-disable-line no-console
       // Use fallback generic Kubernetes icon
-      icon = require(`~/assets/images/providers/kubernetes.svg`);
+      icon = require(`~shell/assets/images/providers/kubernetes.svg`);
     }
 
     return icon;
@@ -201,7 +201,7 @@ export default {
 
   providerMenuLogo() {
     if (this?.status?.provider === HARVESTER) {
-      return require(`~/assets/images/providers/kubernetes.svg`);
+      return require(`~shell/assets/images/providers/kubernetes.svg`);
     }
 
     return this.providerLogo;
@@ -209,7 +209,7 @@ export default {
 
   providerNavLogo() {
     if (this?.status?.provider === HARVESTER && this.$rootGetters['currentProduct'].inStore !== HARVESTER) {
-      return require(`~/assets/images/providers/kubernetes.svg`);
+      return require(`~shell/assets/images/providers/kubernetes.svg`);
     }
 
     return this.providerLogo;

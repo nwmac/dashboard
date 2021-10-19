@@ -119,8 +119,8 @@ export const actions = {
   },
 
   async instanceInfo({ rootGetters }) {
-    const data = (await import(/* webpackChunkName: "aws-data" */'@/assets/data/ec2instances.csv')).default;
-    const groups = (await import(/* webpackChunkName: "aws-data" */'@/assets/data/ec2-instance-groups.json')).default;
+    const data = (await import(/* webpackChunkName: "aws-data" */'@shell/assets/data/ec2instances.csv')).default;
+    const groups = (await import(/* webpackChunkName: "aws-data" */'@shell/assets/data/ec2-instance-groups.json')).default;
     const out = [];
 
     for ( const row of data ) {
@@ -160,7 +160,7 @@ export const actions = {
   },
 
   async defaultRegions() {
-    const data = (await import(/* webpackChunkName: "aws-data" */'@/assets/data/aws-regions.json')).default;
+    const data = (await import(/* webpackChunkName: "aws-data" */'@shell/assets/data/aws-regions.json')).default;
 
     return data;
   }

@@ -149,7 +149,7 @@ export default {
         let bannerImage, bannerAbbrv;
 
         try {
-          bannerImage = require(`~/assets/images/providers/${ id }.svg`);
+          bannerImage = require(`~shell/assets/images/providers/${ id }.svg`);
         } catch (e) {
           bannerImage = null;
           bannerAbbrv = this.initialDisplayFor(id);

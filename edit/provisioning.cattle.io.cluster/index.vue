@@ -220,7 +220,7 @@ export default {
             id:          `chart:${ chart.id }`,
             label:       chart.chartNameDisplay,
             description: chart.chartDescription,
-            icon:        chart.icon || require('~/assets/images/generic-catalog.svg'),
+            icon:        chart.icon || require('~shell/assets/images/generic-catalog.svg'),
             group:       'template',
             tag:         getters['i18n/t']('generic.techPreview')
           });
@@ -249,10 +249,10 @@ export default {
         const techPreview = getters['i18n/t']('generic.techPreview');
         const isTechPreview = group === 'rke2' || group === 'custom2';
         const tag = isTechPreview ? techPreview : getters['i18n/withFallback'](`cluster.providerTag."${ id }"`, { techPreview }, '');
-        let icon = require('~/assets/images/generic-driver.svg');
+        let icon = require('~shell/assets/images/generic-driver.svg');
 
         try {
-          icon = require(`~/assets/images/providers/${ id }.svg`);
+          icon = require(`~shell/assets/images/providers/${ id }.svg`);
         } catch (e) {}
 
         const subtype = {

@@ -1,9 +1,17 @@
 import fs from 'fs';
 import path from 'path';
+import webpack from 'webpack';
 
 import { STANDARD } from './config/private-label';
 import { directiveSsr as t } from './plugins/i18n';
 import { trimWhitespaceSsr as trimWhitespace } from './plugins/trim-whitespace';
+
+const contextFolders = ['chart', 'cloud-credential', 'detail', 'edit', 'list', 'machine-config', 'models', 'promptRemove'];
+const contextMap = contextFolders.reduce((map, obj) => {
+  map[obj] = true;
+
+  return map;
+}, {});
 
 export default function(dir, excludes) {
   let SHELL = 'node_modules/@ranch/shell';
@@ -19,9 +27,43 @@ export default function(dir, excludes) {
   console.log(SHELL); // eslint-disable-line no-console
   console.log(SHELL_ABS); // eslint-disable-line no-console
 
-  const SERVER = path.resolve(dir, SHELL, 'server');
+  const ctxrp = new webpack.ContextReplacementPlugin(/^@\//, function(context) {
+    const folder = context.request.split('/')[1];
 
-  console.log(SERVER); // eslint-disable-line no-console
+    if (contextMap[folder]) {
+      // console.log('>> Context Replacement >>>>>>>>>>>>>>>>>>>> ' + folder + ' '  + context.request);
+      context.request = '@shell/' + context.request.substr(2); // eslint-disable-line no-console
+    }
+  });
+
+  const nmrp = new webpack.NormalModuleReplacementPlugin(/^@\//, function(resource) {
+
+    // console.log(`REQ: ${ resource.request }`); // eslint-disable-line no-console
+    // const original = resource.request;
+
+    if (resource.request.indexOf('@/promptRemove') === 0) {
+      console.log('>>>>>>>>>>>>>>>>>>>>>>');
+    }
+  
+    // if (resource.request.indexOf('shell') === 0) {
+    //   let res = resource.request.substr(6);
+    //   const resbits = res.split('?');
+    //   res = resbits[0];
+    //   const customized = path.join('personality', res);
+    //   const shell = path.join(SHELL_ABS, res);
+    //   const query = resbits.length > 1 ? `?${resbits[1]}`: '';
+  
+    //   if (fs.existsSync(customized)) {
+    //     resource.request = path.resolve(customized) + query;
+    //   } else if (fs.existsSync(shell)) {
+    //     resource.request = path.resolve(shell) + query;
+    //   } else {
+    //     console.log('Could not find: ' + res); // eslint-disable-line no-console
+    //   }
+    // }
+  
+    // console.log('  >: ' + original + ' > ' + resource.request); // eslint-disable-line no-console
+  });  
 
   require('events').EventEmitter.defaultMaxListeners = 20;
   require('dotenv').config();
@@ -102,9 +144,9 @@ export default function(dir, excludes) {
       // only import functions, mixins, or variables, NEVER import full styles https://github.com/nuxt-community/style-resources-module#warning
       hoistUseStatements: true,
       scss:               [
-        '~assets/styles/base/_variables.scss',
-        '~assets/styles/base/_functions.scss',
-        '~assets/styles/base/_mixins.scss',
+        path.resolve(SHELL_ABS, 'assets/styles/base/_variables.scss'),
+        path.resolve(SHELL_ABS, 'assets/styles/base/_functions.scss'),
+        path.resolve(SHELL_ABS, 'assets/styles/base/_mixins.scss'),
       ],
     },
 
@@ -129,11 +171,6 @@ export default function(dir, excludes) {
       middleware: ['i18n'],
     },
 
-    // alias: {
-    //   '~shell': SHELL_ABS,
-    //   '@shell': SHELL_ABS,
-    // },
-
     alias: {
       '~shell': SHELL_ABS,
       '@shell': SHELL_ABS,
@@ -146,10 +183,12 @@ export default function(dir, excludes) {
     ],
 
     dir: {
-      layouts: path.join(SHELL, 'layouts'),
-      pages:   path.join(SHELL, 'pages'),
-      static:  path.join(SHELL, 'static'),
-      store:   path.join(SHELL, 'store'),
+      assets:     path.join(SHELL, 'assets'),
+      layouts:    path.join(SHELL, 'layouts'),
+      middleware: path.join(SHELL, 'middleware'),
+      pages:      path.join(SHELL, 'pages'),
+      static:     path.join(SHELL, 'static'),
+      store:      path.join(SHELL, 'store'),
     },
 
     build: {
@@ -189,6 +228,11 @@ export default function(dir, excludes) {
       //     }
       //   }
       // },
+
+      plugins: [
+        ctxrp,
+        nmrp,
+      ],      
 
       extend(config, { isClient, isDev }) {
         if ( isDev ) {
@@ -319,7 +363,7 @@ export default function(dir, excludes) {
 
     // Global CSS
     css: [
-      '@/assets/styles/app.scss'
+      path.resolve(SHELL_ABS, 'assets/styles/app.scss')
     ],
 
     head: {
@@ -413,7 +457,7 @@ export default function(dir, excludes) {
 
     // Server middleware
     serverMiddleware: [
-      path.join(SERVER, 'server-middleware')
+      path.resolve(dir, SHELL, 'server', 'server-middleware')
     ],
 
     // Eslint module options

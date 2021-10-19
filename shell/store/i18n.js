@@ -1,7 +1,7 @@
 import IntlMessageFormat from 'intl-messageformat';
 import { LOCALE } from '@shell/config/cookies';
 import { get } from '@shell/utils/object';
-import en from '@/assets/translations/en-us.yaml';
+import en from '@shell/assets/translations/en-us.yaml';
 import { getProduct, getVendor, DOCS_BASE } from '@shell/config/private-label';
 import { loadTranslation } from '@shell/utils/dynamic-importer';
 
@@ -11,7 +11,7 @@ const NONE = 'none';
 const intlCache = {};
 
 export const state = function() {
-  // const translationContext = require.context('@/assets/translations', true, /.*/);
+  // const translationContext = require.context('@shell/assets/translations', true, /.*/);
   // const available = translationContext.keys().map(path => path.replace(/^.*\/([^\/]+)\.[^.]+$/, '$1'));
   // Using require.context() forces them to all be in the same webpack chunk name... just hardcode the list for now so zh-hans
   // gets generated as it's own chunk instead of being loaded all the time.

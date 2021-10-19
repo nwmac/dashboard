@@ -26,7 +26,7 @@ export default {
 
     kialiLogo() {
       // @TODO move to theme css
-      return require(`~/assets/images/vendor/kiali.svg`);
+      return require(`~shell/assets/images/vendor/kiali.svg`);
     },
 
     kialiUrl() {
@@ -34,7 +34,7 @@ export default {
     },
 
     jaegerLogo() {
-      return require(`~/assets/images/vendor/jaeger.svg`);
+      return require(`~shell/assets/images/vendor/jaeger.svg`);
     },
 
     jaegerUrl() {

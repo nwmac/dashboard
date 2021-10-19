@@ -81,7 +81,7 @@ export function loadTranslation(name) {
   }
 
   // Note: directly returns the import, not a function
-  return import(/* webpackChunkName: "[request]" */ `@/assets/translations/${name}.yaml`);
+  return import(/* webpackChunkName: "[request]" */ `@shell/assets/translations/${name}.yaml`);
 }
 
 export function importCustomPromptRemove(name) {

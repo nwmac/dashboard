@@ -172,6 +172,10 @@ export default {
 
         this.showTooltip = el && (el.clientWidth < el.scrollWidth);
       });
+    },
+
+    harvesterLogo() {
+      return require('~shell/assets/images/providers/harvester.svg');
     }
   }
 };
@@ -183,7 +187,7 @@ export default {
       <n-link v-if="isSingleVirtualCluster" :to="harvesterDashboard">
         <img
           class="side-menu-logo"
-          src="~/assets/images/providers/harvester.svg"
+          :src="harvesterLogo"
         />
       </n-link>
     </div>

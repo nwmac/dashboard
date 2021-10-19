@@ -51,7 +51,7 @@ export default {
   },
 
   icon() {
-    return require(`~/assets/images/vendor/${ imageOverrides[this.id] || this.id }.svg`);
+    return require(`~shell/assets/images/vendor/${ imageOverrides[this.id] || this.id }.svg`);
   },
 
   state() {
