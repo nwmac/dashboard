@@ -32,7 +32,7 @@ export default function(dir, excludes) {
 
     if (contextMap[folder]) {
       // console.log('>> Context Replacement >>>>>>>>>>>>>>>>>>>> ' + folder + ' '  + context.request);
-      context.request = '@shell/' + context.request.substr(2); // eslint-disable-line no-console
+      context.request = '@shell/' + context.request.substr(2);
     }
   });
 
@@ -41,8 +41,11 @@ export default function(dir, excludes) {
     // console.log(`REQ: ${ resource.request }`); // eslint-disable-line no-console
     // const original = resource.request;
 
-    if (resource.request.indexOf('@/promptRemove') === 0) {
-      console.log('>>>>>>>>>>>>>>>>>>>>>>');
+    const folder = resource.request.split('/')[1];
+
+    if (contextMap[folder]) {
+      // console.log('>> REQ: ' + resource.request);  // eslint-disable-line no-console
+      resource.request = '@shell/' + resource.request.substr(2);
     }
   
     // if (resource.request.indexOf('shell') === 0) {
