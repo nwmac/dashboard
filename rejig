@@ -65,6 +65,8 @@ move ./machine-config
 move ./models
 move ./promptRemove
 
+move ./content
+
 # Update plugins references to use @~plugins
 grep -rl ${GREP_EXCLUDES} . -e '~/plugins' | xargs sed -i.bak -e "s/'~\/plugins/'~shell\/plugins/g"
 grep -rl ${GREP_EXCLUDES} . -e '@/plugins' | xargs sed -i.bak -e "s/'@\/plugins/'@shell\/plugins/g"

@@ -167,7 +167,11 @@ export default function(dir, excludes) {
       // debug:   true
     },
 
-    content: { markdown: { prism: { theme: false } }, liveEdit: false },
+    content: {
+      dir: path.resolve(SHELL_ABS, 'content'),
+      markdown: { prism: { theme: false } },
+      liveEdit: false
+    },
 
     router: {
       base:       routerBasePath,
