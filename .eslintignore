@@ -9,6 +9,7 @@ node_modules/
 .next
 .nuxt
 dist
+dist-pkg
 .DS_Store
 dynamic-importer.js
 ksconfig.json

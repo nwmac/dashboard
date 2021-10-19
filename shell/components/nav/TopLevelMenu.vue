@@ -96,17 +96,18 @@ export default {
 
     multiClusterApps() {
       const options = this.options;
-      const nav = this.getNav;
       const items = options.filter(opt => opt.inStore === 'management' && opt.category !== 'configuration' && opt.category !== 'legacy');
 
-      nav.forEach((i) => {
-        items.push({
-          label:  i.label,
-          icon:   i.icon,
-          value:  i.id,
-          weight: 1,
-          to:     i.route,
-        });
+      this.getNav.forEach((i) => {
+        if (!i.category) {
+          items.push({
+            label:  i.label,
+            icon:   i.icon,
+            value:  i.id,
+            weight: 1,
+            to:     i.route,
+          });
+        }
       });
 
       return items;
@@ -120,8 +121,21 @@ export default {
 
     configurationApps() {
       const options = this.options;
+      const items = options.filter(opt => opt.category === 'configuration');
 
-      return options.filter(opt => opt.category === 'configuration');
+      this.getNav.forEach((i) => {
+        if (i.category === 'configuration') {
+          items.push({
+            label:  i.label,
+            icon:   i.icon,
+            value:  i.id,
+            weight: 1,
+            to:     i.route,
+          });
+        }
+      });
+
+      return items;
     },
 
     options() {

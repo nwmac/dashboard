@@ -1,4 +1,5 @@
 import fs from 'fs';
+import https from 'https';
 import path from 'path';
 import webpack from 'webpack';
 import serveStatic from 'serve-static'
@@ -6,6 +7,8 @@ import serveStatic from 'serve-static'
 import { STANDARD } from './config/private-label';
 import { directiveSsr as t } from './plugins/i18n';
 import { trimWhitespaceSsr as trimWhitespace } from './plugins/trim-whitespace';
+
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 const contextFolders = ['chart', 'cloud-credential', 'content', 'detail', 'edit', 'list', 'machine-config', 'models', 'promptRemove'];
 const contextMap = contextFolders.reduce((map, obj) => {
@@ -25,9 +28,7 @@ export default function(dir, excludes) {
     NUXT_SHELL = '~~/shell';
   }
 
-  const serverMiddleware = [
-    path.resolve(dir, SHELL, 'server', 'server-middleware')
-  ];
+  const serverMiddleware = [];
 
   // Find any packages in node_modules
   const NM = path.join(dir, 'node_modules');
@@ -57,6 +58,7 @@ export default function(dir, excludes) {
     items.forEach(name => {
       if (!excludes || (excludes && !excludes.includes(name))) {
         reqs += `require(\'~/pkg/${name}\').default(app.router, store, $extension); `;
+        console.log(name);
       }
 
       // Serve the code for the embedded package in case its used for dynamic loading
@@ -73,6 +75,20 @@ export default function(dir, excludes) {
   const virtualModules = new VirtualModulesPlugin({
     'node_modules/@ranch/dynamic.js': `export default function (store, app, $extension) { ${reqs} };`,
   });
+
+  serverMiddleware.push(path.resolve(dir, SHELL, 'server', 'server-middleware'));
+
+  // serverMiddleware.push({
+  //   path: '/plugins',
+  //   handler: function(req, res, next) {
+  //     res.writeHead(302, {
+  //       'Location': '/'
+  //     });
+  //     res.end();      
+  //   }
+  // });
+
+  console.log(serverMiddleware);
 
   // const plugin = new webpack.NormalModuleReplacementPlugin(/^assets\//, function(resource) {
   //   if (resource.request.indexOf('assets/') === 0) {
@@ -607,8 +623,26 @@ export default function(dir, excludes) {
   }
 
   function onError(err, req, res) {
-    res.statusCode = 598;
-    console.error('Proxy Error:', err); // eslint-disable-line no-console
-    res.write(JSON.stringify(err));
+    // Serve up the index file
+    https.get('https://127.0.0.1:8005', (resp) => {
+      let data = '';
+
+      // A chunk of data has been recieved.
+      resp.on('data', (chunk) => {
+          data += chunk;
+      });
+
+      // The whole response has been received. Print out the result.
+      resp.on('end', () => {
+        res.statusCode = 200;
+        res.write(data);
+        res.end();
+      });
+
+    }).on("error", (err) => {
+      res.statusCode = 598;
+      console.error('Proxy Error:', err); // eslint-disable-line no-console
+      res.write(JSON.stringify(err));
+    });
   }
 }
