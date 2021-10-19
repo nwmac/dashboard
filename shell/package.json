@@ -117,6 +117,7 @@
     "shell-quote": "^1.7.2",
     "sinon": "^8.0.4",
     "start-server-and-test": "^1.13.1",
+    "serve-static": "^1.14.1",
     "style-loader": "^1.1.2",
     "ts-node": "^8.3.0",
     "url-parse": "^1.5.0",
@@ -134,7 +135,8 @@
     "xterm-addon-search": "^0.7.0",
     "xterm-addon-web-links": "^0.4.0",
     "xterm-addon-webgl": "^0.9.0",
-    "yarn": "^1.22.4"
+    "yarn": "^1.22.4",
+    "webpack-virtual-modules": "^0.4.3"    
   },
   "ava": {
     "files": [
