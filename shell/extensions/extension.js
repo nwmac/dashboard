@@ -1,3 +1,6 @@
+import merge from 'lodash/merge';
+import { DSL, productsLoaded } from '@shell/store/type-map';
+
 export default function({
   app,
   store,
@@ -5,8 +8,12 @@ export default function({
   redirect
 }, inject) {
   const models = {};
+  const dynamic = {};
 
   inject('extension', {
+
+    DSL,
+
     registerModel(name, model) {
       console.log('registerModel'); // eslint-disable-line no-console
       console.log(name); // eslint-disable-line no-console
@@ -37,6 +44,49 @@ export default function({
       };
 
       document.head.appendChild(element);
+    },
+
+    registerDynamics(obj) {
+      merge(dynamic, obj);
+    },
+
+    getDynamic(typeName, name) {
+      return dynamic[typeName]?.[name];
+    },
+
+    listDynamic(typeName) {
+      if (!dynamic[typeName]) {
+        return [];
+      }
+
+      return Object.keys(dynamic[typeName]);
+    },
+
+    get products() {
+      return dynamic.products || [];
+    },
+
+    loadProducts(products) {
+      products.forEach(async(p) => {
+        const impl = await p;
+
+        if (impl.init) {
+          impl.init(store, this);
+        }
+      });
+    },
+
+    addProducts(products) {
+      if (!dynamic.products) {
+        dynamic.products = [];
+      }
+
+      dynamic.products = dynamic.products.concat(products);
+
+      // Initialize the product if the store is ready
+      if (productsLoaded()) {
+        this.loadProducts(products);
+      }
     }
   });
 }

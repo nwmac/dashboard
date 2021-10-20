@@ -285,7 +285,7 @@ export function DSL(store, product, module = 'type-map') {
 
 let called = false;
 
-export async function applyProducts(store) {
+export async function applyProducts(store, $extension) {
   if (called) {
     return;
   }
@@ -302,6 +302,13 @@ export async function applyProducts(store) {
       impl.init(store);
     }
   }
+
+  // Load the products from the extensions
+  $extension.loadProducts($extension.products);
+}
+
+export function productsLoaded() {
+  return called;
 }
 
 export const state = function() {

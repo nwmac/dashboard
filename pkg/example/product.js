@@ -1,4 +1,3 @@
-import { DSL } from '@shell/store/type-map';
 import { FLEET } from '@shell/config/types';
 import { STATE, NAME as NAME_COL, AGE } from '@shell/config/table-headers';
 import { FLEET as FLEET_FEATURE } from '@shell/store/features';
@@ -6,7 +5,7 @@ import { FLEET as FLEET_FEATURE } from '@shell/store/features';
 export const NAME = 'fleet';
 export const CHART_NAME = 'fleet';
 
-export function _init(store) {
+export function init(store, $extension) {
   const {
     product,
     basicType,
@@ -15,7 +14,7 @@ export function _init(store) {
     headers,
     // mapType,
     // virtualType,
-  } = DSL(store, NAME);
+  } = $extension.DSL(store, NAME);
 
   product({
     ifHaveType:            FLEET.GIT_REPO,

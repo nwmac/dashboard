@@ -16,7 +16,7 @@ if [ -d "${BASE_DIR}/pkg/${1}" ]; then
   rm -rf ${BASE_DIR}/dist-pkg/${1}
   mkdir -p ${BASE_DIR}/dist-pkg/${1}
 
-  ${BASE_DIR}/node_modules/.bin/vue-cli-service build --name ${1} --target lib pkg/${1}/index.js --dest ${PKG_DIST}
+  ${BASE_DIR}/node_modules/.bin/vue-cli-service build --modern --name ${1} --target lib pkg/${1}/index.js --dest ${PKG_DIST}
   # cp -R ${BASE_DIR}/dist/ ${PKG_DIST}/
   rm ${PKG_DIST}/demo.html
   cp ${SCRIPT_DIR}/package.json ${PKG_DIST}/package.json

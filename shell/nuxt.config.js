@@ -88,8 +88,6 @@ export default function(dir, excludes) {
   //   }
   // });
 
-  console.log(serverMiddleware);
-
   // const plugin = new webpack.NormalModuleReplacementPlugin(/^assets\//, function(resource) {
   //   if (resource.request.indexOf('assets/') === 0) {
   //     const customized = path.join('personality', resource.request);

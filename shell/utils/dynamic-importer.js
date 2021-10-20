@@ -66,7 +66,7 @@ export function importDialog(name) {
   return () => import(/* webpackChunkName: "dialog" */ `@shell/components/dialog/${name}`);
 }
 
-export function loadProduct(name) {
+export function loadProduct(name, $extension) {
   if (!name) {
     throw new Error('Name required');
   }
