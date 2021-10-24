@@ -8,7 +8,8 @@ export default function({
   store,
   $axios,
   redirect,
-  $extension
+  $extension,
+  nuxt
 }, inject) {
   if (dynamicLoader) {
     dynamicLoader.default(store, app, $extension);

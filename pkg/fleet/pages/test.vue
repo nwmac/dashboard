@@ -1,13 +1,9 @@
-<script lang="ts">
+<script>
 export default {
   layout: 'plain',
 
   mounted() {
     console.log('Example pkg test page'); // eslint-disable-line no-console
-
-    const a = window?.frames?.onblur;
-
-    console.log(a);
 
     // const ext = this.$extension.getModel('a.b.c');
     // const m = await ext();

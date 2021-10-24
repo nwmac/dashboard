@@ -1,6 +1,6 @@
 const { ConfirmProductInstanceResult } = require('@aws-sdk/client-ec2');
 const path = require('path');
-const dir = __dirname
+const dir = path.resolve(__dirname);
 const webpack = require('webpack');
 
 console.log(dir);

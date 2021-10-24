@@ -406,6 +406,11 @@ export default function(dir, excludes) {
             }
           ]
         });
+
+        console.log(JSON.stringify(config.module.rules, null, 2));
+        console.log(config.module.rules);
+        console.log(config.plugins);
+        console.log(config);
       },
 
       // extractCSS:   true,

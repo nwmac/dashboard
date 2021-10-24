@@ -1,10 +1,10 @@
 {
-  "name": "ts3",
+  "name": "fleet",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --formats umd-min index.js"
+    "build": "vue-cli-service build --target lib --formats umd-min index.js --dest ../../dist-pkg/fleet"
   },
   "dependencies": {
     "core-js": "^3.6.5",

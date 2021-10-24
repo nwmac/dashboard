@@ -21,6 +21,9 @@ export default {
     <button class="btn role-primary" @click="loadPackage('example')">
       Load example plugin
     </button>
+    <button class="btn role-primary" @click="loadPackage('fleet')">
+      Load Fleet plugin
+    </button>
     <br />
   </div>
 </template>
