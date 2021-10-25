@@ -3,9 +3,6 @@ const maindir = path.resolve(__dirname, '..', '..');
 const dir = __dirname;
 const webpack = require('webpack');
 
-console.log(dir);
-console.log(path.join(dir, 'shell'));
-
 const contextFolders = ['chart', 'cloud-credential', 'content', 'detail', 'edit', 'list', 'machine-config', 'models', 'promptRemove'];
 const contextMap = contextFolders.reduce((map, obj) => {
   map[obj] = true;
@@ -17,19 +14,19 @@ const contextMap = contextFolders.reduce((map, obj) => {
 module.exports = {
   configureWebpack: (config) => {
     // console.log('>>>>>>>>>>>>>>>>>>> HELLO');
-    config.resolve.alias['@shell'] = path.join(dir, 'shell');
+    config.resolve.alias['@shell'] = path.join(dir, '.shell');
     // config.resolve.alias['@'] = __dirname;
     config.resolve.alias['./node_modules'] = path.join(maindir, 'node_modules');
-    config.resolve.alias['@/models'] = path.join(dir, 'shell/models');
-    config.resolve.alias['~shell'] = path.join(dir, 'shell');
+    config.resolve.alias['@/models'] = path.join(dir, '.shell/models');
+    config.resolve.alias['~shell'] = path.join(dir, '.shell');
 
     delete config.resolve.alias['@'];
 
     contextFolders.forEach((f) => {
-      config.resolve.alias[`@/${ f }`] = path.join(dir, 'shell', f);
+      config.resolve.alias[`@/${ f }`] = path.join(dir, '.shell', f);
     });
 
-    console.log(config.resolve.alias);
+    // console.log(config.resolve.alias);
 
     // console.log(config);
     // console.log(JSON.stringify(config.module.rules, null, 2));
@@ -85,7 +82,7 @@ module.exports = {
 
     // config.resolve.extensions.push('.ts');
 
-    console.log(config.resolve);
+    // console.log(config.resolve);
     const nmrp = new webpack.NormalModuleReplacementPlugin(/^@\//, function(resource) {
 
       // console.log(`REQ: ${ resource.request }`); // eslint-disable-line no-console
@@ -101,7 +98,7 @@ module.exports = {
 
     config.plugins.unshift(nmrp);
 
-    const SHELL = path.join(dir, 'shell');
+    const SHELL = path.join(dir, '.shell');
 
     config.module.rules.forEach(rule => {
       if ('file.scss'.match(rule.test)) {

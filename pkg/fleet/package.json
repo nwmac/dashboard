@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --formats umd-min index.js --dest ../../dist-pkg/fleet"
+    "build": "../../node_modules/.bin/vue-cli-service build --target lib --formats umd-min index.js --dest ../../dist-pkg/fleet"
   },
   "dependencies": {
     "core-js": "^3.6.5",

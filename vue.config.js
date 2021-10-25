@@ -1,6 +1,5 @@
-const { ConfirmProductInstanceResult } = require('@aws-sdk/client-ec2');
 const path = require('path');
-const dir = __dirname
+const dir = __dirname;
 const webpack = require('webpack');
 
 console.log(dir);
@@ -13,18 +12,17 @@ const contextMap = contextFolders.reduce((map, obj) => {
   return map;
 }, {});
 
-
 module.exports = {
   configureWebpack: (config) => {
-    config.resolve.alias['@shell'] = path.join(dir, 'shell');
+    config.resolve.alias['@shell'] = path.join(dir, '.shell');
     config.resolve.alias['./node_modules'] = path.join(dir, 'node_modules');
-    config.resolve.alias['@/models'] = path.join(dir, 'shell/models');
-    config.resolve.alias['~shell'] = path.join(dir, 'shell');
+    config.resolve.alias['@/models'] = path.join(dir, '.shell/models');
+    config.resolve.alias['~shell'] = path.join(dir, '.shell');
 
     delete config.resolve.alias['@'];
 
     contextFolders.forEach((f) => {
-      config.resolve.alias[`@/${ f }`] = path.join(dir, 'shell', f);
+      config.resolve.alias[`@/${ f }`] = path.join(dir, '.shell', f);
     });
   }
 };
