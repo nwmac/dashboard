@@ -1,4 +1,4 @@
-import Plugins from './pages/plugins';
+import Plugins from './pages/Plugins';
 
 // Init the package - this function will be passed the Extension API
 
