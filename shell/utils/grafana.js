@@ -1,5 +1,6 @@
-import { parse as parseUrl, addParam } from '@shell/utils/url';
 import { COUNT } from '@shell/config/types';
+
+import { addParam, parse as parseUrl } from './url';
 
 export function computeDashboardUrl(embedUrl, clusterId, params) {
   const url = parseUrl(embedUrl);

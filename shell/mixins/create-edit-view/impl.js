@@ -1,9 +1,9 @@
 import { _CREATE, _EDIT, _VIEW } from '@shell/config/query-params';
+import ChildHook, { AFTER_SAVE_HOOKS, BEFORE_SAVE_HOOKS } from '@shell/mixins/child-hook';
 import { LAST_NAMESPACE } from '@shell/store/prefs';
-import { exceptionToErrorsArray } from '@shell/utils/error';
-import ChildHook, { BEFORE_SAVE_HOOKS, AFTER_SAVE_HOOKS } from '@shell/mixins/child-hook';
+import { DEFAULT_WORKSPACE } from '@shell/types/types';
 import { clear } from '@shell/utils/array';
-import { DEFAULT_WORKSPACE } from '@/models/provisioning.cattle.io.cluster';
+import { exceptionToErrorsArray } from '@shell/utils/error';
 
 export default {
   mixins: [ChildHook],

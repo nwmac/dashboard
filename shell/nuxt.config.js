@@ -1,8 +1,8 @@
 import fs from 'fs';
 import https from 'https';
 import path from 'path';
+import serveStatic from 'serve-static';
 import webpack from 'webpack';
-import serveStatic from 'serve-static'
 
 import { STANDARD } from './config/private-label';
 import { directiveSsr as t } from './plugins/i18n';
@@ -49,6 +49,16 @@ export default function(dir, excludes) {
     });
   }
 
+  function includePkg(name) {
+    if (name.startsWith('.') || name === 'node_modules') {
+      return false;
+    }
+
+    const exclude = !excludes || (excludes && !excludes.includes(name));
+
+    return !exclude;
+  }
+
   const VirtualModulesPlugin = require('webpack-virtual-modules');
   let reqs = '';
   const pkgFolder = path.relative(dir, './pkg');
@@ -56,7 +66,7 @@ export default function(dir, excludes) {
     const items = fs.readdirSync(path.relative(dir, './pkg'));
   
     items.forEach(name => {
-      if (!excludes || (excludes && !excludes.includes(name))) {
+      if (includePkg(name)) {
         reqs += `require(\'~/pkg/${name}\').default(app.router, store, $extension); `;
         console.log(name);
       }
@@ -411,6 +421,17 @@ export default function(dir, excludes) {
         console.log(config.module.rules);
         console.log(config.plugins);
         console.log(config);
+
+        console.log('---');
+        console.log(config.module);
+
+        // config.module.rules.push({
+        //   test: require.resolve('jszip'),
+        //   loader: 'expose-loader',
+        //   options: {
+        //     exposes: 'jszip'
+        //   }
+        // });
       },
 
       // extractCSS:   true,

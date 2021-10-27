@@ -1,7 +1,7 @@
+import { md5 } from '@shell/utils/crypto';
+import { ucFirst } from '@shell/utils/string';
+import { addParam } from '@shell/utils/url';
 import Identicon from 'identicon.js';
-import { md5 } from '../utils/crypto';
-import { addParam } from '../utils/url';
-import { ucFirst } from '../utils/string';
 
 export default {
   avatarSrc() {
