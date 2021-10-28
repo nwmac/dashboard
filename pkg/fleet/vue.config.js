@@ -123,7 +123,7 @@ module.exports = {
         context.regExp = /does-not-exist/;
       }
     });
-    
+
     config.plugins.unshift(nmrp);
     config.plugins.unshift(dynamicImporterOveride);
     config.plugins.unshift(ctxOvrride);

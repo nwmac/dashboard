@@ -421,13 +421,13 @@ export default function(dir, excludes) {
           ]
         });
 
-        console.log(JSON.stringify(config.module.rules, null, 2));
-        console.log(config.module.rules);
-        console.log(config.plugins);
-        console.log(config);
+        // console.log(JSON.stringify(config.module.rules, null, 2));
+        // console.log(config.module.rules);
+        // console.log(config.plugins);
+        // console.log(config);
 
-        console.log('---');
-        console.log(config.module);
+        // console.log('---');
+        // console.log(config.module);
 
         // config.module.rules.push({
         //   test: require.resolve('jszip'),

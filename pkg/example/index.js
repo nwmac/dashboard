@@ -28,8 +28,8 @@ export default function(router, store, $extension) {
   hello('okay!');
   parse();
 
-  console.log('jquery');
-  console.log($);
+  console.log('jquery'); // eslint-disable-line no-console
+  console.log($); // eslint-disable-line no-console
 
-  console.log(JSZip);
+  console.log(JSZip); // eslint-disable-line no-console
 }

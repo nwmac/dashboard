@@ -10,14 +10,13 @@ const contextFolders = ['chart', 'cloud-credential', 'content', 'detail', 'edit'
 //   return map;
 // }, {});
 
-    // console.log(config.resolve);
 const nmrp = new webpack.NormalModuleReplacementPlugin(/.*/, (resource) => {
   // console.log(`REQ: ${ resource.request } from ${ resource.contextInfo.issuer }`); // eslint-disable-line no-console
   console.log(`REQ: ${ resource.request }`); // eslint-disable-line no-console
 
   const corejs = '/Users/nwm/dev/monday/try4/dashboard/node_modules/core-js';
 
-  if (resource.request.indexOf(corejs) ===0) {
+  if (resource.request.indexOf(corejs) === 0) {
     resource.request = resource.request.substr(corejs.length - 7);
     // console.log(resource.request); // eslint-disable-line no-console
   }
@@ -48,7 +47,7 @@ module.exports = {
     //     });
     //   });
   },
-  
+
   configureWebpack: (config) => {
     config.resolve.alias['@shell'] = path.join(dir, '.shell');
     // config.resolve.alias['./node_modules'] = path.join(dir, 'node_modules');
@@ -63,12 +62,12 @@ module.exports = {
 
     config.externals = {
       jquery:    '$',
-      'jszip':   '__jszip',
+      jszip:     '__jszip',
       'js-yaml': '__jsyaml'
     };
 
     config.plugins.unshift(nmrp);
 
-    console.log(config);
+    // console.log(config);
   }
 };
