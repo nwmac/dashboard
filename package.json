@@ -9,7 +9,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "build-ext": "./shell/scripts/build-ext.sh",
+    "build-pkg": "./shell/scripts/build-pkg.sh",
     "clean": "./scripts/clean",
     "lint": "./node_modules/.bin/eslint --max-warnings 0 --ext .ts,.js,.vue .",
     "test": "./node_modules/.bin/nyc ava --serial --verbose",

@@ -130,7 +130,6 @@ import isObject from 'lodash/isObject';
 import { normalizeType } from '@shell/plugins/steve/normalize';
 import { sortBy } from '@shell/utils/sort';
 import { haveV1Monitoring, haveV2Monitoring } from '@shell/utils/monitoring';
-import { GetKeyRotationStatusCommand } from '@aws-sdk/client-kms';
 
 export const NAMESPACED = 'namespaced';
 export const CLUSTER_LEVEL = 'cluster';
@@ -1002,20 +1001,20 @@ export const getters = {
     };
   },
 
-  hasCustomEdit(state, getters) {
+  hasCustomEdit(state, getters, rootState) {
     return (rawType, subType) => {
       const key = getters.componentFor(rawType, subType);
-
       const cache = state.cache.edit;
-
-      console.log('hasCustomEdit: ' + key);
 
       if ( cache[key] !== undefined ) {
         return cache[key];
       }
 
-      if (key === 'fleet.cattle.io.gitrepo') {
-        return true;
+      // Check to see if the custom edit is provided by an extension
+      if (!!rootState.$extension.getDynamic('edit', key)) {
+        cache[key] = true;
+
+        return cache[key];
       }
 
       try {
@@ -1085,16 +1084,11 @@ export const getters = {
   },
 
   importEdit(state, getters, rootState) {
-
     return (rawType, subType) => {
       const key = getters.componentFor(rawType, subType);
-
-      console.log(rootState.$extension);
-
       const ext = rootState.$extension.getDynamic('edit', key);
 
       if (ext) {
-        console.log(ext);
         return () => ext;
       }
 

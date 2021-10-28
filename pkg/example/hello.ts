@@ -5,5 +5,5 @@
 // }
 
 export function hello(msg: string) {
-  console.log(msg);
+  console.log(msg); // eslint-disable-line no-console
 }

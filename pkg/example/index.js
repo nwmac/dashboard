@@ -1,7 +1,9 @@
+import $ from 'jquery';
+import JSZip from 'jszip';
+
 import { parse } from '@shell/utils/url';
 import Test from './pages/test';
-import { hello } from './neil';
-
+import { hello } from './hello';
 // Init the package - this function will be passed the Extension API
 
 export default function(router, store, $extension) {
@@ -25,4 +27,9 @@ export default function(router, store, $extension) {
 
   hello('okay!');
   parse();
+
+  console.log('jquery');
+  console.log($);
+
+  console.log(JSZip);
 }

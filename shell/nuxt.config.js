@@ -3,6 +3,7 @@ import https from 'https';
 import path from 'path';
 import serveStatic from 'serve-static';
 import webpack from 'webpack';
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 import { STANDARD } from './config/private-label';
 import { directiveSsr as t } from './plugins/i18n';
@@ -54,9 +55,7 @@ export default function(dir, excludes) {
       return false;
     }
 
-    const exclude = !excludes || (excludes && !excludes.includes(name));
-
-    return !exclude;
+    return !excludes || (excludes && !excludes.includes(name));
   }
 
   const VirtualModulesPlugin = require('webpack-virtual-modules');
@@ -114,6 +113,7 @@ export default function(dir, excludes) {
   // console.log(SHELL); // eslint-disable-line no-console
   // console.log(SHELL_ABS); // eslint-disable-line no-console
 
+  // TODO: This is just here so I don't have to change all of the imports
   const ctxrp = new webpack.ContextReplacementPlugin(/^@\//, function(context) {
     const folder = context.request.split('/')[1];
 
@@ -327,6 +327,10 @@ export default function(dir, excludes) {
         virtualModules,
         ctxrp,
         nmrp,
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          openAnalyzer: false,
+        })
       ],      
 
       extend(config, { isClient, isDev }) {

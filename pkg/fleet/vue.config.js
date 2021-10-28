@@ -119,35 +119,23 @@ module.exports = {
       const folder = context.request.split('/')[1];
 
       if (contextMap[folder]) {
-        // Just change the regx so it does not match any rsources
+        // Just change the regx so it does not match any resources
         context.regExp = /does-not-exist/;
       }
     });
-
+    
     config.plugins.unshift(nmrp);
     config.plugins.unshift(dynamicImporterOveride);
     config.plugins.unshift(ctxOvrride);
 
-    // TODO: Not working?
     // config.externals = {
-    //   jquery: {
-    //     root:      '$',
-    //     commonjs2: 'jQuery',
-    //     commonjs:  'jQuery'
-    //   },
-    //   jsrsasign: {
-    //     root:      'jsrassign',
-    //     commonjs2: 'jsrassign',
-    //     commonjs:  'jsrassign'
-    //   },
-    //   jszip: {
-    //     root:      'jszip',
-    //     commonjs2: 'jszip',
-    //     commonjs:  'jszip'
-    //   },
+    //   jquery: '$',
+    //   'jszip': '__jszip',
+    //   'js-yaml': '__jsyaml',
+    //   //'buffer': '__buffer'
+    //   // 'browserify-sign': '__sign'
+    //   'lodash': '_'
     // };
-
-    // console.log(config.externals);
 
     const SHELL = path.join(dir, '.shell');
 

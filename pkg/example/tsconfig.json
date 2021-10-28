@@ -21,7 +21,7 @@
         "src/*"
       ],
       "@shell/*": [
-        "shell/*"
+        ".shell/*"
       ]
     },
     "lib": [
@@ -32,11 +32,11 @@
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.vue",
+    "**/*.ts",
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"

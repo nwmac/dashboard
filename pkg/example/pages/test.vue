@@ -5,10 +5,6 @@ export default {
   mounted() {
     console.log('Example pkg test page'); // eslint-disable-line no-console
 
-    const a = window?.frames?.onblur;
-
-    console.log(a);
-
     // const ext = this.$extension.getModel('a.b.c');
     // const m = await ext();
     // const model = new m.default;
