@@ -1,0 +1,61 @@
+#!/bin/bash
+
+DIR=$(cd $(dirname $0)/..; pwd)
+DIST=publish-storybook
+
+if [ -z "${STORYBOOK_TOKEN}" ]; then
+  echo "Missing environment variable STORYBOOK_TOKEN"
+  exit 1
+fi
+
+pushd $DIR > /dev/null
+
+echo "Building and publishing Storybook"
+
+rm -rf ${DIST}
+
+echo "Installing dependencies ..."
+
+yarn install
+yarn install-storybook
+
+echo "Building Storybook ..."
+
+yarn build-storybook
+
+# Use the provided token to clone and push
+echo "${STORYBOOK_TOKEN}" > ~/.ssh/id_rsa_storybook.github
+chmod 700 ~/.ssh/id_rsa_storybook.github
+
+# Configure ssh key to use for GitHub
+echo -e "Host github\n  HostName github.com\n  IdentityFile ${HOME}/.ssh/id_rsa_storybook.github\n  IdentitiesOnly yes\n" >> ~/.ssh/config
+
+# Clone the storybook repo into the dist folder
+git clone git@github.com:rancher/storybook.git ${DIST}
+
+pushd ${DIST}/docs
+rm *.js
+rm *.txt
+rm *.map
+popd
+
+cp -R ${DIR}/storybook-static/* ${DIST}/docs
+
+MSG=$(git log -1  --pretty='%s')
+echo $MSG
+
+echo "Publishing ..."
+
+git config --global user.email "rancher.storybook@suse.com"
+git config --global user.name "Rancher Storybook"
+
+cd ${DIST}
+git add -A
+git commit -m "Storybook Update: ${MSG}"
+git push origin
+
+popd > /dev/null
+
+rm -rf ~/.ssh/id_rsa_storybook.github
+
+echo "Updated Storybook has been published"
