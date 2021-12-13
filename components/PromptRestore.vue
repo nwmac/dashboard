@@ -5,8 +5,9 @@ import Card from '@/components/Card';
 import Banner from '@/components/Banner';
 import Date from '@/components/formatter/Date.vue';
 import RadioGroup from '@/components/form/RadioGroup.vue';
+import LabeledSelect from '@/components/form/LabeledSelect.vue';
 import { exceptionToErrorsArray } from '@/utils/error';
-import { CAPI } from '@/config/types';
+import { CAPI, NORMAN } from '@/config/types';
 import { set } from '@/utils/object';
 import SelectOrCreateAuthSecret from '@/components/form/SelectOrCreateAuthSecret';
 import ChildHook, { BEFORE_SAVE_HOOKS } from '@/mixins/child-hook';
@@ -17,6 +18,7 @@ export default {
     AsyncButton,
     Banner,
     Date,
+    LabeledSelect,
     RadioGroup,
     SelectOrCreateAuthSecret,
   },
@@ -34,6 +36,8 @@ export default {
       loaded:              false,
       allWorkspaces:       [],
       cloudCredentialName: null,
+      allSnapshots:        [],
+      selectedSnapshot:    null,
     };
   },
 
@@ -48,13 +52,36 @@ export default {
     ...mapGetters({ t: 'i18n/t' }),
     ...mapGetters(['currentCluster']),
 
+    isCluster() {
+      return this.toRestore[0]?.type !== NORMAN.ETCD_BACKUP;
+    },
+
     snapshot() {
-      return this.toRestore[0];
+      return !this.isCluster ? this.toRestore[0] : this.allSnapshots[this.selectedSnapshot];
+    },
+
+    hasSnapshot() {
+      return !!this.snapshot;
     },
 
     isRke2() {
-      return !!this.snapshot.rke2;
+      return !!this.snapshot?.rke2;
     },
+
+    clusterSnapshots() {
+      // We use the cluster name
+      // to filter out irrelevant snapshots
+      // because the name matches the clusterId field on the
+      // snapshot, but the cluster ID doesn't.
+      if (this.allSnapshots) {
+        const list = Object.values(this.allSnapshots)
+          .filter(snapshot => snapshot.clusterId === this.toRestore[0]?.metadata?.name)
+          .map(snapshot => ({ label: snapshot.name, value: snapshot.name }));
+        return list;
+      } else {
+        return [];
+      }
+    },    
   },
 
   watch: {
@@ -62,6 +89,7 @@ export default {
       if (show) {
         this.loaded = true;
         this.$modal.show('promptRestore');
+        this.fetchSnapshots();
       } else {
         this.loaded = false;
         this.$modal.hide('promptRestore');
@@ -74,6 +102,27 @@ export default {
       this.errors = [];
       this.labels = {};
       this.$store.commit('action-menu/togglePromptRestore');
+    },
+
+    async fetchSnapshots() {
+      // Get all snapshots because this
+      // component is loaded before the user
+      // has selected a cluster to restore
+      await this.$store.dispatch('rancher/findAll', { type: NORMAN.ETCD_BACKUP })
+        .then((allSnapshots) => {
+          this.allSnapshots = allSnapshots.reduce((v, s) => {
+            v[s.name] = s;
+            return v;
+          }, {});
+
+          // Put back in to auto-select first snapshot
+          // this.selectedSnapshot = allSnapshots[0].name;
+          return allSnapshots;
+        })
+        .catch((err) => {
+          // TODO: Don't use alert
+          alert(err);
+        });
     },
 
     async apply(buttonDone) {
@@ -140,12 +189,20 @@ export default {
       <div slot="body" class="pl-10 pr-10">
         <form>
           <h3 v-t="'promptRestore.name'"></h3>
-          <div>{{ snapshot.name }}</div>
+          <div v-if="!isCluster" >{{ snapshot.name }}</div>
+
+         <LabeledSelect
+            v-if="isCluster"
+            v-model="selectedSnapshot"
+            label="Snapshot"
+            :placeholder="selectedSnapshot"
+            :options="clusterSnapshots"
+          />
 
           <div class="spacer" />
 
           <h3 v-t="'promptRestore.date'"></h3>
-          <div><Date :value="snapshot.createdAt || snapshot.created" /></div>
+          <div><Date v-if="snapshot" :value="snapshot.createdAt || snapshot.created" /></div>
 
           <div class="spacer" />
 
@@ -185,6 +242,7 @@ export default {
 
         <AsyncButton
           mode="restore"
+          :disabled="!hasSnapshot"
           @click="apply"
         />
 
@@ -201,6 +259,14 @@ export default {
     max-height: 100vh;
     & ::-webkit-scrollbar-corner {
       background: rgba(0,0,0,0);
+    }
+
+    .card-actions {
+      justify-content: end;
+
+      button:not(:last-child) {
+        margin-right: 10px;
+      }
     }
   }
 </style>
