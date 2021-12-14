@@ -52,6 +52,10 @@ export default {
       return !!this.label || !!this.labelKey || !!this.$slots.label;
     },
 
+    hasTooltip() {
+      return !!this.tooltip || !!this.tooltipKey;
+    },
+
     hasSuffix() {
       return !!this.$slots.suffix;
     },
@@ -132,6 +136,7 @@ export default {
       disabled: isDisabled,
       [status]: status,
       suffix: hasSuffix,
+      'has-tooltip': hasTooltip,
     }"
   >
     <slot name="label">
