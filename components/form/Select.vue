@@ -204,7 +204,7 @@ export default {
       .vs__dropdown-toggle {
         color: var(--outline) !important;
       }
-    }    
+    }
 
     @include input-status-color;
   }
