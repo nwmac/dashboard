@@ -302,7 +302,7 @@ export default {
   }
 
   &.no-label:not(.compact-input) {
-    height: 61px;
+    height: $input-height;
     padding-top: 4px;
 
     ::v-deep .vs__actions:after {
