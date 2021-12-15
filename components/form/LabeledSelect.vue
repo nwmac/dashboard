@@ -1,4 +1,5 @@
 <script>
+import CompactInput from '@/mixins/compact-input';
 import LabeledFormElement from '@/mixins/labeled-form-element';
 import { findBy } from '@/utils/array';
 import { get } from '@/utils/object';
@@ -8,7 +9,7 @@ import { onClickOption, calculatePosition } from '@/utils/select';
 
 export default {
   components: { LabeledTooltip },
-  mixins:     [LabeledFormElement, VueSelectOverrides],
+  mixins:     [CompactInput, LabeledFormElement, VueSelectOverrides],
 
   props: {
     appendToBody: {
@@ -103,6 +104,10 @@ export default {
   },
 
   computed: {
+    hasLabel() {
+      return this.isCompact ? false : !!this.label || !!this.labelKey || !!this.$slots.label;
+    },
+
     currentLabel() {
       const entry = findBy(this.options || [], 'value', this.value);
 
@@ -212,6 +217,8 @@ export default {
       taggable: $attrs.taggable,
       taggable: $attrs.multiple,
       hoverable: hoverTooltip,
+      'compact-input': isCompact,
+      'no-label': !hasLabel,
     }"
     @click="focusSearch"
     @focus="focusSearch"
@@ -220,7 +227,7 @@ export default {
       :class="{ 'labeled-container': true, raised, empty, [mode]: true }"
       :style="{ border: 'none' }"
     >
-      <label>
+      <label v-if="hasLabel">
         <t v-if="labelKey" :k="labelKey" />
         <template v-else-if="label">{{ label }}</template>
 
@@ -284,6 +291,25 @@ export default {
 .labeled-select {
   position: relative;
 
+  &.no-label.compact-input {
+    ::v-deep .vs__actions:after {
+      top: -2px;
+    }
+
+    .labeled-container {
+      padding: 5px 0 1px 10px;
+    }
+  }
+
+  &.no-label:not(.compact-input) {
+    height: 61px;
+    padding-top: 4px;
+
+    ::v-deep .vs__actions:after {
+      top: 0;
+    }
+  }
+
   .icon-spinner {
     position: absolute;
     left: calc(50% - .5em);
@@ -291,7 +317,7 @@ export default {
   }
 
   .labeled-container {
-    padding: $input-padding-sm 0 1px $input-padding-sm;
+    padding: $input-padding-sm 0 0 $input-padding-sm;
 
     label {
       margin: 0;
@@ -311,6 +337,11 @@ export default {
   }
   ::v-deep .vs__selected-options {
     margin-top: -5px;
+
+    // Ensure whole select is clickable to close the select when open
+    .vs__selected {
+      width: 100%;
+    }
   }
 
   ::v-deep .v-select:not(.vs--single) {
