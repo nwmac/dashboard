@@ -1,0 +1,35 @@
+{
+  "name": "fleet",
+  "description": "GitOps at Scale",
+  "icon": "data:image/svg+xml;base64,PCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiB2aWV3Qm94PSIwIDAgMzIgMzIiPgo8dGl0bGU+ZmxlZXQ8L3RpdGxlPgo8cGF0aCBkPSJNNC42NzIgMjMuNDQ3bDMuMjMxIDUuMTczIDE5LjQyNS0wLjA0MXYtNS4xNzNsLTIyLjY1NyAwLjA0MXpNOC43OTggMjcuMDAybC0xLjIxNS0xLjk0NSAxOC4xMy0wLjAzM3YxLjk0MmwtMTYuOTE1IDAuMDM2eiI+PC9wYXRoPgo8cGF0aCBkPSJNMjcuMzI4IDIzLjQwNnYwaDB6Ij48L3BhdGg+CjxwYXRoIGQ9Ik0xNi4wMjEgMy4zOGMtNS4yNDQgNS4yNDMtOS43ODMgMTcuMjA5LTkuNzgzIDE4LjI3NGg5Ljc4M3YtMTguMjc0ek0xNC40MDUgMjAuMDM5aC01Ljk0NGMxLjQ2LTQuMTggMy40NTgtOC4xNTEgNS45NDQtMTEuODE1djExLjgxNXoiPjwvcGF0aD4KPHBhdGggZD0iTTE3LjU4OSA4LjIyN3YxMy40MjdoOC4wNTZjLTEuNDA1LTQuNzgxLTYuMzktMTEuNjY0LTguMDU2LTEzLjQyN3pNMTkuMjA0IDIwLjAzOXYtNi45NjhjMS41MDMgMi4yMTUgMi44MjkgNC41NDQgMy45NjUgNi45NjhoLTMuOTY1eiI+PC9wYXRoPgo8L3N2Zz4K",
+  "version": "0.1.12",
+  "private": false,
+  "publishConfig": {
+    "registry": "http://localhost:4873"
+  },
+  "scripts": {
+    "dev": "./node_modules/.bin/nuxt dev",
+    "nuxt": "./node_modules/.bin/nuxt"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-typescript": "^4.5.15",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

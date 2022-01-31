@@ -17,72 +17,72 @@ export function init(store) {
     // virtualType,
   } = DSL(store, NAME);
 
-  product({
-    ifHaveType:            FLEET.GIT_REPO,
-    ifFeature:             FLEET_FEATURE,
-    icon:                  'fleet',
-    inStore:               'management',
-    removable:             false,
-    showClusterSwitcher:   false,
-    showWorkspaceSwitcher: true,
-  });
+//   product({
+//     ifHaveType:            FLEET.GIT_REPO,
+//     ifFeature:             FLEET_FEATURE,
+//     icon:                  'fleet',
+//     inStore:               'management',
+//     removable:             false,
+//     showClusterSwitcher:   false,
+//     showWorkspaceSwitcher: true,
+//   });
 
-  /*
-  virtualType({
-    label:       'Overview',
-    group:      'Root',
-    namespaced:  false,
-    name:        'istio-overview',
-    weight:      100,
-    route:       { name: 'c-cluster-istio' },
-    exact:       true,
-  });
-*/
+//   /*
+//   virtualType({
+//     label:       'Overview',
+//     group:      'Root',
+//     namespaced:  false,
+//     name:        'istio-overview',
+//     weight:      100,
+//     route:       { name: 'c-cluster-istio' },
+//     exact:       true,
+//   });
+// */
 
-  // basicType('istio-overview');
+//   // basicType('istio-overview');
 
-  basicType([
-    FLEET.CLUSTER,
-    FLEET.CLUSTER_GROUP,
-    FLEET.GIT_REPO,
-  ]);
+//   basicType([
+//     FLEET.CLUSTER,
+//     FLEET.CLUSTER_GROUP,
+//     FLEET.GIT_REPO,
+//   ]);
 
-  configureType(FLEET.CLUSTER, { isCreatable: false });
+//   configureType(FLEET.CLUSTER, { isCreatable: false });
 
-  weightType(FLEET.GIT_REPO, 109, true);
-  weightType(FLEET.CLUSTER, 108, true);
-  weightType(FLEET.CLUSTER_GROUP, 107, true);
+//   weightType(FLEET.GIT_REPO, 109, true);
+//   weightType(FLEET.CLUSTER, 108, true);
+//   weightType(FLEET.CLUSTER_GROUP, 107, true);
 
-  basicType([
-    FLEET.WORKSPACE,
-    FLEET.BUNDLE,
-    FLEET.TOKEN,
-  ], 'advanced');
+//   basicType([
+//     FLEET.WORKSPACE,
+//     FLEET.BUNDLE,
+//     FLEET.TOKEN,
+//   ], 'advanced');
 
-  headers(FLEET.WORKSPACE, [
-    STATE,
-    NAME_COL,
-    {
-      name:      'gitRepos',
-      labelKey:  'tableHeaders.gitRepos',
-      value:     'counts.gitRepos',
-      sort:      'counts.gitRepos',
-      formatter: 'Number',
-    },
-    {
-      name:      'clusters',
-      labelKey:  'tableHeaders.clusters',
-      value:     'counts.clusters',
-      sort:      'counts.clusters',
-      formatter: 'Number',
-    },
-    {
-      name:      'clusterGroups',
-      labelKey:  'tableHeaders.clusterGroups',
-      value:     'counts.clusterGroups',
-      sort:      'counts.clusterGroups',
-      formatter: 'Number',
-    },
-    AGE
-  ]);
+//   headers(FLEET.WORKSPACE, [
+//     STATE,
+//     NAME_COL,
+//     {
+//       name:      'gitRepos',
+//       labelKey:  'tableHeaders.gitRepos',
+//       value:     'counts.gitRepos',
+//       sort:      'counts.gitRepos',
+//       formatter: 'Number',
+//     },
+//     {
+//       name:      'clusters',
+//       labelKey:  'tableHeaders.clusters',
+//       value:     'counts.clusters',
+//       sort:      'counts.clusters',
+//       formatter: 'Number',
+//     },
+//     {
+//       name:      'clusterGroups',
+//       labelKey:  'tableHeaders.clusterGroups',
+//       value:     'counts.clusterGroups',
+//       sort:      'counts.clusterGroups',
+//       formatter: 'Number',
+//     },
+//     AGE
+//   ]);
 }
