@@ -282,6 +282,9 @@ export default {
 
     hasMetricsTabs() {
       return this.showClusterMetrics || this.showK8sMetrics || this.showEtcdMetrics;
+    },
+    hasBadge() {
+      return !!this.currentCluster?.badge;
     }
   },
 
@@ -314,7 +317,15 @@ export default {
     async loadMetrics() {
       this.nodeMetrics = await this.fetchClusterResources(METRIC.NODE, { force: true } );
     },
+
     findBy,
+
+    customBadgeDialog() {
+      this.$store.dispatch('cluster/promptModal', {
+        component: 'AddCustomBadgeDialog',
+        resources: { cluster: this.currentCluster },
+      });
+    },
   },
 
 };
@@ -359,6 +370,18 @@ export default {
         <span><LiveDate :value="currentCluster.metadata.creationTimestamp" :add-suffix="true" :show-tooltip="true" /></span>
       </div>
       <div :style="{'flex':1}" />
+      <!--  -->
+      <div>
+        <a
+          class="badge-install"
+          @click="customBadgeDialog"
+        >
+          <i class="icon icon-star" />
+          <span>{{ !hasBadge ? t('clusterBadge.addLabel') : t('clusterBadge.editLabel') }}</span>
+
+        </a>
+      </div>
+      <!--  -->
       <div v-if="!monitoringStatus.v2 && !monitoringStatus.v1">
         <n-link :to="{name: 'c-cluster-explorer-tools'}" class="monitoring-install">
           <i class="icon icon-gear" />
@@ -459,7 +482,7 @@ export default {
   padding: 20px 0px;
   display: flex;
 
-  &>*:not(:last-child) {
+  &>*:not(:nth-last-child(-n+2)) {
     margin-right: 40px;
 
     & SPAN {
@@ -495,8 +518,14 @@ export default {
   margin-top: 0;
 }
 
+.badge-install:hover {
+  cursor: pointer;
+}
+
+.badge-install,
 .monitoring-install {
   display: flex;
+  margin-left: 10px;
 
   > I {
     line-height: inherit;
