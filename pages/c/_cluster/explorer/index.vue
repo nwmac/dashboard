@@ -321,10 +321,7 @@ export default {
     findBy,
 
     customBadgeDialog() {
-      this.$store.dispatch('cluster/promptModal', {
-        component: 'AddCustomBadgeDialog',
-        resources: { cluster: this.currentCluster },
-      });
+      this.$store.dispatch('cluster/promptModal', { component: 'AddCustomBadgeDialog' });
     },
   },
 

@@ -8,7 +8,7 @@ import { parseColor, textColor } from '@/utils/color';
 import jsyaml from 'js-yaml';
 import { eachLimit } from '@/utils/promise';
 import { addParams } from '@/utils/url';
-import { isEmpty } from '@/utils/object';
+import { isEmpty, set } from '@/utils/object';
 import { NAME as HARVESTER } from '@/config/product/harvester';
 import { isHarvesterCluster } from '@/utils/cluster';
 import HybridModel from '@/plugins/steve/hybrid-class';
@@ -243,9 +243,32 @@ export default class MgmtCluster extends HybridModel {
       text,
       color,
       textColor:  textColor(parseColor(color)),
-      useForIcon: useForIcon.toLowerCase() === 'true',
+      useForIcon,
       letter:     text.substr(0, 1).toUpperCase()
     };
+  }
+
+  async setBadge(options, useCustomBadge) {
+    const annotations = this.metadata?.annotations;
+    const out = {};
+
+    if (useCustomBadge === false) {
+      options = {};
+      delete this.metadata?.annotations[CLUSTER_BADGE.TEXT];
+      delete this.metadata?.annotations[CLUSTER_BADGE.COLOR];
+      delete this.metadata?.annotations[CLUSTER_BADGE.USE_AS_ICON];
+    }
+
+    if ( annotations ) {
+      Object.assign(out, annotations);
+    }
+
+    if ( options ) {
+      Object.assign(out, options);
+    }
+
+    set(this.metadata, 'annotations', out);
+    await this.save();
   }
 
   get scope() {
