@@ -202,3 +202,10 @@ export default {
     <label v-if="subLabel" class="sub-label">{{ subLabel }}</label>
   </div>
 </template>
+<style scoped lang="scss">
+  .labeled-input.view {
+    input {
+      text-overflow: ellipsis;
+    }
+  }
+</style>
