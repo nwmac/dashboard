@@ -4,11 +4,14 @@ import { CLUSTER_BADGE } from '@/config/labels-annotations';
 import AsyncButton from '@/components/AsyncButton';
 import Card from '@/components/Card';
 import Banner from '@/components/Banner';
+import ClusterBadge from '@/components/ClusterBadge';
+import ClusterProviderIcon from '@/components/ClusterProviderIcon';
 import { exceptionToErrorsArray } from '@/utils/error';
 import Checkbox from '@/components/form/Checkbox';
 import LabeledInput from '@/components/form/LabeledInput';
 import ColorInput from '@/components/form/ColorInput';
 import { parseColor, textColor } from '@/utils/color';
+import { NORMAN } from '@/config/types';
 
 export default {
   name:       'AddCustomBadgeDialog',
@@ -19,11 +22,13 @@ export default {
     Checkbox,
     LabeledInput,
     ColorInput,
+    ClusterBadge,
+    ClusterProviderIcon,
   },
 
   data() {
     return {
-      useCustomBadge:         true,
+      useCustomBadge:   true,
       errors:           [],
       badgeBgColor:     '',
       badgeDescription: '',
@@ -33,9 +38,12 @@ export default {
 
   fetch() {
     if (this.currentCluster.metadata?.annotations) {
-      this.badgeDescription = this.currentCluster.metadata?.annotations[CLUSTER_BADGE.TEXT] || 'Example Text';
+      this.badgeDescription = this.currentCluster.metadata?.annotations[CLUSTER_BADGE.TEXT];
+      this.useCustomBadge = this.badgeDescription?.length > 0;
+      this.badgeDescription = this.badgeDescription || 'Example Text';
       this.badgeBgColor = this.currentCluster.metadata?.annotations[CLUSTER_BADGE.COLOR] || '#ff0000';
-      this.badgeAsIcon = this.currentCluster.metadata?.annotations[CLUSTER_BADGE.USE_AS_ICON] || false;
+      const iconValue = this.currentCluster.metadata?.annotations[CLUSTER_BADGE.USE_AS_ICON] || '';
+      this.badgeAsIcon = iconValue.toLowerCase() === 'true';
     }
   },
 
@@ -47,6 +55,21 @@ export default {
     },
     canSubmit() {
       return !this.badgeDescription.length >= 1;
+    },
+    // Fake cluster object for use with badge component
+    previewCluster() {
+      // Make cluster object that is enough for the badge component to work
+      return {
+        isLocal: this.currentCluster.isLocal,
+        providerNavLogo: this.currentCluster.providerNavLogo,
+        badge: {
+          text:       this.badgeDescription,
+          color:      this.badgeBgColor,
+          textColor:  textColor(parseColor(this.badgeBgColor)),
+          useForIcon: this.badgeAsIcon,
+          letter:     this.badgeDescription.substr(0, 1).toUpperCase()
+        }
+      };
     }
   },
 
@@ -57,13 +80,20 @@ export default {
 
     async apply(buttonDone) {
       try {
-        const options = {
-          [CLUSTER_BADGE.TEXT]:        this.badgeDescription,
-          [CLUSTER_BADGE.COLOR]:       this.badgeBgColor,
-          [CLUSTER_BADGE.USE_AS_ICON]: this.badgeAsIcon,
-        };
+        // Fetch the Norman cluster object
+        const norman = await this.$store.dispatch('rancher/find', { type: NORMAN.CLUSTER, id: this.currentCluster.id });
 
-        await this.currentCluster.setBadge(options, this.useCustomBadge);
+        delete norman.annotations[CLUSTER_BADGE.TEXT];
+        delete norman.annotations[CLUSTER_BADGE.COLOR];
+        delete norman.annotations[CLUSTER_BADGE.USE_AS_ICON];
+
+        if (this.useCustomBadge) {
+          norman.annotations[CLUSTER_BADGE.TEXT] = this.badgeDescription;
+          norman.annotations[CLUSTER_BADGE.COLOR] = this.badgeBgColor;
+          norman.annotations[CLUSTER_BADGE.USE_AS_ICON] =this.useForIcon ? 'true' : 'false';
+        }
+
+        await norman.save();
 
         buttonDone(true);
         this.close();
@@ -94,26 +124,11 @@ export default {
 
         <div v-if="useCustomBadge" class="col">
           <div class="badge-preview">
-            <div
-              v-if="badgeAsIcon"
-              class="cluster-badge-icon-preview"
-              :style="{
-                backgroundColor: badgeBgColor,
-                color: previewColor
-              }"
-            >
-              {{ badgeDescription.substr(0, 1).toUpperCase() }}
+            <ClusterProviderIcon :cluster="previewCluster" />
+            <div class="cluster-name">
+              {{ currentCluster.nameDisplay }}
             </div>
-
-            <div
-              :style="{
-                backgroundColor: badgeBgColor,
-                color: previewColor
-              }"
-              class="cluster-badge-preview ml-5"
-            >
-              {{ badgeDescription }}
-            </div>
+            <ClusterBadge :cluster="previewCluster" />
           </div>
         </div>
       </div>
@@ -173,6 +188,11 @@ export default {
         display: flex;
         height: 32px;
         white-space: nowrap;
+
+        .cluster-name {
+          margin: 0 10px;
+          font-size: 16px;
+        }
 
         .cluster-badge-icon-preview {
           width: 32px;

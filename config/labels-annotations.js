@@ -152,9 +152,9 @@ export const HCI = {
 // Annotations that can be on management.cattle.io.cluster to configure a custom badge
 export const CLUSTER_BADGE = {
   // Badge text - badge is only shown if badge text is not empty
-  TEXT:        'ui.cattle.io/badge-text',
+  TEXT:        'ui.rancher/badge-text',
   // Badge color - as a hex color - e.g. #ff00ff
-  COLOR:       'ui.cattle.io/badge-color',
+  COLOR:       'ui.rancher/badge-color',
   // Use as icon - if set to "true" the cluster icon will also reflect the badge
-  USE_AS_ICON: 'ui.cattle.io/badge-use-as-icon',
+  USE_AS_ICON: 'ui.rancher/badge-use-as-icon',
 };
