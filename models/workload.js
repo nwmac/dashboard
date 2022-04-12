@@ -8,6 +8,7 @@ import day from 'dayjs';
 import SteveModel from '@/plugins/steve/steve-class';
 import { shortenedImage } from '@/utils/string';
 import { convertSelectorObj, matching } from '@/utils/selector';
+import { SEPARATOR } from '@/components/DetailTop';
 
 export default class Workload extends SteveModel {
   // remove clone as yaml/edit as yaml until API supported
@@ -392,19 +393,19 @@ export default class Workload extends SteveModel {
 
     switch (type) {
     case WORKLOAD_TYPES.DEPLOYMENT:
-      out.push(detailItem.ready, detailItem.upToDate, detailItem.available, detailItem.endpoint);
+      out.push(detailItem.ready, detailItem.upToDate, detailItem.available, SEPARATOR, detailItem.endpoint);
       break;
     case WORKLOAD_TYPES.DAEMON_SET:
-      out.push(detailItem.ready, detailItem.endpoint);
+      out.push(detailItem.ready, SEPARATOR, detailItem.endpoint);
       break;
     case WORKLOAD_TYPES.REPLICA_SET:
-      out.push(detailItem.ready, detailItem.endpoint);
+      out.push(detailItem.ready, SEPARATOR, detailItem.endpoint);
       break;
     case WORKLOAD_TYPES.STATEFUL_SET:
-      out.push(detailItem.ready, detailItem.endpoint);
+      out.push(detailItem.ready, SEPARATOR, detailItem.endpoint);
       break;
     case WORKLOAD_TYPES.REPLICATION_CONTROLLER:
-      out.push(detailItem.ready, detailItem.endpoint);
+      out.push(detailItem.ready, SEPARATOR, detailItem.endpoint);
       break;
     case WORKLOAD_TYPES.JOB:
       out.push(detailItem.endpoint);
