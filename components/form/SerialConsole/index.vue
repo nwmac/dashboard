@@ -250,7 +250,8 @@ export default {
 </template>
 
 <style lang="scss">
-  @import '@/node_modules/xterm/css/xterm.css';
+  // TODO: ??? Why is this here? It should be imported globally already
+  @import '~xterm/css/xterm.css';
 
   .harvester-shell-container {
     height: 100%;

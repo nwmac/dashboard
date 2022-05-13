@@ -11,9 +11,11 @@
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
-    "strict": true,
+    "strict": false,
     "noEmit": true,
     "baseUrl": ".",
+    "rootDir": ".",
+    "preserveSymlinks": true,    
     "paths": {
       "~/*": [
         "./*"
@@ -24,10 +26,16 @@
     },
     "types": [
       "@types/node",
-      "@nuxt/types",
       "cypress"
     ]
   },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.vue",
+    "**/*.ts",
+    "**/*.tsx"
+  ],  
   "exclude": [
     "node_modules"
   ]
