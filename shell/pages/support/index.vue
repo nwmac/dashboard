@@ -199,19 +199,6 @@ export default {
             or
             <a href="https://rancher.com/pricing" target="_blank" rel="noopener noreferrer nofollow">{{ t('support.community.pricing') }} <i class="icon icon-external-link" /></a>
           </div>
-          <div v-if="!hasSupport" class="register row">
-            <div>
-              {{ t('support.subscription.haveSupport') }}
-            </div>
-            <button class="ml-5 btn role-secondary btn-sm" type="button" @click="showDialog(false)">
-              {{ t('support.subscription.addSubscription') }}
-            </button>
-          </div>
-          <div v-if="hasSupport && !hasAWSSupport" class="register row">
-            <a class="remove-link" @click="showDialog(true)">
-              {{ t('support.subscription.removeSubscription') }}
-            </a>
-          </div>
         </div>
         <div class="community">
           <CommunityLinks />
