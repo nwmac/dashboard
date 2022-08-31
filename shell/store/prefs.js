@@ -5,6 +5,10 @@ import { SETTING } from '@shell/config/settings';
 
 const definitions = {};
 
+// Map of key/value prefrences changed while not logged in
+// Needs to be flushed to the backend when the user logs in
+const changedWhileNotLoggedIn = {};
+
 export const create = function(name, def, opt = {}) {
   const parseJSON = opt.parseJSON === true;
   const asCookie = opt.asCookie === true;
@@ -243,7 +247,7 @@ export const mutations = {
 };
 
 export const actions = {
-  async set({ dispatch, commit }, opt) {
+  async set({ dispatch, commit, rootGetters }, opt) {
     let { key, value } = opt; // eslint-disable-line prefer-const
     const definition = definitions[key];
     let server;
@@ -264,6 +268,17 @@ export const actions = {
     }
 
     if ( definition.asUserPreference ) {
+      const checkLogin = rootGetters['auth/loggedIn'];
+
+      // Check if user is logged in, if not save that we need to set it later and return
+      // since we can't set in the backend when the user is not logged in
+      // This mechanism is used for preferences like 'locale'
+      if ( !checkLogin) {
+        changedWhileNotLoggedIn[key] = value;
+
+        return;
+      }
+
       try {
         server = await dispatch('loadServer', key); // There's no watch on prefs, so get before set...
 
@@ -381,6 +396,19 @@ export const actions = {
 
     if ( !checkLogin ) {
       return;
+    }
+
+    // If we have prefs that were set while not logged in, then set those now
+    if (Object.keys(changedWhileNotLoggedIn).length > 0) {
+      const updates = [];
+
+      Object.keys(changedWhileNotLoggedIn).forEach((key) => {
+        const value = changedWhileNotLoggedIn[key];
+
+        updates.push(dispatch('set', { key, value }));
+      });
+
+      await Promise.all(updates);
     }
 
     try {
