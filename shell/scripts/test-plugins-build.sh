@@ -77,6 +77,9 @@ rm ${SHELL_DIR}/package.json.bak
 
 # Publish shell
 echo "Publishing shell packages to local registry"
+# Need to install dependencies so we can run the tsc compiler
+yarn install
+
 ${SHELL_DIR}/scripts/publish-shell.sh
 
 if [ "${SKIP_STANDALONE}" == "false" ]; then
