@@ -1,4 +1,13 @@
 {
-  "reporter": [ "json", "text-summary"],
-  "report-dir": "coverage/e2e"
+  "all": true,
+  "reporter": ["json", "text-summary", "html"],
+  "extension": [".js", ".vue", ".ts"],
+  "report-dir": "coverage/e2e",
+  "exclude": [
+    "shell/scripts/**/*.{js,ts}"
+  ],
+  "include": [
+    "shell/**/*.{js,vue,ts}",
+    "pkg/rancher-components/**/*.{js,vue,ts}"
+  ]
 }

@@ -91,61 +91,68 @@ describe('Branding', () => {
     // Requires a way to check the actual image changes
   });
 
-  it('Primary Color', () => {
-    const brandingPage = new BrandingPagePo();
-
-    brandingPage.goTo();
-
-    // Set
-    brandingPage.primaryColorCheckbox().set();
-    brandingPage.primaryColorPicker().value().should('not.eq', settings.primaryColor.new);
-    brandingPage.primaryColorPicker().set(settings.primaryColor.new);
-    brandingPage.applyButton().click();
-
-    // Check in session
-    brandingPage.primaryColorPicker().value().should('eq', settings.primaryColor.new);
-    brandingPage.primaryColorPicker().previewColor().should('eq', settings.primaryColor.newRGB);
-    brandingPage.applyButton().self().should('have.css', 'background').should((background: string) => {
-      expect(background).to.satisfy((b: string) => b.startsWith(settings.primaryColor.newRGB));
+  describe('Colors', () => {
+    beforeEach(() => {
+      cy.rancherSetPref('ui-primary-color', null);
+      cy.rancherSetPref('ui-link-color', null);
     });
 
-    // Check over reload
-    cy.reload();
-    brandingPage.primaryColorPicker().value().should('eq', settings.primaryColor.new);
-    brandingPage.primaryColorPicker().previewColor().should('eq', settings.primaryColor.newRGB);
-    brandingPage.applyButton().self().should('have.css', 'background').should((background: string) => {
-      expect(background).to.satisfy((b: string) => b.startsWith(settings.primaryColor.newRGB));
+    it('Primary Color', () => {
+      const brandingPage = new BrandingPagePo();
+
+      brandingPage.goTo();
+
+      // Set
+      brandingPage.primaryColorCheckbox().set();
+      brandingPage.primaryColorPicker().value().should('not.eq', settings.primaryColor.new);
+      brandingPage.primaryColorPicker().set(settings.primaryColor.new);
+      brandingPage.applyButton().click();
+
+      // Check in session
+      brandingPage.primaryColorPicker().value().should('eq', settings.primaryColor.new);
+      brandingPage.primaryColorPicker().previewColor().should('eq', settings.primaryColor.newRGB);
+      brandingPage.applyButton().self().should('have.css', 'background').should((background: string) => {
+        expect(background).to.satisfy((b: string) => b.startsWith(settings.primaryColor.newRGB));
+      });
+
+      // Check over reload
+      cy.reload();
+      brandingPage.primaryColorPicker().value().should('eq', settings.primaryColor.new);
+      brandingPage.primaryColorPicker().previewColor().should('eq', settings.primaryColor.newRGB);
+      brandingPage.applyButton().self().should('have.css', 'background').should((background: string) => {
+        expect(background).to.satisfy((b: string) => b.startsWith(settings.primaryColor.newRGB));
+      });
+
+      // Reset
+      brandingPage.primaryColorPicker().set(settings.primaryColor.original);
+      brandingPage.primaryColorCheckbox().set();
+      brandingPage.applyButton().click();
     });
 
-    // Reset
-    brandingPage.primaryColorPicker().set(settings.primaryColor.original);
-    brandingPage.primaryColorCheckbox().set();
-    brandingPage.applyButton().click();
-  });
+    it('Link Color', () => {
+      const brandingPage = new BrandingPagePo();
 
-  it('Link Color', () => {
-    const brandingPage = new BrandingPagePo();
+      brandingPage.goTo();
 
-    brandingPage.goTo();
+      // Set
+      brandingPage.linkColorCheckbox().set();
+      brandingPage.linkColorPicker().value().should('not.eq', settings.linkColor.new);
+      brandingPage.linkColorPicker().set(settings.linkColor.new);
+      brandingPage.applyButton().click();
 
-    // Set
-    brandingPage.linkColorCheckbox().set();
-    brandingPage.linkColorPicker().value().should('not.eq', settings.linkColor.new);
-    brandingPage.linkColorPicker().set(settings.linkColor.new);
-    brandingPage.applyButton().click();
+      // Check in session
+      brandingPage.linkColorPicker().value().should('eq', settings.linkColor.new);
+      brandingPage.linkColorPicker().previewColor().should('eq', settings.linkColor.newRGB);
 
-    // Check in session
-    brandingPage.linkColorPicker().value().should('eq', settings.linkColor.new);
-    brandingPage.linkColorPicker().previewColor().should('eq', settings.linkColor.newRGB);
+      // Check over reload
+      cy.reload();
+      brandingPage.linkColorPicker().value().should('eq', settings.linkColor.new);
+      brandingPage.linkColorPicker().previewColor().should('eq', settings.linkColor.newRGB);
 
-    // Check over reload
-    cy.reload();
-    brandingPage.linkColorPicker().value().should('eq', settings.linkColor.new);
-    brandingPage.linkColorPicker().previewColor().should('eq', settings.linkColor.newRGB);
-
-    // Reset
-    brandingPage.linkColorPicker().set(settings.linkColor.original);
-    brandingPage.linkColorCheckbox().set();
-    brandingPage.applyButton().click();
+      // Reset
+      brandingPage.linkColorPicker().set(settings.linkColor.original);
+      brandingPage.linkColorCheckbox().set();
+      brandingPage.applyButton().click();
+    });
   });
 });

@@ -93,6 +93,7 @@ export default function(dir, _appConfig) {
   ];
 
   if (instrumentCode) {
+    //babelPlugins.push(['babel-plugin-istanbul', { extension: ['.js', '.vue', '.ts'] }]);
     babelPlugins.push('babel-plugin-istanbul');
 
     console.warn('Instrumenting code for coverage'); // eslint-disable-line no-console
@@ -111,7 +112,8 @@ export default function(dir, _appConfig) {
   const watcherIgnores = [
     /.shell/,
     /dist-pkg/,
-    /scripts\/standalone/
+    /scripts\/standalone/,
+    /test-report/
   ];
 
   autoLoad.forEach((pkg) => {

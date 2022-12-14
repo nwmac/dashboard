@@ -1,5 +1,6 @@
 import '@cypress/code-coverage/support';
 import './commands';
+import './rancher';
 
 // TODO handle redirection errors better?
 // we see a lot of 'error navigation cancelled' uncaught exceptions that don't actually break anything; ignore them here

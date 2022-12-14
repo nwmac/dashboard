@@ -1,6 +1,9 @@
 import { defineConfig } from 'cypress';
+
 // Required for env vars to be available in cypress
 require('dotenv').config();
+
+const skipSetup = process.env.TEST_SKIP_SETUP !== 'true';
 
 /**
  * Filter test spec paths based on env var configuration
@@ -10,7 +13,7 @@ const getSpecPattern = (): string[] => {
   const optionalPaths = [
     {
       path:   'cypress/e2e/tests/setup/**/*.spec.ts',
-      active: process.env.TEST_SKIP_SETUP !== 'true'
+      active: skipSetup
     }
   ];
   const activePaths = optionalPaths.filter(({ active }) => Boolean(active)).map(({ path }) => path);
@@ -21,7 +24,44 @@ const getSpecPattern = (): string[] => {
     'cypress/e2e/tests/navigation/**/*.spec.ts'
   ];
 };
+
 const baseUrl = (process.env.TEST_BASE_URL || 'https://localhost:8005').replace(/\/$/, '');
+
+// Default user name, if TEST_USERNAME is not provided
+const DEFAULT_USERNAME = 'admin';
+
+// Log summary of the environment variables that we have detected (or are going ot use) - we won't show any passwords
+console.log('E2E Test Configuration');
+console.log('');
+if (process.env.TEST_USERNAME) {
+  console.log(`    Username: ${process.env.TEST_USERNAME}`);
+} else {
+  console.log(`    Username: ${DEFAULT_USERNAME} (TEST_USERNAME not set, using default)`);
+}
+
+if (process.env.CATTLE_BOOTSTRAP_PASSWORD && process.env.TEST_PASSWORD) {
+  console.log(" ❌ You should not set both CATTLE_BOOTSTRAP_PASSWORD and TEST_PASSWORD - CATTLE_BOOTSTRAP_PASSWORD will be used");
+}
+
+if (!skipSetup && !process.env.CATTLE_BOOTSTRAP_PASSWORD) {
+  console.log(' ❌ You must provide CATTLE_BOOTSTRAP_PASSWORD when running setup tests');
+}
+
+if (!process.env.CATTLE_BOOTSTRAP_PASSWORD && !process.env.TEST_PASSWORD) {
+  console.log(' ❌ You must provide one of CATTLE_BOOTSTRAP_PASSWORD or TEST_PASSWORD');
+}
+
+if (skipSetup && !process.env.TEST_PASSWORD) {
+  console.log(' ❌ You should provide TEST_PASSWORD when running the tests without the setup tests');
+}
+
+if (skipSetup) {
+  console.log(`    Setup tests will be run`);
+} else {
+  console.log(`    Setup tests will NOT be run`);
+}
+
+console.log(`    Dashboard URL: ${ baseUrl }`);
 
 export default defineConfig({
   projectId:             process.env.TEST_PROJECT_ID,
@@ -45,8 +85,8 @@ export default defineConfig({
         'pkg/rancher-components/src/components/**/*.{vue,ts,js}',
       ]
     },
-    username:          process.env.TEST_USERNAME,
-    password:          process.env.TEST_PASSWORD,
+    username:          process.env.TEST_USERNAME || DEFAULT_USERNAME,
+    password:          process.env.CATTLE_BOOTSTRAP_PASSWORD || process.env.TEST_PASSWORD,
     bootstrapPassword: process.env.CATTLE_BOOTSTRAP_PASSWORD,
   },
   e2e: {
@@ -60,4 +100,12 @@ export default defineConfig({
     specPattern:                  getSpecPattern(),
     baseUrl
   },
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: "test-report/cypress",
+    reportFilename: "[datetime]-[name]",
+    overwrite: false,
+    html: false,
+    json: true
+  }  
 });

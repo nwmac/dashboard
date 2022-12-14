@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+
+const libReport = require('istanbul-lib-report');
+const reports = require('istanbul-reports');
+const libCoverage = require('istanbul-lib-coverage');
+const fs = require('fs');
+const path = require('path');
+
+let map = libCoverage.createCoverageMap();
+let summary = libCoverage.createCoverageSummary();
+
+const rootDir = path.resolve(__dirname, '..');
+
+console.log(__dirname);
+console.log(rootDir);
+
+function readCoverage(file) {
+  const raw = fs.readFileSync(file);
+
+  return JSON.parse(raw);
+}
+
+const coverageJSONs = [];
+
+coverageJSONs.push(readCoverage(path.join(rootDir, 'coverage/unit/coverage-final.json')));
+coverageJSONs.push(readCoverage(path.join(rootDir, 'coverage/e2e/coverage-final.json')));
+
+coverageJSONs.forEach((json) => {
+  const jsonCoverageMap = libCoverage.createCoverageMap(json);
+
+  map.merge(jsonCoverageMap);
+});
+
+// inspect and summarize all file coverage objects in the map
+map.files().forEach(function(f) {
+    const fc = map.fileCoverageFor(f);
+
+    console.log(fc);
+    const s = fc.toSummary();
+
+    summary.merge(s);
+});
+
+// console.log('Global summary', summary);
+// console.log('Merged coverage JSON', map.toJSON());
+
+// create a context for report generation
+const context = libReport.createContext({
+  dir: path.join(rootDir, 'coverage/combined'),
+  defaultSummarizer: 'nested',
+  coverageMap: map, 
+});
+
+// create an instance of the relevant report class, passing the
+// report name e.g. json/html/html-spa/text
+const report = reports.create('html');
+
+// call execute to synchronously create and write the report to disk
+report.execute(context);

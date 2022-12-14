@@ -1,5 +1,8 @@
 type Matcher = '$' | '^' | '~' | '*' | '';
 
+// To be defined
+type UserPreferences = any;
+
 // eslint-disable-next-line no-unused-vars
 declare namespace Cypress {
   interface Chainable {
@@ -32,7 +35,17 @@ declare namespace Cypress {
      * Override user preferences to default values, allowing to pass custom preferences for a deterministic scenario
      * Leave empty for reset to default values
      */
-    // eslint-disable-next-line no-undef
     userPreferences(preferences?: Partial<UserPreferences>): Chainable<null>;
+
+    /**
+     * Set a user preference via the Rancher API
+     * 
+     * @param id ID of the preference
+     * @param value Nwe value for the preference (or null to clear)
+     */
+    rancherSetPref(id: string, value: string | null): Chainable<Cypress.Response<any>>;
+
+    // Returns the base URL for API calls (removing /dashboard from the test base url, for example)
+    apiBase(): string;
   }
 }
