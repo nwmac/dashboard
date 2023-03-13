@@ -724,6 +724,11 @@ export const actions = {
     const samePackage = oldPkg?.name === newPkg?.name;
     const isMultiCluster = getters['isMultiCluster'];
 
+    console.log('loadCluster >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+    console.log('loadCluster');
+    console.log(id);
+    console.log(product);
+
     // Are we in the same cluster and package?
     if ( sameCluster && samePackage) {
       // Do nothing, we're already connected/connecting to this cluster
@@ -783,6 +788,10 @@ export const actions = {
       }
     } else {
       // Switching to a global page with no cluster id, keep it the same.
+
+      // Mark cluster as ready - there may not have been a previous cluster and if the page does not need one, it should be marked as ready
+      commit('clusterReady', true);
+
       return;
     }
 

@@ -276,8 +276,13 @@ export default async function({
     }
   }
 
+  console.log('**********************************');
+  console.log(route);
+
   try {
     let clusterId = get(route, 'params.cluster');
+
+    console.log(clusterId);
 
     const pkg = getPackageFromRoute(route);
     const product = getProductFromRoute(route);

@@ -13,7 +13,7 @@ export default function(plugin: IPlugin) {
   plugin.metadata = require('./package.json');
 
   // Load a product
-  plugin.addProduct(require('./config/cluster-prod-reg-config'), clusterProdName);
+  // plugin.addProduct(require('./config/cluster-prod-reg-config'), clusterProdName);
 
   // Add Vue Routes
   plugin.addRoutes(clusterProdRoutes);

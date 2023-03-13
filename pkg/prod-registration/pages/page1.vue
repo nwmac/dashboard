@@ -1,5 +1,7 @@
 <script>
-export default { name: 'Page1' };
+export default {
+  name: 'Page1',
+};
 </script>
 
 <template>

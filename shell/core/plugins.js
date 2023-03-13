@@ -4,6 +4,7 @@ import { Plugin } from './plugin';
 import { PluginRoutes } from './plugin-routes';
 import { UI_PLUGIN_BASE_URL } from '@shell/config/uiplugins';
 import { ExtensionPoint } from './types';
+import { Products } from './products';
 
 const MODEL_TYPE = 'models';
 
@@ -397,17 +398,30 @@ export default function({
           plugin.products.forEach(async(p) => {
             const impl = await p;
 
-            console.error('plugin', p);
-
             if (impl.init) {
-              loadPlugins[i].currStore = store;
-              loadPlugins[i].setDSLMethods(p.productName);
-              console.log('plugin will initialize', loadPlugins[i]);
               impl.init(plugin, store);
+            } else if (typeof impl === 'function') {
+              // If it does not have the init function, then it is a pure function - which is the new approach
+
+              console.log('New mechanism !!!!!');
+
+              // Pass it an IProducts interface
+              const products = new Products(store);
+
+              impl(products);
+
+              products.products.forEach((p) => {
+                // Call apply on each product, passing a function that can register product routes
+                p._apply((routes) => {
+                  pluginRoutes.addRoutes(plugin, routes);
+                });
+              });
+
+              console.error(app.router.getRoutes());
             }
           });
         }
       });
-    },
+    }
   });
 }

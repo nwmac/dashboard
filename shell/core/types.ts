@@ -1,4 +1,5 @@
 import { RouteConfig } from 'vue-router';
+import { Dictionary } from 'vue-router/types/router';
 
 // package.json metadata
 export interface PackageMetadata {
@@ -136,18 +137,64 @@ export type LocationConfig = {
   mode?: string[]
 };
 
+export interface RouteLocation {
+  name?: string,
+  path?: string,
+  params?: Dictionary<string>,
+
+  // TODO:
+  // label, weight etc - extract into common class?
+}
+
+export type RouteLink = {
+  name: string;
+  route: string | RouteLocation;
+}
+
+export interface IProduct {
+  /**
+   * Add routes for the product
+   */
+  addRoutes(routes: RouteConfig[]): void;
+
+  /**
+   * Add product navigation
+   * @param routes
+   * @param grp 
+   */
+  addNavigation(routes: string | string[] | RouteLink | RouteLink[], grp?: string): void;
+};
+
+// export type ProductOptions = {
+//   svg?: string;
+//   typeSupport?: Boolean;
+// };
+
+export type ProductOptions = any;
+
+export interface IProducts {
+  add(name: string, options?: ProductOptions): IProduct;
+  get(name: string): IProduct;
+};
+
+export type ProductsFunction = ((products: IProducts) => void);
+
 /**
  * Interface for a Dashboard plugin
  */
 export interface IPlugin {
-  registerExtensionAsProduct(store: any, option: object): void;
-
   /**
-   * Add a product
+   * Add a product (deprecated, legacy compatibility)
    * @param importFn Function that will import the module containing a product definition
    * @param productName Product name
    */
   addProduct(importFn: Function, productName?: string): void;
+
+  /**
+   * Registers a product initializer that will be called to add or modify products
+   * @param productsFn Function that will add new and/or modify existing products
+   */
+  initProducts(productsFn: ProductsFunction): void;
 
   /**
    * Add a locale to the i18n store
