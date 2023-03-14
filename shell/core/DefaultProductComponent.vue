@@ -11,50 +11,22 @@ export default {
   },
 
   middleware({ redirect, route, store } ) {
+    if (route.meta) {
+      const m = Array.isArray(route.meta) ? route.meta[0] : route.meta;
 
-    console.log('******************************************************************************');
-    console.log('DefaultProductComponent');
+      if (m.redirect) {
+        const name = m.redirect.name;
 
-    console.log(route);
+        if (name !== route.name) {
+          console.log('REDIRECT!!!! *****************************************');
+          console.log(m.redirect);
 
-    // return redirect({
-    //   name: 'product-page1',
-    //   params: {
-    //     product: 'advanced',
-    //     cluster: '_'
-    //   }
-    // })
+          return redirect(m.redirect);
+        }
+      }
+    }
   }
-
-  // middleware({ redirect, route, store } ) {
-  //   console.error('middleware');
-  //   console.log(route);
-
-  //   if (route.params?.product) {
-  //     store.commit('setProduct', route.params.product);
-  //   }
-
-  //   if (route.meta) {
-  //     const m = Array.isArray(route.meta) ? route.meta[0] : route.meta;
-
-  //     if (m.redirect) {
-
-  //       const name = m.redirect.name;
-  //       m.redirect.params = m.redirect.params || {};
-  //       m.redirect.params.cluster = '_';
-  //       //m.redirect.params.product = route.params.product;
-
-  //       console.log(route.params.product);
-
-  //       if (name !== route.name) {
-  //         console.log('REDIRECT!!!! *****************************************');
-  //         console.log(m.redirect);
-  //         return redirect(m.redirect);
-  //       }
-  //     }
-  //   }
-  // }
-};
+}
 </script>
 
 <template>

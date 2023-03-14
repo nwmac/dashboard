@@ -148,6 +148,8 @@ export interface RouteLocation {
 
 export type RouteLink = {
   name: string;
+  label?: string;
+  labelKey?: string;
   route: string | RouteLocation;
 }
 
@@ -159,6 +161,8 @@ export interface IProduct {
 
   /**
    * Add product navigation
+   * String routes represent routes for resource types.
+   * RouteLink routes represent routes for arbitrary pages/vue routes
    * @param routes
    * @param grp 
    */

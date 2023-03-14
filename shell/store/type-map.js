@@ -687,8 +687,6 @@ export const getters = {
         });
       }
 
-      console.log('GET TREE ROOT!', root);
-
       // Recursively sort the groups
       _sortGroup(root, mode);
 
@@ -1605,10 +1603,6 @@ export const mutations = {
 
     for ( const t of types ) {
       map[t.toLowerCase()] = weight;
-    }
-
-    if (type === 'page2') {
-      // console.log('state.basicTypeWeights', state.basicTypeWeights);
     }
   },
 

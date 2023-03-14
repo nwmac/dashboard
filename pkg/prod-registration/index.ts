@@ -3,6 +3,7 @@ import { IPlugin, IProducts, IProduct } from '@shell/core/types';
 import { routes as singleProdRoutes, singleProdName } from './config/single-prod-routes-config';
 
 import Page1 from './pages/page1.vue';
+import Page2 from './pages/page2.vue';
 
 // Init the package
 export default function(plugin: IPlugin) {
@@ -16,14 +17,8 @@ export default function(plugin: IPlugin) {
     console.error('Product registration');
     console.log(products);
 
-    // const product = products.add('my-product', {
-    //   isMultiClusterApp:     true,
-    //   icon:                  'epinio',
-    //   removable:             false,
-    //   showClusterSwitcher:   false,
-    //   showNamespaceFilter:   true,
-    //   customNamespaceFilter: true,
-    // });
+    // TODO: Product options, group options erc
+    // TODO: modifying an existing product's navigation
 
     // Simple call to add a new product that shows up in the side nav
     const simpleProduct = products.add('neil');
@@ -34,14 +29,23 @@ export default function(plugin: IPlugin) {
 
     console.log(advancedProduct);
 
+    // Add routes for this product
+    // 'names' are relative here to the product name - we will prepend with the product name and a hyphen
+    // would be nice if name was optional
     advancedProduct.addRoutes([
       {
         name: 'page1',
         path: 'page1',
         component: Page1
+      },
+      {
+        name: 'page2',
+        path: 'page2',
+        component: Page2
       }
     ]);
 
+    // TODO
     // Adds a nav item that goes to the list page for the specified resource
     // advancedProduct.addNavigation('provisioning.cattle.io.cluster');
 
@@ -55,10 +59,10 @@ export default function(plugin: IPlugin) {
       route: 'page1'
     });
 
-    // Add Vue routes to the product
-    // p.addRoutes({});
-  });
+    advancedProduct.addNavigation({
+      name: 'page2',
+      route: 'page2'
+    });    
 
-  // Add Vue Routes
-  // plugin.addRoutes(singleProdRoutes);
+  });
 }

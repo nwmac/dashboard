@@ -724,11 +724,6 @@ export const actions = {
     const samePackage = oldPkg?.name === newPkg?.name;
     const isMultiCluster = getters['isMultiCluster'];
 
-    console.log('loadCluster >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-    console.log('loadCluster');
-    console.log(id);
-    console.log(product);
-
     // Are we in the same cluster and package?
     if ( sameCluster && samePackage) {
       // Do nothing, we're already connected/connecting to this cluster

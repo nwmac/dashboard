@@ -2,7 +2,6 @@ import { IPlugin, IProducts, IProduct, PluginRouteConfig, ProductOptions, RouteL
 import { RouteConfig } from 'vue-router';
 import { DSL as STORE_DSL } from '@shell/store/type-map';
 import DefaultProductComponent from './DefaultProductComponent.vue';
-import ProductRedirect from './ProductRedirect.vue';
 
 // Default resource handling views
 import ListResource from '@shell/pages/c/_cluster/_product/_resource/index.vue';
@@ -76,6 +75,11 @@ export class Product implements IProduct {
         // TODO: Do we allow user to configure a virtual type before adding the nav? If so, need to check here
         this.virtualTypes[r.name] = r;
 
+        // Ensure r has a label
+        if (!r.labelKey && !r.label) {
+          r.label = r.name;
+        }
+
         // Add name to the navigation
         this.nav[group].push(r.name);
       }
@@ -98,7 +102,7 @@ export class Product implements IProduct {
       this.DSL.virtualType({
         name:       vt.name,
         namespaced: false,
-        labelKey:   'catalog.charts.header',
+        labelKey:   vt.labelKey,
         icon:       'compass',
         weight:     100,
         label:      vt.name, // TODO: label key etc
@@ -118,15 +122,10 @@ export class Product implements IProduct {
       const items = this.nav[grp];
 
       this.DSL.basicType(items, group);
-
-      console.log('Adding basic type');
-      console.log(group);
-      console.log(items);
     });
 
     // Figure out the default route for the product
-    // let defaultRoute: any = { component: DefaultProductComponent };
-    let defaultRoute: any = { component: ProductRedirect };
+    let defaultRoute: any = { component: DefaultProductComponent };
     // let defaultRoute: any = {};
 
     if (this.nav['ROOT'] && this.nav['ROOT'].length > 0) {
@@ -138,15 +137,10 @@ export class Product implements IProduct {
       if (typeof redirect === 'string') {
         console.warn(redirect);
         redirect = {
-          name: `${ this.name }-${ redirect }`,
-          //name: `${ redirect }`,
-          path: `${ redirect }`,
-          params: {
-            product: this.name,
-            cluster: BLANK_CLUSTER,
-          }
+          name: `${ this.name }-${ redirect }`
         };
       } else {
+        // TODO
         console.log('*************************************************************************************************');
         console.error('>>>>>>> ERROR >>>>>>>>>>>');
       }
@@ -165,7 +159,6 @@ export class Product implements IProduct {
     // Ensure the route has the blank cluster, otherwise the default layout won't think the cluster and won't load
     defaultRoute.params = defaultRoute.params || {};
     defaultRoute.params.product = this.name;
-    defaultRoute.params.cluster = BLANK_CLUSTER;
     defaultRoute.params.cluster = BLANK_CLUSTER;
 
     // Update the names of the child routes (should be recursive)
@@ -194,8 +187,6 @@ export class Product implements IProduct {
       ...this.routes
     ];
 
-    console.log(allRoutesToAdd);
-
     // If basic types are used, then add routes for types - List, Detail, Edit
     if (this.basicTypes.length > 0) {
       const typeRoutes: any[] = [
@@ -222,9 +213,6 @@ export class Product implements IProduct {
       ];
     
       allRoutesToAdd.push(...typeRoutes);
-
-      //productRoutes[0].route.children = allRoutesToAdd;
-
     }
 
     const extRoutes: any[] = [];
@@ -236,18 +224,15 @@ export class Product implements IProduct {
       };
 
       // Add metadata
-
       r.meta = r.meta || {};
       r.meta.product = this.name;
       r.meta.cluster = BLANK_CLUSTER;
 
+      // Route needs to be in an object in the key 'route'
       extRoutes.push({
         route: r
       });
     });
-
-    console.log('ADD');
-    console.error(extRoutes);
 
     addRoutes(extRoutes);
     addRoutes(productRoutes);
