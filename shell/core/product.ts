@@ -2,6 +2,7 @@ import { IPlugin, IProducts, IProduct, PluginRouteConfig, ProductOptions, RouteL
 import { RouteConfig } from 'vue-router';
 import { DSL as STORE_DSL } from '@shell/store/type-map';
 import DefaultProductComponent from './DefaultProductComponent.vue';
+import ProductRedirect from './ProductRedirect.vue';
 
 // Default resource handling views
 import ListResource from '@shell/pages/c/_cluster/_product/_resource/index.vue';
@@ -39,7 +40,13 @@ export class Product implements IProduct {
       inStore:             'management',
       removable:           false,
       showClusterSwitcher: false,
-      ...options
+      ...options,
+      to: {
+        name: 'advanced',
+        params: {
+          product: 'advanced'
+        }
+      }
     });
   }
 
@@ -118,7 +125,9 @@ export class Product implements IProduct {
     });
 
     // Figure out the default route for the product
-    let defaultRoute: any = { component: DefaultProductComponent };
+    // let defaultRoute: any = { component: DefaultProductComponent };
+    let defaultRoute: any = { component: ProductRedirect };
+    // let defaultRoute: any = {};
 
     if (this.nav['ROOT'] && this.nav['ROOT'].length > 0) {
       const first = this.nav['ROOT'][0];
@@ -147,9 +156,16 @@ export class Product implements IProduct {
       };
     }
 
+    defaultRoute.meta = defaultRoute.meta || {};
+    defaultRoute.meta.product = this.name;
+    defaultRoute.meta.cluster = BLANK_CLUSTER;
+
+    console.log(defaultRoute);
+
     // Ensure the route has the blank cluster, otherwise the default layout won't think the cluster and won't load
     defaultRoute.params = defaultRoute.params || {};
     defaultRoute.params.product = this.name;
+    defaultRoute.params.cluster = BLANK_CLUSTER;
     defaultRoute.params.cluster = BLANK_CLUSTER;
 
     // Update the names of the child routes (should be recursive)
@@ -159,6 +175,8 @@ export class Product implements IProduct {
       if (r.name) {
         r.name = `${ this.name }-${ r.name }`;
       }
+
+      r.path = `/${ this.name }/${ r.path }`;
     });
 
     // Routes
@@ -167,55 +185,71 @@ export class Product implements IProduct {
       route: {
         name: `${ this.name }`,
         path: `/${ this.name }`,
-        children: this.routes,
+        children: [],
         ...defaultRoute,
       }
     }];
 
-    console.log('product routes');
-    console.log(productRoutes);
-    console.log(this.routes);
+    const allRoutesToAdd = [
+      ...this.routes
+    ];
+
+    console.log(allRoutesToAdd);
 
     // If basic types are used, then add routes for types - List, Detail, Edit
     if (this.basicTypes.length > 0) {
       const typeRoutes: any[] = [
         {
           name:      `${ this.name }-c-cluster-resource`,
-          path:      `${ this.name }/c/:cluster/:resource`,
+          path:      `/${ this.name }/c/:cluster/:resource`,
           component: ListResource,
         },
         {
           name:      `${ this.name }-c-cluster-resource-create`,
-          path:      `${ this.name }/c/:cluster/:resource/create`,
+          path:      `/${ this.name }/c/:cluster/:resource/create`,
           component: CreateResource,
         },
         {
           name:      `${ this.name }-c-cluster-resource-id`,
-          path:      `${ this.name }/c/:cluster/:resource/:id`,
+          path:      `/${ this.name }/c/:cluster/:resource/:id`,
           component: ViewResource,
         },
         {
           name:      `${ this.name }-c-cluster-resource-namespace-id`,
-          path:      `${ this.name }c/:cluster/:resource/:namespace/:id`,
+          path:      `/${ this.name }c/:cluster/:resource/:namespace/:id`,
           component: ListNamespacedResource,        
         }
       ];
+    
+      allRoutesToAdd.push(...typeRoutes);
 
-      typeRoutes.forEach((r) => {
-        r.params = {
-          product: this.name,
-          cluster: BLANK_CLUSTER,
-        };
-      });
+      //productRoutes[0].route.children = allRoutesToAdd;
 
-      productRoutes[0].route.children = {
-        ... typeRoutes,
-        ... productRoutes[0].route.children
-      };
-
-      console.error(productRoutes);
     }
 
+    const extRoutes: any[] = [];
+
+    allRoutesToAdd.forEach((r: any) => {
+      r.params = {
+        product: this.name,
+        cluster: BLANK_CLUSTER,
+      };
+
+      // Add metadata
+
+      r.meta = r.meta || {};
+      r.meta.product = this.name;
+      r.meta.cluster = BLANK_CLUSTER;
+
+      extRoutes.push({
+        route: r
+      });
+    });
+
+    console.log('ADD');
+    console.error(extRoutes);
+
+    addRoutes(extRoutes);
     addRoutes(productRoutes);
   }
   
