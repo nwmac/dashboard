@@ -848,8 +848,6 @@ export const getters = {
 
   allTypes(state, getters, rootState, rootGetters) {
     return (product, mode = ALL) => {
-      // console.error('state.products', state.products);
-      // console.error('product', product);
       const module = findBy(state.products, 'name', product)?.inStore;
       const schemas = rootGetters[`${ module }/all`](SCHEMA);
       const counts = rootGetters[`${ module }/all`](COUNT)?.[0]?.counts || {};
