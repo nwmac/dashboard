@@ -5,7 +5,7 @@ import { MANAGEMENT, CAPI } from '@shell/config/types';
 import { allHash } from '@shell/utils/promise';
 
 export function init($plugin, store) {
-  console.log('$plugin init CLUSTER PROD', $plugin);
+  // console.log('$plugin init CLUSTER PROD', $plugin);
 
   /********************************************************
    *

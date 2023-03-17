@@ -1,12 +1,8 @@
-import { IPlugin, IProducts, IProduct, ProductOptions, PluginRouteConfig } from '@shell/core/types';
+import { IProducts, IProduct, ProductOptions } from '@shell/core/types';
 import { Product } from './product';
-import { RouteConfig } from 'vue-router';
-import { BLANK_CLUSTER } from 'store';
 
 export class Products implements IProducts {
-
   private store: any;
-
   public products:any[] = [];
 
   constructor(store: any) {
@@ -18,18 +14,9 @@ export class Products implements IProducts {
 
     // Set the default route
     const opts = {
-      // to: {
-      //   name:   `c-cluster-product`,
-      //   params: {
-      //     cluster: BLANK_CLUSTER,
-      //     product: name
-      //   }
-      // },
       to: {
-        name:   name,
-        params: {
-          product: name
-        }
+        name,
+        params: { product: name }
       },
       ...options
     };
@@ -52,6 +39,7 @@ export class Products implements IProducts {
 
     if (exists) {
       const p = new Product(this.store, name);
+
       this.products.push(p);
 
       return p;

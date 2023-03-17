@@ -30,9 +30,9 @@ let beforeEachSetup = false;
 
 function findMeta(route, key) {
   if (route?.meta) {
-    const meta = Array.isArray(route.meta) ?  route.meta : [route.meta];
+    const meta = Array.isArray(route.meta) ? route.meta : [route.meta];
 
-    for(let i=0; i < meta.length; i++) {
+    for (let i = 0; i < meta.length; i++) {
       if (meta[i][key]) {
         return meta[i][key];
       }

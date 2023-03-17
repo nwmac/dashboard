@@ -403,8 +403,6 @@ export default function({
             } else if (typeof impl === 'function') {
               // If it does not have the init function, then it is a pure function - which is the new approach
 
-              console.log('New mechanism !!!!!');
-
               // Pass it an IProducts interface
               const products = new Products(store);
 
@@ -417,7 +415,7 @@ export default function({
                 });
               });
 
-              console.error(app.router.getRoutes());
+              // DEBUG: console.error(app.router.getRoutes());
             }
           });
         }

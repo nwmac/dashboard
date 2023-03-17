@@ -1,4 +1,4 @@
-import { IPlugin, IProducts, IProduct, PluginRouteConfig, ProductOptions, RouteLink, Navigation } from '@shell/core/types';
+import { IProduct, ProductOptions, RouteLink, Navigation } from '@shell/core/types';
 import { RouteConfig } from 'vue-router';
 import { DSL as STORE_DSL } from '@shell/store/type-map';
 import DefaultProductComponent from './DefaultProductComponent.vue';
@@ -11,14 +11,13 @@ import ListNamespacedResource from '@shell/pages/c/_cluster/_product/_resource/_
 import { BLANK_CLUSTER } from 'store';
 
 export class Product implements IProduct {
-
   private store: any;
   private DSL: any;
   private modern = false;
 
   // Track changes made via the IProduct API and apply them once
   private routes: RouteConfig[] = [];
-  private nav: {[key: string]: any}  = {};
+  private nav: {[key: string]: any} = {};
   private virtualTypes: {[key: string]: any} = {};
   private basicTypes: string[] = [];
 
@@ -41,7 +40,7 @@ export class Product implements IProduct {
       removable:           false,
       showClusterSwitcher: false,
       ...options,
-      to: { name: this.name }
+      to:                  { name: this.name }
     });
 
     // Products created via this interface should be consider 'modern' - versus the legacy products with legacy routes
@@ -52,13 +51,13 @@ export class Product implements IProduct {
     this.routes.push(...routes);
   }
 
-  addNavigation(routes:  Navigation | Navigation[], grp?: string): void {
+  addNavigation(routes: Navigation | Navigation[], grp?: string): void {
     // Undefined group means the root group
     const routesArray = Array.isArray(routes) ? routes : [routes];
     const group = grp || 'ROOT';
 
     if (!this.nav[group]) {
-      this.nav[group] =[];
+      this.nav[group] = [];
     }
 
     routesArray.forEach((route) => {
@@ -88,17 +87,15 @@ export class Product implements IProduct {
   // Internal - not exposed by the IProduct interface
   // Called by extensions system after product init - applies the routes and navigation to the store
   _apply(addRoutes: Function) {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-    console.error('Applying product types');
-    console.log(this.routes);
+    // console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+    // console.error('Applying product types');
+    // console.log(this.routes);
 
     const baseName = this.modern ? this.name : `c-cluster-${ this.name }`;
 
     // Go through the virtual types and register those
     Object.keys(this.virtualTypes).forEach((name) => {
       const vt = this.virtualTypes[name];
-
-      console.log(vt);
 
       this.DSL.virtualType({
         name:       vt.name,
@@ -114,7 +111,7 @@ export class Product implements IProduct {
             cluster: BLANK_CLUSTER,
           }
         }
-      })
+      });
     });
 
     // Navigation
@@ -126,7 +123,7 @@ export class Product implements IProduct {
     });
 
     // Figure out the default route for the product
-    let defaultRoute: any = { component: DefaultProductComponent };
+    const defaultRoute: any = { component: DefaultProductComponent };
     // let defaultRoute: any = {};
 
     if (this.nav['ROOT'] && this.nav['ROOT'].length > 0) {
@@ -136,26 +133,19 @@ export class Product implements IProduct {
 
       // Can be a string or a Route
       if (typeof redirect === 'string') {
-        console.warn(redirect);
-        redirect = {
-          name: `${ this.name }-${ redirect }`
-        };
+        redirect = { name: `${ this.name }-${ redirect }` };
       } else {
         // TODO
-        console.log('*************************************************************************************************');
-        console.error('>>>>>>> ERROR >>>>>>>>>>>');
+        // console.log('*************************************************************************************************');
+        // console.error('>>>>>>> ERROR >>>>>>>>>>>');
       }
 
-      defaultRoute.meta = {
-        redirect: redirect
-      };
+      defaultRoute.meta = { redirect };
     }
 
     defaultRoute.meta = defaultRoute.meta || {};
     defaultRoute.meta.product = this.name;
     defaultRoute.meta.cluster = BLANK_CLUSTER;
-
-    console.log(defaultRoute);
 
     // Ensure the route has the blank cluster, otherwise the default layout won't think the cluster and won't load
     defaultRoute.params = defaultRoute.params || {};
@@ -165,22 +155,22 @@ export class Product implements IProduct {
     // Update the names of the child routes (should be recursive)
     // Names are always absolute - child names are not within the context of the parent
     // Prepend name
-    const basePath = this.modern ? `/${ this.name }`: `/c/:cluster/:product`;
+    const basePath = this.modern ? `/${ this.name }` : `/c/:cluster/:product`;
 
     this.routes.forEach((r) => {
       if (r.name) {
         r.name = `${ baseName }-${ r.name }`;
       }
 
-      r.path = `/${basePath }/${ r.path }`;
+      r.path = `/${ basePath }/${ r.path }`;
     });
 
     // Routes
     // Add top-level route for the product
     const productRoutes = [{
       route: {
-        name: `${ this.name }`,
-        path: `/${ this.name }`,
+        name:     `${ this.name }`,
+        path:     `/${ this.name }`,
         children: [],
         ...defaultRoute,
       }
@@ -214,10 +204,10 @@ export class Product implements IProduct {
         {
           name:      `${ this.name }-c-cluster-resource-namespace-id`,
           path:      `/${ this.name }c/:cluster/:resource/:namespace/:id`,
-          component: ListNamespacedResource,        
+          component: ListNamespacedResource,
         }
       ];
-    
+
       allRoutesToAdd.push(...typeRoutes);
     }
 
@@ -235,15 +225,13 @@ export class Product implements IProduct {
       r.meta.cluster = BLANK_CLUSTER;
 
       // Route needs to be in an object in the key 'route'
-      extRoutes.push({
-        route: r
-      });
+      extRoutes.push({ route: r });
     });
 
     addRoutes(extRoutes);
     addRoutes(productRoutes);
   }
-  
+
   // // NEW WORK!!!!
   // private _updateType(entry: any) {
   //   const {
@@ -361,6 +349,4 @@ export class Product implements IProduct {
   // updateType(entry: any) {
   //   this._updateType(entry);
   // }
-
-
 }

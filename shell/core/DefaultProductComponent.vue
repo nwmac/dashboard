@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'DefaultProductLayout',
+  name:   'DefaultProductLayout',
   layout: 'default',
 
   data() {
@@ -22,17 +22,20 @@ export default {
       }
     }
   }
-}
+};
 </script>
 
 <template>
   <div>
-    <div v-if="top" class="default-page">
+    <div
+      v-if="top"
+      class="default-page"
+    >
       <i class="icon icon-extension" />
       <h1>Default Landing page for product <b>{{ product }}</b></h1>
     </div>
     <div v-else>
-      <router-view></router-view>
+      <router-view />
     </div>
   </div>
 </template>

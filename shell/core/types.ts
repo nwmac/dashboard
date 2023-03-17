@@ -166,10 +166,10 @@ export interface IProduct {
    * String routes represent routes for resource types.
    * RouteLink routes represent routes for arbitrary pages/vue routes
    * @param routes
-   * @param grp 
+   * @param grp
    */
   addNavigation(routes: Navigation | Navigation[], grp?: string): void;
-};
+}
 
 // export type ProductOptions = {
 //   svg?: string;
@@ -181,7 +181,7 @@ export type ProductOptions = any;
 export interface IProducts {
   add(name: string, options?: ProductOptions): IProduct;
   get(name: string): IProduct | undefined;
-};
+}
 
 export type ProductsFunction = ((products: IProducts) => void);
 

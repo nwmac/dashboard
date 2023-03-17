@@ -7,7 +7,7 @@ import {
 } from '@shell/config/table-headers';
 
 export function init($plugin) {
-  console.log('$plugin init SINGLE PROD', $plugin);
+  // console.log('$plugin init SINGLE PROD', $plugin);
 
   /********************************************************
    *
