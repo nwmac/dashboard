@@ -153,6 +153,8 @@ export type RouteLink = {
   route: string | RouteLocation;
 }
 
+export type Navigation = string | RouteLink;
+
 export interface IProduct {
   /**
    * Add routes for the product
@@ -166,7 +168,7 @@ export interface IProduct {
    * @param routes
    * @param grp 
    */
-  addNavigation(routes: string | string[] | RouteLink | RouteLink[], grp?: string): void;
+  addNavigation(routes: Navigation | Navigation[], grp?: string): void;
 };
 
 // export type ProductOptions = {
@@ -178,7 +180,7 @@ export type ProductOptions = any;
 
 export interface IProducts {
   add(name: string, options?: ProductOptions): IProduct;
-  get(name: string): IProduct;
+  get(name: string): IProduct | undefined;
 };
 
 export type ProductsFunction = ((products: IProducts) => void);

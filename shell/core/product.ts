@@ -1,4 +1,4 @@
-import { IPlugin, IProducts, IProduct, PluginRouteConfig, ProductOptions, RouteLink } from '@shell/core/types';
+import { IPlugin, IProducts, IProduct, PluginRouteConfig, ProductOptions, RouteLink, Navigation } from '@shell/core/types';
 import { RouteConfig } from 'vue-router';
 import { DSL as STORE_DSL } from '@shell/store/type-map';
 import DefaultProductComponent from './DefaultProductComponent.vue';
@@ -14,6 +14,7 @@ export class Product implements IProduct {
 
   private store: any;
   private DSL: any;
+  private modern = false;
 
   // Track changes made via the IProduct API and apply them once
   private routes: RouteConfig[] = [];
@@ -40,20 +41,18 @@ export class Product implements IProduct {
       removable:           false,
       showClusterSwitcher: false,
       ...options,
-      to: {
-        name: 'advanced',
-        params: {
-          product: 'advanced'
-        }
-      }
+      to: { name: this.name }
     });
+
+    // Products created via this interface should be consider 'modern' - versus the legacy products with legacy routes
+    this.modern = true;
   }
 
   addRoutes(routes: RouteConfig[]): void {
     this.routes.push(...routes);
   }
 
-  addNavigation(routes: string | string[] | RouteLink | RouteLink[], grp?: string): void {
+  addNavigation(routes:  Navigation | Navigation[], grp?: string): void {
     // Undefined group means the root group
     const routesArray = Array.isArray(routes) ? routes : [routes];
     const group = grp || 'ROOT';
@@ -93,6 +92,8 @@ export class Product implements IProduct {
     console.error('Applying product types');
     console.log(this.routes);
 
+    const baseName = this.modern ? this.name : `c-cluster-${ this.name }`;
+
     // Go through the virtual types and register those
     Object.keys(this.virtualTypes).forEach((name) => {
       const vt = this.virtualTypes[name];
@@ -107,7 +108,7 @@ export class Product implements IProduct {
         weight:     100,
         label:      vt.name, // TODO: label key etc
         route:      {
-          name:   `${ this.name }-${ vt.name }`,
+          name:   `${ baseName }-${ vt.name }`,
           params: {
             product: this.name,
             cluster: BLANK_CLUSTER,
@@ -164,12 +165,14 @@ export class Product implements IProduct {
     // Update the names of the child routes (should be recursive)
     // Names are always absolute - child names are not within the context of the parent
     // Prepend name
+    const basePath = this.modern ? `/${ this.name }`: `/c/:cluster/:product`;
+
     this.routes.forEach((r) => {
       if (r.name) {
-        r.name = `${ this.name }-${ r.name }`;
+        r.name = `${ baseName }-${ r.name }`;
       }
 
-      r.path = `/${ this.name }/${ r.path }`;
+      r.path = `/${basePath }/${ r.path }`;
     });
 
     // Routes
@@ -188,7 +191,10 @@ export class Product implements IProduct {
     ];
 
     // If basic types are used, then add routes for types - List, Detail, Edit
-    if (this.basicTypes.length > 0) {
+    // Make sure we don't do this for explorer
+    const isExplorer = this.name === 'explorer';
+
+    if (!isExplorer && this.basicTypes.length > 0) {
       const typeRoutes: any[] = [
         {
           name:      `${ this.name }-c-cluster-resource`,

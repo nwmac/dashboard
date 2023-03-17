@@ -41,8 +41,22 @@ export class Products implements IProducts {
     return product;
   }
 
-  get(name: string): IProduct {
-    // TOD: Check product exists
-    return new Product(this.store, name);
+  /**
+   * Get an existing product
+   * @param name Product name
+   * @returns IProduct interface for the given product or undefined it the product does not exist
+   */
+  get(name: string): IProduct | undefined {
+    const all = this.store.getters['type-map/allProducts'];
+    const exists = all.find((p: any) => p.name === name);
+
+    if (exists) {
+      const p = new Product(this.store, name);
+      this.products.push(p);
+
+      return p;
+    }
+
+    return undefined;
   }
 }

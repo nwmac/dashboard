@@ -21,7 +21,7 @@ export default function(plugin: IPlugin) {
     // TODO: modifying an existing product's navigation
 
     // Simple call to add a new product that shows up in the side nav
-    const simpleProduct = products.add('neil');
+    const simpleProduct = products.add('simple');
 
     console.log(simpleProduct);
 
@@ -62,7 +62,6 @@ export default function(plugin: IPlugin) {
     advancedProduct.addNavigation({
       name: 'page2',
       route: 'page2'
-    });    
-
+    });
   });
 }

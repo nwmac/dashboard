@@ -842,6 +842,10 @@ export const getters = {
     });
   },
 
+  allProducts(state) {
+    return state.products;
+  },
+
   allTypes(state, getters, rootState, rootGetters) {
     return (product, mode = ALL) => {
       // console.error('state.products', state.products);

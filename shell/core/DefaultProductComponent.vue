@@ -2,7 +2,6 @@
 export default {
   name: 'DefaultProductLayout',
   layout: 'default',
-  // layout: 'plain',
 
   data() {
     const product = this.$route.params?.product || 'Unknown';
@@ -18,9 +17,6 @@ export default {
         const name = m.redirect.name;
 
         if (name !== route.name) {
-          console.log('REDIRECT!!!! *****************************************');
-          console.log(m.redirect);
-
           return redirect(m.redirect);
         }
       }
