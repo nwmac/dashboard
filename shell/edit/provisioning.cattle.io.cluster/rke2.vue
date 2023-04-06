@@ -321,6 +321,7 @@ export default {
       cisOverride:           false,
       cisPsaChangeBanner:    false,
       psps:                  null, // List of policies if any
+      machinePoolValidation: {} // map of validation states for each machine pool
     };
   },
 
@@ -972,6 +973,20 @@ export default {
         return false;
       }
     },
+
+    validationPassed() {
+      let base = (this.provider === 'custom' || this.isElementalCluster || !!this.credentialId);
+
+      // and in all of the validation statuses for each machine pool
+
+      console.log('Validation');
+      console.log(base);
+      console.log(this.machinePoolValidation);
+
+      Object.values(this.machinePoolValidation).forEach((v) => base = base && v);
+
+      return base;
+    },
   },
 
   watch: {
@@ -1184,6 +1199,8 @@ export default {
         return;
       }
 
+      console.log(entry);
+
       if ( entry.create ) {
         // If this is a new pool that isn't saved yet, it can just be dropped
         removeObject(this.machinePools, entry);
@@ -1267,10 +1284,6 @@ export default {
       if (this.membershipUpdate.save) {
         await this.membershipUpdate.save(this.value.mgmt.id);
       }
-    },
-
-    validationPassed() {
-      return (this.provider === 'custom' || this.isElementalCluster || !!this.credentialId);
     },
 
     cancelCredential() {
@@ -1956,6 +1969,20 @@ export default {
     handlePspChange(value) {
       this.lastDefaultPodSecurityPolicyTemplateName = value;
     },
+    
+    // Track Machine Pool validation status
+    machinePoolValidationChanged(value) {
+      console.error('machinePoolValidationChanged');
+      console.log(value);
+
+      if (value.id) {
+        if (value.valid === undefined) {
+          this.$delete(this.machinePoolValidation, value.id);
+        } else {
+          this.$set(this.machinePoolValidation, value.id, value.valid);
+        }
+      }
+    }
 
   },
 };
@@ -1972,7 +1999,7 @@ export default {
     v-else
     ref="cruresource"
     :mode="mode"
-    :validation-passed="validationPassed() && fvFormIsValid"
+    :validation-passed="validationPassed && fvFormIsValid"
     :resource="value"
     :errors="errors"
     :cancel-event="true"
@@ -1995,14 +2022,14 @@ export default {
       </Banner>
     </div>
     <SelectCredential
-      v-if="needCredential"
+      v-if="needCredential && !isView && !credentialId"
       v-model="credentialId"
       :mode="mode"
       :provider="provider"
       :cancel="cancelCredential"
       :showing-form="showForm"
+      class="mt-20"
     />
-
     <div
       v-if="showForm"
       class="mt-20"
@@ -2017,7 +2044,18 @@ export default {
         description-label="cluster.description.label"
         description-placeholder="cluster.description.placeholder"
         :rules="{name:fvGetAndReportPathRules('metadata.name')}"
-      />
+      >
+        <template slot="prefix">
+          <SelectCredential
+            v-if="needCredential"
+            v-model="credentialId"
+            :mode="mode"
+            :provider="provider"
+            :cancel="cancelCredential"
+            :showing-form="showForm"
+          />
+        </template>
+      </NameNsDescription>
 
       <Banner
         v-if="appsOSWarning"
@@ -2086,6 +2124,7 @@ export default {
                 :idx="idx"
                 :machine-pools="machinePools"
                 @error="e=>errors = e"
+                @validationChanged="machinePoolValidationChanged"
               />
             </Tab>
           </template>

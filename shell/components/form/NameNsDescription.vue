@@ -370,6 +370,12 @@ export default {
 <template>
   <div class="row mb-20">
     <div
+      v-if="$slots.prefix"
+      class="col span-3"
+    >
+      <slot name="prefix" />
+    </div>
+    <div
       v-if="namespaced && !nameNsHidden && createNamespace"
       :data-testid="componentTestid + '-namespace-create'"
       class="col span-3"

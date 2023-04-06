@@ -1,0 +1,5 @@
+asyncButton:
+  authenticate:
+    action: Authenticate
+    success: Authenticate
+    waiting: Authenticating&hellip;

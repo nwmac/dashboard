@@ -133,6 +133,12 @@ export default {
     }
   },
 
+  beforeDestroy() {
+    // Ensure we emit validation event so parent can forget any validation for this Machine Pool
+    // when it is removed
+    this.$emit('validationChanged', { id: this.uuid, valid: undefined });
+  },
+
   methods: {
     async test() {
       if ( typeof this.$refs.configComponent?.test === 'function' ) {
@@ -166,6 +172,11 @@ export default {
       if (advancedComponent && !advancedComponent.show) {
         advancedComponent.toggle();
       }
+    },
+
+    // Propagate up validation status for this Machine Pool
+    validationChanged(val) {
+      this.$emit('validationChanged', { id: this.uuid, valid: val });
     }
   }
 };
@@ -232,6 +243,7 @@ export default {
       @error="e=>errors = e"
       @updateMachineCount="updateMachineCount"
       @expandAdvanced="expandAdvanced"
+      @validationChanged="validationChanged"
     />
     <Banner
       v-else-if="value.configMissing"
