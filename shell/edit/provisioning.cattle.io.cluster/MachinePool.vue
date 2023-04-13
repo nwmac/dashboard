@@ -59,6 +59,12 @@ export default {
       type:    Array,
       default: () => []
     },
+
+    // Is the UI busy (e.g. during save)
+    busy: {
+      type: Boolean,
+      default: false,
+    }
   },
 
   data() {
@@ -134,9 +140,8 @@ export default {
   },
 
   beforeDestroy() {
-    // Ensure we emit validation event so parent can forget any validation for this Machine Pool
-    // when it is removed
-    this.$emit('validationChanged', { id: this.uuid, valid: undefined });
+    // Ensure we emit validation event so parent can forget any validation for this Machine Pool when it is removed
+    this.$emit('validationChanged', undefined);
   },
 
   methods: {
@@ -176,7 +181,7 @@ export default {
 
     // Propagate up validation status for this Machine Pool
     validationChanged(val) {
-      this.$emit('validationChanged', { id: this.uuid, valid: val });
+      this.$emit('validationChanged', val);
     }
   }
 };
@@ -191,7 +196,7 @@ export default {
           :mode="mode"
           :label="t('cluster.machinePool.name.label')"
           :required="true"
-          :disabled="!value.config || !!value.config.id"
+          :disabled="!value.config || !!value.config.id || busy"
         />
       </div>
       <div class="col span-4">
@@ -199,6 +204,7 @@ export default {
           v-model.number="value.pool.quantity"
           :mode="mode"
           :label="t('cluster.machinePool.quantity.label')"
+          :disabled="busy"
           type="number"
           min="0"
           :required="true"
@@ -212,18 +218,19 @@ export default {
           v-model="value.pool.etcdRole"
           :mode="mode"
           label="etcd"
-          :disabled="isWindows"
+          :disabled="isWindows || busy"
         />
         <Checkbox
           v-model="value.pool.controlPlaneRole"
           :mode="mode"
           label="Control Plane"
-          :disabled="isWindows"
+          :disabled="isWindows || busy"
         />
         <Checkbox
           v-model="value.pool.workerRole"
           :mode="mode"
           label="Worker"
+          :disabled="busy"
         />
       </div>
     </div>
@@ -240,6 +247,7 @@ export default {
       :credential-id="credentialId"
       :pool-index="idx"
       :machine-pools="machinePools"
+      :busy="busy"
       @error="e=>errors = e"
       @updateMachineCount="updateMachineCount"
       @expandAdvanced="expandAdvanced"

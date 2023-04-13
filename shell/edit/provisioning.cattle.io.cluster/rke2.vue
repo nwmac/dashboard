@@ -292,7 +292,7 @@ export default {
       allPSPs:                         null,
       allPSAs:                         [],
       nodeComponent:                   null,
-      credentialId:                    null,
+      credentialId:                    '',
       credential:                      null,
       machinePools:                    null,
       rke2Versions:                    null,
@@ -321,6 +321,7 @@ export default {
       cisOverride:           false,
       cisPsaChangeBanner:    false,
       psps:                  null, // List of policies if any
+      busy:                  false,
       machinePoolValidation: {} // map of validation states for each machine pool
     };
   },
@@ -663,7 +664,17 @@ export default {
         return false;
       }
 
+      if (this.customCredentialComponentRequired === false) {
+        return false;
+      }
+
       return true;
+    },
+
+    // Only for extensions - extension can register a 'false' cloud credential to indicate that a cloud credential is not needed
+    // Need to look this up directly in order to get the 'false' value
+    customCredentialComponentRequired() {
+      return this.$plugin.getDynamic('cloud-credential', this.provider);
     },
 
     hasMachinePools() {
@@ -978,11 +989,6 @@ export default {
       let base = (this.provider === 'custom' || this.isElementalCluster || !!this.credentialId);
 
       // and in all of the validation statuses for each machine pool
-
-      console.log('Validation');
-      console.log(base);
-      console.log(this.machinePoolValidation);
-
       Object.values(this.machinePoolValidation).forEach((v) => base = base && v);
 
       return base;
@@ -1159,6 +1165,7 @@ export default {
         remove: false,
         create: true,
         update: false,
+        uid:    name,
         pool:   {
           name,
           etcdRole:             numCurrentPools === 0,
@@ -1198,8 +1205,6 @@ export default {
       if ( !entry ) {
         return;
       }
-
-      console.log(entry);
 
       if ( entry.create ) {
         // If this is a new pool that isn't saved yet, it can just be dropped
@@ -1338,7 +1343,18 @@ export default {
       });
     },
 
+    // Set busy before save and clear after save
     async saveOverride(btnCb) {
+      this.$set(this, 'busy', true);
+
+      return this._doSaveOverride((done) => {
+        this.$set(this, 'busy', false);
+
+        return btnCb(done);
+      });
+    },
+
+    async _doSaveOverride(btnCb) {
       if ( this.errors ) {
         clear(this.errors);
       }
@@ -1971,19 +1987,13 @@ export default {
     },
     
     // Track Machine Pool validation status
-    machinePoolValidationChanged(value) {
-      console.error('machinePoolValidationChanged');
-      console.log(value);
-
-      if (value.id) {
-        if (value.valid === undefined) {
-          this.$delete(this.machinePoolValidation, value.id);
-        } else {
-          this.$set(this.machinePoolValidation, value.id, value.valid);
-        }
+    machinePoolValidationChanged(uid, value) {
+      if (value === undefined) {
+        this.$delete(this.machinePoolValidation, uid);
+      } else {
+        this.$set(this.machinePoolValidation, uid, value);
       }
     }
-
   },
 };
 </script>
@@ -2113,6 +2123,7 @@ export default {
               :name="obj.id"
               :label="obj.pool.name || '(Not Named)'"
               :show-header="false"
+              :error="!machinePoolValidation[obj.uid]"
             >
               <MachinePool
                 ref="pool"
@@ -2123,8 +2134,9 @@ export default {
                 :credential-id="credentialId"
                 :idx="idx"
                 :machine-pools="machinePools"
+                :busy="busy"
                 @error="e=>errors = e"
-                @validationChanged="machinePoolValidationChanged"
+                @validationChanged="v=>machinePoolValidationChanged(obj.uid, v)"
               />
             </Tab>
           </template>

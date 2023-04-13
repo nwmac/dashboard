@@ -13,6 +13,7 @@ export default function(plugin: IPlugin) {
 
   // Register cloud-credential component
   plugin.register('cloud-credential', 'openstack', () => import('./src/cloud-credential.vue'));
+  //plugin.register('cloud-credential', 'openstack', false);
 
   plugin.register('machine-config', 'openstack', () => import('./src/machine-config.vue'));
   // plugin.register('machine-config', 'openstack', () => import('./src/generic.vue'));

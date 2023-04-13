@@ -51,6 +51,11 @@ export default {
       default: false
     },
 
+    busy: {
+      type:    Boolean,
+      default: false
+    },
+
     provider: {
       type:     String,
       required: true,
@@ -259,6 +264,7 @@ export default {
       </div>
     </div>
     <div v-else>
+      <h1>{{ busy }}</h1>
       <div class="openstack-config">
         <div class="title">Openstack Configuration</div>
         <div class="loading" v-if="authenticating">
@@ -272,7 +278,7 @@ export default {
             v-model="flavors.selected"
             label="Flavor"
             :options="flavors.options"
-            :disabled="!flavors.enabled"
+            :disabled="!flavors.enabled || busy"
             :loading="flavors.busy"
             :searchable="false"
           />
@@ -283,7 +289,7 @@ export default {
             v-model="images.selected"
             label="Image"
             :options="images.options"
-            :disabled="!images.enabled"
+            :disabled="!images.enabled || busy"
             :loading="images.busy"
             :searchable="false"
           />
@@ -295,7 +301,7 @@ export default {
             v-model="keyPairs.selected"
             label="Key Pair"
             :options="keyPairs.options"
-            :disabled="!keyPairs.enabled"
+            :disabled="!keyPairs.enabled || busy"
             :loading="keyPairs.busy"
             :searchable="false"
           />
@@ -305,6 +311,7 @@ export default {
             label="Private Key"
             :mode="mode"
             :type="privateKeyFieldType"
+            :disabled="busy"
             v-model="filename"
           >
             <template v-slot:suffix>
@@ -313,6 +320,7 @@ export default {
                   label="..."
                   :mode="mode"
                   :include-file="true"
+                  :disabled="busy"
                   class="btn-sm"
                   @selected="onPrivateKeyFileSelected"
                 />
@@ -327,7 +335,7 @@ export default {
             v-model="securityGroups.selected"
             label="Security Groups"
             :options="securityGroups.options"
-            :disabled="!securityGroups.enabled"
+            :disabled="!securityGroups.enabled || busy"
             :loading="securityGroups.busy"
             :searchable="false"
           />
@@ -339,7 +347,7 @@ export default {
             v-model="availabilityZones.selected"
             label="Availability Zone"
             :options="availabilityZones.options"
-            :disabled="!availabilityZones.enabled"
+            :disabled="!availabilityZones.enabled || busy"
             :loading="availabilityZones.busy"
             :searchable="false"
           />
@@ -351,7 +359,7 @@ export default {
             v-model="floatingIpPools.selected"
             label="Floating IP Pools"
             :options="floatingIpPools.options"
-            :disabled="!floatingIpPools.enabled"
+            :disabled="!floatingIpPools.enabled || busy"
             :loading="floatingIpPools.busy"
             :searchable="false"
           />
@@ -361,7 +369,7 @@ export default {
             v-model="networks.selected"
             label="Networks"
             :options="networks.options"
-            :disabled="!networks.enabled"
+            :disabled="!networks.enabled || busy"
             :loading="networks.busy"
             :searchable="false"
           />
@@ -372,6 +380,7 @@ export default {
           <LabeledInput
             v-model="sshUser"
             :mode="mode"
+            :disabled="busy"
             label="SSH User ID"
           />
         </div>
