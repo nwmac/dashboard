@@ -26,3 +26,4 @@ coverage/
 build/
 public/
 pkg/**/node_modules
+pkg/openstack

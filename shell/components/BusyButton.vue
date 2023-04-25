@@ -75,7 +75,6 @@ export default Vue.extend({
       this.$emit('click', cb);
     },
 
-
     focus() {
       (this.$refs.btn as HTMLElement).focus();
     }
@@ -87,8 +86,6 @@ export default Vue.extend({
   <button
     ref="btn"
     class="btn role-primary"
-    :name="name"
-    :type="type"
     :disabled="disabled"
     :tab-index="tabIndex"
     :data-testid="componentTestid + '-async-button'"

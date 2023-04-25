@@ -13,12 +13,17 @@
     "sourceMap": true,
     "baseUrl": ".",
     "preserveSymlinks": true,
+    "typeRoots": [
+      "../../node_modules",
+      "../../shell/types"
+    ],
     "types": [
       "node",
       "webpack-env",
       "@types/node",
       "@types/jest",
-      "@nuxt/types"
+      "@nuxt/types",
+      "rancher"
     ],
     "lib": [
       "esnext",
@@ -33,6 +38,9 @@
       "@shell/config/*": [
         "../../shell/config/*"
       ],
+      "@shell/components/*": [
+        "../../shell/components/*"
+      ],
       "@shell/store/*": [
         "../../shell/store/*"
       ],
@@ -45,8 +53,14 @@
       "@shell/models/*": [
         "../../shell/models/*"
       ],
-      "@components/*": [
-        "../../pkg/rancher-components/*"
+      "@shell/mixins/*": [
+        "../../shell/mixins/*"
+      ],
+      "@shell/pages/*": [
+        "../../shell/pages/*"
+      ],
+      "@shell/types/*": [
+        "../../shell/types/*"
       ],
       "@pkg/*": [
         "./*"
@@ -58,10 +72,7 @@
     "**/*.d.ts",
     "**/*.tsx",
     "**/*.vue",
-    "../../shell/types/*.d.ts",
-    "../../shell/core/*.ts",
-    "../../shell/config/**/*.js",
-    "**/*.yaml",
+    "../../shell/core/types.ts",
     "../../vue-shim.d.ts",
   ],
   "exclude": [

@@ -62,7 +62,7 @@ export default {
 
     // Is the UI busy (e.g. during save)
     busy: {
-      type: Boolean,
+      type:    Boolean,
       default: false,
     }
   },

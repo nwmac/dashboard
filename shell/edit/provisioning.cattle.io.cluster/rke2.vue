@@ -989,7 +989,7 @@ export default {
       let base = (this.provider === 'custom' || this.isElementalCluster || !!this.credentialId);
 
       // and in all of the validation statuses for each machine pool
-      Object.values(this.machinePoolValidation).forEach((v) => base = base && v);
+      Object.values(this.machinePoolValidation).forEach(v => (base = base && v));
 
       return base;
     },
@@ -1347,7 +1347,7 @@ export default {
     async saveOverride(btnCb) {
       this.$set(this, 'busy', true);
 
-      return this._doSaveOverride((done) => {
+      return await this._doSaveOverride((done) => {
         this.$set(this, 'busy', false);
 
         return btnCb(done);
@@ -1985,7 +1985,7 @@ export default {
     handlePspChange(value) {
       this.lastDefaultPodSecurityPolicyTemplateName = value;
     },
-    
+
     // Track Machine Pool validation status
     machinePoolValidationChanged(uid, value) {
       if (value === undefined) {

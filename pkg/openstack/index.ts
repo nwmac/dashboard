@@ -1,5 +1,5 @@
 import { importTypes } from "@rancher/auto-import";
-import { IPlugin } from "core/types";
+import { IPlugin } from '@shell/core/types';
 
 // Init the package
 export default function(plugin: IPlugin) {

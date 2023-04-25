@@ -1,7 +1,7 @@
 {
   "name": "openstack",
   "description": "Openstack UI",
-  "icon": "https://raw.githubusercontent.com/rancher/dashboard/0b6cbe93e9ed3292294da178f119a500cc494db9/pkg/epinio/assets/logo-epinio.svg",
+  "icon": "https://raw.githubusercontent.com/rancher/dashboard/master/shell/assets/images/providers/openstack.svg",
   "version": "0.1.0",
   "private": false,
   "rancher": true,

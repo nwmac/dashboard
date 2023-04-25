@@ -63,10 +63,6 @@ export default {
   },
 
   async fetch() {
-    console.error('openstack machine driver');
-
-    console.log(this.value);
-
     this.errors = [];
     if ( !this.credentialId ) {
       return;
@@ -99,7 +95,7 @@ export default {
       // this.credential = null;
       this.password = '';
       this.havePassword = false;
-      console.error(e);
+      console.error(e); // eslint-disable-line no-console
     }
 
     this.$set(this, 'authenticating', true);
@@ -159,20 +155,6 @@ export default {
 
   methods: {
     stringify,
-
-    // resetOptions() {
-    //   console.log('reset options');
-    //   console.log(this);
-
-    //   Object.keys(this).forEach((k) => {
-    //     const field = this[k];
-
-    //     if (typeof field === 'object' && field.hasOwnProperty('busy') && field.hasOwnProperty('enabeld')) {
-    //       field.busy = true;
-
-    //     }.has)
-    //   }
-    //},
 
     initForViewMode() {
       this.fakeSelectOptions(this.flavors, this.value?.flavorName);
@@ -264,7 +246,6 @@ export default {
       </div>
     </div>
     <div v-else>
-      <h1>{{ busy }}</h1>
       <div class="openstack-config">
         <div class="title">Openstack Configuration</div>
         <div class="loading" v-if="authenticating">
@@ -312,6 +293,7 @@ export default {
             :mode="mode"
             :type="privateKeyFieldType"
             :disabled="busy"
+            :required="true"
             v-model="filename"
           >
             <template v-slot:suffix>
@@ -381,6 +363,7 @@ export default {
             v-model="sshUser"
             :mode="mode"
             :disabled="busy"
+            :required="true"
             label="SSH User ID"
           />
         </div>
@@ -392,10 +375,16 @@ export default {
   .file-button {
     align-items: center;
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: 0;
+    right: 0;
     height: 100%;
     display: flex;
+
+    > .file-selector {
+      height: calc($input-height - 2px);
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 
   .openstack-config {

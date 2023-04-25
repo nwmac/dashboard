@@ -1,6 +1,4 @@
 <script>
-import Loading from '@shell/components/Loading';
-import CreateEditView from '@shell/mixins/create-edit-view';
 import { LabeledInput } from '@components/Form/LabeledInput';
 import LabeledSelect from '@shell/components/form/LabeledSelect';
 import BusyButton from '@shell/components/BusyButton.vue';
@@ -8,37 +6,27 @@ import BusyButton from '@shell/components/BusyButton.vue';
 export default {
   components: {
     BusyButton,
-    Loading,
     LabeledInput,
     LabeledSelect,
   },
-  mixins: [CreateEditView],
 
-  async fetch() {
-    // let cur = (this.value.decodedData.defaultRegion || '').toLowerCase();
+  props: {
+    mode: {
+      type:     String,
+      required: true,
+    },
 
-    // if ( !cur ) {
-    //   cur = this.$store.getters['aws/defaultRegion'];
-    //   this.value.setData('defaultRegion', cur);
-    // }
-
-    // this.knownRegions = await this.$store.dispatch('aws/defaultRegions');
-
-    // if ( !this.knownRegions.includes(cur) ) {
-    //   this.knownRegions.unshift(cur);
-    // }
-
-  },
+    value: {
+      type:     Object,
+      required: true,
+    },
+  },  
 
   data() {
-    console.error('openstack');
-    console.error(this);
-
     return {
       projects:     null,
       step:         1,
       busy:         false,
-      knownRegions: null,
       project:      '',
     };
   },
@@ -57,8 +45,9 @@ export default {
   },
 
   methods: {
-    // Validate that we can get a token for the project that the user has selected
+    // TODO: Validate that we can get a token for the project that the user has selected
     async test() {
+      // TODO
       this.value.openstackcredentialConfig.neil = 'heyheyhey!';
 
       this.value.annotations['openstack.cattle.io/username'] = this.value.decodedData.username;
@@ -66,8 +55,6 @@ export default {
       this.value.annotations['openstack.cattle.io/endpoint'] = this.value.decodedData.endpoint;
 
       const project = this.projects.find(p => p.id === this.project);
-
-      console.log(project);
 
       if (project) {
         this.value.annotations['openstack.cattle.io/projectName'] = project.name;
@@ -78,27 +65,24 @@ export default {
       return true;
     },
 
+    // When the user clicked 'Edit Auth Config', clear the projects and set the step back to 1
+    // so the user can modify the credentials needed to fetch the projects
     clear() {
       this.$set(this, 'step', 1);
       this.$set(this, 'projects', null);
 
+      // Tell parent that the form is not invalid
       this.$emit('validationChanged', false);
     },
 
     async connect(cb) {
-      console.error(this.value);
-
       const endpoint = this.value.decodedData.endpoint.replace(/^https?:\/\//, '');
-
-      console.log(endpoint);
 
       this.$set(this, 'step', 2);
       this.$set(this, 'busy', true);
 
       const baseUrl = `/meta/proxy/${ endpoint }`;
-
       const url = `${ baseUrl }/auth/tokens`;
-
       const data = {
         auth: {
           identity: {
@@ -116,12 +100,7 @@ export default {
         }
       };
 
-      console.log(url);
-
       const headers = { Accept: 'application/json' };
-
-      // headers['x-api-auth-header'] = `Bearer NONE`;
-      // headers['x-api-cattleauth-header'] = `Bearer credID=1 passwordField=accessToken`;
 
       try {
         const res = await this.$store.dispatch('management/request', {
@@ -132,21 +111,11 @@ export default {
           data
         }, { root: true });
 
-        console.log(res);
-
         const token = res._headers['x-subject-token'];
-
-        console.log(token);
-
         const userId = res?.token?.user?.id;
+        const authHeaders = { 'X-Auth-Token': token };
 
-        console.log(userId);
-
-        const authHeaders = {
-          'x-api-auth-header': token,
-          'X-Auth-Token': token
-        };
-
+        // Fetch the list of projects for the user
         const res2 = await this.$store.dispatch('management/request', {
           url: `${ baseUrl }/users/${ userId }/projects`,
           headers: authHeaders,
@@ -154,38 +123,32 @@ export default {
           redirectUnauthorized: false,
         }, { root: true });
 
-        console.log(res2);
-
         if (res2?.projects) {
           this.$set(this, 'projects', res2.projects);
         }
       } catch (e) {
-        console.error(e);
+        console.error(e); // eslint-disable-line no-console
       }
-
-      cb(true);
 
       this.$set(this, 'busy', false);
       this.$set(this, 'project', this.projectOptions[0]?.value);
       this.$emit('validationChanged', true);
+
+      cb(true);
     }
   }
 };
 </script>
 
 <template>
-  <Loading
-    v-if="$fetchState.pending"
-    :delayed="true"
-  />
-  <div v-else>
+  <div>
     <div class="row">
       <div class="col span-6">
       <LabeledInput
         :value="value.decodedData.endpoint"
         :disabled="step !== 1"
-        label="Openstack Authentication URL"
-        placeholder-key="cluster.credential.aws.accessKey.placeholder"
+        label-key="driver.openstack.auth.fields.endpoint"
+        placeholder-key="driver.openstack.auth.placeholders.endpoint"
         type="text"
         :mode="mode"
         @input="value.setData('endpoint', $event);"
@@ -195,8 +158,8 @@ export default {
         <LabeledInput
           :value="value.decodedData.domainName"
           :disabled="step !== 1"
-          label="Domain Name"
-          placeholder-key="cluster.credential.aws.secretKey.placeholder"
+          label-key="driver.openstack.auth.fields.domainName"
+          placeholder-key="driver.openstack.auth.placeholders.domainName"
           type="text"
           :mode="mode"
           @input="value.setData('domainName', $event);"
@@ -209,8 +172,8 @@ export default {
           :value="value.decodedData.username"
           :disabled="step !== 1"
           class="mt-20"
-          label="Username"
-          placeholder-key="cluster.credential.aws.secretKey.placeholder"
+          label-key="driver.openstack.auth.fields.username"
+          placeholder-key="driver.openstack.auth.placeholders.username"
           type="text"
           :mode="mode"
           @input="value.setData('username', $event);"
@@ -221,8 +184,8 @@ export default {
           :value="value.decodedData.password"
           :disabled="step !== 1"
           class="mt-20"
-          label="Password"
-          placeholder-key="cluster.credential.aws.secretKey.placeholder"
+          label-key="driver.openstack.auth.fields.password"
+          placeholder-key="driver.openstack.auth.placeholders.password"
           type="password"
           :mode="mode"
           @input="value.setData('password', $event);"
@@ -231,7 +194,7 @@ export default {
     </div>
 
     <BusyButton
-      label="Authenticate"
+      label-key="driver.openstack.auth.actions.authenticate"
       :disabled="step !== 1"
       class="mt-20"
       @click="connect"
@@ -241,7 +204,7 @@ export default {
       class="btn role-primary mt-20 ml-20"
       :disabled="busy || step === 1"
       @click="clear"
-    >Edit Auth Config</button>
+    >{{ t('driver.openstack.auth.actions.edit') }}</button>
 
     <div
       v-if="projects"
@@ -250,7 +213,7 @@ export default {
       <div class="col span-6">
         <LabeledSelect
           v-model="project"
-          label="Project"
+          label-key="driver.openstack.auth.fields.project"
           :options="projectOptions"
           :searchable="false"
         />

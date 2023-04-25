@@ -1,16 +1,16 @@
 export class Openstack {
 
-  public domainName: string;
-  public endpoint: string;
-  public projectDomainName: string;
-  public projectId: string;
-  public projectName: string;
-  public username: string;
-  public password: string;
-  public token: string;
+  public domainName: string = '';
+  public endpoint: string = '';
+  public projectDomainName: string = '';
+  public projectId: string = '';
+  public projectName: string = '';
+  public username: string = '';
+  public password: string = '';
+  public token: string = '';
   private catalog: any;
   private endpoints: any;
-  private region: string;
+//  private region: string = '';
 
   private $dispatch: any;
 
@@ -84,9 +84,9 @@ export class Openstack {
           if (iface) {
             this.endpoints[service.type] = iface.url;
 
-            if (service.importTypes === 'compute') {
-              this.region = iface.region;
-            }
+            // if (service.importTypes === 'compute') {
+            //   this.region = iface.region;
+            // }
           }
         });
       }
