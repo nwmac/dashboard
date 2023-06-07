@@ -98,7 +98,7 @@ export type Action = {
   icon?: string;
   multiple?: boolean;
   enabled?: (ctx: any) => boolean;
-  invoke: (opts: ActionOpts, resources: any[]) => void | boolean | Promise<boolean>;
+  invoke: (opts: ActionOpts, resources: any[], globals?: any) => void | boolean | Promise<boolean>;
 };
 
 /** Definition of a panel (options that can be passed when defining an extension panel enhancement) */
