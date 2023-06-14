@@ -18,7 +18,13 @@ const getSpecPattern = (): string[] => {
   const activePaths = optionalPaths.filter(({ active }) => Boolean(active)).map(({ path }) => path);
 
   // List the test directories to be included
-  const testDirs = ['pages', 'navigation', 'global-ui'].map((dir) => `cypress/e2e/tests/${ dir }/**/*.spec.ts`);
+  let testDirs = ['pages', 'navigation', 'global-ui'].map((dir) => `cypress/e2e/tests/${ dir }/**/*.spec.ts`);
+
+  if (!!process.env.TEST_E2E_FOLDERS) {
+    testDirs = [];
+  }
+
+  testDirs.forEach(d => console.log(d));
 
   return [
     ...activePaths,

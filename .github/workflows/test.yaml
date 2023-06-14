@@ -26,8 +26,31 @@ env:
   CYPRESS_coverage: true
 
 jobs:
-  e2e-test:
-    if: "!contains( github.event.pull_request.labels.*.name, 'ci/skip-e2e')"
+  e2e-build:
+    if: "!contains( github.event.pull_request.labels.*.name, 'ci/skip-e2e') && github.event_name == 'pull_request'"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+      
+      - name: Install packages
+        run: yarn install:ci
+      
+      - name: Prepare build
+        run: yarn e2e:pre-prod
+
+      - name: Upload build
+        uses: actions/upload-artifact@v3
+        with:
+          name: e2e-build
+          path: dist
+
+  e2e-test-all:
+    if: "!contains( github.event.pull_request.labels.*.name, 'ci/skip-e2e') && github.event_name != 'pull_request'"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -61,6 +84,44 @@ jobs:
         with:
           name: ${{github.run_number}}-${{github.run_attempt}}-screenshots
           path: cypress/screenshots
+
+  e2e-test-suite1:
+    if: "!contains( github.event.pull_request.labels.*.name, 'ci/skip-e2e') && github.event_name == 'pull_request'"
+    runs-on: ubuntu-latest
+    needs: e2e-build
+    env:
+      TEST_E2E_FOLDERS: true
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+      
+      - name: Install packages
+        run: yarn install:ci
+
+      - name: Start backend
+        run: yarn e2e:pre-prod-pre-built
+      
+      - name: Download e2e build
+        uses: actions/download-artifact@v3
+        with:
+          name: e2e-build        
+      
+      - name: Run tests
+        run: |
+          yarn e2e:prod
+
+      # mkdir -p coverage-artifacts/coverage
+
+      # - name: Upload screenshots
+      #   uses: actions/upload-artifact@v2
+      #   if: ${{ failure() }}
+      #   with:
+      #     name: ${{github.run_number}}-${{github.run_attempt}}-screenshots
+      #     path: cypress/screenshots
 
   unit-test:
     runs-on: ubuntu-latest
