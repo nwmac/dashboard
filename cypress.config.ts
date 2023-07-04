@@ -24,7 +24,7 @@ const getSpecPattern = (): string[] => {
     testDirs = [];
   }
 
-  testDirs.forEach(d => console.log(d));
+  testDirs.forEach(d => console.log(d)); // eslint-disable-line no-console
 
   return [
     ...activePaths,
