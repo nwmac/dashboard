@@ -47,7 +47,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: e2e-build
-          path: dist
+          path: |
+            dist
+            dist-ember
 
   e2e-test-all:
     if: "!contains( github.event.pull_request.labels.*.name, 'ci/skip-e2e') && github.event_name != 'pull_request'"
