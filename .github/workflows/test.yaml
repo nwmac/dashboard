@@ -104,13 +104,13 @@ jobs:
       - name: Install packages
         run: yarn install:ci
 
-      - name: Start backend
-        run: yarn e2e:pre-prod-pre-built
-      
       - name: Download e2e build
         uses: actions/download-artifact@v3
         with:
           name: e2e-build        
+      
+      - name: Start backend
+        run: yarn e2e:pre-prod-pre-built
       
       - name: Run tests
         run: |
@@ -142,13 +142,13 @@ jobs:
       - name: Install packages
         run: yarn install:ci
 
-      - name: Start backend
-        run: yarn e2e:pre-prod-pre-built
-      
       - name: Download e2e build
         uses: actions/download-artifact@v3
         with:
           name: e2e-build        
+      
+      - name: Start backend
+        run: yarn e2e:pre-prod-pre-built
       
       - name: Run tests
         run: |
