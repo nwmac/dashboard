@@ -420,21 +420,6 @@ export default {
         />
       </template>
     </div>
-    <!-- Cluster tools -->
-    <n-link
-      v-if="showClusterTools"
-      tag="div"
-      class="tools"
-      :to="{name: 'c-cluster-explorer-tools', params: {cluster: clusterId}}"
-    >
-      <a
-        class="tools-button"
-        @click="collapseAll()"
-      >
-        <i class="icon icon-gear" />
-        <span>{{ t('nav.clusterTools') }}</span>
-      </a>
-    </n-link>
     <!-- SideNav footer area (seems to be tied to harvester) -->
     <div
       v-if="showProductFooter"

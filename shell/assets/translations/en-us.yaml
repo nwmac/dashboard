@@ -2413,8 +2413,8 @@ glance:
   secretsTable: Full secrets list
 
 clusterBadge:
-  addLabel: Add Cluster Badge
-  editLabel: Edit Cluster Badge
+  customizeAppearance: Customize Appearance
+  editAppearance: Edit Appearance
   modal:
     title: Custom Cluster Badge
     checkbox: Show cluster comment
