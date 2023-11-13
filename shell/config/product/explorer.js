@@ -329,7 +329,7 @@ export function init(store) {
   });
 
   virtualType({
-    labelKey:         'nav.clusterTools',
+    labelKey:         'nav.tools',
     group:            'cluster',
     icon:             'globe',
     namespaced:       false,
