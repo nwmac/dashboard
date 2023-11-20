@@ -189,10 +189,6 @@ export default {
       set(this.value.spec, 'rkeConfig.machineGlobalConfig', {});
     }
 
-    if ( !this.value.spec.rkeConfig.machineSelectorConfig?.length ) {
-      set(this.value.spec, 'rkeConfig.machineSelectorConfig', [{ config: {} }]);
-    }
-
     const truncateLimit = this.value.defaultHostnameLengthLimit;
 
     return {
@@ -562,11 +558,11 @@ export default {
       }
 
       if (this.showCloudProvider) { // Shouldn't be removed such that changes to it will re-trigger this watch
-        if ( this.agentConfig['cloud-provider-name'] === 'rancher-vsphere' ) {
+        if ( this.agentConfig?.['cloud-provider-name'] === 'rancher-vsphere' ) {
           names.push('rancher-vsphere-cpi', 'rancher-vsphere-csi');
         }
 
-        if ( this.agentConfig['cloud-provider-name'] === HARVESTER ) {
+        if ( this.agentConfig?.['cloud-provider-name'] === HARVESTER ) {
           names.push(HARVESTER_CLOUD_PROVIDER);
         }
       }
@@ -616,7 +612,7 @@ export default {
         }
       }
 
-      const cur = this.agentConfig['cloud-provider-name'];
+      const cur = this.agentConfig?.['cloud-provider-name'];
 
       if (cur && !out.find((x) => x.value === cur)) {
         // Localization missing
@@ -860,12 +856,15 @@ export default {
         set(this.value, 'spec', {});
       }
 
-      if ( !this.value.spec.machineSelectorConfig ) {
-        set(this.value.spec, 'machineSelectorConfig', []);
+      if ( !this.value.spec.rkeConfig ) {
+        set(this.value.spec, 'rkeConfig', []);
+      }
+      if ( !this.value.spec.rkeConfig.machineSelectorConfig ) {
+        set(this.value.spec.rkeConfig, 'machineSelectorConfig', []);
       }
 
-      if ( !this.value.spec.machineSelectorConfig.find((x) => !x.machineLabelSelector) ) {
-        this.value.spec.machineSelectorConfig.unshift({ config: {} });
+      if ( !this.value.spec.rkeConfig.machineSelectorConfig.find((x) => !x.machineLabelSelector) ) {
+        this.value.spec.rkeConfig.machineSelectorConfig.unshift({ config: {} });
       }
 
       if ( this.value.spec.cloudCredentialSecretName ) {
