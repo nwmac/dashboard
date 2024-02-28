@@ -216,6 +216,10 @@ export default {
     return out;
   },
 
+  schemasLoaded: (state) => {
+    return !!state.types[SCHEMA];
+  },
+
   defaultFor: (state, getters) => (type) => {
     const schema = getters['schemaFor'](type);
 

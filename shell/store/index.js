@@ -290,20 +290,34 @@ export const getters = {
     return getters['management/byId'](MANAGEMENT.CLUSTER, state.clusterId);
   },
 
+  // Current product checks that the current product is active, if it is not, if
+  // falls back to the explorer product and then the first active product.
   currentProduct(state, getters) {
-    const active = getters['type-map/activeProducts'];
+    let product = state.productId || EXPLORER;
+    let cache = {};
 
-    let out = findBy(active, 'name', state.productId);
+    // Rather than determining all active products, just check the current product (more performant)
+    let res = getters['type-map/isProductActive'](product, cache);
 
-    if ( !out ) {
-      out = findBy(active, 'name', EXPLORER);
+    if (!res) {
+      // Not active
+      product = EXPLORER;
+
+      res = getters['type-map/isProductActive'](product, cache);
+
+      if (!res) {
+        const allActive = getters['type-map/activeProducts'];
+
+        return allActive[0];
+      }
     }
 
-    if ( !out ) {
-      out = active[0];
-    }
+    // Lookup the product
+    return state['type-map']?.products.find((p) => p.name === product);
+  },
 
-    return out;
+  allProducts(state) {
+    return state['type-map']?.products || [];
   },
 
   // Get the root product - this is either the current product or the current product's root (if set)
@@ -654,6 +668,7 @@ export const mutations = {
     state.clusterId = neu;
   },
 
+  // Note: This is only used by the authenticated middleware to change the current product
   setProduct(state, value) {
     state.productId = value;
 
@@ -762,7 +777,6 @@ export const actions = {
 
     res = await allHash(promises);
     dispatch('i18n/init');
-    const isMultiCluster = getters['isMultiCluster'];
 
     // If the local cluster is a Harvester cluster and 'rancher-manager-support' is true, it means that the embedded Rancher is being used.
     const localCluster = res.clusters?.find((c) => c.id === 'local');
@@ -806,6 +820,9 @@ export const actions = {
       });
     }
 
+    // Should have loaded now, so can check isMultiCluster
+    const isMultiCluster = getters['isMultiCluster'];
+
     console.log(`Done loading management; isRancher=${ isRancher }; isMultiCluster=${ isMultiCluster }`); // eslint-disable-line no-console
   },
 
@@ -821,7 +838,6 @@ export const actions = {
     const sameCluster = state.clusterId && state.clusterId === id;
     const samePackage = oldPkg?.name === newPkg?.name;
     const sameProduct = oldProduct === product;
-    const isMultiCluster = getters['isMultiCluster'];
 
     const productConfig = state['type-map']?.products?.find((p) => p.name === product);
     const oldProductConfig = state['type-map']?.products?.find((p) => p.name === oldProduct);
@@ -890,7 +906,7 @@ export const actions = {
       return;
     }
 
-    console.log(`Loading ${ isMultiCluster ? 'ECM ' : '' }cluster...`); // eslint-disable-line no-console
+    console.log(`Loading cluster...`); // eslint-disable-line no-console
 
     // If we've entered a new store ensure everything has loaded correctly
     if (newPkgClusterStore) {
