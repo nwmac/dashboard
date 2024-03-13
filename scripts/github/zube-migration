@@ -32,6 +32,7 @@ const STATUS_MAP = {
 // -z = zube_status - only migrate issues with the given zube label
 // -p = project - GH project in the format 'org#number'
 // -a = apply - make the changes (default is dry-run that shows which changes will be made)
+// -s = size = sync estimates from size labels and not status
 
 // Parse the options
 
