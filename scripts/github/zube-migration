@@ -137,6 +137,8 @@ async function syncStatus() {
 
   // console.log(project);
 
+  console.log('Fetching issues...');
+  
   // Fetch all of the matching issues
   const issues = await request.ghFetchOpenIssues(options.repo[0], options.repo[1], options.milestone, options.zubeStatus);
 
@@ -308,8 +310,7 @@ async function syncEstimate() {
     return;
   }
 
-  console.log('Fetched project');
-
+  // console.log('Fetched project');
   // console.log(project);
 
   if (!project.storyPointsField) {
@@ -317,6 +318,8 @@ async function syncEstimate() {
 
     return;
   }
+
+  console.log('Fetching issues...');
 
   // Fetch all of the matching issues in the project
   const issues = await request.ghFetchOpenIssuesInProject(options.project[0], options.project[1], options.milestone, options.zubeStatus);

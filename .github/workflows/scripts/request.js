@@ -260,7 +260,7 @@ async function ghQueryIssues(query, previous) {
     }
 
     if (res.data.search.pageInfo.hasNextPage) {
-      return await ghQueryIssues(org, repo, query, res.data.search)
+      return await ghQueryIssues(query, res.data.search)
     }
 
     return res.data.search.nodes;
