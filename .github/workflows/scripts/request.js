@@ -34,13 +34,17 @@ async function ghProject(org, num) {
                 name
               }
             }
+            ... on ProjectV2FieldCommon {
+              id
+              name
+            }            
         	}
       	}        
       }
     }
   }`;
 
-  console.log(gQL);
+  // console.log(gQL);
 
   const res = await graphql(gQL);
 
@@ -64,6 +68,15 @@ async function ghProject(org, num) {
         options: optionMap
       };
     }
+
+    const storyPointsField = v2Project.fields?.nodes.find((node) => node.name === 'Story Points');
+
+    if (storyPointsField) {
+      prj.storyPointsField = {
+        id: storyPointsField.id
+      };
+    }
+
   } else {
     console.log(res);
   }
@@ -167,6 +180,24 @@ async function ghFetchOpenIssues(org, repo, milestone, label, previous) {
     extra += ` label:\\"${label}\\"`;
   }
 
+  const query = `repo:${org}/${repo} ${extra}`;
+
+  return ghQueryIssues(query, previous);
+}
+
+async function ghFetchOpenIssuesInProject(org, projectId, milestone, label, previous) {
+  let extra = milestone ? `milestone:${ milestone }` : '';
+
+  if (label) {
+    extra += ` label:\\"${label}\\"`;
+  }
+
+  const query = `project:${org}/${projectId} ${extra}`;
+
+  return ghQueryIssues(query, previous);
+}
+
+async function ghQueryIssues(query, previous) {
   let after = '';
 
   if (previous && previous.pageInfo?.endCursor) {
@@ -174,7 +205,7 @@ async function ghFetchOpenIssues(org, repo, milestone, label, previous) {
   }
 
   const gQL = `query {
-    search(first:100, ${after} type:ISSUE, query:"is:open is:issue repo:${org}/${repo} ${extra}") {
+    search(first:100, ${after} type:ISSUE, query:"is:open is:issue ${query}") {
       issueCount,
       pageInfo {
         startCursor
@@ -205,6 +236,11 @@ async function ghFetchOpenIssues(org, repo, milestone, label, previous) {
                   id
                 }
               }
+              storyPoints: fieldValueByName(name: "Story Points") {
+                ...on ProjectV2ItemFieldNumberValue {
+                  number
+                }
+              }
             }
           }
         }
@@ -224,7 +260,7 @@ async function ghFetchOpenIssues(org, repo, milestone, label, previous) {
     }
 
     if (res.data.search.pageInfo.hasNextPage) {
-      return await ghFetchOpenIssues(org, repo, milestone, label, res.data.search)
+      return await ghQueryIssues(org, repo, query, res.data.search)
     }
 
     return res.data.search.nodes;
@@ -321,4 +357,5 @@ module.exports = {
     ghProjectIssue,
     ghUpdateProjectIssueStatus,
     ghFetchOpenIssues,
+    ghFetchOpenIssuesInProject,
 };
