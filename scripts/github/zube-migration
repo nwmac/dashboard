@@ -9,9 +9,22 @@ console.log('=========================================');
 console.log('');
 
 const STATUS_MAP = {
-  'Backlog': 'Backlog',
   'To Triage': 'To Triage',
+  'Backlog': 'Backlog',
+  'Icebox': 'Ice Box',
   'Groomed': 'Groomed',
+  'Design Triage': 'To Triage',
+  'Backend Blocked': 'Backend Blocked',
+  'Next Up': 'Working',
+  'Reopened': 'Reopened',
+  'Working': 'Working',
+  'Review': 'Review',
+  'To Test': 'To Test',
+  'QA Review': 'QA Review',
+  'QA Next up': 'QA Working',
+  'QA Blocked': 'QA Blocked',
+  'QA Working': 'QA Working',
+  'Done': 'Done',
 };
 
 // Options
