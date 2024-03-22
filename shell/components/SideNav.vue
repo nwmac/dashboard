@@ -117,12 +117,6 @@ export default {
 
     favoriteTypes: mapPref(FAVORITE_TYPES),
 
-    showClusterTools() {
-      return this.isExplorer &&
-             this.$store.getters['cluster/canList'](CATALOG.CLUSTER_REPO) &&
-             this.$store.getters['cluster/canList'](CATALOG.APP);
-    },
-
     supportLink() {
       const product = this.currentProduct;
 
