@@ -180,7 +180,7 @@ export default {
     showClusterTools() {
       return this.$store.getters['cluster/canList'](CATALOG.CLUSTER_REPO) &&
       this.$store.getters['cluster/canList'](CATALOG.APP);
-    },    
+    },
 
     displayProvider() {
       const other = 'other';
