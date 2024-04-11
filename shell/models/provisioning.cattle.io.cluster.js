@@ -17,6 +17,32 @@ import capitalize from 'lodash/capitalize';
  * @extends SteveModel
  */
 export default class ProvCluster extends SteveModel {
+  get customProvisionerHelper() {
+    const fromAnnotation = this.annotations?.[CAPI_ANNOTATIONS.UI_CUSTOM_PROVIDER];
+
+    if (fromAnnotation) {
+      // Check if the helper we have cached matches the provider
+      if (this.customProvisionerHelperProvider !== fromAnnotation) {
+        this.customProvisionerHelperProvider = fromAnnotation;
+
+        const customProvisionerCls = this.$rootState.$plugin.getDynamic('provisioner', fromAnnotation);
+
+        if (customProvisionerCls) {
+          const context = {
+            dispatch: this.$dispatch,
+            getters:  this.$getters,
+            $plugin:  this.$rootState.$plugin,
+            $t:       this.t
+          };
+
+          this.customProvisionerHelperObject = new customProvisionerCls(context);
+        }
+      }
+    }
+
+    return this.customProvisionerHelperObject;
+  }
+
   get details() {
     const out = [
       {
@@ -477,6 +503,10 @@ export default class ProvCluster extends SteveModel {
   }
 
   get machineProviderDisplay() {
+    if (this.customProvisionerHelper?.machineProviderDisplay) {
+      return this.customProvisionerHelper?.machineProviderDisplay(this);
+    }
+
     if ( this.isImported ) {
       return null;
     }
@@ -933,6 +963,39 @@ export default class ProvCluster extends SteveModel {
 
     if ( res?._status === 204 ) {
       await this.$dispatch('ws.resource.remove', { data: this });
+    }
+
+    // If this cluster has a custom provisioner, allow it to do custom deletion
+    const customProvisionerCls = this.$rootState.$plugin.getDynamic('provisioner', this.machineProvider);
+
+    if (customProvisionerCls) {
+      const context = {
+        dispatch: this.$dispatch,
+        getters:  this.$getters,
+        $plugin:  this.$rootState.$plugin,
+        $t:       this.t
+      };
+
+      const customProv = new customProvisionerCls(context);
+
+      if (customProv?.postDelete) {
+        await customProv.postDelete(this);
+      }
+    }
+  }
+
+  get groupByParent() {
+    return this.metadata.annotations?.['ui.rancher/parent-cluster'];
+  }
+
+  get groupByLabel() {
+    const name = this.groupByParent;
+
+    if (name) {
+      // return this.$rootGetters['i18n/t']('resourceTable.groupLabel.project', { name: escapeHtml(name) });
+      return `Cluster: ${ name }`;
+    } else {
+      return 'Real Clusters';
     }
   }
 
