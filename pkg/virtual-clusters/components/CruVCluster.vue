@@ -269,7 +269,7 @@ export default {
             />
           </div>
         </div>
-        <div class="row">
+        <div class="row mt-20">
           <div class="col span-6">
             <LabeledSelect
               v-model="k8sVersion"
