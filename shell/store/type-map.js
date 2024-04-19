@@ -969,7 +969,7 @@ export const getters = {
             let satisfiesIfHave = true;
 
             // Support an array of required types that the user must have access to
-            for(let i = 0; i < ifHaveTypeArray.length; i++) {
+            for (let i = 0; i < ifHaveTypeArray.length; i++) {
               const ifHaveType = ifHaveTypeArray[i];
               const targetedSchemas = typeof ifHaveType === 'string' ? schemas : rootGetters[`${ ifHaveType.store }/all`](SCHEMA);
               const type = typeof ifHaveType === 'string' ? ifHaveType : ifHaveType?.type;
@@ -985,7 +985,7 @@ export const getters = {
                 satisfiesIfHave = false;
                 break;
               }
-            };
+            }
 
             if (!satisfiesIfHave) {
               continue;
