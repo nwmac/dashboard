@@ -17,6 +17,11 @@ import capitalize from 'lodash/capitalize';
  * @extends SteveModel
  */
 export default class ProvCluster extends SteveModel {
+  /**
+   * customProvisionerHelper returns a custom helper if applicable for this cluster
+   * 
+   * This is cached after the first time
+   */
   get customProvisionerHelper() {
     const fromAnnotation = this.annotations?.[CAPI_ANNOTATIONS.UI_CUSTOM_PROVIDER];
 
@@ -40,6 +45,7 @@ export default class ProvCluster extends SteveModel {
       }
     }
 
+    // Helper, of undefined if no helper for this cluster
     return this.customProvisionerHelperObject;
   }
 
@@ -966,36 +972,23 @@ export default class ProvCluster extends SteveModel {
     }
 
     // If this cluster has a custom provisioner, allow it to do custom deletion
-    const customProvisionerCls = this.$rootState.$plugin.getDynamic('provisioner', this.machineProvider);
-
-    if (customProvisionerCls) {
-      const context = {
-        dispatch: this.$dispatch,
-        getters:  this.$getters,
-        $plugin:  this.$rootState.$plugin,
-        $t:       this.t
-      };
-
-      const customProv = new customProvisionerCls(context);
-
-      if (customProv?.postDelete) {
-        await customProv.postDelete(this);
-      }
+    if (this.customProvisionerHelper?.postDelete) {
+      return this.customProvisionerHelper?.postDelete(this);
     }
   }
 
   get groupByParent() {
-    return this.metadata.annotations?.['ui.rancher/parent-cluster'];
+    // Customer helper can report if the cluster has a parent cluster
+    return this.customProvisionerHelper?.parentCluster(this);
   }
 
   get groupByLabel() {
     const name = this.groupByParent;
 
     if (name) {
-      // return this.$rootGetters['i18n/t']('resourceTable.groupLabel.project', { name: escapeHtml(name) });
-      return `Cluster: ${ name }`;
+      return this.$rootGetters['i18n/t']('resourceTable.groupLabel.cluster', { name: escapeHtml(name) });
     } else {
-      return 'Real Clusters';
+      return this.$rootGetters['i18n/t']('resourceTable.groupLabel.realCluster');
     }
   }
 

@@ -48,6 +48,10 @@ export class VClustersProvisioner implements IClusterProvisioner {
     return 'vCluster';
   }
 
+  parentCluster(cluster: ICluster): string {
+    return cluster.metadata?.annotations?.['ui.rancher/parent-cluster'];
+  }
+
   async postDelete(cluster: ICluster): Promise<any> {
     const parentClusterId = cluster.metadata?.annotations?.['ui.rancher/parent-cluster'];
     const namespace = cluster.metadata?.annotations?.['ui.rancher/vcluster-namespace'];
