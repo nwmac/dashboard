@@ -992,7 +992,7 @@ export default class ProvCluster extends SteveModel {
     if (name) {
       return this.$rootGetters['i18n/t']('resourceTable.groupLabel.cluster', { name: escapeHtml(name) });
     } else {
-      return this.$rootGetters['i18n/t']('resourceTable.groupLabel.realCluster');
+      return this.$rootGetters['i18n/t']('resourceTable.groupLabel.notInACluster');
     }
   }
 
