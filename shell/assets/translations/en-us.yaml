@@ -4830,6 +4830,7 @@ resourceTable:
   groupLabel:
     cluster: "<span>Cluster:</span> {name}"
     notInACluster: Not in a Cluster
+    realCluster: Real Clusters
     namespace: "<span>Namespace:</span> {name}"
     notInAMachinePool: "Not In A Deployment"
     machinePool: "<span>Pool:</span> {name}"

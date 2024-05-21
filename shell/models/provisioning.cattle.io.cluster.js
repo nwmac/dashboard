@@ -11,6 +11,7 @@ import { AS, MODE, _VIEW, _YAML } from '@shell/config/query-params';
 import { HARVESTER_NAME as HARVESTER } from '@shell/config/features';
 import { CAPI as CAPI_ANNOTATIONS, NODE_ARCHITECTURE } from '@shell/config/labels-annotations';
 import capitalize from 'lodash/capitalize';
+import { escapeHtml } from '@shell/utils/string';
 
 /**
  * Class representing Cluster resource.
@@ -19,7 +20,7 @@ import capitalize from 'lodash/capitalize';
 export default class ProvCluster extends SteveModel {
   /**
    * customProvisionerHelper returns a custom helper if applicable for this cluster
-   * 
+   *
    * This is cached after the first time
    */
   get customProvisionerHelper() {
