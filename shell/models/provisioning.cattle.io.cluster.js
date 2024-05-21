@@ -14,23 +14,26 @@ import capitalize from 'lodash/capitalize';
 import { escapeHtml } from '@shell/utils/string';
 
 /**
+ * Cache of instantiated provisioner helpers
+ * 
+ * One per type rather than one per model instance.
+ */
+const customProvisionerHelperCache = {};
+
+/**
  * Class representing Cluster resource.
  * @extends SteveModel
  */
 export default class ProvCluster extends SteveModel {
   /**
-   * customProvisionerHelper returns a custom helper if applicable for this cluster
-   *
-   * This is cached after the first time
+   * customProvisionerHelper returns a custom helper if applicable that can be used for this cluster
    */
   get customProvisionerHelper() {
     const fromAnnotation = this.annotations?.[CAPI_ANNOTATIONS.UI_CUSTOM_PROVIDER];
 
     if (fromAnnotation) {
-      // Check if the helper we have cached matches the provider
-      if (this.customProvisionerHelperProvider !== fromAnnotation) {
-        this.customProvisionerHelperProvider = fromAnnotation;
-
+      // Check if we have an instance of the helper already cached
+      if (!customProvisionerHelperCache[fromAnnotation]) {
         const customProvisionerCls = this.$rootState.$plugin.getDynamic('provisioner', fromAnnotation);
 
         if (customProvisionerCls) {
@@ -41,13 +44,13 @@ export default class ProvCluster extends SteveModel {
             $t:       this.t
           };
 
-          this.customProvisionerHelperObject = new customProvisionerCls(context);
+          customProvisionerHelperCache[fromAnnotation] = new customProvisionerCls(context);
         }
       }
     }
 
     // Helper, of undefined if no helper for this cluster
-    return this.customProvisionerHelperObject;
+    return customProvisionerHelperCache[fromAnnotation];
   }
 
   get details() {
