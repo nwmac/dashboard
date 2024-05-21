@@ -12,9 +12,14 @@ data:
     sed -i -e s/localhost:8443/${ADDR}/g /tmp/kubeconfig.yaml
     cat /tmp/kubeconfig.yaml
     export KUBECONFIG=/tmp/kubeconfig.yaml
-    echo "Importing Virtual Cluster ..."
     echo ${RANCHER_IMPORT_URL}
+    echo "Waiting for k8s to be ready"
     kubectl get po -A
+    while [ $? -ne 0 ]; do
+      sleep 5
+      kubectl get po -A
+    done
+    echo "Importing Virtual Cluster ..."
     curl --insecure -sfL ${RANCHER_IMPORT_URL} | kubectl apply -f -
     echo "All Done"
 ---
