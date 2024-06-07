@@ -29,6 +29,7 @@ import {
 import loadPlugins from '@shell/plugins/plugin';
 import { fetchInitialSettings } from '@shell/utils/settings';
 import Loading from '@shell/components/Loading';
+import { getGlobalBannerFontSizes } from '@shell/utils/banners';
 
 export default {
   name:       'Login',
@@ -105,8 +106,14 @@ export default {
 
     hasLoginMessage() {
       return this.errorToDisplay || this.loggedOut || this.timedOut;
-    }
+    },
 
+    // Apply bottom margin so that the locale secletor control lifts up to avoid the footer fixed banner, if it is shown
+    localeSelectorStyle() {
+      const globalBannerSettings = getGlobalBannerFontSizes(this.$store);
+
+      return { marginBottom: globalBannerSettings?.footerFont };
+    }
   },
 
   async fetch() {
@@ -473,9 +480,12 @@ export default {
         </template>
         <div
           v-if="showLocaleSelector"
-          class="locale-elector"
+          class="locale-selector"
         >
-          <LocaleSelector mode="login" />
+          <LocaleSelector
+            :style="localeSelectorStyle"
+            mode="login"
+          />
         </div>
       </div>
       <BrandImage
@@ -548,7 +558,7 @@ export default {
       place-content: center;
     }
   }
-  .locale-elector {
+  .locale-selector {
     position: absolute;
     bottom: 30px;
   }
