@@ -226,6 +226,106 @@ export default {
   },
 
   methods: {
+    async nwmTest() {
+      const dynamicSchemas = await this.$store.dispatch('rancher/findAll', { type: 'dynamicSchema' });
+
+      console.error(dynamicSchemas);
+
+      const hasSuma = dynamicSchemas.find((s) => s.id === 'sumacredentialconfig');
+      if (hasSuma) {
+        console.error('SUMA Dynamic Schema exists');
+      } else {
+        const dynamicSchema = {
+          baseType: "dynamicSchema",
+          type: "dynamicSchema",
+          name: 'sumacredentialconfig',
+          id: 'sumacredentialconfig',
+          embed: false,
+          resourceFields: {
+            token: {
+              create: true,
+              default: {
+                stringValue: 'defaultSumaValue'
+              },
+              description: 'SUMA API Token',
+              dynamicField: false,
+              type: 'string',
+              required: false,
+              nullable: false,
+              max: 0,
+              maxLength: 0,
+              minLength: 0,
+              unique: false,
+              update: true
+            }
+          }
+        };
+
+        const res = await this.$store.dispatch('rancher/request', {
+          url:    `/v3/dynamicschemas`,
+          method: 'post',
+          data:   dynamicSchema
+        });
+
+        console.error(res);
+      }
+
+      const credentialConfig = dynamicSchemas.find((s) => s.id === 'credentialconfig');
+
+      if (credentialConfig) {
+        if (!credentialConfig.resourceFields.sumacredentialConfig) {
+          credentialConfig.resourceFields.sumacredentialConfig = {
+            create: true,
+            default: {
+              stringValue: 'defaultSumaValue'
+            },
+            description: 'SUMA API Token',
+            dynamicField: false,
+            type: 'sumacredentialconfig',
+            required: false,
+            nullable: false,
+            max: 0,
+            maxLength: 0,
+            minLength: 0,
+            unique: false,
+            update: true
+          };
+        };
+
+        const res = await this.$store.dispatch('rancher/request', {
+          url:    `/v3/dynamicschemas/credentialconfig`,
+          method: 'put',
+          data:   credentialConfig
+        });
+
+        console.error(res);
+      }
+
+      // Create a credential
+      const credential = {
+        annotations: {
+          //'provisioning.cattle.io/driver': "digitalocean"
+        },
+        sumacredentialConfig: {
+          token: 'YES!!!!!!!!!'
+        },
+        metadata: {
+          generateName: "cc-",
+          namespace: "fleet-default"
+        },
+        name: "nwm-test-suma",
+        type: "provisioning.cattle.io/cloud-credential"
+      };
+
+      const res2 = await this.$store.dispatch('rancher/request', {
+        url:    `/v3/cloudcredential`,
+        method: 'post',
+        data:   credential
+      });
+
+      console.error(res2);
+    },
+
     /**
      * Define actions for each navigation link
      * @param {*} action
@@ -314,6 +414,13 @@ export default {
       pref-key="welcomeBanner"
       data-testid="home-banner-graphic"
     />
+    <div>
+      <button
+        class="btn role-primary"
+        @click="nwmTest()">
+        TEST
+      </button>
+    </div>
     <IndentedPanel class="mt-20 mb-20">
       <div
         v-if="!readWhatsNewAlready"
