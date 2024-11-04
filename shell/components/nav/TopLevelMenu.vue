@@ -239,7 +239,7 @@ export default {
       const options = this.options;
 
       return options.filter((opt) => {
-        const filterApps = (opt.inStore === 'management' || opt.isMultiClusterApp) && opt.category !== 'configuration' && opt.category !== 'legacy';
+        const filterApps = (opt.inStore === 'management' || opt.isMultiClusterApp) && opt.category !== 'configuration';
 
         if (this.isRancherInHarvester) {
           return filterApps && opt.category !== 'hci';
