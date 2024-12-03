@@ -152,3 +152,11 @@
   outline: none;
   border-color: var(--outline);
 }
+
+// Mixins to help with showing focus on elements in a consistent manner
+
+// Focus state for an element represented purely by setting the element outline
+@mixin focus-outline {
+  outline: 1px solid var(--primary);
+  outline-style: dashed;
+}

@@ -514,6 +514,10 @@ export default {
         <div class="title">
           <div
             data-testid="top-level-menu"
+            role="button"
+            tabindex="0"
+            v-on:keyup.enter="toggle()"
+            v-on:keyup.space="toggle()"
             class="menu"
             @click="toggle()"
           >
@@ -971,6 +975,14 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
+
+      &:focus-visible {
+        outline: none;
+
+        .menu-icon {
+          @include focus-outline;
+        }
+      }
 
       .menu-icon {
         width: 25px;
