@@ -3366,6 +3366,7 @@ login:
     noResponse: "No response received"
   error: An error occurred logging in. Please try again.
   clientError: Invalid username or password. Please try again.
+  userUnauthorized: You are not authorized to use this system.
   specificError: 'An error occurred logging in: {msg}'
   useLocal: Use a local user
   loginWithProvider: Log in with {provider}
