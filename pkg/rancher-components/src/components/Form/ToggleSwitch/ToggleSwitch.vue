@@ -151,6 +151,7 @@ $toggle-height: 16px;
 .switch {
   position: relative;
   display: inline-block;
+  min-width: 48px; // Prevent the toggle switch from wrapping weirdly on smalls screens
   width: 48px;
   height: $toggle-height + 8px;
 }
