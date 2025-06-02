@@ -45,11 +45,7 @@ export default {
     },
 
     showLocale() {
-      return (this.availableLocales && Object.keys(this.availableLocales).length > 1) || this.dev;
-    },
-
-    showNone() {
-      return !!process.env.dev && this.dev;
+      return (this.availableLocales && Object.keys(this.availableLocales).length > 1);
     },
   },
 
@@ -87,11 +83,6 @@ export default {
           </template>
         </rc-dropdown-trigger>
         <template #dropdownCollection>
-          <rc-dropdown-item
-            v-if="showNone"
-            v-t="'locale.none'"
-            @click="switchLocale('none')"
-          />
           <rc-dropdown-item
             v-for="(label, name) in availableLocales"
             :key="name"
