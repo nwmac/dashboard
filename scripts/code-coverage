@@ -35,6 +35,24 @@ while getopts ":nsr" opt; do
   esac
 done
 
+# Remove old index.html and folders for coverage HTML
+cleanCoverageHtml() {
+  echo "Cleaning old HTML coverage test report from ${1}"
+
+  if [ -d "$1" ]; then
+    pushd $1 > /dev/null
+
+    rm -f index.html
+
+    for dir in *
+    do
+      rm -rf ${dir}
+    done
+
+    popd > /dev/null
+  fi
+}
+
 shift "$((OPTIND-1))"
 
 if [ $BUILD -eq 1 ]; then
@@ -106,6 +124,10 @@ yarn test:ci | tee ${DIR}/unit.log
 cp ${DIR}/unit.log ${COVERAGE_DIR}
 
 # Clean up the coverage reports and generate a combined coverage report
+cleanCoverageHtml coverage/unit
+cleanCoverageHtml coverage/e2e
+cleanCoverageHtml coverage/e2e-setup
+
 ${DIR}/scripts/process-coverage
 
 echo "Finished"
