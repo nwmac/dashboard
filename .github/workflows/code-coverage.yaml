@@ -22,6 +22,8 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run tests and collect coverage
         run: ./scripts/code-coverage
+      - name: Debug
+        run: ls -al
       - name: Upload code coverage folder
         uses: actions/upload-artifact@v4
         with:
