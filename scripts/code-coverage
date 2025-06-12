@@ -68,7 +68,6 @@ export TEST_PASSWORD=password
 export CATTLE_BOOTSTRAP_PASSWORD=password
 export TEST_BASE_URL=https://127.0.0.1/dashboard
 export TEST_INSTRUMENT=true
-export API=${TEST_BASE_URL}
 export TEST_NO_SCREENSHOTS=true
 export TEST_NO_VIDEOS=true
 
