@@ -45,7 +45,7 @@ module.exports = {
 
   // Coverage
   coverageDirectory:   '<rootDir>/coverage/unit',
-  coverageReporters:   ['json', 'text-summary'],
+  coverageReporters:   ['json', 'text-summary', 'html'],
   collectCoverage:     false,
   collectCoverageFrom: [
     '<rootDir>/shell/**/*.{vue,ts,js}',

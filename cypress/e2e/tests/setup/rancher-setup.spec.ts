@@ -96,7 +96,7 @@ describe('Rancher setup', { tags: ['@adminUserSetup', '@standardUserSetup', '@se
     });
   });
 
-  it('Create standard user', () => {
+  it('Create standard user', { tags: ['@adminUserSetup', '@standardUserSetup', '@setup', '@createStandardUser'] }, () => {
     cy.login();
 
     // Note: the username argument here should match the TEST_USERNAME env var used when running non-admin tests

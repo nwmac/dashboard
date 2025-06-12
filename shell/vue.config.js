@@ -110,23 +110,46 @@ const getPackageImport = (dir) => new webpack.NormalModuleReplacementPlugin(/^@p
 /**
  * Instrument code for code coverage in e2e tests
  */
-const instrumentCode = () => {
+const instrumentCode = (config) => {
   const instrumentedCode = (process.env.TEST_INSTRUMENT === 'true');
 
-  // Instrument code for tests
-  const babelPlugins = [
-    // TODO: Browser support; also add explanation to this TODO
-    // ['@babel/plugin-transform-modules-commonjs'],
-    ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
-    ['@babel/plugin-proposal-class-properties', { loose: true }]
-  ];
+  // Onlt instrument when the environment variable is set
+  if (!instrumentedCode) {
+    return;
+  }
 
-  if (instrumentedCode) {
-    babelPlugins.push([
-      'babel-plugin-istanbul', { extension: ['.js', '.vue'] }, 'add-vue'
-    ]);
+  // Find the js/ts rule and add the babel-loader
+  const loader = config.module.rules.find((item) => {
+    return 'file.jsx'.match(item?.test) && item.exclude && item.use;
+  });
 
+  if (loader) {
     console.warn('Instrumenting code for coverage'); // eslint-disable-line no-console
+
+    loader.use.push({
+      loader:  'babel-loader',
+      options: {
+      // presets: [
+      //   [
+      //     '@vue/cli-plugin-babel/preset',
+      //     { useBuiltIns: false }
+      //   ],
+      //   [
+      //     '@babel/preset-env',
+      //     { targets: { node: 'current' } }
+      //   ]
+      // ],
+        plugins: [
+          [
+            'babel-plugin-istanbul',
+            {
+              extension: ['.js', '.vue', '.ts'],
+              all:       true,
+            }
+          ]
+        ]
+      }
+    });
   }
 };
 
@@ -567,8 +590,8 @@ module.exports = function(dir, appConfig = {}) {
 
       config.resolve.symlinks = false;
       processShellFiles(config, SHELL_ABS);
-      instrumentCode();
       config.module.rules.push(...getLoaders(SHELL_ABS));
+      instrumentCode(config);
       preserveWhitespace(config);
     },
   };
