@@ -53,9 +53,11 @@ const coverageDir = path.join(rootDir, 'coverage');
 const outputDir = path.join(coverageDir, 'output');
 const combinedCoverageDir = path.join(outputDir, 'combined');
 
-if (fs.existsSync(combinedCoverageDir)) {
-  fs.rmSync(combinedCoverageDir, { recursive: true } );
+if (fs.existsSync(outputDir)) {
+  fs.rmSync(outputDir, { recursive: true } );
 }
+
+fs.mkdirSync(outputDir);
 
 // Normalize a file path - if it starts with 'file:' then remove that prefix
 function removeFileSchemePrefix(p) {
@@ -243,6 +245,11 @@ function generateHTMLReport(inputs, outFolder) {
     defaultSummarizer: 'nested',
     coverageMap:       map,
   });
+
+  if (!fs.existsSync(outFolder)) {
+
+    fs.mkdirSync(outFolder);
+  }
 
   // create an instance of the relevant report class, passing the
   // report name e.g. json/html/html-spa/text
