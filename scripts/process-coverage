@@ -300,4 +300,4 @@ console.log('Combining unit and E2E reports'); // eslint-disable-line no-console
 
 fs.mkdirSync(combinedCoverageDir);
 
-generateHTMLReport(inputJSONs, path.join(combinedCoverageDir, 'coverage-final.json'));
+generateHTMLReport(inputJSONs, combinedCoverageDir);
