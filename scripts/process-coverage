@@ -50,7 +50,8 @@ if (!fs.existsSync(path.join(rootDir, 'coverage'))) {
 
 // Delete the combined coverage folder
 const coverageDir = path.join(rootDir, 'coverage');
-const combinedCoverageDir = path.join(coverageDir, 'combined');
+const outputDir = path.join(coverageDir, 'output');
+const combinedCoverageDir = path.join(outputDir, 'combined');
 
 if (fs.existsSync(combinedCoverageDir)) {
   fs.rmSync(combinedCoverageDir, { recursive: true } );
@@ -215,9 +216,9 @@ function fixReportData(report) {
  * Generate an HTML report for coverage data
  *
  * @param inputs Coverage date
- * @param outFile File to write the data to
+ * @param outFolder Folder to write the data to
  */
-function generateHTMLReport(inputs, outFile) {
+function generateHTMLReport(inputs, outFolder) {
   const map = libCoverage.createCoverageMap();
   const summary = libCoverage.createCoverageSummary();
   const coverageJSONs = inputs.map((d) => d.data);
@@ -238,7 +239,7 @@ function generateHTMLReport(inputs, outFile) {
 
   // create a context for report generation
   const context = libReport.createContext({
-    dir:               path.dirname(outFile),
+    dir:               outFolder,
     defaultSummarizer: 'nested',
     coverageMap:       map,
   });
@@ -249,6 +250,11 @@ function generateHTMLReport(inputs, outFile) {
 
   // call execute to synchronously create and write the report to disk
   html.execute(context);
+
+  // Write the json to file to the output folder
+  const outFile = path.join(outFolder, 'coverage-final.json');
+
+  fs.writeFileSync(outFile, JSON.stringify(map));
 }
 
 // -- Process Test Coverage folders ------------------------------------------------------------------------
@@ -258,11 +264,12 @@ const fsList = fs.readdirSync(coverageDir);
 
 // Read each report, fix the data in it and write the HTML report out again
 fsList.forEach((name) => {
-  if (fs.existsSync(path.join(coverageDir, name, 'coverage-final.json'))) {
+  if (name !== 'output' && fs.existsSync(path.join(coverageDir, name, 'coverage-final.json'))) {
     const fp = path.join(coverageDir, name, 'coverage-final.json');
 
     const report = {
       path: fp,
+      name,
       data: readReport(fp)
     };
 
@@ -279,7 +286,7 @@ inputJSONs.forEach((report) => {
 
   // Generate the HTML Report after cleaning up the coverage data
   console.log('  + Generating HTML report'); // eslint-disable-line no-console
-  generateHTMLReport([report], report.path);
+  generateHTMLReport([report], path.join(outputDir, report.name));
 });
 
 console.log('Combining unit and E2E reports'); // eslint-disable-line no-console

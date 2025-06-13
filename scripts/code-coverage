@@ -4,6 +4,7 @@ DIR=$(cd $(dirname $0)/..; pwd)
 DASHBOARD_DIST=${DIR}/dist
 EMBER_DIST=${DIR}/dist_ember
 COVERAGE_DIR=${DIR}/coverage
+OUTPUT_DIR=${DIR}/coverage/output
 
 CYAN="\033[96m"
 BOLD="\033[1m"
@@ -35,24 +36,6 @@ while getopts ":nsr" opt; do
   esac
 done
 
-# Remove old index.html and folders for coverage HTML
-cleanCoverageHtml() {
-  echo "Cleaning old HTML coverage test report from ${1}"
-
-  if [ -d "$1" ]; then
-    pushd $1 > /dev/null
-
-    rm -f index.html
-
-    for dir in *
-    do
-      rm -rf ${dir}
-    done
-
-    popd > /dev/null
-  fi
-}
-
 shift "$((OPTIND-1))"
 
 if [ $BUILD -eq 1 ]; then
@@ -60,7 +43,7 @@ if [ $BUILD -eq 1 ]; then
   rm -rf ${EMBER_DIST}
 fi
 
-# Remove previous coverage data
+# Remove previous coverage data (also cleans out the output folder)
 rm -rf ${COVERAGE_DIR}
 
 export TEST_USERNAME=admin
@@ -99,12 +82,12 @@ if [ $RUNNING -eq 0 ]; then
   echo -e "${CYAN}${BOLD}++ Running setup tests ...${RESET}"
   TEST_ONLY=setup GREP_TAGS='@adminUserSetup --@createStandardUser' yarn cy:run ${SHOW_BROWSER} | tee ${DIR}/e2e-setup.log
 
-  pushd ${COVERAGE_DIR}e
+  pushd ${COVERAGE_DIR}
   mv e2e e2e-setup
   popd
 
-  # Copy the e2e setup log into the coverage folder, so it will get uploaded with the coverage reports
-  cp ${DIR}/e2e-setup.log ${COVERAGE_DIR}
+  # Copy the e2e setup log into the output folder, so it will get uploaded with the coverage reports
+  cp ${DIR}/e2e-setup.log ${OUTPUT_DIR}
 fi
 
 # Run test suites (now that Rancher is setup)
@@ -113,21 +96,16 @@ echo -e "${CYAN}${BOLD}++ Running tests ...${RESET}"
 #TEST_SKIP=setup GREP_TAGS='@adminUser --@vai --@accessibility --@virtualizationMgmt --@manager' yarn cy:run ${SHOW_BROWSER} | tee ${DIR}/e2e.log
 TEST_SKIP=setup GREP_TAGS='@adminUser+@charts --@vai --@accessibility --@virtualizationMgmt --@manager' yarn cy:run ${SHOW_BROWSER} | tee ${DIR}/e2e.log
 
-# Copy the e2e log into the coverage folder, so it will get uploaded with the coverage reports
-cp ${DIR}/e2e.log ${COVERAGE_DIR}
+# Copy the e2e log into the output folder, so it will get uploaded with the coverage reports
+cp ${DIR}/e2e.log ${OUTPUT_DIR}
 
 echo -e "${CYAN}${BOLD}++ Running unit tests ...${RESET}"
 yarn test:ci | tee ${DIR}/unit.log
 
-# Copy the unit test log into the coverage folder, so it will get uploaded with the coverage reports
-cp ${DIR}/unit.log ${COVERAGE_DIR}
+# Copy the unit test log into the output folder, so it will get uploaded with the coverage reports
+cp ${DIR}/unit.log ${OUTPUT_DIR}
 
-# Clean up the coverage reports and generate a combined coverage report
-cleanCoverageHtml coverage/unit
-cleanCoverageHtml coverage/e2e
-cleanCoverageHtml coverage/e2e-setup
-
-${DIR}/scripts/process-coverage
+${DIR}/scripts/process-coverage ${COVERAGE_DIR} ${OUTPUT_DIR}
 
 echo "Finished"
 echo "End time: $(date)"
