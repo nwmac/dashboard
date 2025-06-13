@@ -86,8 +86,8 @@ if [ $RUNNING -eq 0 ]; then
   mv e2e e2e-setup
   popd
 
-  # Copy the e2e setup log into the output folder, so it will get uploaded with the coverage reports
-  cp ${DIR}/e2e-setup.log ${OUTPUT_DIR}
+  # Copy the unit test log into the top-level folder
+  cp ${DIR}/e2e-setup.log ${DIR}
 fi
 
 # Run test suites (now that Rancher is setup)
@@ -96,16 +96,20 @@ echo -e "${CYAN}${BOLD}++ Running tests ...${RESET}"
 #TEST_SKIP=setup GREP_TAGS='@adminUser --@vai --@accessibility --@virtualizationMgmt --@manager' yarn cy:run ${SHOW_BROWSER} | tee ${DIR}/e2e.log
 TEST_SKIP=setup GREP_TAGS='@adminUser+@charts --@vai --@accessibility --@virtualizationMgmt --@manager' yarn cy:run ${SHOW_BROWSER} | tee ${DIR}/e2e.log
 
-# Copy the e2e log into the output folder, so it will get uploaded with the coverage reports
-cp ${DIR}/e2e.log ${OUTPUT_DIR}
+# Copy the unit test log into the top-level folder
+cp ${DIR}/e2e.log ${DIR}
 
 echo -e "${CYAN}${BOLD}++ Running unit tests ...${RESET}"
 yarn test:ci | tee ${DIR}/unit.log
 
-# Copy the unit test log into the output folder, so it will get uploaded with the coverage reports
-cp ${DIR}/unit.log ${OUTPUT_DIR}
+# Copy the unit test log into the top-level folder
+cp ${DIR}/unit.log ${DIR}
 
+# This will clean the output folder, so we move the log files after we've processed the coverage reports
 ${DIR}/scripts/process-coverage ${COVERAGE_DIR} ${OUTPUT_DIR}
+
+# Move the log files into the output folder, so they are there to be uploaded with the coverage reports
+mv ${DIR}/*.log ${OUTPUT_DIR}
 
 echo "Finished"
 echo "End time: $(date)"
