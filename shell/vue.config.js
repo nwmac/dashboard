@@ -130,9 +130,8 @@ const instrumentCode = (config) => {
       loader:  'babel-loader',
       options: {
         presets: [
-            '@vue/app'
-          ]
-        },
+          '@vue/app'
+        ],
       // presets: [
       //   [
       //     '@vue/cli-plugin-babel/preset',

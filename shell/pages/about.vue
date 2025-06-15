@@ -11,10 +11,11 @@ import TabTitle from '@shell/components/TabTitle';
 import { PanelLocation, ExtensionPoint } from '@shell/core/types';
 import ExtensionPanel from '@shell/components/ExtensionPanel';
 import { coverageTestFunction } from '@shell/utils/coverage';
+import CoverageCheckPanel from './coverageCheck.vue';
 
 export default {
   components: {
-    BackLink, ExtensionPanel, Loading, TabTitle
+    CoverageCheckPanel, BackLink, ExtensionPanel, Loading, TabTitle
   },
   mixins: [BackRoute],
   async fetch() {
@@ -23,6 +24,9 @@ export default {
   data() {
     // This is used only for e2e test coverage consistency with unit tests
     coverageTestFunction(true, 51);
+
+    // Coverage check for vue component
+    this.$refs.coverageCheckPanel.coverageTestFunction(true, 51);
 
     return {
       extensionType:     ExtensionPoint.PANEL,
@@ -105,6 +109,7 @@ export default {
     v-else
     class="about"
   >
+    <CoverageCheckPanel ref="coverageCheckPanel" />
     <BackLink :link="backLink" />
     <div class="title-block mt-20 mb-40">
       <h1>
