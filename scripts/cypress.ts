@@ -7,8 +7,11 @@
  * @returns
  */
 export const getSpecPattern = (dirs: string[], envs: NodeJS.ProcessEnv): string[] => {
+  console.error(dirs);
   // Gets paths with only
   const onlyDirs = dirs.filter((dir) => (envs.TEST_ONLY?.split(',').map((env) => env.trim()).includes(dir)));
+
+  console.error(onlyDirs);
 
   // List the test directories to be included
   const activeDirs = dirs.filter((dir) => !(envs.TEST_SKIP?.split(',').map((env) => env.trim()).includes(dir)));
