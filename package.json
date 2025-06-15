@@ -211,7 +211,7 @@
     "yarn": "1.22.18"
   },
   "resolutions": {
-    "html-webpack-plugin": "5.0.0",
+    "html-webpack-plugin": "5.1.0",
     "istanbul-lib-instrument": "6.0.3"
   }
 }
