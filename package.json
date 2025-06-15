@@ -212,6 +212,7 @@
   },
   "resolutions": {
     "html-webpack-plugin": "5.1.0",
-    "istanbul-lib-instrument": "6.0.3"
+    "istanbul-lib-instrument": "6.0.3",
+    "nyc": "17.1.0"
   }
 }
