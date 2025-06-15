@@ -22,12 +22,6 @@ export default {
     this.settings = await this.$store.dispatch(`management/findAll`, { type: MANAGEMENT.SETTING });
   },
   data() {
-    // This is used only for e2e test coverage consistency with unit tests
-    coverageTestFunction(true, 51);
-
-    // Coverage check for vue component
-    this.$refs.coverageCheckPanel.coverageTestFunction(true, 51);
-
     return {
       extensionType:     ExtensionPoint.PANEL,
       extensionLocation: PanelLocation.ABOUT_TOP,
@@ -35,6 +29,15 @@ export default {
       settings:          null,
       SETTING
     };
+  },
+  mounted() {
+    // This is used only for e2e test coverage consistency with unit tests
+    coverageTestFunction(true, 51);
+
+    setTimeout(() => {
+      // Coverage check for vue component
+      this.$refs.coverageCheckPanel.coverageTestFunction(true, 51);
+    });
   },
   computed: {
     ...mapGetters(['releaseNotesUrl']),

@@ -26,4 +26,20 @@ export default {
 </script>
 
 <template>
+  <div class="ignored">
+    Coverage Test Panel
+  </div>
 </template>
+
+<style lang="scss" scoped>
+  .ignored {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    z-index: -1000;
+    pointer-events: none;
+    opacity: 0;
+  }
+</style>
