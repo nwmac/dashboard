@@ -10,6 +10,7 @@ import { mapGetters } from 'vuex';
 import TabTitle from '@shell/components/TabTitle';
 import { PanelLocation, ExtensionPoint } from '@shell/core/types';
 import ExtensionPanel from '@shell/components/ExtensionPanel';
+import { coverageTestFunction } from '@shell/utils/coverage';
 
 export default {
   components: {
@@ -20,6 +21,9 @@ export default {
     this.settings = await this.$store.dispatch(`management/findAll`, { type: MANAGEMENT.SETTING });
   },
   data() {
+    // This is used only for e2e test coverage consistency with unit tests
+    coverageTestFunction(true, 51);
+
     return {
       extensionType:     ExtensionPoint.PANEL,
       extensionLocation: PanelLocation.ABOUT_TOP,
