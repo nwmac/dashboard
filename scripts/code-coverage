@@ -93,11 +93,11 @@ fi
 # Run test suites (now that Rancher is setup)
 echo -e "${CYAN}${BOLD}++ Running tests ...${RESET}"
 
-#TEST_SKIP=setup GREP_TAGS='@adminUser --@vai --@accessibility' yarn cy:run ${SHOW_BROWSER} | tee ${DIR}/e2e.log
+TEST_SKIP=setup GREP_TAGS='@adminUser --@vai --@accessibility' yarn cy:run ${SHOW_BROWSER} | tee ${DIR}/e2e.log
 #TEST_SKIP=setup GREP_TAGS='@adminUser+@charts --@vai --@accessibility --@virtualizationMgmt --@manager' yarn cy:run ${SHOW_BROWSER} | tee ${DIR}/e2e.log
 
 # For running tests to investigate code coverage differences between e2e and unit tests
-DEBUG_DEPTH=10 DEBUG=code-coverage TEST_ONLY=coverageCheck TEST_SKIP=setup GREP_TAGS='@adminUser+@coverageCheck' yarn cy:run ${SHOW_BROWSER} | tee ${DIR}/e2e.log
+#DEBUG_DEPTH=10 DEBUG=code-coverage TEST_ONLY=coverageCheck TEST_SKIP=setup GREP_TAGS='@adminUser+@coverageCheck' yarn cy:run ${SHOW_BROWSER} | tee ${DIR}/e2e.log
 
 # Copy the unit test log into the top-level folder
 cp ${DIR}/e2e.log ${DIR}
