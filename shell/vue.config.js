@@ -113,7 +113,7 @@ const getPackageImport = (dir) => new webpack.NormalModuleReplacementPlugin(/^@p
 const instrumentCode = (config) => {
   const instrumentedCode = (process.env.TEST_INSTRUMENT === 'true');
 
-  // Onlt instrument when the environment variable is set
+  // Only instrument when the environment variable is set
   if (!instrumentedCode) {
     return;
   }
@@ -129,6 +129,10 @@ const instrumentCode = (config) => {
     loader.use.push({
       loader:  'babel-loader',
       options: {
+        presets: [
+            '@vue/app'
+          ]
+        },
       // presets: [
       //   [
       //     '@vue/cli-plugin-babel/preset',
