@@ -14,7 +14,7 @@ import { IstioTab } from '@/cypress/e2e/po/pages/explorer/charts/tabs/istio-tab.
 import { LONG_TIMEOUT_OPT } from '~/cypress/support/utils/timeouts';
 import { DEFAULT_GRAFANA_STORAGE_SIZE } from '@shell/config/types.js';
 
-describe.skip('[Vue3 Skip]: Charts', { tags: ['@charts', '@adminUser'] }, () => {
+describe('Charts', { tags: ['@charts', '@adminUser'] }, () => {
   const chartsPage = new ChartsPage();
   const chartPage = new ChartPage();
   const installChart = new InstallChartPage();
@@ -71,8 +71,7 @@ describe.skip('[Vue3 Skip]: Charts', { tags: ['@charts', '@adminUser'] }, () => 
 
         const tabbedOptions = new TabbedPo();
 
-        // Latest (`104.0.0+up45.31.1`) is broken (crd installs, but not actual chart), use `103.1.1+up45.31.1` instead
-        chartPage.selectVersion('103.1.1+up45.31...');
+        chartPage.selectLatestVersion();
 
         // Navigate to the edit options page and Set prometheus storage class
         chartPage.goToInstall();
@@ -128,8 +127,7 @@ describe.skip('[Vue3 Skip]: Charts', { tags: ['@charts', '@adminUser'] }, () => 
 
         const tabbedOptions = new TabbedPo();
 
-        // Latest (`104.0.0+up45.31.1`) is broken (crd installs, but not actual chart), use `103.1.1+up45.31.1` instead
-        chartPage.selectVersion('103.1.1+up45.31...');
+        chartPage.selectLatestVersion();
 
         // Set prometheus storage class
         chartPage.goToInstall();
@@ -195,7 +193,7 @@ describe.skip('[Vue3 Skip]: Charts', { tags: ['@charts', '@adminUser'] }, () => 
 
         // Set Grafana resource request/limits configuration
         chartPage.goToInstall();
-        installChart.nextPage().editOptions(tabbedOptions, '[data-testid="btn-grafana"');
+        installChart.nextPage().editOptions(tabbedOptions, '[data-testid="btn-grafana"]');
 
         grafana.requestedCpu().checkExists();
         grafana.requestedCpu().checkVisible();

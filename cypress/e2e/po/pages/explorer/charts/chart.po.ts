@@ -50,4 +50,9 @@ export class ChartPage extends PagePo {
   selectVersion(version: string) {
     return this.self().find('.chart-content__right-bar__section--cVersion').contains(version).click();
   }
+
+  // Latest version is the top one in the list
+  selectLatestVersion() {
+    return this.self().find('.chart-content__right-bar__section--cVersion').first().click();
+  }
 }
