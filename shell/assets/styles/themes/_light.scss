@@ -409,6 +409,8 @@ BODY, .theme-light {
   --modal-border               : #{$dark};
   --overlay-bg                 : rgba(38, 42, 64, 0.35);
   --shadow                     : #{rgba($medium, 0.85)};
+  --loading-overlay-bg         : #{rgba($lighter, 0.75)};
+
 
   --checkbox-tick              : #{$lightest};
   --checkbox-border            : #{$medium};
