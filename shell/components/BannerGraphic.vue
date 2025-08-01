@@ -1,6 +1,8 @@
 <script>
 import Closeable from '@shell/mixins/closeable';
 import BrandImage from '@shell/components/BrandImage';
+import { MANAGEMENT } from '@shell/config/types';
+import { SETTING } from '@shell/config/settings';
 
 export default {
   components: { BrandImage },
@@ -21,6 +23,30 @@ export default {
       default: false
     }
   },
+
+  data() {
+    const managementSettings = this.$store.getters['management/all'](MANAGEMENT.SETTING);
+
+    return { managementSettings };
+  },
+
+  computed: {
+    center() {
+      const setting = this.managementSettings.filter((setting) => setting.id === SETTING.UI_BRANDING_CONFIG)[0] || {};
+
+      if (setting.value) {
+        try {
+          const data = JSON.parse(setting.value || '{}');
+
+          return data?.center || false;
+        } catch (e) {
+          console.error('Could not parse UI Banner Configuration setting', e); // eslint-disable-line no-console
+        }
+      }
+
+      return false;
+    }
+  }
 };
 </script>
 
@@ -43,6 +69,7 @@ export default {
       v-if="titleKey"
       data-testid="banner-title-key"
       class="title"
+      :class="{'title-center': center }"
     >
       <t :k="titleKey" />
     </div>
@@ -51,6 +78,7 @@ export default {
       v-clean-html="title"
       data-testid="banner-title"
       class="title"
+      :class="{'title-center': center }"
     />
   </div>
 </template>
@@ -73,15 +101,19 @@ export default {
       }
     }
     .title {
-      display: flex;
-      justify-content: center;
       align-items: center;
+      display: flex;
       position: absolute;
-      text-align: center;
       top: 0;
       height: 100%;
       width: 100%;
-      margin-top: -20px;
+      padding-left: 20px;
+
+      &.title-center {
+        justify-content: center;
+        text-align: center;
+        padding-left: 0;
+      }
     }
     &.small {
       .graphic {
