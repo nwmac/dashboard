@@ -35,6 +35,7 @@ docker run -d --restart=unless-stopped -p 80:80 -p 443:443 ${VOLUME_ARGS} \
   -e CATTLE_BOOTSTRAP_PASSWORD=password \
   -e CATTLE_PASSWORD_MIN_LENGTH=3 \
   -e CATTLE_SERVER_URL="${SERVER_URL}" \
+  -e CATTLE_DEBUG=true \
   -e CATTLE_TRACE=true \
   --name cypress \
   --privileged \
