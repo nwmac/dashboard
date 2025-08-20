@@ -7,6 +7,7 @@ import { setFavIcon, haveSetFavIcon } from '@shell/utils/favicon';
 import { allHash } from '@shell/utils/promise';
 import { fetchInitialSettings } from '@shell/utils/settings';
 import CspAdapterUtils from '@shell/utils/cspAdaptor';
+import { getBrandMeta } from '@shell/utils/brand';
 
 export default {
   async fetch() {
@@ -191,18 +192,15 @@ export default {
       const cssClass = `overflow-hidden dashboard-body`;
       let bodyClass = `theme-${ this.theme } ${ cssClass }`;
 
-      if ( this.brand ) {
-        try {
-          const brandMeta = require(`~shell/assets/brand/${ this.brand }/metadata.json`);
+      const brandMeta = getBrandMeta(this.brand);
 
-          if (brandMeta?.hasStylesheet === 'true') {
-            bodyClass = `${ cssClass } ${ this.brand } theme-${ this.theme }`;
-          } else {
-            bodyClass = `theme-${ this.theme } overflow-hidden dashboard-body`;
-            this.$store.dispatch('prefs/setBrandStyle', this.theme === 'dark');
-          }
-        } catch {}
+      if (brandMeta?.hasStylesheet === 'true') {
+        bodyClass = `${ cssClass } ${ this.brand } theme-${ this.theme }`;
+      } else {
+        bodyClass = `theme-${ this.theme } overflow-hidden dashboard-body`;
+        this.$store.dispatch('prefs/setBrandStyle', this.theme === 'dark');
       }
+
       body.className = bodyClass;
     }
   }
