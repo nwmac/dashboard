@@ -10,6 +10,7 @@ const {
 const har = require('./server/har-file');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const VirtualModulesPlugin = require('webpack-virtual-modules');
+const express = require('express');
 
 // Suppress info level logging messages from http-proxy-middleware
 // This hides all of the "[HPM Proxy created] ..." messages
@@ -252,6 +253,9 @@ const getDevServerConfig = (proxy) => {
           }
         });
       }
+
+      // Serve up bundled extensions when in dev mode
+      app.use('/extensions', express.static(path.resolve(__dirname, '..', 'dist', 'extensions');
 
       Object.keys(proxy).forEach((p) => {
         const px = createProxyMiddleware({

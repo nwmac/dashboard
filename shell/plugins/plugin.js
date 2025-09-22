@@ -3,11 +3,15 @@ import { allHashSettled } from '@shell/utils/promise';
 import { shouldNotLoadPlugin, UI_PLUGIN_BASE_URL } from '@shell/config/uiplugins';
 import { getKubeVersionData, getVersionData } from '@shell/config/version';
 import versions from '@shell/utils/versions';
+import { _MULTI } from '@shell/plugins/dashboard-store/actions';
+import { NORMAN } from '@shell/config/types';
 
 export default async function(context) {
   if (process.env.excludeOperatorPkg === 'true') {
     return;
   }
+
+  const { loggedIn = false } = context;
 
   const hash = {};
 
@@ -37,6 +41,32 @@ export default async function(context) {
       headers:              { accept: 'application/json' },
       redirectUnauthorized: false,
     });
+
+    try {
+      // If we are not logged in (or if we don't know), go and fetch /v3/users?me to check
+      if (!loggedIn) {
+        const user = await context.store.dispatch('rancher/findAll', {
+          type: NORMAN.USER,
+          opt:  { url: '/v3/users?me=true', load: _MULTI, redirectUnauthorized: false, }
+        });
+
+        if (!!user?.[0]) {
+          context.store.dispatch('auth/gotUser', user[0]);
+        }
+      }
+
+      // This will throw an exception if not logged in
+
+      // TODO: At this point we don't know if the user is logged in or not
+      // TODO: Should only load bundled extensions once logged in
+      // TODO: Only load if Rancher Prime
+      fetches.bundledExtensions = context.store.dispatch('management/request', {
+        url:                  `/extensions/index.json`,
+        method:               'GET',
+        headers:              { accept: 'application/json' },
+        redirectUnauthorized: false,
+      });
+    } catch { /* Not logged in, so won't load bundled extensions' */ }
   }
 
   // Fetch list of installed extensions from the extensions endpoint if needed and the version information
@@ -65,6 +95,20 @@ export default async function(context) {
         context.store.dispatch('uiplugins/setError', { name: plugin.name, error: shouldNotLoad });
       }
     });
+
+    // Now load any bundled extensions
+    // TODO: Do not load, if already loaded - an extension installed by the user should override the bundled one
+    if (res.bundledExtensions?.status === 'fulfilled' && res.bundledExtensions?.value) {
+      const list = res.bundledExtensions.value;
+      
+      list.forEach((plugin) => {
+        if (!hash[plugin.name]) {
+          plugin.endpoint = `${ window.origin }${ plugin.endpoint }`;
+          plugin.bundled = true;
+          hash[plugin.name] = context.$plugin.loadPluginAsync(plugin);
+        }
+      });
+    }
   } catch (e) {
     if (e?.code === 404) {
       // Not found, so extensions operator probably not installed

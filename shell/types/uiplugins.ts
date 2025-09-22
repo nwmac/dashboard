@@ -61,6 +61,7 @@ export type Plugin = {
     versions: Version[];
     installed: boolean;
     builtin: boolean;
+    bundled: boolean;
     experimental: boolean;
     certified: boolean;
     chart: Chart;

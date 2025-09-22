@@ -1,0 +1,76 @@
+#!/usr/bin/env node
+
+/**
+ * This script bundles extensions
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+const base = path.resolve(__dirname, '..');
+const testFolder = path.resolve(base, 'cypress', 'e2e', 'tests');
+
+const describe_regex = /describe(?:.skip)?\('([^']*)'.*/;
+const it_regex = /it(?:.skip)?\('([^']*)'.*/;
+const tags_regex = /tags:\s*\[(.*)\s*\]/;
+
+// Simple shell colors
+const reset = "\x1b[0m";
+const cyan = `\x1b[96m`;
+const yellow = `\x1b[33m`;
+const white = `\x1b[97m`;
+const bold = `\x1b[1m`;
+const bg_red = `\x1b[41m`;
+
+console.log(`${cyan}Bundling Extensions...${reset}`);
+
+function run(cmd, args) {
+  require('child_process').execFileSync(cmd, args, {stdio: 'inherit', stdout: 'inherit', stderr: 'inherit'});
+}
+
+fs.mkdirSync('dist/extensions', { recursive: true });
+fs.mkdirSync('dist/temp/extensions', { recursive: true });
+
+const BASE_DIR = 'dist/temp/extensions/extensions';
+
+run('git', ['clone', '--depth=1', 'https://github.com/rancher/ui-plugin-charts.git', 'dist/temp/extensions']);
+
+// ui-plugin-charts is now in dist/extensions
+
+// Just get the latest from each folder
+const extensions = fs.readdirSync(BASE_DIR).filter(f => fs.lstatSync(path.join(BASE_DIR, f)).isDirectory());
+
+const index = [];
+
+extensions.forEach(ext => {
+  console.log(`${cyan}Bundling ${ext}...${reset}`);
+
+  const folder = path.join(BASE_DIR, ext);
+
+  const versions = fs.readdirSync(folder).filter(f => fs.lstatSync(path.join(folder, f)).isDirectory());
+
+  const sorted = versions.sort().reverse();
+
+  console.log(sorted);
+
+  const latest = sorted[0];
+
+  const latestFolder = path.join(folder, latest);
+
+  console.log(`${yellow}Using version ${latest}${reset}`);
+
+  // Copy to dist/extensions
+  fs.rmSync(path.join('dist/extensions', ext), { recursive: true, force: true });
+  fs.cpSync(latestFolder, path.join('dist/extensions', ext), { recursive: true });
+
+  index.push({
+    name:     ext,
+    version:  latest,
+    endpoint: `/extensions/${ ext }/plugin/${ ext }-${ latest}.umd.min.js`,
+    metadata: {
+      direct: 'true',
+    }
+  });
+});
+
+fs.writeFileSync(path.join('dist/extensions', 'index.json'), JSON.stringify(index, null, 2));

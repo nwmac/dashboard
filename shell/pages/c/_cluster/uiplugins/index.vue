@@ -209,7 +209,7 @@ export default {
 
       switch (this.view) {
       case TABS_VALUES.INSTALLED:
-        // We never show built-in extensions as installed - installed are just the ones the user has installed
+        // We never show built-in extensions as installed - installed are just the ones the user has installed (or are bundled)
         return all.filter((p) => !p.builtin && (!!p.installed || !!p.installing));
       case TABS_VALUES.UPDATES:
         return this.updates;
@@ -363,6 +363,10 @@ export default {
           if (!(item.builtin && rancher[UI_PLUGIN_CHART_ANNOTATIONS.HIDDEN_BUILTIN])) {
             all.push(item);
           }
+        } else {
+          if (p.bundled) {
+            chart.installed = true;
+          }
         }
       });
 
@@ -447,6 +451,8 @@ export default {
         }
       });
 
+      console.error('available', all);
+
       // Sort by name
       return sortBy(all, 'name', false);
     }
@@ -498,7 +504,7 @@ export default {
     plugins: {
       handler(neu) {
         const installed = this.$store.getters['uiplugins/plugins'];
-        const shouldHaveLoaded = (installed || []).filter((p) => !this.uiErrors[p.name] && !p.builtin);
+        const shouldHaveLoaded = (installed || []).filter((p) => !this.uiErrors[p.name] && !p.builtin && !p.bundled);
         let changes = 0;
 
         // Did the user remove an extension

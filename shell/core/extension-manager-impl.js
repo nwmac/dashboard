@@ -75,11 +75,11 @@ const createExtensionManager = (context) => {
         url = `${ UI_PLUGIN_BASE_URL }/${ name }/${ version }/plugin/${ main }`;
       }
 
-      return this.loadAsync(id, url);
+      return this.loadAsync(id, url, !!plugin.bundled);
     },
 
     // Load a plugin from a UI package
-    loadAsync(id, mainFile) {
+    loadAsync(id, mainFile, bundled = false) {
       return new Promise((resolve, reject) => {
       // The plugin is already loaded so we should avoid loading it again.
       // This will primarily affect plugins that load prior to authentication and we attempt to load again after authentication.
@@ -108,6 +108,7 @@ const createExtensionManager = (context) => {
           const plugin = new Plugin(id);
 
           plugins[id] = plugin;
+          plugin.bundled = !!bundled;
 
           // Initialize the plugin
           try {
