@@ -37,6 +37,7 @@ export default {
       uiColorSetting:                fetchOrCreateSetting(this.$store, SETTING.PRIMARY_COLOR, ''),
       uiLinkColorSetting:            fetchOrCreateSetting(this.$store, SETTING.LINK_COLOR, ''),
       uiFaviconSetting:              fetchOrCreateSetting(this.$store, SETTING.FAVICON, ''),
+      uiBrandingConfigSetting:       fetchOrCreateSetting(this.$store, SETTING.UI_BRANDING_CONFIG, ''),
     });
 
     Object.assign(this, hash);
@@ -95,6 +96,15 @@ export default {
       this.uiLinkColor = Color(hash.uiLinkColorSetting.value).hex();
       this.customizeLinkColor = true;
     }
+    // Banner Text overlay alignment
+    if (hash.uiBrandingConfigSetting.value) {
+      try {
+        this.uiBannerConfig = JSON.parse(hash.uiBrandingConfigSetting.value || '{}');
+        this.hadBannerConfig = Object.keys(this.uiBannerConfig).length > 0;
+      } catch (e) {
+        console.error('Could not parse UI Banner Configuration setting', e); // eslint-disable-line no-console
+      }
+    }
   },
 
   data() {
@@ -113,6 +123,8 @@ export default {
       uiBannerLightSetting: {},
       uiBannerLight:        '',
       customizeBanner:      false,
+      uiBannerConfig:       {},
+      hadBannerConfig:      false,
 
       uiLoginBackgroundDarkSetting:  {},
       uiLoginBackgroundDark:         '',
@@ -217,6 +229,22 @@ export default {
         this.uiLinkColorSetting.value = null;
       }
 
+      // Banner configuration setting
+
+      // If no custom banner, then reset the banner config setting
+      if (!this.customizeBanner) {
+        this.uiBannerConfig.center = false;
+      }
+
+      // False is the default, so remove the value if it is the default
+      if (!this.uiBannerConfig.center) {
+        delete this.uiBannerConfig.center;
+      }
+
+      const hasBannerConfig = Object.keys(this.uiBannerConfig).length > 0;
+
+      this.uiBrandingConfigSetting.value = JSON.stringify(this.uiBannerConfig);
+
       this.errors = [];
 
       try {
@@ -232,6 +260,11 @@ export default {
           this.uiLinkColorSetting.save(),
           this.uiFaviconSetting.save()
         ]);
+
+        if (hasBannerConfig || this.hadBannerConfig) {
+          await this.uiBrandingConfigSetting.save();
+        }
+
         if (this.uiPLSetting.value !== this.vendor) {
           setVendor(this.uiPLSetting.value);
         }
@@ -405,6 +438,18 @@ export default {
             >
           </SimpleBox>
         </div>
+      </div>
+
+      <!-- Allow overlay text alignment to be configured when using a custom banner -->
+      <div
+        v-if="customizeBanner"
+        class="row mt-10 mb-20"
+      >
+        <Checkbox
+          v-model:value="uiBannerConfig.center"
+          :label="t('branding.banner.alignment')"
+          :mode="mode"
+        />
       </div>
 
       <h3 class="mt-20 mb-5 pb-5">
@@ -618,6 +663,13 @@ export default {
 
     .logo-preview {
       max-width: 100%;
+    }
+
+    // Ensure images are scaled within the preview box
+    .img-preview {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
     }
   }
 

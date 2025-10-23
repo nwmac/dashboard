@@ -8695,6 +8695,7 @@ branding:
     uploadLight: Upload Light Banner
     uploadDark: Upload Dark Banner
     useCustom: Use a Custom Banner
+    alignment: Center the overlayed welcome text on the banner graphic (default is left alignment)
   loginBackground:
     label: Login Background
     tip: 'Upload an image to replace the default Rancher background in the Login page. We recommend using an SVG image with an aspect ratio of 7:8. The default image size is 683x768. Max file size is 200KB. Accepted formats: JPEG, PNG, SVG.'
