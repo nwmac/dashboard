@@ -567,6 +567,10 @@ export default {
     cache.haveNamespace = namespace;
   },
 
+  setSavedCount(state, { name, count }) {
+    state.savedCounts[name] = count;
+  },
+
   loadedAll(state, { type }) {
     const cache = registerType(state, type);
 

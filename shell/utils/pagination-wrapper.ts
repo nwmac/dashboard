@@ -28,6 +28,11 @@ interface Args {
     classify?: boolean,
     reactive?: boolean,
   }
+
+  /**
+   * Specifies the name to use if we should save the count returned in the paginated request
+   */
+  saveCountAs?: string;
 }
 
 interface Result<T> extends Omit<ActionFindPageTransientResult<T>, 'data'> {
@@ -53,13 +58,14 @@ class PaginationWrapper<T extends object> {
   private id: string;
   private classify: boolean;
   private reactive: boolean;
+  private saveCountAs: string | undefined;
 
   public isEnabled: boolean;
   private steveWatchParams: STEVE_WATCH_EVENT_PARAMS_COMMON | undefined;
 
   constructor(args: Args) {
     const {
-      $store, id, enabledFor, onChange, formatResponse
+      $store, id, enabledFor, onChange, formatResponse, saveCountAs
     } = args;
 
     this.$store = $store;
@@ -68,6 +74,7 @@ class PaginationWrapper<T extends object> {
     this.onChange = onChange;
     this.classify = formatResponse?.classify || false;
     this.reactive = formatResponse?.reactive || false;
+    this.saveCountAs = saveCountAs;
 
     this.isEnabled = paginationUtils.isEnabled({ rootGetters: $store.getters, $plugin: this.$store.$plugin }, enabledFor);
   }
@@ -80,9 +87,10 @@ class PaginationWrapper<T extends object> {
       throw new Error(`Wrapper for type '${ this.enabledFor.store }/${ this.enabledFor.resource?.id }' in context '${ this.enabledFor.resource?.context }' not supported`);
     }
     const opt: ActionFindPageArgs = {
-      watch:     false,
+      watch:       false,
       pagination,
-      transient: true,
+      transient:   true,
+      saveCountAs: this.saveCountAs
     };
 
     // Fetch
