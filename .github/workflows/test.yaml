@@ -2,7 +2,7 @@ name: Tests
 on:
   push:
     branches:
-      # - master - See https://github.com/rancher/dashboard/issues/14230
+      - master
       - 'release-*'
   pull_request:
     branches:
