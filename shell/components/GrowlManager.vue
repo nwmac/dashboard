@@ -130,6 +130,7 @@ export default {
               v-if="growl.message"
               :id="`growl-message-${ growl.id }`"
               :class="{ 'has-title': !!growl.title }"
+              class="growl-content"
             >
               {{ growl.message }}
             </p>
@@ -208,6 +209,14 @@ export default {
             margin-top: 5px;
           }
         }
+      }
+
+      .growl-content {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
