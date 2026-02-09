@@ -355,7 +355,8 @@ export default {
      * Display warning about unsupported Azure provider if k8s >= 1.30
      */
     showCloudProviderUnsupportedAzureWarning() {
-      return this.showCloudProvider && this.isCreate && this.isAzureProviderUnsupported;
+      // TODO: Should clean this up - hide the banner now, as 1.30 was a while ago
+      return false;
     },
 
     /**
@@ -426,6 +427,18 @@ export default {
     >
       <span v-clean-html="t('cluster.rke2.cni.cniNoneBanner', {}, true)" />
     </Banner>
+      <Banner
+        color="info"
+        data-testid="clusterBasics__ingressBanner"
+      >
+        <span v-clean-html="t('cluster.banner.ingress', {}, true)" />
+      </Banner>
+      <Banner
+        color="error"
+        data-testid="clusterBasics__ingressNginxInstalledBanner"
+      >
+        <span v-clean-html="t('cluster.banner.ingressNginx', {}, true)" />
+      </Banner>
     <div class="row mb-10">
       <div class="col span-6">
         <LabeledSelect
@@ -638,16 +651,6 @@ export default {
           :label="opt.label"
           :value-when-true="opt.value"
         />
-        <Banner
-          color="info"
-        >
-          Ingress configuration is now managed from the new <a href="#ingress">Ingress</a> tab. Rancher no longer installs an Ingress controller by default
-        </Banner>
-        <Banner
-          color="error"
-        >
-          The NGINX Ingress controller installed in this cluster is no longer maintained. We recommend migrating to the Traefik Ingress Controller or uninstalling, if not required. This can be done from the new Ingress tab
-        </Banner>
       </div>
     </div>
   </div>

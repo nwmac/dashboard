@@ -2260,6 +2260,8 @@ cluster:
         other { {pool_name}: The provided values for {fields} were not found in the list of expected values. This can happen with clusters provisioned outside of Rancher or when options for the provider have changed. }
       }
     rke1DeprecationMessage: 'Rancher Kubernetes Engine (RKE / RKE1) has reached end of life and these clusters are no longer supported. We recommend replatforming RKE1 clusters to RKE2 to ensure continued support and security updates. Learn more about the transition <a href="https://www.suse.com/support/kb/doc/?id=000021518" target="_blank" rel="noopener noreferrer nofollow">here</a>.'
+    ingress: Ingress configuration is now managed from the new <a href="#ingress">Ingress/Traefik</a> tab. The Rancher UI no longer installs an Ingress controller by default
+    ingressNginx: The NGINX Ingress controller installed in this cluster is no longer maintained. We recommend migrating to the Traefik Ingress Controller or uninstalling, if not required. This can be done from the new <a href="#ingress">Ingress/Traefik</a> tab
   rke1Unsupported: RKE1 Clusters are no longer supported
 
   architecture:
@@ -2610,6 +2612,7 @@ cluster:
     cluster: Cluster Configuration
     etcd: etcd
     log: Provisioning Log
+    ingress: Ingress/Traefik
     networking: Networking
     machinePools: Machine Pools
     machines: Machines

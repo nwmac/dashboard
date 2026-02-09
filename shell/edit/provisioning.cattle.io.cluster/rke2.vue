@@ -2529,10 +2529,12 @@ export default {
 
           <Tab
             name="ingress"
-            label="Ingress"
+            label-key="cluster.tabs.ingress"
           >
             <Ingress
+              v-model:value="localValue"
               :mode="mode"
+              @update:value="$emit('input', $event)"
             />
           </Tab>
 
