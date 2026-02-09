@@ -56,6 +56,7 @@ import { getApplicableExtensionEnhancements } from '@shell/core/plugin-helpers';
 import { ExtensionPoint, TabLocation } from '@shell/core/types';
 import MemberRoles from '@shell/edit/provisioning.cattle.io.cluster/tabs/MemberRoles';
 import Basics from '@shell/edit/provisioning.cattle.io.cluster/tabs/Basics';
+import Ingress from '@shell/edit/provisioning.cattle.io.cluster/tabs/Ingress';
 import Etcd from '@shell/edit/provisioning.cattle.io.cluster/tabs/etcd';
 import Networking, { STACK_PREFS } from '@shell/edit/provisioning.cattle.io.cluster/tabs/networking';
 import Upgrade from '@shell/edit/provisioning.cattle.io.cluster/tabs/upgrade';
@@ -122,7 +123,8 @@ export default {
     Advanced,
     ClusterAppearance,
     AddOnAdditionalManifest,
-    AccountAccess
+    AccountAccess,
+    Ingress,
   },
 
   mixins: [CreateEditView, FormValidation],
@@ -2522,6 +2524,15 @@ export default {
               @s3-backup-changed="handleS3BackupChanged"
               @config-etcd-expose-metrics-changed="handleConfigEtcdExposeMetricsChanged"
               @etcd-validation-changed="(val)=>etcdConfigValid = val"
+            />
+          </Tab>
+
+          <Tab
+            name="ingress"
+            label="Ingress"
+          >
+            <Ingress
+              :mode="mode"
             />
           </Tab>
 

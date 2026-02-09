@@ -234,7 +234,7 @@ export default {
           label: this.$store.getters['i18n/withFallback'](`cluster.${ this.value.isK3s ? 'k3s' : 'rke2' }.systemService."${ value }"`, null, value.replace(/^(rke2|rancher)-/, '')),
           value,
         };
-      });
+      }).filter(opt => opt.value !== 'rke2-ingress-nginx');
     },
 
     serverArgs() {
@@ -618,7 +618,7 @@ export default {
       </div>
     </div>
 
-    <div class="spacer" />
+    <div class="spacer spacer-small" />
 
     <div
       v-if="serverArgs.disable"
@@ -638,6 +638,16 @@ export default {
           :label="opt.label"
           :value-when-true="opt.value"
         />
+        <Banner
+          color="info"
+        >
+          Ingress configuration is now managed from the new <a href="#ingress">Ingress</a> tab. Rancher no longer installs an Ingress controller by default
+        </Banner>
+        <Banner
+          color="error"
+        >
+          The NGINX Ingress controller installed in this cluster is no longer maintained. We recommend migrating to the Traefik Ingress Controller or uninstalling, if not required. This can be done from the new Ingress tab
+        </Banner>
       </div>
     </div>
   </div>
@@ -646,5 +656,9 @@ export default {
 <style lang="scss" scoped>
   .patch-version {
     margin-top: 5px;
+  }
+
+  .spacer {
+    padding-top: 20px !important;
   }
 </style>
