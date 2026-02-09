@@ -234,7 +234,7 @@ export default {
           label: this.$store.getters['i18n/withFallback'](`cluster.${ this.value.isK3s ? 'k3s' : 'rke2' }.systemService."${ value }"`, null, value.replace(/^(rke2|rancher)-/, '')),
           value,
         };
-      });
+      }).filter(opt => opt.value !== 'rke2-ingress-nginx');
     },
 
     serverArgs() {
@@ -355,7 +355,8 @@ export default {
      * Display warning about unsupported Azure provider if k8s >= 1.30
      */
     showCloudProviderUnsupportedAzureWarning() {
-      return this.showCloudProvider && this.isCreate && this.isAzureProviderUnsupported;
+      // TODO: Should clean this up - hide the banner now, as 1.30 was a while ago
+      return false;
     },
 
     /**
@@ -426,6 +427,18 @@ export default {
     >
       <span v-clean-html="t('cluster.rke2.cni.cniNoneBanner', {}, true)" />
     </Banner>
+      <Banner
+        color="info"
+        data-testid="clusterBasics__ingressBanner"
+      >
+        <span v-clean-html="t('cluster.banner.ingress', {}, true)" />
+      </Banner>
+      <Banner
+        color="error"
+        data-testid="clusterBasics__ingressNginxInstalledBanner"
+      >
+        <span v-clean-html="t('cluster.banner.ingressNginx', {}, true)" />
+      </Banner>
     <div class="row mb-10">
       <div class="col span-6">
         <LabeledSelect
@@ -618,7 +631,7 @@ export default {
       </div>
     </div>
 
-    <div class="spacer" />
+    <div class="spacer spacer-small" />
 
     <div
       v-if="serverArgs.disable"
@@ -646,5 +659,9 @@ export default {
 <style lang="scss" scoped>
   .patch-version {
     margin-top: 5px;
+  }
+
+  .spacer {
+    padding-top: 20px !important;
   }
 </style>
