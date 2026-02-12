@@ -66,7 +66,17 @@ jobs:
           echo "  Target: ${{ steps.target.outputs.type }}/${{ steps.target.outputs.name }}"
           echo "  Workflow: ${{ github.event.workflow_run.name }}"
           echo "  Conclusion: ${{ github.event.workflow_run.conclusion }}"
-          
+
+          if [ -z "${TESTHUB_URL}" ]; then
+            echo "TESTHUB_URL is not set. Skipping registration."
+            exit 1
+          fi
+
+          if [ -z "${TESTHUB_TOKEN}" ]; then
+            echo "TESTHUB_TOKEN is not set. Skipping registration."
+            exit 1
+          fi          
+
           # Build the API URL
           API_URL="${TESTHUB_URL}/api/${{ github.repository }}/register/${{ steps.target.outputs.type }}/${{ steps.target.outputs.name }}/${{ github.event.workflow_run.id }}"
           
@@ -96,7 +106,7 @@ jobs:
       TESTHUB_TOKEN: ${{ secrets.TESTHUB_TOKEN }}
 
     # Only run for pull_request events when env vars are configured
-    if: github.event_name == 'pull_request' && ${{ env.TESTHUB_URL != '' }} && ${{ env.TESTHUB_TOKEN != '' }}
+    if: github.event_name == 'pull_request'
     steps:
       - name: Sync PR info with TestHub
         # Continue even if this fails - we don't want to fail the workflow
@@ -107,6 +117,16 @@ jobs:
           echo "  PR Number: ${{ github.event.pull_request.number }}"
           echo "  Action: ${{ github.event.action }}"
           echo "  Title: ${{ github.event.pull_request.title }}"
+
+          if [ -z "${TESTHUB_URL}" ]; then
+            echo "TESTHUB_URL is not set. Skipping registration."
+            exit 1
+          fi
+
+          if [ -z "${TESTHUB_TOKEN}" ]; then
+            echo "TESTHUB_TOKEN is not set. Skipping registration."
+            exit 1
+          fi
           
           # Build the API URL
           API_URL="${TESTHUB_URL}/api/${{ github.repository }}/pull-request/refresh/${{ github.event.pull_request.number }}"
