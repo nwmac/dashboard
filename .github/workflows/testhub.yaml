@@ -33,7 +33,7 @@ jobs:
       TESTHUB_URL: ${{ secrets.TESTHUB_URL }}
       TESTHUB_TOKEN: ${{ secrets.TESTHUB_TOKEN }}
     # Only run for workflow_run events when env vars are configured
-    if: github.event_name == 'workflow_run' && ${{ env.TESTHUB_URL != '' }} && ${{ env.TESTHUB_TOKEN != '' }}
+    if: github.event_name == 'workflow_run'
     steps:
       - name: Determine target type and name
         id: target
