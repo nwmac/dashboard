@@ -3,6 +3,8 @@
 # After the Tests workflow completes, this workflow will register the test run with TestHub
 # It will also listen for PR events to keep TestHub's PR info up to date
 
+# Requires TESTHUB_URL and TESTHUB_TOKEN to be set as repository secrets for API access
+
 name: TestHub Integration
 
 on:
