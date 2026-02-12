@@ -3,6 +3,8 @@
 # After the Tests workflow completes, this workflow will register the test run with TestHub
 # It will also listen for PR events to keep TestHub's PR info up to date
 
+# Requires TESTHUB_URL and TESTHUB_TOKEN to be set as repository secrets for API access
+
 name: TestHub Integration
 
 on:
@@ -81,21 +83,7 @@ jobs:
           API_URL="${TESTHUB_URL}/api/${{ github.repository }}/register/${{ steps.target.outputs.type }}/${{ steps.target.outputs.name }}/${{ github.event.workflow_run.id }}"
           
           # Make the API call
-          HTTP_STATUS=$(curl -s -o /tmp/response.txt -w "%{http_code}" \
-            -X POST \
-            -H "Authorization: Bearer ${TESTHUB_TOKEN}" \
-            -H "Content-Type: application/json" \
-            "${API_URL}")
-          
-          echo "HTTP Status: ${HTTP_STATUS}"
-          
-          if [[ "$HTTP_STATUS" -ge 200 && "$HTTP_STATUS" -lt 300 ]]; then
-            echo "✅ Successfully registered test run"
-            cat /tmp/response.txt
-          else
-            echo "⚠️ Failed to register test run (non-fatal)"
-            cat /tmp/response.txt
-          fi
+          url -X POST -H "Authorization: Bearer ${TESTHUB_TOKEN}" "${API_URL}"
 
   # Job to sync PR info with TestHub when PR events occur
   sync-pull-request:
@@ -132,18 +120,4 @@ jobs:
           API_URL="${TESTHUB_URL}/api/${{ github.repository }}/pull-request/refresh/${{ github.event.pull_request.number }}"
           
           # Make the API call
-          HTTP_STATUS=$(curl -s -o /tmp/response.txt -w "%{http_code}" \
-            -X POST \
-            -H "Authorization: Bearer ${TESTHUB_TOKEN}" \
-            -H "Content-Type: application/json" \
-            "${API_URL}")
-          
-          echo "HTTP Status: ${HTTP_STATUS}"
-          
-          if [[ "$HTTP_STATUS" -ge 200 && "$HTTP_STATUS" -lt 300 ]]; then
-            echo "✅ Successfully synced PR info"
-            cat /tmp/response.txt
-          else
-            echo "⚠️ Failed to sync PR info (non-fatal)"
-            cat /tmp/response.txt
-          fi
+          url -X POST -H "Authorization: Bearer ${TESTHUB_TOKEN}" "${API_URL}"
