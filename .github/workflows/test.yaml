@@ -342,3 +342,18 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn build-pkg --verify
+
+store-pr-number:
+  runs-on: ubuntu-latest
+  if: github.event_name == 'pull_request'
+  steps:
+    - name: Save PR number
+      env:
+        PR_NUMBER: ${{ github.event.number }}
+      run: |
+        mkdir -p ./pr
+        echo $PR_NUMBER > ./pr/pr_number
+    - uses: actions/upload-artifact@v6
+      with:
+        name: pr_number
+        path: pr/
