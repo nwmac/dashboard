@@ -363,7 +363,6 @@ jobs:
           fi
 
           cat ./origin/origin
-
       - uses: actions/upload-artifact@v6
         name: Upload origin artifact
         with:
