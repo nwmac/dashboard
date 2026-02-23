@@ -23,6 +23,9 @@ on:
       - demilestoned
       - ready_for_review
       - converted_to_draft
+      - assigned
+      - unassigned
+
     branches:
       - 'master'
       - 'release-*'
