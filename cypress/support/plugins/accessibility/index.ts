@@ -140,8 +140,10 @@ function registerHooks(on, config) {
     },
 
     a11yScreenshot(options: any ) {
-      const { titlePath, name } = options;
+      const { titlePath, name, raw } = options;
       const found = createPath(titlePath);
+
+      const prop = raw ? 'screenshotRaw' : 'screenshot';
 
       // Move the screenshot to the accessibility folder
       const details = screenshots.find((s) => s.name === name);
@@ -150,7 +152,16 @@ function registerHooks(on, config) {
         const screenFolder = path.join(folder, details.specName);
         const destFile = path.join(screenFolder, `${ name }.png`);
 
-        found.screenshot = path.join(details.specName, `${ name }.png`);
+        found[prop] = path.join(details.specName, `${ name }.png`);
+
+        // Add screenshot property to each node of each violation as well
+        if (raw && found && found.leaf) {
+          found.violations.forEach((v: any) => {
+            v.nodes.forEach((n: any) => {
+              n.screenshot = found[prop];
+            });
+          });
+        }
 
         if (!fs.existsSync(screenFolder)) {
           fs.mkdirSync(screenFolder);

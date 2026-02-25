@@ -53,10 +53,7 @@ function getAccessibilityViolationsCallback(description?: string) {
 
     testPath.push(description || `${ lastName } (#${ index })`);
 
-    cy.task('a11y', {
-      violations,
-      titlePath: testPath,
-    });
+    cy.screenshot(`a11y_${ Cypress.currentTest.title }_${ index }_raw`, { capture: 'viewport' });
 
     // Log in Cypress
     violations.forEach((violation) => {
@@ -69,7 +66,9 @@ function getAccessibilityViolationsCallback(description?: string) {
         message:      `[${ violation.help }][${ violation.helpUrl }]`
       });
 
-      violation.nodes.forEach(({ target }) => {
+      violation.nodes.forEach((node) => {
+        const { target } = node;
+
         Cypress.log({
           name:         `🔨`,
           consoleProps: () => violation,
@@ -88,10 +87,16 @@ function getAccessibilityViolationsCallback(description?: string) {
               $el.data('border', border);
             }
 
-            $el.css('border', '2px solid red');
+            node.boundingBox = $el[0].getBoundingClientRect();
           });
         });
       });
+    });
+
+    // Register violations after we've got the bounding boxes
+    cy.task('a11y', {
+      violations,
+      titlePath: testPath,
     });
 
     cy.screenshot(`a11y_${ Cypress.currentTest.title }_${ index }`, { capture: 'viewport' });
@@ -101,6 +106,13 @@ function getAccessibilityViolationsCallback(description?: string) {
       titlePath: testPath,
       test:      Cypress.currentTest,
       name:      `a11y_${ Cypress.currentTest.title }_${ index }`
+    });
+
+    cy.task('a11yScreenshot', {
+      titlePath: testPath,
+      test:      Cypress.currentTest,
+      name:      `a11y_${ Cypress.currentTest.title }_${ index }_raw`,
+      raw:       true
     });
 
     screenshotIndexes[title] = index + 1;
