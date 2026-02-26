@@ -47,7 +47,7 @@ function getAccessibilityViolationsCallback(description?: string) {
     terminalLog(violations); // Log to the console
 
     const title = Cypress.currentTest.titlePath.join(', ');
-    const index = screenshotIndexes[title] || 1;
+    let index = screenshotIndexes[title] || 1;
     const testPath = Cypress.currentTest.titlePath;
     const lastName = Cypress.currentTest.titlePath[Cypress.currentTest.titlePath.length - 1];
 
@@ -74,30 +74,46 @@ function getAccessibilityViolationsCallback(description?: string) {
           message:      target
         });
 
-        // Store the bounding box of where the violation is on the view
-        cy.get(target.join(', ')).then(($el) => {
-          node.boundingBox = $el[0].getBoundingClientRect();
+        // Store the existing border and change it to clearly show the elements with violations
+        cy.get(target.join(', ')).invoke('css', 'border').then((border) => {
+          cy.get(target.join(', ')).then(($el) => {
+            const existingBorder = $el.data('border');
+
+            // If we have the original border, don't store again = covers a case an element has multiple violations
+            // and we would lose the original border
+            if (!existingBorder) {
+              $el.data('border', border);
+            }
+
+            $el.css('border', '2px solid red');
+          });
         });
 
-        cy.window().then((win) => {
-          node.scrollY = win.scrollY;
+        node.screenshot = `screenshots/a11y_${ Cypress.currentTest.title }_${ index }.png`;
+
+        cy.screenshot(`a11y_${ Cypress.currentTest.title }_${ index }`, { capture: 'viewport' });
+        index++;
+
+        cy.get(target.join(', ')).then(($el) => {
+          const border = $el.data('border');
+
+          if (!border.startsWith('0px none')) {
+            $el.css('border', $el.data('border'));
+          } else {
+            $el.css('border', '');
+          }
+
+          if ($el.attr('style')?.length === 0) {
+            $el.removeAttr('style');
+          }
         });
       });
     });
-
-    cy.screenshot(`a11y_${ Cypress.currentTest.title }_${ index }`, { capture: 'viewport' });
 
     // Register violations after we've got the bounding boxes
     cy.task('a11y', {
       violations,
       titlePath: testPath,
-    });
-
-    // Record the screenshot against the test and move it into the a11y folder
-    cy.task('a11yScreenshot', {
-      titlePath: testPath,
-      test:      Cypress.currentTest,
-      name:      `a11y_${ Cypress.currentTest.title }_${ index }`
     });
 
     screenshotIndexes[title] = index + 1;
