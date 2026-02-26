@@ -78,6 +78,10 @@ function getAccessibilityViolationsCallback(description?: string) {
         cy.get(target.join(', ')).then(($el) => {
           node.boundingBox = $el[0].getBoundingClientRect();
         });
+
+        cy.window().then((win) => {
+          node.scrollY = win.scrollY;
+        });
       });
     });
 
