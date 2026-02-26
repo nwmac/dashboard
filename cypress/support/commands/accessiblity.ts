@@ -53,8 +53,6 @@ function getAccessibilityViolationsCallback(description?: string) {
 
     testPath.push(description || `${ lastName } (#${ index })`);
 
-    cy.screenshot(`a11y_${ Cypress.currentTest.title }_${ index }_raw`, { capture: 'viewport' });
-
     // Log in Cypress
     violations.forEach((violation) => {
       const nodes = Cypress.$(violation.nodes.map((item) => item.target).join(','));
@@ -76,30 +74,20 @@ function getAccessibilityViolationsCallback(description?: string) {
           message:      target
         });
 
-        // Store the existing border and change it to clearly show the elements with violations
-        cy.get(target.join(', ')).invoke('css', 'border').then((border) => {
-          cy.get(target.join(', ')).then(($el) => {
-            const existingBorder = $el.data('border');
-
-            // If we have the original border, don't store again = covers a case an element has multiple violations
-            // and we would lose the original border
-            if (!existingBorder) {
-              $el.data('border', border);
-            }
-
-            node.boundingBox = $el[0].getBoundingClientRect();
-          });
+        // Store the bounding box of where the violation is on the view
+        cy.get(target.join(', ')).then(($el) => {
+          node.boundingBox = $el[0].getBoundingClientRect();
         });
       });
     });
+
+    cy.screenshot(`a11y_${ Cypress.currentTest.title }_${ index }`, { capture: 'viewport' });
 
     // Register violations after we've got the bounding boxes
     cy.task('a11y', {
       violations,
       titlePath: testPath,
     });
-
-    cy.screenshot(`a11y_${ Cypress.currentTest.title }_${ index }`, { capture: 'viewport' });
 
     // Record the screenshot against the test and move it into the a11y folder
     cy.task('a11yScreenshot', {
@@ -108,33 +96,7 @@ function getAccessibilityViolationsCallback(description?: string) {
       name:      `a11y_${ Cypress.currentTest.title }_${ index }`
     });
 
-    cy.task('a11yScreenshot', {
-      titlePath: testPath,
-      test:      Cypress.currentTest,
-      name:      `a11y_${ Cypress.currentTest.title }_${ index }_raw`,
-      raw:       true
-    });
-
     screenshotIndexes[title] = index + 1;
-
-    // Reset the borders that were added to mark the elements with violations
-    violations.forEach((violation) => {
-      violation.nodes.forEach(({ target }) => {
-        cy.get(target.join(', ')).then(($el) => {
-          const border = $el.data('border');
-
-          if (!border.startsWith('0px none')) {
-            $el.css('border', $el.data('border'));
-          } else {
-            $el.css('border', '');
-          }
-
-          if ($el.attr('style')?.length === 0) {
-            $el.removeAttr('style');
-          }
-        });
-      });
-    });
   };
 }
 
