@@ -43,10 +43,6 @@ import { USERS_BASE_URL } from '@/cypress/support/utils/api-endpoints';
 import { FleetApplicationCreatePo, FleetGitRepoCreateEditPo } from '@/cypress/e2e/po/pages/fleet/fleet.cattle.io.application.po';
 
 describe('Shell a11y testing', { tags: ['@adminUser', '@accessibility'] }, () => {
-  beforeEach(() => {
-    cy.viewport(1280, 800);
-  });
-
   describe('Login page', () => {
     it('login page', () => {
       const loginPage = new LoginPagePo();
