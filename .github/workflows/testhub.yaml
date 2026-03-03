@@ -32,7 +32,7 @@ on:
 
 jobs:
   # Workflow run has been started
-  register-test-run:
+  register-test-run-started:
     name: Register Test Run being started
     runs-on: ubuntu-latest
     # Only run for workflow_run events when env vars are configured
