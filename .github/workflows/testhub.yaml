@@ -10,7 +10,7 @@ on:
   workflow_run:
     workflows: [Tests, "Code Coverage"]
     types:
-      - completed
+      - [completed, requested]
 
   # Trigger on PR events to sync PR info (don't need all events)
   pull_request_target:
@@ -31,6 +31,30 @@ on:
       - 'release-*'
 
 jobs:
+  # Workflow run has been started
+  register-test-run:
+    name: Register Test Run being started
+    runs-on: ubuntu-latest
+    # Only run for workflow_run events when env vars are configured
+    if: github.event_name == 'workflow_run' && github.event.action == 'requested'
+    steps:
+      - name: Register test run with TestHub
+        run: |
+          echo "Registering test run with TestHub... REQUESTED"
+          echo "  Repository: ${{ github.repository }}"
+          echo "  Run ID: ${{ github.event.workflow_run.id }}"
+          echo "  Workflow: ${{ github.event.workflow_run.name }}"
+          echo "-- Event ------------------------------------------------"
+          echo '${{ toJSON(github.event) }}' | jq          
+          echo "-- GitHub ------------------------------------------------"
+          echo '${{ toJSON(github) }}' | jq          
+          echo "-- Job ------------------------------------------------"
+          echo '${{ toJSON(job) }}' | jq          
+          echo "-- Steps ------------------------------------------------"
+          echo '${{ toJSON(steps) }}' | jq          
+          echo "--------------------------------------------------"
+          env | sort
+
   # Job to register completed test runs with TestHub
   register-test-run:
     name: Register Test Run
@@ -39,7 +63,7 @@ jobs:
       TESTHUB_URL: ${{ secrets.TESTHUB_URL }}
       TESTHUB_TOKEN: ${{ secrets.TESTHUB_TOKEN }}
     # Only run for workflow_run events when env vars are configured
-    if: github.event_name == 'workflow_run'
+    if: github.event_name == 'workflow_run' && github.event.action == 'completed'
     steps:
       - name: Register test run with TestHub
         # Continue even if this fails - we don't want to fail the workflow
