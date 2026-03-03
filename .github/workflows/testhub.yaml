@@ -10,7 +10,8 @@ on:
   workflow_run:
     workflows: [Tests, "Code Coverage"]
     types:
-      - [completed, requested]
+      - completed
+      - requested
 
   # Trigger on PR events to sync PR info (don't need all events)
   pull_request_target:
