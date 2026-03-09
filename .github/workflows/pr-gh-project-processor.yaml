@@ -34,7 +34,7 @@ jobs:
     #   with:
     #     app-id: ${{ env.APP_ID }}
     #     private-key: ${{ env.APP_PEM }}
-    # - name: Download artifact
+    - name: Download artifact
       uses: actions/download-artifact@v6
       with:
         name: pr-gh-project-event
