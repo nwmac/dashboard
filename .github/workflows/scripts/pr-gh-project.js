@@ -52,6 +52,11 @@ if (ghProjectId.length !== 2) {
 // The event object
 const event = require(process.env.GITHUB_EVENT_PATH);
 
+console.log('======================================================================================');
+console.log(' EVENT');
+console.log(JSON.stringify(event, null, 2));
+console.log('======================================================================================');
+
 function getReferencedIssues(body) {
   // https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword
   // Handle both Fixes #NNNN and Fixes https://github.com/rancher/dashboard/issuues/NNNN
@@ -217,13 +222,13 @@ async function processClosedAction() {
         if (hasLabel(iss, QA_DEV_AUTOMATION_LABEL)) {
           console.log('  Updating GitHub Project to move issue to QA Review');
 
-          await moveIssueToProjectState(ghProject, prjIssue[ghProject.id], iss, GH_PRJ_QA_REVIEW);
-          await removeZubeLabels(iss);        
+          // await moveIssueToProjectState(ghProject, prjIssue[ghProject.id], iss, GH_PRJ_QA_REVIEW);
+          // await removeZubeLabels(iss);        
         } else {
           console.log('  Updating GitHub Project to move issue to Test');
 
-          await moveIssueToProjectState(ghProject, prjIssue[ghProject.id], iss, GH_PRJ_TO_TEST);
-          await removeZubeLabels(iss);        
+          // await moveIssueToProjectState(ghProject, prjIssue[ghProject.id], iss, GH_PRJ_TO_TEST);
+          // await removeZubeLabels(iss);        
         }
       }
     }
@@ -244,8 +249,8 @@ async function processOpenAction() {
     console.log(`  Adding assignee to the PR: ${pr.user.login}`);
 
     // Update the assignees
-    const assigneesAPI = `${event.repository.url}/issues/${pr.number}/assignees`;
-    await request.post(assigneesAPI, { assignees: [pr.user.login] });
+    // const assigneesAPI = `${event.repository.url}/issues/${pr.number}/assignees`;
+    // await request.post(assigneesAPI, { assignees: [pr.user.login] });
   }
 }
 
@@ -303,9 +308,9 @@ async function processOpenOrEditAction() {
         // Issue is not on the board
         console.log(`Issue ${ i } is NOT on the project board - adding it ...`);
 
-        await request.ghAddIssueToProject(ghProject, iss);
+        // await request.ghAddIssueToProject(ghProject, iss);
 
-        prjIssue = await request.ghProjectIssue(info.org, info.repo, i);
+       //  prjIssue = await request.ghProjectIssue(info.org, info.repo, i);
 
         if (!prjIssue?.[ghProject.id]) {
           console.log("Error: Could not add issue to Project Board");
@@ -317,8 +322,8 @@ async function processOpenOrEditAction() {
       }
 
       if (prjIssue?.[ghProject.id]) {
-        await moveIssueToProjectState(ghProject, prjIssue[ghProject.id], iss, GH_PRJ_IN_REVIEW);
-        await removeZubeLabels(iss);        
+        // await moveIssueToProjectState(ghProject, prjIssue[ghProject.id], iss, GH_PRJ_IN_REVIEW);
+        // await removeZubeLabels(iss);        
       } else {
         console.log(`Can not move issue to state ${ GH_PRJ_IN_REVIEW } - issue is not on the board`);
       }
