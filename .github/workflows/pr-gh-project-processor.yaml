@@ -45,6 +45,6 @@ jobs:
       env:
         #GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         GH_TOKEN: gh_no_token_for_testing
-        PR_PROJECT: ${{ secrets.PR_PROJECT }}
+        PR_PROJECT: no_pr_project
         GITHUB_EVENT_PATH: pr-gh-project-event/event.json
       run: node .github/workflows/scripts/pr-gh-project.js
