@@ -41,13 +41,13 @@ if (!process.env.PR_PROJECT) {
 }
 
 // Check the format
-const ghProjectId = process.env.PR_PROJECT.split('#');
+// const ghProjectId = process.env.PR_PROJECT.split('#');
 
-if (ghProjectId.length !== 2) {
-  console.log('Error: PR_PROJECT is not in the correct format (format org#number)');
+// if (ghProjectId.length !== 2) {
+//   console.log('Error: PR_PROJECT is not in the correct format (format org#number)');
 
-  return;
-}
+//   return;
+// }
 
 // The event object
 const event = require(process.env.GITHUB_EVENT_PATH);
