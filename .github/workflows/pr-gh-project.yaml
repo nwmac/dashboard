@@ -4,7 +4,7 @@ on:
     types: [ opened, reopened, edited, closed ]
 
 jobs:
-  # if: ${{ github.repository_owner == 'rancher' }}
+  if: ${{ github.repository_owner == 'nwmac' }}
   runs-on: ubuntu-latest
   steps:
   - uses: actions/checkout@v6
