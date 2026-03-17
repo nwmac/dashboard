@@ -1103,6 +1103,9 @@ catalog:
       resources:
         label: Resources
         busy: The related resources will appear when {app} is fully installed.
+      serviceEndpoints:
+        label: Service Endpoints
+        description: Click to open the service in a new tab.
       values: Values YAML
     upgrade:
       uncertainUpgradeWarningTooltip: Unable to determine if an upgrade is available (can not identify the repository and chart used to deploy this application)
