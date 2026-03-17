@@ -5,6 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import CreateEditView from '@shell/mixins/create-edit-view';
 import ResourceTable from '@shell/components/ResourceTable';
 import ResourceTabs from '@shell/components/form/ResourceTabs';
+import ServiceEndpoints from '@shell/components/ServiceEndpoints';
 import SortableTable from '@shell/components/SortableTable';
 import Tab from '@shell/components/Tabbed/Tab';
 
@@ -19,6 +20,7 @@ export default {
   components: {
     ResourceTable,
     ResourceTabs,
+    ServiceEndpoints,
     SortableTable,
     Tab,
   },
@@ -151,11 +153,16 @@ export default {
 </script>
 
 <template>
-  <ResourceTabs
-    :value="value"
-    :mode="mode"
-    @input="$emit('input', $event)"
-  >
+  <div>
+    <ServiceEndpoints
+      :services="[value]"
+      class="mb-20"
+    />
+    <ResourceTabs
+      :value="value"
+      :mode="mode"
+      @input="$emit('input', $event)"
+    >
     <Tab
       v-if="podSchema"
       name="pods"
@@ -204,6 +211,7 @@ export default {
       />
     </Tab>
   </ResourceTabs>
+  </div>
 </template>
 
 <style lang="scss" scoped>

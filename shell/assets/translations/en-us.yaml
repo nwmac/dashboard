@@ -6177,6 +6177,9 @@ servicePorts:
       label: Target Port
       placeholder: e.g. 80 or http
 
+serviceEndpoints:
+  title: Service Endpoints
+
 serviceTypes:
   clusterip: Cluster IP
   externalname: External Name
