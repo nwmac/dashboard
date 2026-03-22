@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "steve-server.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "steve-server.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "steve-server.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "steve-server.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "steve-server.fullname" . }}
+      containers:
+        - name: steve-server
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - --kubeconfig=/etc/steve/kubeconfig
+            - --https-listen-port={{ .Values.service.httpsPort }}
+            - --http-listen-port={{ .Values.service.httpPort }}
+          ports:
+            - name: https
+              containerPort: {{ .Values.service.httpsPort }}
+              protocol: TCP
+            - name: http
+              containerPort: {{ .Values.service.httpPort }}
+              protocol: TCP
+          volumeMounts:
+            - name: kubeconfig
+              mountPath: /etc/steve
+              readOnly: true
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          livenessProbe:
+            httpGet:
+              path: /check-ready
+              port: https
+              scheme: HTTPS
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /check-ready
+              port: https
+              scheme: HTTPS
+            initialDelaySeconds: 5
+            periodSeconds: 5
+      volumes:
+        - name: kubeconfig
+          configMap:
+            name: {{ include "steve-server.fullname" . }}-kubeconfig
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

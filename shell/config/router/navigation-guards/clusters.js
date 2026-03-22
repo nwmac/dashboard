@@ -120,14 +120,16 @@ export async function loadClusters(to, from, next, { store }) {
     next();
   } catch (e) {
     if ( e.name === ClusterNotFoundError.NAME ) {
-      return next('/home');
+      return next({ name: 'home' });
     } if ( e.name === RedirectToError.NAME ) {
       return next(e.url);
     } else {
       // Sets error 500 if lost connection to API
       store.commit('setError', { error: e, locationError: new Error(store.getters['i18n/t']('nav.failWhale.authMiddleware')) });
 
-      return next('/fail-whale');
+      console.error(e); // eslint-disable-line no-console
+
+      // return next({ name: 'fail-whale' });
     }
   }
 }

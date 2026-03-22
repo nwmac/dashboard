@@ -1,0 +1,6 @@
+apiVersion: v2
+name: steve-server
+description: Steve API server with custom route handlers
+type: application
+version: 0.1.1
+appVersion: "1.0.0"

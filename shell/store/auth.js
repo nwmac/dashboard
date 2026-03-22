@@ -152,8 +152,10 @@ export const actions = {
     try {
       let mgmtUser;
 
-      await dispatch('getSelfUser');
-      const selfUser = getters.selfUser;
+      // HACK
+      // await dispatch('getSelfUser');
+      // const selfUser = getters.selfUser;
+      const selfUser = null; // HACK - we are skipping the self user request for now, which means we won't have the user ID to get the full user details. This is causing some issues with features that rely on user details, but it should be temporary until we can figure out a better solution for the self user request.
 
       if (selfUser) {
         mgmtUser = await dispatch('management/request', { url: `/v1/${ MANAGEMENT.USER }/${ selfUser.status?.userID }` }, { root: true });
@@ -172,22 +174,25 @@ export const actions = {
   },
 
   getAuthProviders({ dispatch }, opt) {
-    let force = false;
+    // let force = false;
 
-    if (opt?.force) {
-      force = true;
-    }
+    // if (opt?.force) {
+    //   force = true;
+    // }
 
-    const providers = dispatch('rancher/findAll', {
-      type: 'authProvider',
-      opt:  {
-        url:   `/v1-public/authproviders`,
-        watch: false,
-        force
-      }
-    }, { root: true });
+    // const providers = dispatch('rancher/findAll', {
+    //   type: 'authProvider',
+    //   opt:  {
+    //     url:   `/v1-public/authproviders`,
+    //     watch: false,
+    //     force
+    //   }
+    // }, { root: true });
 
-    return providers;
+    // return providers;
+
+    // HACK
+    return [];
   },
 
   getAuthConfigs({ dispatch }) {

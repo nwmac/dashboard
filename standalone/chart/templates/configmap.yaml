@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "steve-server.fullname" . }}-kubeconfig
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "steve-server.labels" . | nindent 4 }}
+data:
+  kubeconfig: |
+    apiVersion: v1
+    kind: Config
+    clusters:
+      - name: local
+        cluster:
+          server: https://kubernetes.default.svc
+          certificate-authority: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    contexts:
+      - name: local
+        context:
+          cluster: local
+          user: steve-server
+    current-context: local
+    users:
+      - name: steve-server
+        user:
+          tokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token

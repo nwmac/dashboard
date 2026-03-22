@@ -1,0 +1,177 @@
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
+
+	"github.com/gorilla/mux"
+	dynamicserver "github.com/rancher/dynamiclistener/server"
+	"github.com/rancher/steve/pkg/auth"
+	"github.com/rancher/steve/pkg/server"
+	"github.com/rancher/steve/pkg/server/router"
+	"github.com/rancher/steve/pkg/sqlcache/informer/factory"
+	"github.com/rancher/steve/pkg/ui"
+	"github.com/rancher/wrangler/v3/pkg/kubeconfig"
+	"k8s.io/apiserver/pkg/authentication/user"
+	"k8s.io/client-go/rest"
+)
+
+func main() {
+	ctx, cancel := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
+	defer cancel()
+
+	if err := run(ctx); err != nil {
+		fmt.Fprintf(os.Stderr, "error: %v\n", err)
+		os.Exit(1)
+	}
+}
+
+func run(ctx context.Context) error {
+	// Get Kubernetes REST config from default kubeconfig location
+	kubeConfigPath := os.Getenv("KUBECONFIG")
+	restConfig, err := kubeconfig.GetNonInteractiveClientConfig(kubeConfigPath).ClientConfig()
+	if err != nil {
+		return fmt.Errorf("failed to get kubeconfig: %w", err)
+	}
+
+	// Create custom router with URL intercepts
+	// customRouter := createCustomRouter()
+
+	// Create authentication middleware (using always-admin for demo purposes)
+	// In production, replace with proper authentication
+	authMiddleware := auth.ToMiddleware(auth.AuthenticatorFunc(
+		func(req *http.Request) (user.Info, bool, error) {
+			return &user.DefaultInfo{
+				Name:   "admin",
+				UID:    "admin",
+				Groups: []string{"system:masters", "system:authenticated"},
+			}, true, nil
+		},
+	))
+
+	// Create Steve server with custom options
+	// ui.New("") serves the Rancher Dashboard UI from releases.rancher.com
+	// Pass a local path like "./ui" to serve from disk instead
+	srv, err := server.New(ctx, restConfig, &server.Options{
+		AuthMiddleware: authMiddleware,
+		Router:         customRouter,
+		Next:           ui.New(""),
+	})
+	if err != nil {
+		return fmt.Errorf("failed to create steve server: %w", err)
+	}
+
+	fmt.Println("Starting Steve server...")
+	fmt.Println("  HTTP:  http://localhost:9080")
+	fmt.Println("  HTTPS: https://localhost:9443")
+	fmt.Println("\nCustom endpoints:")
+	fmt.Println("  GET  /custom/health")
+	fmt.Println("  GET  /custom/info")
+	fmt.Println("  POST /custom/echo")
+
+	// Start the server
+	return srv.ListenAndServe(ctx, 9443, 9080, &dynamicserver.ListenOpts{})
+}
+
+func newServer(ctx context.Context, restConfig *rest.Config, opts *Options) (*Server, error) {
+	if opts == nil {
+		opts = &Options{}
+	}
+
+	var cacheFactory *factory.CacheFactory
+	if opts.SQLCache {
+		var err error
+		cacheFactory, err = factory.NewCacheFactory(opts.SQLCacheFactoryOptions)
+		if err != nil {
+			return nil, fmt.Errorf("creating SQL cache factory: %w", err)
+		}
+	}
+
+	server := &Server{
+		RESTConfig:                 restConfig,
+		ClientFactory:              opts.ClientFactory,
+		AccessSetLookup:            opts.AccessSetLookup,
+		authMiddleware:             opts.AuthMiddleware,
+		controllers:                opts.Controllers,
+		next:                       opts.Next,
+		router:                     opts.Router,
+		aggregationSecretNamespace: opts.AggregationSecretNamespace,
+		aggregationSecretName:      opts.AggregationSecretName,
+		ClusterRegistry:            opts.ClusterRegistry,
+		Version:                    opts.ServerVersion,
+		// SQLCache enables the SQLite-based lasso caching mechanism
+		SQLCache:                      opts.SQLCache,
+		cacheFactory:                  cacheFactory,
+		extensionAPIServer:            opts.ExtensionAPIServer,
+		SkipWaitForExtensionAPIServer: opts.SkipWaitForExtensionAPIServer,
+	}
+
+	if err := server.setup(ctx, server); err != nil {
+		return nil, err
+	}
+
+	return server, server.start(ctx)
+}
+
+// createCustomRouter returns a router function that intercepts specific URLs
+// before delegating to Steve's default routing
+func createCustomRouter() router.RouterFunc {
+	return func(h router.Handlers) http.Handler {
+		m := mux.NewRouter()
+		m.UseEncodedPath()
+
+		// Register custom URL intercepts - these are handled by your code
+		m.Path("/custom/health").Methods("GET").HandlerFunc(healthHandler)
+		m.Path("/custom/info").Methods("GET").HandlerFunc(infoHandler)
+		m.Path("/custom/echo").Methods("POST").HandlerFunc(echoHandler)
+
+		// You can also intercept specific API paths before Steve handles them
+		// Example: intercept a specific resource type
+		// m.Path("/v1/configmaps").Methods("GET").HandlerFunc(customConfigMapsHandler)
+
+		// Delegate everything else to Steve's default routing
+		m.PathPrefix("/").Handler(router.Routes(h))
+
+		return m
+	}
+}
+
+// healthHandler responds to health check requests
+func healthHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]interface{}{
+		"status": "healthy",
+		"server": "steve-custom",
+	})
+}
+
+// infoHandler returns custom server information
+func infoHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]interface{}{
+		"name":        "Custom Steve Server",
+		"version":     "1.0.0",
+		"description": "Steve server with custom URL intercepts",
+	})
+}
+
+// echoHandler echoes back the request body
+func echoHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	var body map[string]interface{}
+	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+		http.Error(w, `{"error": "invalid JSON"}`, http.StatusBadRequest)
+		return
+	}
+
+	json.NewEncoder(w).Encode(map[string]interface{}{
+		"echo":    body,
+		"message": "received your request",
+	})
+}

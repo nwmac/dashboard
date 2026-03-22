@@ -66,7 +66,10 @@ export async function authenticate(to, from, next, { store }) {
     }
 
     // In newer versions the API calls return the auth state instead of having to make a new call all the time.
-    const fromHeader = store.getters['auth/fromHeader'];
+    // const fromHeader = store.getters['auth/fromHeader'];
+
+    // GACK
+    const fromHeader = 'none'
 
     if ( fromHeader === 'none' ) {
       noAuth(store);

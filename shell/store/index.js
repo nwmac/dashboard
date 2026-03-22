@@ -1272,7 +1272,7 @@ export const actions = {
 
     const router = state.$router;
 
-    router.replace('/fail-whale');
+    // this.$router.replace({ name:   'fail-whale' });
   },
 
   updateServerVersion({ commit, state }, neu) {
