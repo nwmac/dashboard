@@ -10,4 +10,4 @@ FROM alpine:3.19
 RUN apk --no-cache add ca-certificates
 COPY --from=builder /steve-server /usr/local/bin/steve-server
 COPY dist /usr/share/rancher/ui
-ENTRYPOINT ["steve-server", "-ui-path", "/usr/share/rancher/ui"]
+ENTRYPOINT ["steve-server", "--sql-cache", "--debug", "-ui-path", "/usr/share/rancher/ui"]

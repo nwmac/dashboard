@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+STANDALONE_DIR="$(dirname "$SCRIPT_DIR")"
+PROJECT_ROOT="$(dirname "$STANDALONE_DIR")"
+
+# Load environment variables from .env file
+set -a && source ${PROJECT_ROOT}/.env && set +a
+
 REGISTRY=${OCI_REGISTRY:-""}  # e.g., docker.io/username
 REPO=${DOCKER_REPO:-""}       # e.g., username/steve-server
 
