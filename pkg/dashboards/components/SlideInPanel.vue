@@ -128,50 +128,6 @@ export default {
       this.expandAll = !this.expandAll;
     },
 
-    load(data, schema, error) {
-      this.noResource = false;
-      this.error = false;
-      this.notFound = false;
-
-      if (!schema) {
-        this.busy = false;
-        this.noResource = true;
-        this.notFound = true;
-
-        return;
-      }
-
-      if (error || !data) {
-        this.busy = false;
-        this.error = true;
-
-        return;
-      }
-
-      let name = getOpenAPISchemaName(schema);
-
-      // Manual fix ups where the schema group does not match the Open API one
-
-      // Schemas like 'ingress' seem to have the wrong group - so try the other one with 'api'
-      if (!data.definitions[name]) {
-        name = name.replace(/io\.k8s\./g, 'io.k8s.api.');
-      }
-
-      // RBAC (e.g Role): io.k8s.api.authorization.rbac.v1.* -> io.k8s.api.rbac.v1.*
-      if (!data.definitions[name]) {
-        name = name.replace(/io\.k8s\.api\.authorization\.rbac/g, 'io.k8s.api.rbac');
-      }
-
-      if (name) {
-        this.definitions = data.definitions;
-        this.navigate([makeOpenAPIBreadcrumb(name)]);
-      } else {
-        this.definition = undefined;
-      }
-
-      this.busy = false;
-    },
-
     startPanelResize(ev) {
       this.isResizing = true;
       this.$refs.resizer.setPointerCapture(ev.pointerId);
@@ -302,13 +258,13 @@ export default {
           >
            <ColorInput
               v-if="prop.type == 'color'"
-              v-model="prop.value"
+              v-model:value="prop.value"
               :label="prop.label"
             />
 
             <LabeledInput
               v-else
-              v-model="prop.value"
+              v-model:value="prop.value"
               :label="prop.label"
             />
           </div>
