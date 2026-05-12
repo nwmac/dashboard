@@ -61,7 +61,7 @@ describe('Home Page', () => {
     cy.get('@settingsReq.all').should('have.length', 1);
   }));
 
-  describe('List', { testIsolation: 'off' }, () => {
+  describe('List', { testIsolation: false }, () => {
     before(() => {
       cy.login();
     });
@@ -261,7 +261,7 @@ describe('Home Page', () => {
     });
   });
 
-  describe('Home Page', { testIsolation: 'off' }, () => {
+  describe('Home Page', { testIsolation: false }, () => {
     before(() => {
       cy.login();
     });
