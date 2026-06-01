@@ -39,28 +39,34 @@ describe('Side navigation: Cluster ', { tags: ['@navigation', '@adminUser'] }, (
     const productNavPo = new ProductNavPo();
 
     productNavPo.groups().not('.expanded').eq(0)
-      .as('closedGroup');
-    cy.get('@closedGroup').should('be.visible').click();
-    cy.get('@closedGroup').find('ul').should('have.length.gt', 0);
-    productNavPo.groups().get('expanded').should('not.be.instanceOf', Array);
+      .should('be.visible')
+      .then(($closedGroup) => {
+        cy.wrap($closedGroup).click();
+        cy.wrap($closedGroup).should('have.class', 'expanded');
+        cy.wrap($closedGroup).find('ul').should('have.length.gt', 0);
+      });
   });
 
   it('Can close first menu groups on click', () => {
     const productNavPo = new ProductNavPo();
 
-    productNavPo.groups().get('.expanded').as('openGroup');
-    productNavPo.groups().not('.expanded').eq(0).should('be.visible')
-      .click();
-    cy.get('@openGroup').find('ul').should('have.length', 0);
+    productNavPo.expandedGroup().first().then(($openGroup) => {
+      productNavPo.groups().not('.expanded').eq(0)
+        .should('be.visible')
+        .click();
+      cy.wrap($openGroup).find('ul').should('have.length', 0);
+    });
   });
 
   it('Should flag second menu group as active on navigation', () => {
     const productNavPo = new ProductNavPo();
 
     productNavPo.groups().not('.expanded').eq(0)
-      .as('closedGroup');
-    cy.get('@closedGroup').should('be.visible').click();
-    cy.get('@closedGroup').find('.router-link-active').should('have.length.gt', 0);
+      .should('be.visible')
+      .then(($closedGroup) => {
+        cy.wrap($closedGroup).click();
+        cy.wrap($closedGroup).find('.router-link-active').should('have.length.gt', 0);
+      });
   });
 
   it('Going into resource detail should keep relevant group active', () => {
