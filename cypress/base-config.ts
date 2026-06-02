@@ -178,7 +178,6 @@ const baseConfig = defineConfig({
 
       return config;
     },
-    experimentalSessionAndOrigin: true,
     specPattern:                  getSpecPattern(testDirs, process.env),
     baseUrl
   },
