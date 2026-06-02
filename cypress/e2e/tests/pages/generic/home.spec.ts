@@ -85,10 +85,10 @@ describe('Home Page', () => {
       homePage.waitForPage();
 
       homeClusterList.version(clusterName).invoke('text').should('not.contain', '—');
-      homeClusterList.state(clusterName).invoke('text').as('stateText');
-      homeClusterList.name(clusterName).invoke('text').as('nameText');
-      homeClusterList.version(clusterName).invoke('text').as('versionText');
-      homeClusterList.provider(clusterName).invoke('text').as('providerText');
+      homeClusterList.state(clusterName).invoke('text').as('stateText', { type: 'static' });
+      homeClusterList.name(clusterName).invoke('text').as('nameText', { type: 'static' });
+      homeClusterList.version(clusterName).invoke('text').as('versionText', { type: 'static' });
+      homeClusterList.provider(clusterName).invoke('text').as('providerText', { type: 'static' });
 
       clusterMgmtClusterList.goTo();
       clusterMgmtClusterList.waitForPage();

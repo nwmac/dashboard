@@ -39,7 +39,7 @@ describe('Side navigation: Cluster ', { tags: ['@navigation', '@adminUser'] }, (
     const productNavPo = new ProductNavPo();
 
     productNavPo.groups().not('.expanded').eq(0)
-      .as('closedGroup');
+      .as('closedGroup', { type: 'static' });
     cy.get('@closedGroup').should('be.visible').click();
     cy.get('@closedGroup').find('ul').should('have.length.gt', 0);
     productNavPo.groups().get('expanded').should('not.be.instanceOf', Array);
@@ -48,7 +48,7 @@ describe('Side navigation: Cluster ', { tags: ['@navigation', '@adminUser'] }, (
   it('Can close first menu groups on click', () => {
     const productNavPo = new ProductNavPo();
 
-    productNavPo.groups().get('.expanded').as('openGroup');
+    productNavPo.groups().get('.expanded').as('openGroup', { type: 'static' });
     productNavPo.groups().not('.expanded').eq(0).should('be.visible')
       .click();
     cy.get('@openGroup').find('ul').should('have.length', 0);
@@ -58,7 +58,7 @@ describe('Side navigation: Cluster ', { tags: ['@navigation', '@adminUser'] }, (
     const productNavPo = new ProductNavPo();
 
     productNavPo.groups().not('.expanded').eq(0)
-      .as('closedGroup');
+      .as('closedGroup', { type: 'static' });
     cy.get('@closedGroup').should('be.visible').click();
     cy.get('@closedGroup').find('.router-link-active').should('have.length.gt', 0);
   });
@@ -66,7 +66,7 @@ describe('Side navigation: Cluster ', { tags: ['@navigation', '@adminUser'] }, (
   it('Going into resource detail should keep relevant group active', () => {
     const productNavPo = new ProductNavPo();
 
-    productNavPo.groups().get('.expanded').as('openGroup');
+    productNavPo.groups().get('.expanded').as('openGroup', { type: 'static' });
 
     productNavPo.visibleNavTypes().eq(1).should('be.visible').click(); // Go into Workloads
 
