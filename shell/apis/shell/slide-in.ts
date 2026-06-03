@@ -1,5 +1,5 @@
 import { Component } from 'vue';
-import { SlideInApi, SlideInConfig } from '@shell/apis/intf/shell';
+import { SlideInApi, SlideInComponentProps, SlideInConfig } from '@shell/apis/intf/shell';
 import { Store } from 'vuex';
 
 export class SlideInApiImpl implements SlideInApi {
@@ -27,14 +27,37 @@ export class SlideInApiImpl implements SlideInApi {
    * @param component - A Vue component (imported SFC, functional component, etc.) to be rendered in the panel.
    * @param config - Slide-In configuration object
    */
-  public open(component: Component, config?: SlideInConfig): void {
-    const props = config?.props || {};
+  // public open(title: string, component: Component, props?: SlideInComponentProps, config?: SlideInConfig): vo
+  // public open(component: Component, props?: SlideInComponentProps, config?: SlideInConfig): void
+  public open(
+    titleOrComponent: string | Component,
+    componentOrProps?: Component | SlideInComponentProps,
+    propsOrConfig?: SlideInComponentProps | SlideInConfig,
+    config?: SlideInConfig
+  ): void {
+    if (typeof titleOrComponent === 'string') {
+      // titleOrComponent is the title, componentOrProps is the component
+      const title = titleOrComponent;
+      const component = componentOrProps as Component;
+      const props = propsOrConfig || {} as SlideInComponentProps;
 
-    delete config?.props;
+      this.store.commit('slideInPanel/open', {
+        component,
+        componentProps: {
+          ...(config || {}),
+          title,
+          props
+        }
+      });
+    } else {
+      // titleOrComponent is the component, componentOrProps is the props
+      const component = titleOrComponent as Component;
+      const props = componentOrProps || {} as SlideInComponentProps;
 
-    this.store.commit('slideInPanel/open', {
-      component,
-      componentProps: { ...(config || {}), ...props }
-    });
+      this.store.commit('slideInPanel/open', {
+        component,
+        componentProps: { ...(propsOrConfig || {}), props }
+      });
+    }
   }
 }

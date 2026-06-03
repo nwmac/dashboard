@@ -1,5 +1,10 @@
 import { Component } from 'vue';
 
+export enum SlideInWidth {
+  Default = '33%', // eslint-disable-line no-unused-vars
+  Wide = '73%' // eslint-disable-line no-unused-vars
+}
+
 /**
  *
  * Configuration object for opening a Slide-In panel. Here's what a Slide-In looks like in Rancher UI:
@@ -8,35 +13,21 @@ import { Component } from 'vue';
 export interface SlideInConfig {
   /**
    *
-   * Width of the Slide-In panel in percentage, related to the window width. Defaults to `33%`
-   *
-   */
-  width?: string;
-  /**
-   *
-   * Height of the Slide-In panel. Can be percentage or vh. Defaults to (window - header) height.
-   * Can be set as `33%` or `80vh`
-   *
-   */
-  height?: string;
-  /**
-   *
-   * CSS Top position for the Slide-In panel, string using px, as `0px` or `20px`. Default is right below header height
-   *
-   */
-  top?: string;
-  /**
-   *
-   * title for the Slide-In panel
+   * title for the Slide-In panel. If not set, the panel header is not shown and the main component must take care of showing a header and close button if needed.
    *
    */
   title?: string;
   /**
    *
-   * Wether Slide-In header is displayed or not
+   * Width of the Slide-In panel
    *
    */
-  showHeader?: boolean;
+  width?: SlideInWidth;
+  /**
+   *
+   * Whether the slide-in is full-height or appears below the header bar (which is the default)
+   */
+  fullHeight?: boolean;
   /**
    *
    * Array of props to watch out for in route, when they change, closes Slide-In
@@ -44,6 +35,12 @@ export interface SlideInConfig {
    *
    */
   closeOnRouteChange?: [string];
+  /**
+   *
+   * Don't focus the first focusable element in the Slide-In when it opens. Useful for Slide-Ins that are used for non-interactive purposes, like displaying information, and don't require user interaction.
+   *
+   */
+  triggerFocusTrap?: boolean;
   /**
    *
    * Return focus selector for focus trap
@@ -58,16 +55,17 @@ export interface SlideInConfig {
    *
    */
   focusTrapWatcherBasedVariable?: boolean;
-  /**
-   *
-   * Vue Props to pass directly to the component rendered inside the slide in panel in an object format as "props=..."
-   *
-   * Useful for passing additional information or context to the component rendered inside the Slide-In window
-   *
-   */
-  props?: {
-    [key: string]: any;
-  };
+}
+
+/**
+ *
+ * Vue Props to pass directly to the component rendered inside the slide in panel in an object format as "props=..."
+ *
+ * Useful for passing additional information or context to the component rendered inside the Slide-In window
+ *
+ */
+export interface SlideInComponentProps {
+  [key: string]: any;
 }
 
 /**
@@ -80,22 +78,22 @@ export interface SlideInApi {
    *
    * Example:
    * ```ts
-   * import { useShell } from '@shell/apis';
    * import MyCustomSlideIn from '@/components/MyCustomSlideIn.vue';
    *
-   * const shell = useShell();
-   *
-   * shell.slideIn.open(MyCustomSlideIn, {
-   *   title: 'Hello from SlideIn panel!'
-   * });
+   * this.$shell.slideIn.open('Hello from SlideIn panel!', MyCustomSlideIn);
    * ```
+   *
+   * For usage with the Composition API check usage guide [here](../../shell-api#using-composition-api-in-vue).
    *
    * @param component
    * The Vue component to be displayed inside the slide in panel.
    * This can be any SFC (Single-File Component) imported and passed in as a `Component`.
    *
+   * @param props Properties for the component to be displayed inside the slide in panel
+   *
    * @param config Slide-In configuration object
    *
    */
-  open(component: Component, config?: SlideInConfig): void;
+  open(title: string, component: Component, props?: SlideInComponentProps, config?: SlideInConfig): void;
+  open(component: Component, props?: SlideInComponentProps, config?: SlideInConfig): void;
 }

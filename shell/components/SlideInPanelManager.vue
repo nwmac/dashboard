@@ -1,5 +1,11 @@
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, watch, useTemplateRef } from 'vue';
+import {
+  computed,
+  onBeforeUnmount,
+  watch,
+  useTemplateRef,
+  Ref
+} from 'vue';
 import { useStore } from 'vuex';
 import {
   DEFAULT_FOCUS_TRAP_OPTS,
@@ -7,6 +13,7 @@ import {
 } from '@shell/composables/focusTrap';
 import { isEqual } from 'lodash';
 import { useRouter } from 'vue-router';
+import { SlideInConfig } from '@shell/apis/intf/shell';
 
 const HEADER_HEIGHT = 55;
 
@@ -17,16 +24,13 @@ const store = useStore();
 const isOpen = computed(() => store.getters['slideInPanel/isOpen']);
 const isClosing = computed(() => store.getters['slideInPanel/isClosing']);
 const currentComponent = computed(() => store.getters['slideInPanel/component']);
-const currentProps = computed(() => store.getters['slideInPanel/componentProps']);
+const currentProps: Ref<SlideInConfig> = computed(() => store.getters['slideInPanel/componentProps']);
 
+// The slide-in should always sit below the banner if its present (custom banner configured by user)
 const panelTop = computed(() => {
-  // Some components like the ResourceDetailDrawer are designed to take up the full height of the viewport so we want to be able to specify the top.
-  if (currentProps?.value?.top) {
-    return currentProps?.value?.top;
-  }
-
+  const fullHeight = !!currentProps?.value?.fullHeight;
   const banner = document.getElementById('banner-header');
-  let height = HEADER_HEIGHT;
+  let height = fullHeight ? 0 : HEADER_HEIGHT;
 
   if (banner) {
     height += banner.clientHeight;
@@ -36,12 +40,11 @@ const panelTop = computed(() => {
 });
 
 // Some components like the ResourceDetailDrawer are designed to take up the full height of the viewport so we want to be able to specify the height.
-const panelHeight = computed(() => (currentProps?.value?.height) ? (currentProps?.value?.height) : `calc(100vh - ${ panelTop?.value })`);
+const panelHeight = computed(() => `calc(100vh - ${ panelTop?.value })`);
 const panelWidth = computed(() => currentProps?.value?.width || '33%');
 const panelRight = computed(() => (isOpen?.value ? '0' : `-${ panelWidth?.value }`));
-
-const showHeader = computed(() => currentProps?.value?.showHeader ?? true);
-const panelTitle = showHeader.value ? computed(() => currentProps?.value?.title || 'Details') : null;
+const triggerFocusTrap = computed(() => currentProps?.value?.triggerFocusTrap ?? true);
+const panelTitle = computed(() => currentProps?.value?.title);
 const closeOnRouteChange = computed(() => {
   const propsCloseOnRouteChange = currentProps?.value.closeOnRouteChange;
 
@@ -60,6 +63,14 @@ watch(
   () => isOpen?.value,
   (neu, old) => {
     if (neu && neu !== old) {
+      // Don't setup a focus trap when configured - needed when there are no focusable elements in the panel and the header is not shown (no close button)
+      if (!triggerFocusTrap.value) {
+        // Not using focus trap in this case, so we need to add a keydown listener to close the panel on escape key press
+        document.addEventListener('keydown', handleEscapeKey);
+
+        return;
+      }
+
       const opts:any = {
         ...DEFAULT_FOCUS_TRAP_OPTS,
         // putting the initial focus on the first element that is not conditionally displayed
@@ -125,11 +136,19 @@ watch(
   { deep: true }
 );
 
-onBeforeUnmount(closePanel);
-
 function closePanel() {
+  document.removeEventListener('keydown', handleEscapeKey);
+
   store.commit('slideInPanel/close');
 }
+
+function handleEscapeKey(event: any) {
+  if (event.key === 'Escape') {
+    closePanel();
+  }
+}
+
+onBeforeUnmount(closePanel);
 </script>
 
 <template>
@@ -137,7 +156,7 @@ function closePanel() {
     <div
       id="slide-in-panel-manager"
       ref="SlideInPanelManager"
-      @keydown.escape="closePanel"
+      @keydown.escape="handleEscapeKey"
     >
       <div
         v-show="isOpen"
@@ -157,7 +176,7 @@ function closePanel() {
         }"
       >
         <div
-          v-if="showHeader"
+          v-if="panelTitle"
           class="header"
         >
           <div class="title">
@@ -230,6 +249,12 @@ function closePanel() {
 
   .icon-close {
     cursor: pointer;
+    padding: 8px;
+
+    &:hover {
+      background-color: var(--primary);
+      color: var(--primary-text);
+    }
   }
 }
 

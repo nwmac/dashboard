@@ -15,6 +15,8 @@ const state = (): SlideInPanelState => ({
   componentProps: {}
 });
 
+let closingTimeout: NodeJS.Timeout | undefined;
+
 const getters: GetterTree<SlideInPanelState, any> = {
   isOpen:         (state) => state.isOpen,
   isClosing:      (state) => state.isClosing,
@@ -25,6 +27,11 @@ const getters: GetterTree<SlideInPanelState, any> = {
 const mutations: MutationTree<SlideInPanelState> = {
   open(state, payload: { component: Component; componentProps?: Record<string, any> }) {
     state.isOpen = true;
+
+    // Make sure if we are still in the process of closing, we clear the timeout and reset the state
+    state.isClosing = false;
+    clearTimeout(closingTimeout);
+
     state.component = markRaw(payload.component);
     state.componentProps = payload.componentProps || {};
   },
@@ -32,8 +39,10 @@ const mutations: MutationTree<SlideInPanelState> = {
     state.isClosing = true;
     state.isOpen = false;
 
+    clearTimeout(closingTimeout);
+
     // Delay clearing component/props for 500ms (same as transition duration)
-    setTimeout(() => {
+    closingTimeout = setTimeout(() => {
       state.component = null;
       state.componentProps = {};
 
