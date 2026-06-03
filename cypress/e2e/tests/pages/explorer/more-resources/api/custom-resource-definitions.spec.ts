@@ -219,7 +219,7 @@ describe('CustomResourceDefinitions', { testIsolation: false, tags: ['@explorer'
 
     after('clean up', () => {
       // delete crd
-      cy.deleteRancherResource('v1', 'apiextensions.k8s.io.customresourcedefinitions', crdName);
+      cy.deleteRancherResource('v1', 'apiextensions.k8s.io.customresourcedefinitions', crdName, false);
     });
   });
 });
