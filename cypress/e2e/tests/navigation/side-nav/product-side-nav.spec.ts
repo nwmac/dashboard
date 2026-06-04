@@ -74,13 +74,12 @@ describe('Side navigation: Cluster ', { tags: ['@navigation', '@adminUser'] }, (
   it('Going into resource detail should keep relevant group active', () => {
     const productNavPo = new ProductNavPo();
 
+    deploymentsListPage.goTo();
+    deploymentsListPage.waitForPage();
+
     productNavPo.groups().then(($groups) => {
       const expandedIdx = $groups.toArray().findIndex((el) => el.classList.contains('expanded'));
 
-      productNavPo.visibleNavTypes().eq(1).should('be.visible').click(); // Go into Workloads
-
-      deploymentsListPage.goTo();
-      deploymentsListPage.waitForPage();
       deploymentsListPage.goToDetailsPage(workloadName);
       productNavPo.groups().eq(expandedIdx).should('be.visible');
       productNavPo.groups().eq(expandedIdx)
