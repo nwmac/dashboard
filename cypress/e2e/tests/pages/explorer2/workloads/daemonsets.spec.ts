@@ -55,7 +55,8 @@ describe('DaemonSets', { testIsolation: false, tags: ['@explorer2', '@adminUser'
     workloadsDaemonsetsEditPage.resourceDetail().cruResource().saveOrCreate()
       .click();
 
-    workloadsDaemonsetsListPage.baseResourceList().resourceTable().sortableTable()
+    workloadsDaemonsetsListPage.waitForPage();
+    workloadsDaemonsetsListPage.list().resourceTable().sortableTable()
       .rowElementWithName(daemonsetName)
       .should('be.visible');
 
