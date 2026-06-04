@@ -64,17 +64,18 @@ watch(
   (neu, old) => {
     if (neu && neu !== old) {
       // Don't setup a focus trap when configured - needed when there are no focusable elements in the panel and the header is not shown (no close button)
-      if (!triggerFocusTrap.value) {
-        // Not using focus trap in this case, so we need to add a keydown listener to close the panel on escape key press
-        document.addEventListener('keydown', handleEscapeKey);
+      // if (!triggerFocusTrap.value) {
+      //   // Not using focus trap in this case, so we need to add a keydown listener to close the panel on escape key press
+      //   document.addEventListener('keydown', handleEscapeKey);
 
-        return;
-      }
+      //   return;
+      // }
 
       const opts:any = {
         ...DEFAULT_FOCUS_TRAP_OPTS,
         // putting the initial focus on the first element that is not conditionally displayed
-        initialFocus: slideInPanelManagerClose.value
+        // initialFocus:  !!panelTitle ? slideInPanelManagerClose.value : undefined,
+        fallbackFocus: () => document.activeElement as HTMLElement,
       };
 
       const returnFocusSelector = currentProps?.value?.returnFocusSelector;
@@ -245,6 +246,7 @@ onBeforeUnmount(closePanel);
   .title {
     flex: 1;
     font-weight: bold;
+    user-select: none;
   }
 
   .icon-close {

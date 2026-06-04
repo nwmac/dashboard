@@ -32,7 +32,7 @@ const mutations: MutationTree<SlideInPanelState> = {
     state.isClosing = false;
     clearTimeout(closingTimeout);
 
-    state.component = markRaw(payload.component);
+    state.component = !!payload.component ? markRaw(payload.component) : null;
     state.componentProps = payload.componentProps || {};
   },
   close(state) {

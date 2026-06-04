@@ -94,6 +94,6 @@ export interface SlideInApi {
    * @param config Slide-In configuration object
    *
    */
-  open(title: string, component: Component, props?: SlideInComponentProps, config?: SlideInConfig): void;
+  open(title: string, component?: Component, props?: SlideInComponentProps, config?: SlideInConfig): void;
   open(component: Component, props?: SlideInComponentProps, config?: SlideInConfig): void;
 }
