@@ -15,9 +15,9 @@
     "install:ci": "yarn install --frozen-lockfile"
   },
   "dependencies": {
-    "@docusaurus/core": "3.8.1",
-    "@docusaurus/plugin-client-redirects": "3.8.1",
-    "@docusaurus/preset-classic": "3.8.1",
+    "@docusaurus/core": "3.10.1",
+    "@docusaurus/plugin-client-redirects": "3.10.1",
+    "@docusaurus/preset-classic": "3.10.1",
     "@mdx-js/react": "3.1.1",
     "clsx": "1.2.1",
     "docusaurus-lunr-search": "3.5.0",
@@ -26,7 +26,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "typedoc": "0.28.18",
-    "typedoc-plugin-markdown": "4.11.0",
+    "typedoc-plugin-markdown": "4.12.0",
     "typescript": "5.9.3",
     "yaml": "2.8.3"
   },
