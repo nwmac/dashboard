@@ -41,7 +41,7 @@ jobs:
       - name: Setup env
         uses: ./.github/actions/setup
       - name: Build e2e
-        run: yarn e2e:k3se2e:build
+        run: yarn e2e:build
       - name: Upload e2e build
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
