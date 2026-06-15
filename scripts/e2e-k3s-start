@@ -13,8 +13,9 @@ K3S_VERSION=v1.33.1+k3s1
 #   - RANCHER_HELM_REPO_URL=https://releases.rancher.com/server-charts/latest
 # - rancher-alpha will have alphas (--devel required)
 # - charts.optimus.rancher.io/server-charts/$RANCHER_RELEASE will have the latest and greatest chart
-RANCHER_RELEASE=release-2.13
-RANCHER_HELM_REPO_URL=https://charts.optimus.rancher.io/server-charts/$RANCHER_RELEASE
+# RANCHER_RELEASE=release-2.13
+RANCHER_HELM_REPO_URL=https://releases.rancher.com/server-charts/latest
+RANCHER_CHART_NAME=latest
 
 # rancher-latest --devel will have rc's and released versions. rancher-alpha will have alpha
 RANCHER_HELM_REPO_NAME=rancher-$RANCHER_RELEASE
@@ -100,13 +101,13 @@ helm search repo $RANCHER_HELM_REPO_NAME --devel
 
 echo "Installing Rancher.........."
 kubectl create ns $RANCHER_NAMESPACE
-helm install rancher $RANCHER_HELM_REPO_NAME/rancher \
+helm install rancher $RANCHER_HELM_REPO_NAME/$RANCHER_CHART_NAME \
   --namespace cattle-system \
   --devel \
   --set hostname=$DASHBOARD_URL \
   --set replicas="1" \
-  --set rancherImage="$RANCHER_IMG_REPO" \
-  --set rancherImageTag="$RANCHER_IMG_TAG" \
+  # --set rancherImage="$RANCHER_IMG_REPO" \
+  # --set rancherImageTag="$RANCHER_IMG_TAG" \
   --set rancherImagePullPolicy="Always" \
   --set auditLog.enabled=true \
   --set auditLog.level=$RANCHER_AUDIT_LOG_LEVEL \
