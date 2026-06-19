@@ -119,6 +119,11 @@ if [ "$KUBE_TYPE" = "K3S" ]; then
 elif [ "$KUBE_TYPE" = "K3D" ]; then
   # This is more for internal dev purposes, requires further testing
   # To use in CI install of k3d + kubectl + helm is required (could be optional if using dev machine)
+
+  curl -fsSL -o k3dhttps://github.com/k3d-io/k3d/releases/download/v5.9.0/k3d-linux-amd64
+  chmod +x k3d
+  sudo mv k3d /usr/local/bin/k3d
+
   K3D_VERSION=${KUBE_VERSION/+/-}
   k3d cluster delete e2e 
   k3d cluster create e2e --image rancher/k3s:$K3D_VERSION -p 80:80@loadbalancer -p 443:443@loadbalancer --agents 1
