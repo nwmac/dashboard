@@ -120,7 +120,7 @@ elif [ "$KUBE_TYPE" = "K3D" ]; then
   # This is more for internal dev purposes, requires further testing
   # To use in CI install of k3d + kubectl + helm is required (could be optional if using dev machine)
 
-  curl -fsSL -o k3dhttps://github.com/k3d-io/k3d/releases/download/v5.9.0/k3d-linux-amd64
+  curl -fsSL -o k3d https://github.com/k3d-io/k3d/releases/download/v5.9.0/k3d-linux-amd64
   chmod +x k3d
   sudo mv k3d /usr/local/bin/k3d
 
