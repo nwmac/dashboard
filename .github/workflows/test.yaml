@@ -29,7 +29,7 @@ env:
   E2E_BUILD_DIST_DIR: dist
   E2E_BUILD_DIST_EMBER_NAME: dist_ember
   E2E_BUILD_DIST_EMBER_DIR: dist_ember
-  KUBE_TYPE: k3d
+  KUBE_TYPE: K3D
 
 jobs:
   e2e-ui-build:
