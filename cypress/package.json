@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@cypress/code-coverage": "3.10.4",
-    "@cypress/grep": "4.1.1",
+    "@cypress/grep": "5.1.0",
     "@cypress/vue": "5.0.5",
     "@cypress/webpack-dev-server": "3.4.1",
     "@percy/cli": "1.31.8",
