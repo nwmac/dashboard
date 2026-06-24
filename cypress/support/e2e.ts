@@ -5,7 +5,7 @@ import './commands/chainable';
 import './commands/rancher-api-commands';
 import './commands/accessiblity';
 
-import registerCypressGrep from '@cypress/grep/src/support';
+import { register as registerCypressGrep } from '@cypress/grep';
 import 'cypress-mochawesome-reporter/register';
 import '@percy/cypress';
 import 'cypress-axe';
