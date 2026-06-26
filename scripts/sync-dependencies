@@ -1,0 +1,296 @@
+#!/usr/bin/env node
+
+// sync-dependencies
+//
+// Aligns dependency versions across this monorepo's package.json files.
+//
+// Sources of truth (later overrides earlier on conflict):
+//   1. shell/package.json
+//   2. package.json (repo root)
+//
+// Targets: cypress, storybook, shell, docusaurus and each pkg/* package.json.
+// For each target, dependencies / devDependencies / peerDependencies whose name
+// appears in a source are rewritten to match the source's version. After
+// rewriting, yarn install is run in non-workspace targets that have their own
+// yarn.lock; workspace members defer to a single root install at the end.
+//
+// Flags:
+//   --dry-run    Show pending changes, do not write package.json files or install.
+//   --no-install Write package.json updates but skip yarn install.
+//   --check      Like --dry-run, and exit 1 if any changes would be made
+//                (intended for CI / pre-commit drift detection).
+
+const fs = require('fs');
+const path = require('path');
+const { spawnSync } = require('child_process');
+
+const ROOT = path.resolve(__dirname, '..');
+
+const args = process.argv.slice(2);
+const CHECK = args.includes('--check');
+const DRY_RUN = args.includes('--dry-run') || CHECK;
+const NO_INSTALL = args.includes('--no-install') || DRY_RUN;
+
+const COLOR = {
+  reset: '\x1b[0m',
+  bold: '\x1b[1m',
+  dim: '\x1b[2m',
+  red: '\x1b[31m',
+  green: '\x1b[32m',
+  yellow: '\x1b[33m',
+  blue: '\x1b[34m',
+  magenta: '\x1b[35m',
+  cyan: '\x1b[36m',
+  gray: '\x1b[90m',
+};
+
+const useColor = process.stdout.isTTY && !process.env.NO_COLOR;
+const c = (name, str) => useColor ? `${ COLOR[name] }${ str }${ COLOR.reset }` : String(str);
+
+const rel = (p) => path.relative(ROOT, p) || '.';
+
+// Read and parse a JSON file from disk.
+function readJSON(file) {
+  return JSON.parse(fs.readFileSync(file, 'utf8'));
+}
+
+// Serialize data as pretty-printed JSON with a trailing newline.
+function writeJSON(file, data) {
+  fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
+}
+
+// True if a version string is a plain semver/range we can sync. Protocol-prefixed
+// versions (link:, file:, workspace:, git+, github:, http(s):, npm:) are left alone.
+function isSyncableVersion(v) {
+  if (typeof v !== 'string') return false;
+  return !/^(link:|file:|workspace:|git\+|github:|https?:|npm:)/i.test(v);
+}
+
+// Build the desired-version map from the ordered source package.jsons. Later
+// sources overwrite earlier ones; origin records which source supplied each name.
+function collectSource(sourcePkgs) {
+  const map = new Map();
+  const origin = new Map();
+  for (const { label, pkg } of sourcePkgs) {
+    for (const section of ['dependencies', 'devDependencies']) {
+      const deps = pkg[section];
+      if (!deps) continue;
+      for (const [name, version] of Object.entries(deps)) {
+        if (!isSyncableVersion(version)) continue;
+        map.set(name, version);
+        origin.set(name, label);
+      }
+    }
+  }
+  return { map, origin };
+}
+
+// Discover package.json files to sync: the well-known top-level dirs plus every
+// pkg/* subdirectory that has one.
+function findTargets() {
+  const targets = [];
+  for (const dir of ['cypress', 'storybook', 'shell', 'docusaurus']) {
+    const p = path.join(ROOT, dir, 'package.json');
+    if (fs.existsSync(p)) targets.push(p);
+  }
+  const pkgDir = path.join(ROOT, 'pkg');
+  if (fs.existsSync(pkgDir)) {
+    for (const entry of fs.readdirSync(pkgDir).sort()) {
+      const p = path.join(pkgDir, entry, 'package.json');
+      if (fs.existsSync(p)) targets.push(p);
+    }
+  }
+  return targets;
+}
+
+// Resolve the root package.json's "workspaces" patterns to a set of absolute
+// directory paths, used to detect workspace members that share the root yarn.lock.
+function getWorkspaceDirs(rootPkg) {
+  const ws = rootPkg.workspaces;
+  const patterns = Array.isArray(ws) ? ws : (ws && ws.packages) || [];
+  return new Set(patterns.map((p) => path.resolve(ROOT, p)));
+}
+
+// Compute (without writing) the version updates needed to bring a target
+// package.json in line with sourceMap. Returns the mutated pkg object and a
+// list of {section, name, from, to} change records.
+function syncPackage(pkgPath, sourceMap) {
+  const pkg = readJSON(pkgPath);
+  const changes = [];
+  for (const section of ['dependencies', 'devDependencies', 'peerDependencies']) {
+    const deps = pkg[section];
+    if (!deps) continue;
+    for (const [name, current] of Object.entries(deps)) {
+      if (!sourceMap.has(name)) continue;
+      if (!isSyncableVersion(current)) continue;
+      const desired = sourceMap.get(name);
+      if (current === desired) continue;
+      deps[name] = desired;
+      changes.push({ section, name, from: current, to: desired });
+    }
+  }
+  return { pkg, changes };
+}
+
+// Run `yarn install --no-default-rc` in cwd, streaming output. Returns true on
+// success. --no-default-rc avoids inheriting host-level yarnrc settings.
+function runYarnInstall(cwd) {
+  const result = spawnSync('yarn', ['install', '--no-default-rc'], {
+    cwd,
+    stdio: 'inherit',
+    env: process.env,
+  });
+  if (result.error) throw result.error;
+  return result.status === 0;
+}
+
+// Recursively delete a path if it exists; used to clean up node_modules
+// directories we created transiently for a per-package install.
+function rmRecursive(p) {
+  fs.rmSync(p, { recursive: true, force: true });
+}
+
+// Orchestrates the full sync: load sources, find targets, apply changes, run
+// installs as appropriate, and print a summary. Exits non-zero on install
+// failures, or under --check when any drift was detected.
+function main() {
+  console.log(c('bold', 'sync-dependencies'));
+  console.log(c('gray', `root: ${ ROOT }`));
+  if (CHECK) console.log(c('yellow', 'check: dry-run; will exit non-zero if any changes are needed'));
+  else if (DRY_RUN) console.log(c('yellow', 'dry-run: no files will be modified'));
+  if (NO_INSTALL && !DRY_RUN) console.log(c('yellow', 'no-install: package.json files updated, yarn install skipped'));
+  console.log();
+
+  const rootPkgPath = path.join(ROOT, 'package.json');
+  const shellPkgPath = path.join(ROOT, 'shell', 'package.json');
+  const rootPkg = readJSON(rootPkgPath);
+  const shellPkg = fs.existsSync(shellPkgPath) ? readJSON(shellPkgPath) : null;
+
+  // Order matters: shell first, root last - root values overwrite shell on conflict.
+  const sourcePkgs = [];
+  if (shellPkg) sourcePkgs.push({ label: 'shell/package.json', pkg: shellPkg });
+  sourcePkgs.push({ label: 'package.json', pkg: rootPkg });
+
+  const { map: sourceMap, origin } = collectSource(sourcePkgs);
+  const workspaceDirs = getWorkspaceDirs(rootPkg);
+  console.log(c('cyan', 'sources (later overrides earlier on conflict):'));
+  for (const { label } of sourcePkgs) {
+    console.log(c('cyan', `  - ${ label }`));
+  }
+  const fromShell = [...origin.values()].filter((v) => v === 'shell/package.json').length;
+  const fromRoot = sourceMap.size - fromShell;
+  console.log(c('gray', `  ${ sourceMap.size } syncable deps total (${ fromRoot } from package.json, ${ fromShell } from shell/package.json only)`));
+  console.log();
+
+  const targets = findTargets();
+  let filesChanged = 0;
+  let totalChanges = 0;
+  let workspaceTouched = false;
+  let installFailures = 0;
+
+  for (const pkgPath of targets) {
+    const pkgDir = path.dirname(pkgPath);
+    const label = rel(pkgPath);
+    console.log(c('bold', label));
+
+    const { pkg, changes } = syncPackage(pkgPath, sourceMap);
+    if (changes.length === 0) {
+      console.log(c('gray', '  in sync'));
+      console.log();
+      continue;
+    }
+
+    filesChanged++;
+    totalChanges += changes.length;
+
+    for (const ch of changes) {
+      console.log(
+        `  ${ c('magenta', ch.section) } ${ c('bold', ch.name) }: ` +
+        `${ c('red', ch.from) } ${ c('gray', '->') } ${ c('green', ch.to) }`,
+      );
+    }
+
+    if (DRY_RUN) {
+      console.log(c('yellow', '  [dry-run] not writing changes'));
+      console.log();
+      continue;
+    }
+
+    writeJSON(pkgPath, pkg);
+    console.log(c('green', `  wrote ${ changes.length } change(s) to ${ label }`));
+
+    if (workspaceDirs.has(pkgDir)) {
+      workspaceTouched = true;
+      console.log(c('yellow', '  workspace member - root yarn.lock may need regeneration'));
+      console.log();
+      continue;
+    }
+
+    const lockPath = path.join(pkgDir, 'yarn.lock');
+    if (!fs.existsSync(lockPath)) {
+      console.log(c('gray', '  no yarn.lock in this directory - skipping install'));
+      console.log();
+      continue;
+    }
+
+    if (NO_INSTALL) {
+      console.log(c('yellow', '  --no-install set, skipping yarn install (yarn.lock will be stale)'));
+      console.log();
+      continue;
+    }
+
+    const nodeModulesPath = path.join(pkgDir, 'node_modules');
+    const nodeModulesExisted = fs.existsSync(nodeModulesPath);
+    console.log(c('cyan', `  running: yarn install --no-default-rc (in ${ rel(pkgDir) })`));
+    const ok = runYarnInstall(pkgDir);
+    if (!ok) {
+      installFailures++;
+      console.log(c('red', '  yarn install failed'));
+      console.log();
+      continue;
+    }
+    console.log(c('green', '  yarn install succeeded'));
+
+    if (!nodeModulesExisted && fs.existsSync(nodeModulesPath)) {
+      console.log(c('gray', `  removing node_modules (did not exist before install)`));
+      rmRecursive(nodeModulesPath);
+    } else if (nodeModulesExisted) {
+      console.log(c('gray', '  keeping node_modules (existed before install)'));
+    }
+    console.log();
+  }
+
+  if (workspaceTouched && !NO_INSTALL) {
+    const rootNodeModules = path.join(ROOT, 'node_modules');
+    const rootNodeModulesExisted = fs.existsSync(rootNodeModules);
+    console.log(c('bold', 'regenerating root yarn.lock for workspace changes'));
+    console.log(c('cyan', `  running: yarn install --no-default-rc (in ${ rel(ROOT) })`));
+    const ok = runYarnInstall(ROOT);
+    if (!ok) {
+      installFailures++;
+      console.log(c('red', '  root yarn install failed'));
+    } else {
+      console.log(c('green', '  root yarn install succeeded'));
+      if (!rootNodeModulesExisted && fs.existsSync(rootNodeModules)) {
+        console.log(c('gray', '  removing root node_modules (did not exist before install)'));
+        rmRecursive(rootNodeModules);
+      }
+    }
+    console.log();
+  }
+
+  console.log(c('bold', 'summary'));
+  console.log(`  files updated:   ${ c(filesChanged ? 'green' : 'gray', filesChanged) }`);
+  console.log(`  version changes: ${ c(totalChanges ? 'green' : 'gray', totalChanges) }`);
+  if (installFailures) {
+    console.log(`  install failures: ${ c('red', installFailures) }`);
+    process.exit(1);
+  }
+}
+
+try {
+  main();
+} catch (err) {
+  console.error(c('red', 'fatal: ') + (err && err.stack || err));
+  process.exit(1);
+}
