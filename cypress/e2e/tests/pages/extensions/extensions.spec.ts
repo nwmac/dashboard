@@ -20,8 +20,8 @@ const UI_PLUGINS_PARTNERS_REPO_URL = 'https://github.com/rancher/partner-extensi
 const UI_PLUGINS_PARTNERS_REPO_NAME = 'partner-extensions';
 const GIT_REPO_NAME = 'rancher-plugin-examples';
 
-describe('Extensions page', { tags: ['@extensions', '@adminUser'] }, () => {
-  beforeEach(() => {
+describe('Extensions page', { tags: ['@extensions', '@adminUser'], testIsolation: false }, () => {
+  before(() => {
     cy.login();
   });
 
