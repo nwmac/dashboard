@@ -66,7 +66,7 @@ describe('Side navigation: Cluster ', { tags: ['@navigation', '@adminUser'] }, (
   it('Going into resource detail should keep relevant group active', () => {
     const productNavPo = new ProductNavPo();
 
-    productNavPo.groups().get('.expanded').as('openGroup', { type: 'static' });
+    productNavPo.groups().get('.expanded').as('openGroup');
 
     productNavPo.visibleNavTypes().eq(1).should('be.visible').click(); // Go into Workloads
 
