@@ -5,7 +5,7 @@ import HomePagePo from '@/cypress/e2e/po/pages/home.po';
 const clusterMgmtClusterList = new ClusterManagerListPagePo('local');
 const longClusterDescription = 'this-is-some-really-really-really-really-really-really-long-description';
 
-describe('Home Page List', { testIsolation: 'off' }, () => {
+describe('Home Page List', { testIsolation: false }, () => {
   const homePage = new HomePagePo();
   const homeClusterList = homePage.list();
 
@@ -32,10 +32,10 @@ describe('Home Page List', { testIsolation: 'off' }, () => {
     homePage.waitForPage();
 
     homeClusterList.version(clusterName).invoke('text').should('not.contain', '—');
-    homeClusterList.state(clusterName).invoke('text').as('stateText');
-    homeClusterList.name(clusterName).invoke('text').as('nameText');
-    homeClusterList.version(clusterName).invoke('text').as('versionText');
-    homeClusterList.provider(clusterName).invoke('text').as('providerText');
+    homeClusterList.state(clusterName).invoke('text').as('stateText', { type: 'static' });
+    homeClusterList.name(clusterName).invoke('text').as('nameText', { type: 'static' });
+    homeClusterList.version(clusterName).invoke('text').as('versionText', { type: 'static' });
+    homeClusterList.provider(clusterName).invoke('text').as('providerText', { type: 'static' });
 
     clusterMgmtClusterList.goTo();
     clusterMgmtClusterList.waitForPage();
