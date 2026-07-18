@@ -87,10 +87,11 @@ RANCHER_AUDIT_LOG_LEVEL=3
 # ---------------------------------
 
 if [ "$KUBE_TYPE" = "K3S" ]; then
+  echo "Pulling Rancher container image in the background ($RANCHER_IMG_REPO:$RANCHER_IMG_TAG)..."
+
   # Pull the Rancher container image in the background
   PID=$(
-    echo "Pulling Rancher container image in the background ($RANCHER_IMG_REPO:$RANCHER_IMG_TAG)..."
-    docker pull $RANCHER_IMG_REPO:$RANCHER_IMG_TAG &
+    docker pull $RANCHER_IMG_REPO:$RANCHER_IMG_TAG >/dev/null 2>&1 &
     echo $!
   )
 
@@ -146,7 +147,7 @@ echo "Cert manager pods should be up"
 kubectl get pods --namespace cert-manager
 
 if [ "$KUBE_TYPE" = "K3S" ]; then
-  echo "Waiting for container image pull to finish.........."
+  echo "Waiting for container image pull to finish.......... ${PID}"
   wait $PID
   docker save -o rancher-image.tar $RANCHER_IMG_REPO:$RANCHER_IMG_TAG
   k3s ctr images import rancher-image.tar
