@@ -395,7 +395,7 @@ export default class MgmtCluster extends SteveModel {
 
   /**
    * Whether day 2 operations are enabled for this cluster.
-   * Reads the `operations.cattle.io/ops-enabled` annotation.
+   * Reads the `rancher.io/operations-enabled` annotation.
    */
   get isDayTwoOpsEnabled() {
     const isImportedRke2K3s = !this.isLocal && (this.isImportedK3s || this.isImportedRke2);
@@ -823,7 +823,7 @@ export default class MgmtCluster extends SteveModel {
 
   _statusInfoWarned = false;
   get statusInfo() {
-    if (!this.status.info) {
+    if (!this.status?.info) {
       if (!this._statusInfoWarned) {
         this._statusInfoWarned = true;
         // eslint-disable-next-line no-console

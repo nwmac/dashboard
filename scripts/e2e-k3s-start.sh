@@ -5,7 +5,7 @@
 # ----------------------- Input
 # ---------------------------------
 
-USE_LOCAL_BRANCH_METADATA=true # we use an updated branch_metadata. once that's in master we can toggle this to false
+USE_LOCAL_BRANCH_METADATA=false # branch_metadata usually just comes from `master`. if there are dependent changes in a PR and the local version is needed toggle this to `true`
 KUBE_TYPE=${KUBE_TYPE:-K3S} # K3S or K3D
 OVERRIDE_UIS=${OVERRIDE_UIS:-true} # use UI bits supplied externally (e.g. by CI) rather than the built in UI bits
 TEST_BASE_URL=${TEST_BASE_URL:-https://127.0.0.1.sslip.io}
@@ -76,7 +76,6 @@ DIR=$(cd $(dirname $0)/..; pwd)
 
 # See `script/build-e2e`. This is the ui builds we wish to test
 DASHBOARD_DIST=${DIR}/dist
-EMBER_DIST=${DIR}/dist_ember
 
 # - See https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/enable-api-audit-log (0 off, 3 everything)
 # - logs sent to side-car container in rancher pod
@@ -88,6 +87,12 @@ RANCHER_AUDIT_LOG_LEVEL=3
 # ---------------------------------
 
 if [ "$KUBE_TYPE" = "K3S" ]; then
+  echo "Pulling Rancher container image in the background ($RANCHER_IMG_REPO:$RANCHER_IMG_TAG)..."
+
+  # Pull the Rancher container image in the background
+  docker pull $RANCHER_IMG_REPO:$RANCHER_IMG_TAG &
+  PID=$!
+
   echo "Installing k3s (with kubectl).........."
   export K3S_CHECKSUM=8598e002e61d658fed7b7542fc6d2c66d8da6eae69e088830105d2ee1ffb6d91
   curl -sfL -o k3s-script https://raw.githubusercontent.com/k3s-io/k3s/v1.35.3%2Bk3s1/install.sh
@@ -138,6 +143,14 @@ helm install cert-manager jetstack/cert-manager \
 
 echo "Cert manager pods should be up"
 kubectl get pods --namespace cert-manager
+
+if [ "$KUBE_TYPE" = "K3S" ]; then
+  echo "Waiting for container image pull to finish.......... ${PID}"
+  wait $PID
+  docker save -o rancher-image.tar $RANCHER_IMG_REPO:$RANCHER_IMG_TAG
+  sudo k3s ctr images import rancher-image.tar
+  sudo k3s ctr images list
+fi
 
 echo "Setting up Rancher Repo.........."
 RANCHER_HELM_REPO_NAME=rancher-helm
@@ -221,7 +234,6 @@ if [ "$OVERRIDE_UIS" == "true" ]; then
 
   # Copy local builds to root folders that should contain UIs
   mv $DASHBOARD_DIST dashboard
-  mv $EMBER_DIST ui
   kubectl cp dashboard $POD_NAME:/usr/share/rancher/ui-dashboard -n $RANCHER_NAMESPACE
   kubectl cp ui $POD_NAME:/usr/share/rancher -n $RANCHER_NAMESPACE
 
