@@ -90,10 +90,8 @@ if [ "$KUBE_TYPE" = "K3S" ]; then
   echo "Pulling Rancher container image in the background ($RANCHER_IMG_REPO:$RANCHER_IMG_TAG)..."
 
   # Pull the Rancher container image in the background
-  PID=$(
-    docker pull $RANCHER_IMG_REPO:$RANCHER_IMG_TAG >/dev/null 2>&1 &
-    echo $!
-  )
+  docker pull $RANCHER_IMG_REPO:$RANCHER_IMG_TAG &
+  PID=$!
 
   echo "Installing k3s (with kubectl).........."
   export K3S_CHECKSUM=8598e002e61d658fed7b7542fc6d2c66d8da6eae69e088830105d2ee1ffb6d91
@@ -150,8 +148,8 @@ if [ "$KUBE_TYPE" = "K3S" ]; then
   echo "Waiting for container image pull to finish.......... ${PID}"
   wait $PID
   docker save -o rancher-image.tar $RANCHER_IMG_REPO:$RANCHER_IMG_TAG
-  k3s ctr images import rancher-image.tar
-  k3s ctr images list
+  sudo k3s ctr images import rancher-image.tar
+  sudo k3s ctr images list
 fi
 
 echo "Setting up Rancher Repo.........."
