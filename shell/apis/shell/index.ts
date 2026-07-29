@@ -1,12 +1,13 @@
 import { Store } from 'vuex';
 import {
-  ModalApi, ShellApi, SlideInApi, NotificationApi, SystemApi, ProxyApi
+  ModalApi, ShellApi, SlideInApi, NotificationApi, SystemApi, ProxyApi, BackgroundWorkerApi,
 } from '@shell/apis/intf/shell';
 import { ModalApiImpl } from './modal';
 import { SlideInApiImpl } from './slide-in';
 import { NotificationApiImpl } from './notifications';
 import { SystemApiImpl } from './system';
 import { ProxyApiImpl } from './proxy';
+import { BackgroundWorkerApiProxy } from './bg-worker';
 
 export class ShellApiImpl implements ShellApi {
   private modalApi: ModalApi;
@@ -14,6 +15,7 @@ export class ShellApiImpl implements ShellApi {
   private notificationApi: NotificationApi;
   private systemApi: SystemApi;
   private proxyApi: ProxyApi;
+  private bgWorkerApi: BackgroundWorkerApiProxy;
 
   constructor(store: Store<any>) {
     this.modalApi = new ModalApiImpl(store);
@@ -21,7 +23,8 @@ export class ShellApiImpl implements ShellApi {
     this.notificationApi = new NotificationApiImpl(store);
     this.systemApi = new SystemApiImpl(store);
     this.proxyApi = new ProxyApiImpl(store);
-  }
+    this.bgWorkerApi = new BackgroundWorkerApiProxy(store);
+}
 
   get modal(): ModalApi {
     return this.modalApi;
@@ -41,5 +44,9 @@ export class ShellApiImpl implements ShellApi {
 
   get proxy(): ProxyApi {
     return this.proxyApi;
+  }
+
+  get bgWorker(): BackgroundWorkerApi {
+    return this.bgWorkerApi.api;
   }
 }

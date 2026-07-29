@@ -137,7 +137,7 @@ const instrumentCode = (config) => {
 const getLoaders = (SHELL_ABS, dir) => [
   // no fallback for pre-2013 browsers https://caniuse.com/webworkers
   {
-    test:    /web-worker.[a-z-]+.js/i,
+    test:    /web-worker.[a-z-]+.[jt]s/i,
     loader:  'worker-loader',
     options: { inline: 'no-fallback' },
   },

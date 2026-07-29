@@ -23,6 +23,7 @@ import replaceAll from '@shell/plugins/replaceall';
 import steveCreateWorker from '@shell/plugins/steve-create-worker';
 import ShortKey from '@shell/plugins/shortkey';
 import { initUiApis } from '@shell/apis/impl/apis';
+import backgroundWorker from '@/shell/plugins/background-worker';
 
 import 'floating-vue/dist/style.css';
 import { floatingVueOptions } from '@shell/plugins/floating-vue';
@@ -57,6 +58,7 @@ export async function installInjectedPlugins(app, vueApp) {
     plugin,
     steveCreateWorker,
     dynamicContent,
+    backgroundWorker,
   ];
 
   const installations = pluginDefinitions.map(async(pluginDefinition) => {
