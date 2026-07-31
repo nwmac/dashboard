@@ -29,6 +29,7 @@ import 'floating-vue/dist/style.css';
 import { floatingVueOptions } from '@shell/plugins/floating-vue';
 
 import dynamicContent from '@shell/plugins/dynamic-content';
+import clusterProvisioningHandler from '@shell/plugins/cluster-provisioning-handler';
 
 export async function installPlugins(vueApp) {
   vueApp.use(globalFormatters);
@@ -59,6 +60,7 @@ export async function installInjectedPlugins(app, vueApp) {
     steveCreateWorker,
     dynamicContent,
     backgroundWorker,
+    clusterProvisioningHandler,
   ];
 
   const installations = pluginDefinitions.map(async(pluginDefinition) => {

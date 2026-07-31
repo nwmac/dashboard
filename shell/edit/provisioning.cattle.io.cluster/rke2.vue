@@ -70,6 +70,8 @@ import {
   HARVESTER, RETENTION_DEFAULT, RKE2_INGRESS_NGINX, INGRESS_CONTROLLER, INGRESS_NGINX, TRAEFIK, INGRESS_NONE
 } from '@shell/edit/provisioning.cattle.io.cluster/shared';
 import { mapGetters } from 'vuex';
+import { NotificationLevel } from '@shell/types/notifications';
+import { CLUSTER_PROVISIONING_HANDLER_NAME } from '@shell/plugins/cluster-provisioning-handler';
 
 const GOOGLE = 'google';
 const HARVESTER_CLOUD_PROVIDER = 'harvester-cloud-provider';
@@ -1813,6 +1815,22 @@ export default {
         // Ensure the agent configuration is set back to the values before we changed (cleaned) it
         this.value.spec[CLUSTER_AGENT_CUSTOMIZATION] = clusterAgentDeploymentCustomization;
         this.value.spec[FLEET_AGENT_CUSTOMIZATION] = fleetAgentDeploymentCustomization;
+      } else if (this.isCreate) {
+        // Cluster was created — add a Task notification so the background worker can monitor
+        // provisioning progress and update the notification when the cluster is ready.
+        const clusterName = this.value.metadata?.name || this.value.name;
+        const namespace = this.value.metadata?.namespace || 'fleet-default';
+
+        this.$store.dispatch('notifications/add', {
+          level:       NotificationLevel.Task,
+          title:       `Provisioning cluster "${ clusterName }"`,
+          handlerName: CLUSTER_PROVISIONING_HANDLER_NAME,
+          data:        {
+            clusterName,
+            namespace,
+            resourceUrl: `/v1/provisioning.cattle.io.clusters/${ namespace }/${ clusterName }`,
+          },
+        });
       }
     },
 

@@ -99,6 +99,15 @@ export interface NotificationConfig {
    * User Preference tied to the notification (the preference will be updated when the notification is marked read)
    */
   preference?: NotificationPreference;
+  /**
+   * Name of a registered {@link NotificationHandler} to associate with this notification.
+   * The handler's `monitorTask` method is invoked automatically for `Task`-level notifications.
+   */
+  handlerName?: string;
+  /**
+   * Arbitrary serialisable data stored with the notification and passed to the handler.
+   */
+  data?: any;
 }
 
 /**
@@ -161,6 +170,18 @@ export interface NotificationHandler {
    * @param read Indicates whether the notification was updated to be read or unread
    */
   onReadUpdated(notification: Notification, read: boolean): void;
+
+  /**
+   * Called when a `Task`-level notification with this handler is added or loaded from storage.
+   * Implement this to start background monitoring of the task and update the notification when
+   * it completes, errors, or times out.
+   *
+   * This method is fire-and-forget — it should run asynchronously and update the notification
+   * via `notifications/update` when it is done.
+   *
+   * @param notification The task notification to monitor
+   */
+  monitorTask?(notification: Notification): void | Promise<void>;
 }
 
 /**

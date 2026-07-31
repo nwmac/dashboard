@@ -284,6 +284,24 @@ async function callNotifyHandler({ $extension }: any, notification: Notification
   }
 }
 
+/**
+ * For Task-level notifications that have a handler with a `monitorTask` method, invoke it.
+ * This is fire-and-forget — callers must NOT await this function.
+ */
+function callMonitorTaskHandler({ $extension }: any, notification: Notification) {
+  if (notification?.level !== NotificationLevel.Task || !notification?.handlerName) {
+    return;
+  }
+
+  const handler = $extension.getDynamic(NotificationHandlerExtensionName, notification.handlerName);
+
+  if (handler?.monitorTask) {
+    Promise.resolve(handler.monitorTask(notification)).catch((e: any) => {
+      console.error('Error invoking notification monitorTask handler', e); // eslint-disable-line no-console
+    });
+  }
+}
+
 export const actions = {
   async add( { commit, dispatch, getters }: any, notification: Notification) {
     // We encrypt the notification on add - this is the only time we will encrypt it
@@ -300,6 +318,9 @@ export const actions = {
     // Show a growl for the notification if necessary
     dispatch('growl/notification', notification, { root: true });
 
+    // Fire-and-forget: start monitoring if this is a task notification with a handler
+    callMonitorTaskHandler({ $extension: (this as any).$extension }, notification);
+
     return notification.id;
   },
 
@@ -315,7 +336,17 @@ export const actions = {
     return notification.id;
   },
 
-  update({ commit, getters }: any, notification: Notification) {
+  async update({ commit, getters }: any, notification: Partial<Notification>) {
+    // Re-encrypt the merged notification so that changes to encrypted fields (title, level, etc.)
+    // survive a page reload. We merge with the current stored copy before encrypting.
+    if (notification?.id) {
+      const existing = getters.item(notification.id);
+
+      if (existing) {
+        await saveEncryptedNotification(getters, { ...existing, ...notification });
+      }
+    }
+
     commit('update', notification);
     sync(getters['userId'], 'update', notification);
   },
@@ -461,6 +492,13 @@ export const actions = {
     });
 
     commit('load', notifications);
+
+    // Resume monitoring for any Task notifications that were in progress when the page was last closed.
+    const extension = (this as any).$extension;
+
+    notifications.forEach((n) => {
+      callMonitorTaskHandler({ $extension: extension }, n);
+    });
 
     // Set up broadcast listener to listen for updates from other tabs
     bc = new BroadcastChannel(NOTIFICATION_CHANNEL_NAME);
