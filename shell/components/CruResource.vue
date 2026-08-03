@@ -812,6 +812,7 @@ export default {
               >
                 <div
                   v-if="step.name === activeStep.name || step.hidden"
+                  :id="'step-container-' + step.name"
                   :key="step.name"
                   class="step-container__step"
                   :class="{'hide': step.name !== activeStep.name && step.hidden}"
