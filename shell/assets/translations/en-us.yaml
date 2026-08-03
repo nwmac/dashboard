@@ -6020,6 +6020,7 @@ promptSlo:
     waiting: Logging Out
 
 promptRemove:
+  dialogAriaLabel: "Delete confirmation dialog"
   title: Are you sure?
   andOthers: |-
     {count, plural,
