@@ -1499,4 +1499,103 @@ describe('page: UI plugins/Extensions', () => {
       expect(w.find('.plugin-cards').attributes('aria-labelledby')).toBeUndefined();
     });
   });
+
+  describe('install from URL', () => {
+    const createWrapper = (dispatchMock: jest.Mock, availablePlugins: any[] = []) => {
+      const store = {
+        getters: {
+          'prefs/get':         jest.fn(),
+          'catalog/rawCharts': {},
+          'uiplugins/plugins': [],
+          'uiplugins/errors':  {},
+          'management/all':    () => [],
+        },
+        dispatch: dispatchMock,
+      };
+
+      const w = shallowMount(UiPluginsPage, {
+        global: {
+          mocks: {
+            $store: store,
+            t,
+          },
+          stubs: { ActionMenu: { template: '<div />' } }
+        }
+      });
+
+      Object.defineProperty(w.vm, 'available', { get: () => availablePlugins });
+
+      return w;
+    };
+
+    const openDialog = (w: VueWrapper<any>, dispatchMock: jest.Mock) => {
+      w.vm.showInstallFromUrlDialog('https://github.com/owner/repo');
+
+      return dispatchMock.mock.calls.find(([action]) => action === 'management/promptModal')[1];
+    };
+
+    it('should render the drop zone, disabled while loading', () => {
+      const w = createWrapper(jest.fn(() => Promise.resolve()));
+      const dropZone = w.findComponent({ name: 'ExtensionUrlDropZone' });
+
+      expect(dropZone.exists()).toBe(true);
+      expect(dropZone.props('disabled')).toBe(true);
+    });
+
+    it('should show the install from URL dialog when a URL is dropped', () => {
+      const dispatchMock = jest.fn(() => Promise.resolve());
+      const w = createWrapper(dispatchMock);
+
+      w.findComponent({ name: 'ExtensionUrlDropZone' }).vm.$emit('drop', 'https://github.com/owner/repo');
+
+      expect(dispatchMock).toHaveBeenCalledWith('management/promptModal', expect.objectContaining({
+        component:           'InstallExtensionsFromUrlDialog',
+        closeOnClickOutside: false,
+        componentProps:      expect.objectContaining({ url: 'https://github.com/owner/repo' }),
+      }));
+    });
+
+    it('should give the dialog the extensions shown on the page', () => {
+      const dispatchMock = jest.fn(() => Promise.resolve());
+      const available = [{ id: 'a', name: 'a' }];
+      const w = createWrapper(dispatchMock, available);
+      const modal = openDialog(w, dispatchMock);
+
+      expect(modal.componentProps.getPlugins()).toStrictEqual(available);
+    });
+
+    it('should update the install status of an extension', () => {
+      const dispatchMock = jest.fn(() => Promise.resolve());
+      const w = createWrapper(dispatchMock);
+      const modal = openDialog(w, dispatchMock);
+
+      modal.componentProps.updateStatus('ext-id', 'install');
+
+      expect(w.vm.installing).toStrictEqual({ 'ext-id': 'install' });
+    });
+
+    it('should record the repository and clear errors for the extensions being installed', () => {
+      const dispatchMock = jest.fn(() => Promise.resolve());
+      const w = createWrapper(dispatchMock);
+      const modal = openDialog(w, dispatchMock);
+      const plugin = { name: 'ext', chart: { repoName: 'repo-a' } };
+
+      modal.componentProps.closed([{ name: 'ext', plugin }]);
+
+      expect(w.vm.installedFromRepo).toStrictEqual({ ext: 'repo-a' });
+      expect(dispatchMock).toHaveBeenCalledWith('uiplugins/setError', { name: 'ext', error: false });
+    });
+
+    it('should do nothing when the dialog is closed without installing', () => {
+      const dispatchMock = jest.fn(() => Promise.resolve());
+      const w = createWrapper(dispatchMock);
+      const modal = openDialog(w, dispatchMock);
+
+      dispatchMock.mockClear();
+      modal.componentProps.closed([]);
+
+      expect(w.vm.installedFromRepo).toStrictEqual({});
+      expect(dispatchMock).not.toHaveBeenCalledWith('uiplugins/setError', expect.anything());
+    });
+  });
 });

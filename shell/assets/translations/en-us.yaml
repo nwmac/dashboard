@@ -5825,6 +5825,41 @@ plugins:
     bannerBtn: Add repositories
     title: Add Extensions repositories
     prompt: Enable additional repositories to access more extensions
+  installFromUrl:
+    title: Install Extensions from URL
+    loading: Fetching install information from {url}…
+    drop:
+      title: Drop to install extensions
+      subtitle: Extensions will be installed using the install information at the dropped URL
+    repos:
+      prompt: "The following repositories will be added so that the extensions can be installed:"
+      existing: "The following repositories have already been added and will be used:"
+      renamed: "The name \"{name}\" is already in use, so this repository will be added as \"{newName}\""
+      button: Add Repositories
+      syncing: Waiting for repositories to be ready…
+      timeout: Timed out waiting for the repository
+      error: "Repository {name} could not be added: {message}"
+      syncError: "Repository {name} did not become ready: {message}"
+    extensions:
+      prompt: "Select the extensions to install. The latest version of each extension will be installed."
+      version: "Install version {version}"
+      upgrade: "Upgrade from {from} to {to}"
+      reason:
+        installed: "Version {version} is already installed"
+        notFound: Extension could not be found in the repositories
+        noCompatibleVersion: No version is compatible with this Rancher installation
+        installedFromOtherRepo: Already installed from a different repository - uninstall it first to install from this source
+      none: There are no extensions to install or upgrade
+      button: Install
+    error:
+      title: Unable to install extensions
+      invalidUrl: The dropped item is not a valid URL
+      fetch: "Could not fetch {url}: {message}"
+      notFound: No extension install information was found at the URL
+      invalidRepo: The install information contains an invalid repository
+      invalidExtension: The install information contains an invalid extension
+      noExtensions: The install information does not list any extensions
+      install: "Could not install extension {name}: {message}"
   setup:
     installed: Already installed
     uninstalled: Already uninstalled

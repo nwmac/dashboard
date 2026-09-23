@@ -18,6 +18,7 @@ import Tab from '@shell/components/Tabbed/Tab.vue';
 import IconMessage from '@shell/components/IconMessage.vue';
 import PluginInfoPanel from './PluginInfoPanel.vue';
 import SetupUIPlugins from './SetupUIPlugins.vue';
+import ExtensionUrlDropZone from './ExtensionUrlDropZone.vue';
 import Banner from '@components/Banner/Banner.vue';
 import {
   isUIPlugin,
@@ -58,6 +59,7 @@ export default {
     Tab,
     Tabbed,
     SetupUIPlugins,
+    ExtensionUrlDropZone,
     TabTitle,
     RcItemCard,
     AppChartCardSubHeader,
@@ -484,6 +486,33 @@ export default {
         componentProps: {
           done: () => {
             this.updateInstallStatus(true);
+          }
+        }
+      });
+    },
+
+    // A URL was dropped onto the page - install the extensions described at that URL
+    showInstallFromUrlDialog(url) {
+      this.$store.dispatch('management/promptModal', {
+        component:                            'InstallExtensionsFromUrlDialog',
+        testId:                               'install-extensions-from-url-modal',
+        modalWidth:                           '640px',
+        closeOnClickOutside:                  false,
+        returnFocusFirstIterableNodeSelector: '#extensions-main-page',
+        componentProps:                       {
+          url,
+          getPlugins:   () => this.available,
+          defaultIcon:  this.defaultIcon,
+          updateStatus: (pluginId, type) => {
+            this.updatePluginInstallStatus(pluginId, type);
+          },
+          closed: (installing = []) => {
+            installing.forEach((plan) => {
+              if (plan.plugin?.chart?.repoName) {
+                this.installedFromRepo[plan.name] = plan.plugin.chart.repoName;
+              }
+              this.didInstall(plan.plugin);
+            });
           }
         }
       });
@@ -1096,6 +1125,12 @@ export default {
         </div>
       </div>
     </div>
+
+    <!-- drag and drop a URL onto the page to install extensions -->
+    <ExtensionUrlDropZone
+      :disabled="loading || !hasFeatureFlag"
+      @drop="showInstallFromUrlDialog"
+    />
 
     <!-- extensions slide-in panel -->
     <PluginInfoPanel
