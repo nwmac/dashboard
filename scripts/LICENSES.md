@@ -1,6 +1,6 @@
 # Third-party licenses
 
-The dashboard ships a `licenses.json` file listing every third-party npm
+The dashboard ships a `licenses.yaml` file listing every third-party npm
 package that ends up in the bundle, along with the full text of each
 package's license. The `/licenses` page in the app reads this file at
 runtime.
@@ -11,10 +11,10 @@ not listed at all.
 
 ## Files
 
-- `shell/static/licenses.json` — the committed bundle. Copied to the
+- `shell/static/licenses.yaml` — the committed bundle. Copied to the
   root of the build output (and served from memory by `yarn dev`) along with
   the rest of `shell/static/` — see [`shell/vue.config.js`](../shell/vue.config.js).
-- `scripts/analyze-licenses` — generates `licenses.json` from a webpack build.
+- `scripts/analyze-licenses` — generates `licenses.yaml` from a webpack build.
 
 ## Shape
 
@@ -25,14 +25,14 @@ text once as `{ text }` or `{ markdown }`. Every field except `name` and
 `license` is omitted when the package doesn't declare it. Versions are
 deliberately not shipped.
 
-## Regenerating `licenses.json`
+## Regenerating `licenses.yaml`
 
 When you add, remove, or upgrade a bundled dependency:
 
 ```sh
 ANALYZE_LICENSES=true yarn build
 node ./scripts/analyze-licenses -u
-git add shell/static/licenses.json
+git add shell/static/licenses.yaml
 ```
 
 `ANALYZE_LICENSES=true` tells [`shell/vue.config.js`](../shell/vue.config.js)
@@ -41,7 +41,7 @@ that report to enumerate the packages that actually made it into the bundle
 (transitive deps included), resolves each one's license text from — in
 order — its `LICENSE` file, its README's `License` section, or GitHub's
 Contents API, and (with `-u`) writes the result to
-`shell/static/licenses.json`.
+`shell/static/licenses.yaml`.
 
 ### Packages that ship no license text
 
@@ -83,7 +83,7 @@ The `check-licenses` job in
 analyzer-enabled build and then the script with no flags on every PR. It:
 
 - fails when the freshly-generated bundle differs from the committed
-  `licenses.json` (dependency drift), or
+  `licenses.yaml` (dependency drift), or
 - fails when any bundled package uses a license outside the allow-list
   (`MIT`, `Apache-2.0`, `BSD-3-Clause`, `ISC`, `BSD`) or has no license
   content after every fallback, including the generated notice.
@@ -96,7 +96,7 @@ The failure message repeats the commands above.
 node ./scripts/analyze-licenses [options]
 
   -u, --update   Write the generated bundle to
-                 shell/static/licenses.json. Without this, the
+                 shell/static/licenses.yaml. Without this, the
                  script runs in check mode.
   -h, --help     Show help.
 ```

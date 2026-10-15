@@ -5,11 +5,12 @@ import TabTitle from '@shell/components/TabTitle';
 import Banner from '@components/Banner/Banner.vue';
 import LicenseSlideIn from '@shell/components/LicenseSlideIn.vue';
 import { RcButton } from '@components/RcButton';
+import jsyaml from 'js-yaml';
 
-// Build the URL relative to the deployed router base — e.g. `/licenses.json`
-// at root, `/dashboard/licenses.json` when the app is served from /dashboard.
+// Build the URL relative to the deployed router base — e.g. `/licenses.yaml`
+// at root, `/dashboard/licenses.yaml` when the app is served from /dashboard.
 // `routerBase` is injected by webpack DefinePlugin and always ends in `/`.
-const LICENSES_URL = `${ process.env.routerBase || '/' }licenses.json`;
+const LICENSES_URL = `${ process.env.routerBase || '/' }licenses.yaml`;
 
 export default {
   name: 'Licenses',
@@ -30,7 +31,7 @@ export default {
       } else if (!res.ok) {
         this.errorStatus = res.status;
       } else {
-        this.data = await res.json();
+        this.data = jsyaml.load(await res.text());
       }
     } catch (e) {
       this.errorStatus = e?.message || 'Network error';
@@ -123,7 +124,7 @@ export default {
     <Banner
       v-if="notFound"
       color="warning"
-      :label="t('about.licenses.page.notFound', { file: 'licenses.json' })"
+      :label="t('about.licenses.page.notFound', { file: 'licenses.yaml' })"
     />
 
     <Banner
