@@ -11,7 +11,9 @@ not listed at all.
 
 ## Files
 
-- `licenses.json` (repo root) — the committed bundle. Shipped to production.
+- `shell/static/licenses.json` — the committed bundle. Copied to the
+  root of the build output (and served from memory by `yarn dev`) along with
+  the rest of `shell/static/` — see [`shell/vue.config.js`](../shell/vue.config.js).
 - `scripts/analyze-licenses` — generates `licenses.json` from a webpack build.
 
 ## Shape
@@ -30,7 +32,7 @@ When you add, remove, or upgrade a bundled dependency:
 ```sh
 ANALYZE_LICENSES=true yarn build
 node ./scripts/analyze-licenses -u
-git add licenses.json
+git add shell/static/licenses.json
 ```
 
 `ANALYZE_LICENSES=true` tells [`shell/vue.config.js`](../shell/vue.config.js)
@@ -38,7 +40,8 @@ to emit `dist/report.json` via `webpack-bundle-analyzer`. The script reads
 that report to enumerate the packages that actually made it into the bundle
 (transitive deps included), resolves each one's license text from — in
 order — its `LICENSE` file, its README's `License` section, or GitHub's
-Contents API, and (with `-u`) writes the result to `licenses.json`.
+Contents API, and (with `-u`) writes the result to
+`shell/static/licenses.json`.
 
 ### Packages that ship no license text
 
@@ -92,8 +95,9 @@ The failure message repeats the commands above.
 ```
 node ./scripts/analyze-licenses [options]
 
-  -u, --update   Write the generated bundle to licenses.json at the repo
-                 root. Without this, the script runs in check mode.
+  -u, --update   Write the generated bundle to
+                 shell/static/licenses.json. Without this, the
+                 script runs in check mode.
   -h, --help     Show help.
 ```
 

@@ -15,9 +15,9 @@
  * first-party packages are excluded entirely.
  *
  * Default mode compares the generated bundle against the committed
- * licenses.json at the repo root and exits non-zero if it's out of date or if
- * any package uses a disallowed license. `-u` writes the bundle to the repo
- * root instead. The `check-licenses` CI job runs this script with no flags.
+ * shell/static/licenses.json and exits non-zero if it's out of date
+ * or if any package uses a disallowed license. `-u` writes the bundle to that
+ * file instead. The `check-licenses` CI job runs this script with no flags.
  *
  * dist/report.json must already exist — run `ANALYZE_LICENSES=true yarn
  * build` first to produce it. The script exits non-zero with a hint when
@@ -33,7 +33,7 @@ const crypto = require('crypto');
 const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const REPORT = path.join(DIST, 'report.json');
-const COMMITTED_LICENSES = path.join(ROOT, 'licenses.json');
+const COMMITTED_LICENSES = path.join(ROOT, 'shell', 'static', 'licenses.json');
 const ROOT_PACKAGE_JSON = path.join(ROOT, 'package.json');
 const ALLOWED_LICENSES = ['MIT', 'Apache-2.0', 'BSD-3-Clause', 'ISC', 'BSD'];
 const ALLOWED_LICENSE_SET = new Set(ALLOWED_LICENSES);
@@ -49,16 +49,17 @@ const bg_red = '\x1b[41m';
 
 const USAGE = `Usage: analyze-licenses [options]
 
-Verifies the bundled packages match the committed licenses.json at the repo
-root, and that every package uses an allowed license
+Verifies the bundled packages match the committed
+shell/static/licenses.json, and that every package uses an allowed license
 (${ ALLOWED_LICENSES.join(', ') }).
 
 Requires dist/report.json from \`ANALYZE_LICENSES=true yarn build\` — the
 script exits non-zero when that file is missing.
 
 Options:
-  -u, --update        Write the generated bundle to licenses.json at the
-                      repo root instead of checking against it.
+  -u, --update        Write the generated bundle to
+                      shell/static/licenses.json instead of
+                      checking against it.
   -h, --help          Show this help.
 `;
 
@@ -780,7 +781,7 @@ function failCheck(reason) {
   console.error('');
   console.error(`    ${ cyan }ANALYZE_LICENSES=true yarn build${ reset }`);
   console.error(`    ${ cyan }node ./scripts/analyze-licenses -u${ reset }`);
-  console.error(`    ${ cyan }git add licenses.json && git commit${ reset }`);
+  console.error(`    ${ cyan }git add shell/static/licenses.json && git commit${ reset }`);
   console.error('');
   process.exit(1);
 }
@@ -807,7 +808,7 @@ function failMissingReport(update) {
  * Orchestrate the licenses pipeline: parse args, read the bundle report,
  * process licenses, and enforce the allow-list. Default mode compares the
  * generated bundle to the committed licenses.json and fails on drift; `-u`
- * writes the bundle to licenses.json at the repo root instead.
+ * writes the bundle to shell/static/licenses.json instead.
  */
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
