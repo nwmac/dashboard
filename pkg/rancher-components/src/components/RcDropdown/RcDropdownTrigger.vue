@@ -2,7 +2,7 @@
 /**
  * A button that opens a menu. Used in conjunction with `RcDropdown.vue`.
  */
-import { inject, onMounted, ref } from 'vue';
+import { inject, onBeforeUnmount, onMounted, ref } from 'vue';
 import { RcButton, RcButtonType, RcButtonSize } from '@components/RcButton';
 import { DropdownContext, defaultContext } from './types';
 
@@ -21,6 +21,11 @@ const dropdownTrigger = ref<RcButtonType | null>(null);
 
 onMounted(() => {
   registerTrigger(dropdownTrigger.value);
+});
+
+// A menu that outlives its trigger gives the focus back to whatever had it when it opened instead
+onBeforeUnmount(() => {
+  registerTrigger(null);
 });
 
 const focus = () => {
