@@ -1,5 +1,5 @@
 <script>
-import BrandImage from '@shell/components/BrandImage';
+import PersonaSwitcher from '@shell/components/nav/PersonaSwitcher.vue';
 import ClusterIconMenu from '@shell/components/ClusterIconMenu';
 import ClusterSwitcher from '@shell/components/nav/ClusterSwitcher';
 import IconOrSvg from '../IconOrSvg';
@@ -31,7 +31,7 @@ const PINNED_TOOLTIP_DISTANCE = 44;
 
 export default {
   components: {
-    BrandImage,
+    PersonaSwitcher,
     ClusterIconMenu,
     ClusterSwitcher,
     IconOrSvg,
@@ -1240,39 +1240,13 @@ export default {
         >
           {{ navAnnouncement }}
         </div>
-        <!-- Logo and name -->
+        <!-- Persona: the menu button when collapsed, the persona switcher when expanded -->
         <div class="title">
-          <div
-            data-testid="top-level-menu"
-            :aria-label="shown ? t('nav.collapseAppBar') : t('nav.expandAppBar')"
-            :aria-expanded="shown"
-            aria-controls="top-level-menu-body"
-            role="button"
-            tabindex="0"
-            class="menu"
-            @keyup.enter="toggle()"
-            @keyup.space="toggle()"
-            @click="toggle()"
-          >
-            <svg
-              class="menu-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              height="24"
-              viewBox="0 0 24 24"
-              width="24"
-              :alt="t('nav.alt.mainMenuIcon')"
-            ><path
-              d="M0 0h24v24H0z"
-              fill="none"
-            /><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" /></svg>
-          </div>
-          <div class="side-menu-logo">
-            <BrandImage
-              data-testid="side-menu__brand-img"
-              :alt="t('nav.alt.mainMenuRancherLogo')"
-              file-name="rancher-logo.svg"
-            />
-          </div>
+          <PersonaSwitcher
+            :expanded="shown"
+            @toggle="toggle()"
+            @close="hide()"
+          />
         </div>
 
         <!-- Menu body -->

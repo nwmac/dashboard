@@ -193,6 +193,20 @@ locale:
   zh-hans: 简体中文
   none: (None)
 
+persona:
+  switcher:
+    menu: Switch persona
+    trigger: "Current persona: {persona}. Switch persona"
+  clusterAdmin:
+    label: Cluster Admin
+    description: Provision and operate clusters
+  appDeveloper:
+    label: App Developer
+    description: Build and deploy workloads
+  securityAdmin:
+    label: Security Admin
+    description: Manage access and policy
+
 nav:
   skipToContent: Skip to main content
   jumpTo:

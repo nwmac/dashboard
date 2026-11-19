@@ -44,6 +44,8 @@ const props = withDefaults(
      */
     open?: boolean;
     placement?: Placement;
+    /** `fixed` lets the menu escape an ancestor that clips its overflow */
+    strategy?: 'absolute' | 'fixed';
     /**
      * Where the local popper anchor itself is teleported to (via Vue
      * Teleport, not floating-vue's own `container`, so the popper stays a
@@ -55,7 +57,9 @@ const props = withDefaults(
     // eslint-disable-next-line vue/require-default-prop
     container?: string | HTMLElement;
   }>(),
-  { placement: 'bottom-end', open: false }
+  {
+    placement: 'bottom-end', open: false, strategy: 'absolute'
+  }
 );
 
 const emit = defineEmits(['update:open']);
@@ -185,6 +189,7 @@ const applyShow = () => {
     :container="popperContainer"
     :placement="placement"
     :distance="distance"
+    :strategy="strategy"
     :reference-node="referenceNode"
     @apply-show="applyShow"
   >
